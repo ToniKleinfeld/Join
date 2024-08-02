@@ -1,0 +1,431 @@
+
+/* figtree-300 - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Figtree';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/figtree-v5-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* figtree-700 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Figtree';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/figtree-v5-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  
+  
+
+  /* poppins-300 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/poppins-v21-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* poppins-regular - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/poppins-v21-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* poppins-700 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/poppins-v21-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    max-width: 1920px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+button {
+    height: 50px;
+    width: 100px;
+    background-color: #2A3647;
+    border: unset;
+    border: 1px solid  #2A3647;
+    border-radius: 10px;
+    color: white;
+}
+
+h1 {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+.btn-style-2 {
+    width: 200px;
+    background-color: white;
+    color: black;
+}
+
+input {
+    height: 50px;
+    width: 80%;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding-left: 25px;
+}
+
+
+.desktop {
+    height: 100vh;
+    flex: 1;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    border-bottom: 1px solid;
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 150px;
+    padding-right: 50px;
+}
+
+.header-icon-container {
+    height: 10vh;
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.account-info {
+    border: 3px solid;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+
+main {
+    height: 90vh;
+    width: 100%;
+    background-color: #F6F7F8;
+}
+
+/*---------------Navigation---------------------------*/
+
+nav {
+    height: 100vh;
+    width: 232px;
+    font-size: 16px;
+    color: #CDCDCD;
+    background-color: #2A3647;
+    box-shadow: rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 64px;
+}
+
+nav a {
+    color: #CDCDCD;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #374961;
+    cursor: pointer;
+}
+
+.logo {
+    height: 130px;
+    width: 130px;
+}
+
+.nav-links-container {
+    height: 25%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 25px;
+}
+
+.nav-link {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+}
+
+.legal-links {
+    height: 100px;
+    width: 100%;
+    color: #898C90;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: start;
+    padding-bottom: 50px;
+    gap: 25px;
+}
+
+
+
+/*---------------Board--------------------------*/
+
+.board-main {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 64px;
+}
+
+.board-headline {
+    border: 1px solid;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.board-headline-input-button-container {
+    border: 1px solid;
+    width: 30%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+}
+
+.category-container-container {
+    border: 1px solid;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+}
+
+.category-containers {
+    border: 1px solid;
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 10px;
+}
+
+/*---------------Contacts--------------------------*/
+
+.contacts-main {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: 16px;
+}
+
+.contacts-slider {
+    border: 1px solid;
+    height: 100%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 16px;
+}
+
+.big-button {
+    width: 80%;
+}
+
+.contacts-motto {
+    width: 60%;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: 20px;
+}
+
+.seperator-2 {
+    height: 50px;
+    width: 3px;
+    background-color: lightblue;
+    margin-top: 30px;
+}
+
+.contacts-h2 {
+    margin-top: 33px;
+}
+
+/*---------------Login---------------------------*/
+
+.login-page-main-container {
+    height: 100vh;
+    width: 100%;
+    background-color: #F6F7F8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.log-in-headline {
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding: 50px 100px;
+}
+
+.log-in-headline a {
+    color: black;
+    text-decoration: none;
+}
+
+.log-in-head-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.login-form {
+    height: 500px;
+    width: 700px;
+    background-color: white;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 50px 100px;
+    box-shadow: 2px 0 6px 0 rgb(0, 0, 0, 0.2);
+    margin-bottom: 100px;
+}
+
+.seperator {
+    height: 3px;
+    width: 91px;
+    background-color: lightblue;
+    margin-top: -10px;
+}
+
+.checkbox-container {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkbox {
+    height: 20px;
+    margin-right: 310px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.login-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.login-footer a {
+    color: lightgrey;
+    text-decoration: none;
+}
+
+
+/*---------------Add Task---------------------------*/
+
+.add-task-main {
+    height: 95%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    border-radius: 25px;
+    gap: 10px;
+    padding: 25px;
+}
+
+.taskform {
+    height: 90%;
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    border-radius: 25px;
+}
+
+.taskform-half {
+    height: 90%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.seperator {
+    height: 90%;
+    width: 1px;
+    background-color: black;
+    margin-right: 100px;
+}
+
+.check-button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.add-task-page-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-footer-button-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
