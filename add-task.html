@@ -6,59 +6,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/menu.css">
 </head>
 
 <body>
-
-    <main class="add-task-main">
-
-        <h1>Add Task</h1>
-
-        <form class="taskform">
-
-            <div class="taskform-half">
-                <h2>Title*</h2>
-                <input type="text" placeholder="Enter a title">
-                <h2>Description</h2>
-                <textarea placeholder="Enter a Description"></textarea>
-                <h2>Assigned to</h2>
-                <select name="names">
-                    <option value="names">names</option>
-                </select>
+    <nav>
+        <img class="logo" src="./assets/icons/capa 1.svg">
+        <div class="nav-links-container">
+            <div class="nav-link">
+                <img class="nav-icon" src="./assets/icons/summary.svg">
+                <a href="#">Summary</a>
+            </div>
+            <div class="nav-link">
+                <img class="nav-icon" src="./assets/icons/add task.svg">
+                <a href="#">Add Task</a>
             </div>
 
-            <div class="seperator"></div>
-
-            <div class="taskform-half">
-
-                <h2>Due date*</h2>
-                <input type="date">
-                <h2>Prio</h2>
-                <div class="check-button-container">
-                    <button class="check-btn-1">Urgent</button>
-                    <button class="check-btn-2">Medium =</button>
-                    <button class="check-btn-1">Low</button>
-                </div>
-                <h2>Category*</h2>
-                <select name="category">
-                    <option value="category">category</option>
-                </select>
-                <h2>Subtasks</h2>
-                <input type="text" placeholder="Add new subtask   +">
-
+            <div class="nav-link">
+                <img class="nav-icon" src="./assets/icons/board.svg">
+                <a href="#">Board</a>
             </div>
-        </form>
 
-        <div class="add-task-page-footer">
-            <p>*This field is required</p>
-            <div class="task-footer-button-container">
-                <button class="btn-3">Clear</button>
-                <button class="btn-4">Create Task</button>
+            <div class="nav-link">
+                <img class="nav-icon" src="./assets/icons/contacts.svg">
+                <a href="#">Contacts</a>
             </div>
         </div>
 
-    </main>
+        <div class="legal-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Legal Notice</a>
+        </div>
+    </nav>
+    <div class="desktop">
+        <header>
+            <h2>Kanban Project Managment Tool</h2>
+            <div class="header-icon-container">
+                <img src="./assets/icons/help.svg">
+                <div class="account-info"></div>
+            </div>
+        </header>
+        <main class="add-task-main">
 
+            <h1>Add Task</h1>
+
+            <form class="taskform">
+
+                <div class="taskform-half">
+                    <h2>Title*</h2>
+                    <input type="text" placeholder="Enter a title">
+                    <h2>Description</h2>
+                    <textarea placeholder="Enter a Description"></textarea>
+                    <h2>Assigned to</h2>
+                    <select name="names">
+                        <option value="names">names</option>
+                    </select>
+                </div>
+
+                <div class="seperator"></div>
+
+                <div class="taskform-half">
+
+                    <h2>Due date*</h2>
+                    <input type="date">
+                    <h2>Prio</h2>
+                    <div class="check-button-container">
+                        <button class="check-btn-1">Urgent</button>
+                        <button class="check-btn-2">Medium =</button>
+                        <button class="check-btn-1">Low</button>
+                    </div>
+                    <h2>Category*</h2>
+                    <select name="category">
+                        <option value="category">category</option>
+                    </select>
+                    <h2>Subtasks</h2>
+                    <input type="text" placeholder="Add new subtask   +">
+
+                </div>
+            </form>
+
+            <div class="add-task-page-footer">
+                <p>*This field is required</p>
+                <div class="task-footer-button-container">
+                    <button class="btn-3">Clear</button>
+                    <button class="btn-4">Create Task</button>
+                </div>
+            </div>
+
+        </main>
+    </div>
 </body>
 
 </html>
