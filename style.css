@@ -229,12 +229,6 @@ input {
     flex-direction: column;
 }
 
-main {
-    height: 90vh;
-    width: 100%;
-    background-color: #F6F7F8;
-}
-
 .maincontent{
     padding: 64px;
 }
@@ -402,7 +396,7 @@ main {
     font-weight: bold;
     font-size: 20px;
 }
-.blue-text {
+.lightblue {
     color: #29abe2;
 }
 .help-main{
