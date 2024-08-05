@@ -1,48 +1,64 @@
+/****************************FONTS*************************************************/
+
 
 /* figtree-300 - latin */
 @font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
     font-family: 'Figtree';
     font-style: normal;
     font-weight: 300;
-    src: url('../fonts/figtree-v5-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-  }
-  /* figtree-700 - latin */
-  @font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    src: url('../fonts/figtree-v5-latin-300.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* figtree-700 - latin */
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
     font-family: 'Figtree';
     font-style: normal;
     font-weight: 700;
-    src: url('../fonts/figtree-v5-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-  }
-  
-  
+    src: url('../fonts/figtree-v5-latin-700.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
 
-  /* poppins-300 - latin */
-  @font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+
+
+/* poppins-300 - latin */
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 300;
-    src: url('../fonts/poppins-v21-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-  }
-  /* poppins-regular - latin */
-  @font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    src: url('../fonts/poppins-v21-latin-300.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* poppins-regular - latin */
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    src: url('../fonts/poppins-v21-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-  }
-  /* poppins-700 - latin */
-  @font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    src: url('../fonts/poppins-v21-latin-regular.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* poppins-700 - latin */
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
-    src: url('../fonts/poppins-v21-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-  }
+    src: url('../fonts/poppins-v21-latin-700.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
 
+/********************************************************************************/
 
 * {
     box-sizing: border-box;
@@ -55,22 +71,99 @@ html {
 body {
     max-width: 1920px;
     margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center
 }
 
-button {
-    height: 50px;
-    width: 100px;
-    background-color: #2A3647;
+/****************************HTML ELEMNT ZENTRIEREN***************************/
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/****************************LINKS*******************************************/
+
+a {
+    color: #A8A8A8;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #29ABE2;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/****************************BUTTONS*******************************************/
+
+.button {
+    font-weight: bold;
     border: unset;
-    border: 1px solid  #2A3647;
-    border-radius: 10px;
+    border-radius: 8px;
     color: white;
 }
 
+button:hover {
+    box-shadow: 0px 5px 2px 0 rgb(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+/****************************SMALL BUTTONS************************************/
+
+.button-filled-small {
+    height: 48px;
+    width: 110px;
+    background-color: #2A3647;
+}
+
+.button-filled-small:hover {
+    background-color: #29ABE2;
+}
+
+.button-empty-small {
+    height: 48px;
+    width: 110px;
+    background-color: white;
+    color: black;
+    border: 1px solid #2A3647;
+}
+
+.button-empty-small:hover {
+    color: #29ABE2;
+    border: 1px solid #29ABE2;
+}
+
+/****************************LARGE BUTTONS************************************/
+
+.button-filled-large {
+    height: 48px;
+    width: 177px;
+    background-color: #2A3647;
+}
+
+.button-filled-large:hover {
+    background-color: #29ABE2;
+}
+
+.button-empty-large {
+    height: 48px;
+    width: 177px;
+    background-color: white;
+    color: black;
+    border: 1px solid #2A3647;
+}
+
+.button-empty-large:hover {
+    color: #29ABE2;
+    border: 1px solid #29ABE2;
+}
+
+/****************************TEXT***********************************************/
+
+
 h1 {
+    font-size: 70px;
     margin: 0;
 }
 
@@ -78,20 +171,55 @@ p {
     margin: 0;
 }
 
-.btn-style-2 {
-    width: 200px;
-    background-color: white;
-    color: black;
-}
+/****************************INPUTS***********************************************/
 
 input {
-    height: 50px;
-    width: 80%;
+    height: 48px;
+    width: 422px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    padding-left: 25px;
+    padding: 12px 21px;
+    outline: none;
+    cursor: pointer;
 }
 
+.input-name {
+    background-image: url(../assets/icons/person.svg);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-position-x: 380px;
+}
+
+
+.input-mail {
+    background-image: url(../assets/icons/mail.svg);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-position-x: 380px;
+}
+
+
+.input-password {
+    background-image: url(../assets/icons/lock.svg);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-position-x: 380px;
+}
+
+.login-input-name {
+    background-image: url(../assets/icons/person.svg);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-position-x: 380px;
+}
+
+.checkbox {
+    height: 24px;
+    width: auto;
+    cursor: pointer;
+}
+
+/*****************************************************************************/
 
 .desktop {
     height: 100vh;
@@ -101,16 +229,11 @@ input {
     flex-direction: column;
 }
 
-
 main {
     height: 90vh;
     width: 100%;
     background-color: #F6F7F8;
 }
-
-
-
-
 
 /*---------------Board--------------------------*/
 
@@ -202,93 +325,6 @@ main {
 .contacts-h2 {
     margin-top: 33px;
 }
-
-/*---------------Login---------------------------*/
-
-.login-page-main-container {
-    height: 100vh;
-    width: 100%;
-    background-color: #F6F7F8;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.log-in-headline {
-    height: 20vh;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    padding: 50px 100px;
-}
-
-.log-in-headline a {
-    color: black;
-    text-decoration: none;
-}
-
-.log-in-head-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-}
-
-.login-form {
-    height: 500px;
-    width: 700px;
-    background-color: white;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    padding: 50px 100px;
-    box-shadow: 2px 0 6px 0 rgb(0, 0, 0, 0.2);
-    margin-bottom: 100px;
-}
-
-.seperator {
-    height: 3px;
-    width: 91px;
-    background-color: lightblue;
-    margin-top: -10px;
-}
-
-.checkbox-container {
-    width: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.checkbox {
-    height: 20px;
-    margin-right: 310px;
-}
-
-.button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-}
-
-.login-footer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-}
-
-.login-footer a {
-    color: lightgrey;
-    text-decoration: none;
-}
-
 
 /*---------------Add Task---------------------------*/
 
