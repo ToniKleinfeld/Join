@@ -1,0 +1,24 @@
+/************************Help**************************/
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+.step-number {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-right: 32px;
+}
+.step-title {
+    font-weight: bold;
+    font-size: 20px;
+}
+.lightblue {
+    color: #29abe2;
+}
+.help-main{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
