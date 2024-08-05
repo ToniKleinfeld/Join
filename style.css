@@ -235,6 +235,9 @@ main {
     background-color: #F6F7F8;
 }
 
+.maincontent{
+    padding: 64px;
+}
 /*---------------Board--------------------------*/
 
 .board-main {
@@ -381,4 +384,30 @@ main {
     display: flex;
     align-items: center;
     gap: 20px;
+}
+
+/************************Help**************************/
+
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+.step-number {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-right: 32px;
+}
+.step-title {
+    font-weight: bold;
+    font-size: 20px;
+}
+.blue-text {
+    color: #29abe2;
+}
+.help-main{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
 }
