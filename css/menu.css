@@ -107,11 +107,8 @@ header {
 }
 
 .maincontent{
-    position: fixed;
-    top: 97px;
-    left: 232px;
-    bottom: 0;
-    right: 0;
+    margin-top: 97px;
+    margin-left: 232px;
     overflow-y: auto;
 }
 
@@ -139,13 +136,14 @@ header {
     gap: 20px;
     align-items: flex-start;
     padding: 20px;
-    position: fixed;
+    position: absolute;
     height: 150px;
     width: auto;
     top: 97px;
     right: 30px;
     border: 0px solid transparent;
     border-radius: 25px 0 25px 25px;
+    z-index: 99;
 }
 
 .dropdownmenu a{
