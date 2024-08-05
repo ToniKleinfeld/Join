@@ -44,6 +44,7 @@
 }
 
 .login-form {
+    display: flex;
     flex-direction: column;
     gap: 20px;
 }
@@ -75,7 +76,7 @@
     gap: 30px;
 }
 
-.legal-links {
+.legal-links-container {
     width: 100%;
     font-size: 16px;
     display: flex;
