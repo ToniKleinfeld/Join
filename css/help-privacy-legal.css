@@ -17,8 +17,9 @@
 .lightblue {
     color: #29abe2;
 }
-.help-main{
+.help-privacy-legal-main{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 24px;
 }
