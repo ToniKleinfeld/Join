@@ -15,7 +15,8 @@ nav {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 50px 64px;
+    padding: 60px 0 60px 0;
+    
 }
 
 nav a {
@@ -23,32 +24,34 @@ nav a {
     text-decoration: none;
 }
 
-nav a:hover {
-    background-color: #374961;
-    cursor: pointer;
-}
-
 .logo {
     height: 130px;
     width: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
 }
 
 .nav-links-container {
-    height: 25%;
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    gap: 25px;
+    justify-content: center;
+    gap: 15px;
+    padding-bottom: 70%;
 }
 
-.nav-link {
+.nav-links-container a{
+    width: 232px;
+    padding: 4px;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
-    gap: 10px;
+    gap: 4px;
+    padding-left: 60px;
 }
+
 
 .legal-links {
     height: 100px;
@@ -58,8 +61,34 @@ nav a:hover {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: start;
-    padding-bottom: 50px;
-    gap: 25px;
+}
+
+.legal-links a{
+    font-size: 14px;
+    padding-left: 60px;
+}
+
+.legal-links a:hover{
+    color: #29aae0;
+}
+
+.summaryicon::before{
+    content: url('../assets/icons/summary.svg');
+}
+
+.taskicon::before{
+    content: url('../assets/icons/add\ task.svg');
+}
+.boardicon::before{
+    content: url('../assets/icons/board.svg');
+}
+.contactsicon::before{
+    content: url('../assets/icons/contacts.svg');
+}
+
+.nav-links-container a:hover{
+    background-color: #374961;
+    cursor: pointer;
 }
 
 /*******************header************************/
@@ -77,7 +106,7 @@ header {
     padding-right: 50px;
 }
 
-main{
+.maincontent{
     position: fixed;
     top: 97px;
     left: 232px;
@@ -100,4 +129,34 @@ main{
     height: 50px;
     width: 50px;
     border-radius: 50%;
+}
+
+.dropdownmenu{
+    background-color: #2A3647;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 20px;
+    position: fixed;
+    height: 150px;
+    width: auto;
+    top: 97px;
+    right: 30px;
+    border: 0px solid transparent;
+    border-radius: 25px 0 25px 25px;
+}
+
+.dropdownmenu a{
+    color: #CDCDCD;
+    text-decoration: none;
+}
+
+.account-info:hover {
+    cursor: pointer;
+}
+
+.d-none{
+    display: none;
 }
