@@ -229,12 +229,6 @@ input {
     flex-direction: column;
 }
 
-main {
-    height: 90vh;
-    width: 100%;
-    background-color: #F6F7F8;
-}
-
 /*---------------Board--------------------------*/
 
 .board-main {
