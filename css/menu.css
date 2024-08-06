@@ -109,6 +109,12 @@ header {
 .maincontent{
     margin-top: 97px;
     margin-left: 232px;
+    background-color: #F6F7F8;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     overflow-y: auto;
 }
 
@@ -119,7 +125,6 @@ header {
     justify-content: space-between;
     align-items: center;
 }
-
 
 .account-info {
     border: 3px solid;

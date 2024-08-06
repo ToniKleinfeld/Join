@@ -4,41 +4,48 @@
     box-shadow: none;
 }
 
-.add-task-main {
-    height: 95%;
-    font-family: 'figtree';
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: flex-start;
-    border-radius: 25px;
-    gap: 10px;
-    padding: 25px;
-}
-
 .taskform {
-    height: 90%;
-    width: 95%;
+    height: 550px;
     display: flex;
-    justify-content: space-around;
-    align-items: start;
+    justify-content: start;
+    align-items: center;
+    gap: 100px;
     border-radius: 25px;
+    margin-top: -50px;
+    margin-bottom: 100px;
 }
 
 .taskform-half {
-    height: 90%;
-    width: 50%;
+    height: 416px;
+    width: 440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.input-container {
+    height: 150px;
+    width: 440px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
+    padding: 10px;
 }
 
-.seperator {
-    height: 90%;
-    width: 1px;
-    background-color: black;
-    margin-right: 100px;
+.text-area-container {
+    height: 168px;
+    width: 440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding: 10px;
+}
+
+.input-title {
+    margin-bottom: 5px;
 }
 
 .check-button-container {
@@ -47,10 +54,10 @@
 }
 
 .add-task-page-footer {
-    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
+    gap: 490px;
 }
 
 .task-footer-button-container {
