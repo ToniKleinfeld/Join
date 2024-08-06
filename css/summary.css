@@ -1,0 +1,63 @@
+.maincontent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100% - (128px+ 97px));
+    gap: 25px;
+    background-color: #f6f7f9;
+}
+
+title {
+    
+}
+
+.overwiev-container-box {
+    gap: 40px;
+}
+
+.overwiev-box{
+    flex-direction: column;
+    width: 560px;
+    height: 562px;
+    gap: 25px
+}
+
+.big{
+    width: 100%;
+    height: 100%;
+}
+
+.medium{
+    width: 50%;
+    height: inherit;
+}
+
+.small{
+    width: 33%;
+    height: inherit;
+}
+
+.smallbox{
+    gap: 25px;
+    width: 100%;
+    height: 100%;
+}
+
+.mediumbox{
+    gap: 25px;
+    width: 100%;
+    height: 100%;
+}
+
+.box{
+    padding: 25px 25px;
+    background-color: white;
+    border-radius: 30px;
+    border: 1px solid rgb(238, 239, 240);
+}
+
+.number{
+    font-size: 40px;
+}
