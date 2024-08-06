@@ -97,11 +97,15 @@ body {
 
 /****************************BUTTONS*******************************************/
 
-.button {
+button {
     font-weight: bold;
     border: unset;
     border-radius: 8px;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
 }
 
 button:hover {
@@ -132,6 +136,16 @@ button:hover {
 .button-empty-small:hover {
     color: #29ABE2;
     border: 1px solid #29ABE2;
+}
+
+.button-empty-small-2 {
+    height: 48px;
+    width: 110px;
+    background-color: white;
+    color: black;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    outline: none;
 }
 
 /****************************LARGE BUTTONS************************************/
@@ -167,6 +181,11 @@ h1 {
     margin: 0;
 }
 
+h2 {
+    font-size: 24px;
+    font-weight: 400;
+}
+
 p {
     margin: 0;
 }
@@ -178,7 +197,27 @@ input {
     width: 422px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    padding: 12px 21px;
+    padding: 12px 16px;
+    outline: none;
+    cursor: pointer;
+}
+
+textarea {
+    height: 136px;
+    width: 422px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 12px 16px;
+    outline: none;
+    cursor: pointer;
+}
+
+select {
+    height: 48px;
+    width: 422px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 12px 16px;
     outline: none;
     cursor: pointer;
 }
@@ -190,6 +229,12 @@ input {
     background-position-x: 380px;
 }
 
+.input-date {
+    background-image: url(../assets/icons/event.svg);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-position-x: 380px;
+}
 
 .input-mail {
     background-image: url(../assets/icons/mail.svg);
@@ -206,8 +251,8 @@ input {
     background-position-x: 380px;
 }
 
-.login-input-name {
-    background-image: url(../assets/icons/person.svg);
+.input-subtask {
+    background-image: url(../assets/icons/subtasks-icon.svg);
     background-position: right;
     background-repeat: no-repeat;
     background-position-x: 380px;
@@ -226,9 +271,10 @@ input {
     display: flex;
 }
 
-.maincontent{
+.maincontent {
     padding: 64px;
 }
+
 /*---------------Board--------------------------*/
 
 .board-main {
@@ -318,61 +364,4 @@ input {
 
 .contacts-h2 {
     margin-top: 33px;
-}
-
-/*---------------Add Task---------------------------*/
-
-.add-task-main {
-    height: 95%;
-    /* width: 60%; */
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: flex-start;
-    border-radius: 25px;
-    gap: 10px;
-    padding: 25px;
-}
-
-.taskform {
-    height: 90%;
-    width: 95%;
-    display: flex;
-    justify-content: space-around;
-    align-items: start;
-    border-radius: 25px;
-}
-
-.taskform-half {
-    height: 90%;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-}
-
-.seperator {
-    height: 90%;
-    width: 1px;
-    background-color: black;
-    margin-right: 100px;
-}
-
-.check-button-container {
-    display: flex;
-    gap: 10px;
-}
-
-.add-task-page-footer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.task-footer-button-container {
-    display: flex;
-    align-items: center;
-    gap: 20px;
 }

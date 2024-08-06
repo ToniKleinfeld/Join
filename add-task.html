@@ -7,6 +7,7 @@
     <title>Join</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./css/menu.css">
+    <link rel="stylesheet" href="./css/add-task.css">
 </head>
 
 <body>
@@ -24,13 +25,13 @@
     </header>
     <nav>
         <div class="logo">
-            <img  src="./assets/icons/capa 1.svg">
+            <img src="./assets/icons/capa 1.svg">
         </div>
-        <div class="nav-links-container">           
-                <a href="./summary.html"><i class="summaryicon"></i> Summary</a>
-                <a href="./add-task.html"><i class="taskicon"></i> Add Task</a>
-                <a href="./board.html"><i class="boardicon"></i> Board</a>
-                <a href="./contacts.html"><i class="contactsicon"></i> Contacts</a> 
+        <div class="nav-links-container">
+            <a href="./summary.html"><i class="summaryicon"></i> Summary</a>
+            <a href="./add-task.html"><i class="taskicon"></i> Add Task</a>
+            <a href="./board.html"><i class="boardicon"></i> Board</a>
+            <a href="./contacts.html"><i class="contactsicon"></i> Contacts</a>
         </div>
 
         <div class="legal-links">
@@ -46,13 +47,13 @@
             <form class="taskform">
 
                 <div class="taskform-half">
-                    <h2>Title*</h2>
+                    <h2 class="required">Title</h2>
                     <input type="text" placeholder="Enter a title">
                     <h2>Description</h2>
                     <textarea placeholder="Enter a Description"></textarea>
                     <h2>Assigned to</h2>
                     <select name="names">
-                        <option value="names">names</option>
+                        <option value="names">Select contacts to assign</option>
                     </select>
                 </div>
 
@@ -60,29 +61,31 @@
 
                 <div class="taskform-half">
 
-                    <h2>Due date*</h2>
-                    <input type="date">
+                    <h2 class="required">Due date</h2>
+                <input type="text" class="input-date" placeholder="dd//mm//yyyy">
                     <h2>Prio</h2>
                     <div class="check-button-container">
-                        <button class="check-btn-1">Urgent</button>
-                        <button class="check-btn-2">Medium =</button>
-                        <button class="check-btn-1">Low</button>
+                        <button class="button-empty-small-2 check-btn-1">Urgent</button>
+                        <button class="button-empty-small-2  check-btn-2 orange-button">Medium</button>
+                        <button class="button-empty-small-2  check-btn-3">Low</button>
                     </div>
-                    <h2>Category*</h2>
+                    <h2 class="required">Category</h2>
                     <select name="category">
-                        <option value="category">category</option>
+                        <option value="category">Select task category</option>
                     </select>
                     <h2>Subtasks</h2>
-                    <input type="text" placeholder="Add new subtask   +">
+                    <input class="input-subtask" type="text" placeholder="Add new subtask">
 
                 </div>
             </form>
 
             <div class="add-task-page-footer">
-                <p>*This field is required</p>
+                <p class="required-info">This field is required</p>
                 <div class="task-footer-button-container">
-                    <button class="btn-3">Clear</button>
-                    <button class="btn-4">Create Task</button>
+                    <button class="button-empty-small">Clear<img class="input-and-button-icons"
+                            src="./assets/icons/close.svg"></button>
+                    <button class="button-filled-large">Create Task<img class="input-and-button-icons"
+                            src="./assets/icons/check.svg"></button>
                 </div>
             </div>
 

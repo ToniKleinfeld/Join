@@ -1,0 +1,104 @@
+/*---------------Add Task---------------------------*/
+
+.orange-button:hover {
+    box-shadow: none;
+}
+
+.add-task-main {
+    height: 95%;
+    font-family: 'figtree';
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    border-radius: 25px;
+    gap: 10px;
+    padding: 25px;
+}
+
+.taskform {
+    height: 90%;
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    border-radius: 25px;
+}
+
+.taskform-half {
+    height: 90%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.seperator {
+    height: 90%;
+    width: 1px;
+    background-color: black;
+    margin-right: 100px;
+}
+
+.check-button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.add-task-page-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-footer-button-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.check-btn-1::after {
+    content: '';
+    display: inline-block;
+    background-image: url(../assets/icons/red-arrows.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 15px;
+    width: 20px;
+    margin-left: 7px;
+    vertical-align: middle;
+}
+
+.check-btn-2 {
+    background-color: #FFA800;
+    color: white;
+}
+
+.check-btn-2::after {
+    content: url(../assets/icons/priority-\ symbol.svg);
+    margin-left: 7px;
+}
+
+.check-btn-3::after {
+    content: '';
+    display: inline-block;
+    background-image: url(../assets/icons/arrows\ down.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 15px;
+    width: 20px;
+    margin-left: 7px;
+    vertical-align: middle;
+}
+
+.required::after {
+    content: "*";
+    color: red;
+}
+
+.required-info::before {
+    content: "*";
+    color: red;
+}
