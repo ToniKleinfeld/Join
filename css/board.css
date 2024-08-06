@@ -1,0 +1,44 @@
+.cards {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+    padding: 16px;
+    gap: 10px;
+    width: 252px;
+    height: 244px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+    border-radius: 24px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.user-story {
+    width: 81px;
+    height: 19px;
+    font-size: 16px;
+    line-height: 120%;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+
+.text-label {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 4px 16px;
+    gap: 10px;
+    width: 113px;
+    height: 27px;
+    background: #0038FF;
+    border-radius: 8px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+}
