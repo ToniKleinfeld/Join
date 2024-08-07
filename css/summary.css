@@ -13,27 +13,27 @@
     align-items: center;
 }
 
-.title b{
+.title b {
     font-size: 61px;
     font-weight: 700;
 }
 
-.title span{
+.title span {
     font-size: 27px;
     font-weight: 400;
 }
 
-.blueborder{
+.blueborder {
     border: 1px solid #29ABE2;
     height: 65%;
 }
 
-.gretting{
+.gretting {
     font-size: 47px;
     font-weight: 500;
 }
 
-.user{
+.user {
     font-size: 64px;
     font-weight: 700;
     color: #29ABE2;
@@ -43,71 +43,72 @@
     gap: 60px;
 }
 
-.number{
+.number {
     font-size: 64px;
     font-weight: 600;
 }
 
-.overwiev-box{
+.overwiev-box {
     flex-direction: column;
     width: 560px;
     height: 562px;
     gap: 25px
 }
-.mediumbox img{
+
+.mediumbox img {
     height: 69px;
     width: 69px;
 }
 
-.big{
+.big {
     width: 100%;
     height: 100%;
     gap: 25px;
 }
 
-.medium{
+.medium {
     width: 50%;
     height: inherit;
     gap: 10px;
 }
 
-.small p{
+.small p {
     font-size: 20px;
     font-weight: 400;
     text-align: center;
 }
 
-.medium p{
+.medium p {
     font-size: 20px;
     font-weight: 400;
     text-align: center;
 }
 
-.small{
+.small {
     width: 33%;
     height: inherit;
 }
 
-.smallbox{
+.smallbox {
     gap: 25px;
     width: 100%;
     height: 100%;
 }
 
-.mediumbox{
+.mediumbox {
     gap: 25px;
     width: 100%;
     height: 100%;
 }
 
-.box{
+.box {
     padding: 25px 25px;
     background-color: white;
     border-radius: 30px;
     border: 1px solid rgb(238, 239, 240);
 }
 
-.column{
+.column {
     flex-direction: column;
 }
 
@@ -116,22 +117,26 @@
     height: 70%;
 }
 
-.urgentdescription b{
+.urgentdescription b {
     font-size: 21px;
     font-weight: 700;
 }
 
-.urgentdescription p{
+.urgentdescription p {
     font-size: 16px;
     font-weight: 400;
 }
 
-.box:hover{
+.box:hover {
     color: #D1D1D1;
     background-color: #2A3647;
+    -webkit-box-shadow: 0px 10px 13px -4px rgba(143,136,143,1);
+    -moz-box-shadow: 0px 10px 13px -4px rgba(143,136,143,1);
+    box-shadow: 0px 10px 13px -4px rgba(143,136,143,1);
+    border-color: #2A3647;
 }
 
-.checkcircle{
+.checkcircle {
     background-image: url(../assets/icons/checkcircle.svg);
     height: 69px;
     width: 69px;
@@ -143,7 +148,7 @@
     background-image: url(../assets/icons/whitecheckcircle.svg);
 }
 
-.circlepen{
+.circlepen {
     background-image: url(../assets/icons/circlepen.svg);
     height: 69px;
     width: 69px;
