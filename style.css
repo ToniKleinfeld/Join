@@ -81,20 +81,6 @@ body {
     align-items: center;
 }
 
-/****************************LINKS*******************************************/
-
-.legal-links {
-    color: #A8A8A8;
-    text-decoration: none;
-}
-
-.legal-links:hover {
-    text-decoration: none;
-    color: #29ABE2;
-    font-weight: bold;
-    cursor: pointer;
-}
-
 /****************************BUTTONS*******************************************/
 
 button {

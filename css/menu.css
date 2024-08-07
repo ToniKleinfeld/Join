@@ -52,7 +52,6 @@ nav a {
     padding-left: 60px;
 }
 
-
 .legal-links {
     height: 100px;
     width: 100%;
@@ -66,6 +65,9 @@ nav a {
 .legal-links a{
     font-size: 14px;
     padding-left: 60px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .legal-links a:hover{
