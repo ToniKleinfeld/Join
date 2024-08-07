@@ -1,20 +1,51 @@
 .maincontent {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
-    width: 100%;
-    height: calc(100% - (128px + 97px));
-    gap: 25px;
-    background-color: #f6f7f9;
+    gap: 40px;
+    padding-left: 10%;
 }
 
-title {
-    display: block;
+.title {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.title b{
+    font-size: 61px;
+    font-weight: 700;
+}
+
+.title span{
+    font-size: 27px;
+    font-weight: 400;
+}
+
+.blueborder{
+    border: 1px solid #29ABE2;
+    height: 65%;
+}
+
+.gretting{
+    font-size: 47px;
+    font-weight: 500;
+}
+
+.user{
+    font-size: 64px;
+    font-weight: 700;
+    color: #29ABE2;
 }
 
 .overwiev-container-box {
-    gap: 40px;
+    gap: 60px;
+}
+
+.number{
+    font-size: 64px;
+    font-weight: 600;
 }
 
 .overwiev-box{
@@ -23,15 +54,33 @@ title {
     height: 562px;
     gap: 25px
 }
+.mediumbox img{
+    height: 69px;
+    width: 69px;
+}
 
 .big{
     width: 100%;
     height: 100%;
+    gap: 25px;
 }
 
 .medium{
     width: 50%;
     height: inherit;
+    gap: 10px;
+}
+
+.small p{
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.medium p{
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
 }
 
 .small{
@@ -58,6 +107,50 @@ title {
     border: 1px solid rgb(238, 239, 240);
 }
 
-.number{
-    font-size: 40px;
+.column{
+    flex-direction: column;
+}
+
+.greyborder {
+    border: 1px solid #D1D1D1;
+    height: 70%;
+}
+
+.urgentdescription b{
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.urgentdescription p{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.box:hover{
+    color: #D1D1D1;
+    background-color: #2A3647;
+}
+
+.checkcircle{
+    background-image: url(../assets/icons/checkcircle.svg);
+    height: 69px;
+    width: 69px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.box:hover .checkcircle {
+    background-image: url(../assets/icons/whitecheckcircle.svg);
+}
+
+.circlepen{
+    background-image: url(../assets/icons/circlepen.svg);
+    height: 69px;
+    width: 69px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.box:hover .circlepen {
+    background-image: url(../assets/icons/whitepencircle.svg);
 }
