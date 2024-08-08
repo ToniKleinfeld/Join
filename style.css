@@ -1,3 +1,6 @@
+/****************************FONTS*************************************************/
+
+
 /* figtree-300 - latin */
 @font-face {
     font-display: swap;
@@ -5,7 +8,7 @@
     font-family: 'Figtree';
     font-style: normal;
     font-weight: 300;
-    src: url('./fonts/figtree-v5-latin-300.woff2') format('woff2');
+    src: url('../fonts/figtree-v5-latin-300.woff2') format('woff2');
     /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
@@ -16,7 +19,7 @@
     font-family: 'Figtree';
     font-style: normal;
     font-weight: 700;
-    src: url('./fonts/figtree-v5-latin-700.woff2') format('woff2');
+    src: url('../fonts/figtree-v5-latin-700.woff2') format('woff2');
     /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
@@ -29,7 +32,7 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 300;
-    src: url('./fonts/poppins-v21-latin-300.woff2') format('woff2');
+    src: url('../fonts/poppins-v21-latin-300.woff2') format('woff2');
     /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
@@ -40,7 +43,7 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    src: url('./fonts/poppins-v21-latin-regular.woff2') format('woff2');
+    src: url('../fonts/poppins-v21-latin-regular.woff2') format('woff2');
     /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
@@ -51,7 +54,7 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
-    src: url('./fonts/poppins-v21-latin-700.woff2') format('woff2');
+    src: url('../fonts/poppins-v21-latin-700.woff2') format('woff2');
     /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
@@ -222,21 +225,21 @@ select::-ms-expand {
 }
 
 .input-name {
-    background-image: url(./assets/icons/person.svg);
+    background-image: url(../assets/icons/person.svg);
     background-position: right;
     background-repeat: no-repeat;
     background-position-x: 380px;
 }
 
 .input-date {
-    background-image: url(./assets/icons/event.svg);
+    background-image: url(../assets/icons/event.svg);
     background-position: right;
     background-repeat: no-repeat;
     background-position-x: 380px;
 }
 
 .input-mail {
-    background-image: url(./assets/icons/mail.svg);
+    background-image: url(../assets/icons/mail.svg);
     background-position: right;
     background-repeat: no-repeat;
     background-position-x: 380px;
@@ -244,14 +247,14 @@ select::-ms-expand {
 
 
 .input-password {
-    background-image: url(./assets/icons/lock.svg);
+    background-image: url(../assets/icons/lock.svg);
     background-position: right;
     background-repeat: no-repeat;
     background-position-x: 380px;
 }
 
 .input-subtask {
-    background-image: url(./assets/icons/subtasks-icon.svg);
+    background-image: url(../assets/icons/subtasks-icon.svg);
     background-position: right;
     background-repeat: no-repeat;
     background-position-x: 380px;
@@ -318,45 +321,3 @@ select::-ms-expand {
     padding: 10px;
 }
 
-/*---------------Contacts--------------------------*/
-
-.contacts-main {
-    width: 100%;
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    gap: 16px;
-}
-
-.contacts-slider {
-    border: 1px solid;
-    height: 100%;
-    width: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    padding: 16px;
-}
-
-.big-button {
-    width: 80%;
-}
-
-.contacts-motto {
-    width: 60%;
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    gap: 20px;
-}
-
-.seperator-2 {
-    height: 50px;
-    width: 3px;
-    background-color: lightblue;
-    margin-top: 30px;
-}
-
-.contacts-h2 {
-    margin-top: 33px;
-}
