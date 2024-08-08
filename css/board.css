@@ -46,6 +46,17 @@
     padding: 10px;
 }
 
+.to-do-title,
+.in-progress-title,
+.await-feedback-title,
+.done-title {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-weight: 700;
+    font-size: 20px;
+}
+
 .cards {
     display: flex;
     flex-direction: column;
@@ -218,4 +229,3 @@
     width: 32px;
     height: 32px;
 }
-
