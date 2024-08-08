@@ -160,3 +160,7 @@
 .box:hover .circlepen {
     background-image: url(../assets/icons/whitepencircle.svg);
 }
+
+@media (max-width:1200px) {
+    
+}
