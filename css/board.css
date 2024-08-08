@@ -131,14 +131,15 @@
 
 .frame-217 {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    /* flex-direction: row; */
+    /* align-items: flex-start;
     padding: 0px;
     width: 80px;
-    height: 32px;
+    height: 32px; */
+    gap: 20px;
 }
 
-.profile-badge {
+/* .profile-badge {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -150,7 +151,7 @@
     background: #FFFFFF;
     border-radius: 45px;
     margin: 0px -8px;
-}
+} */
 
 .group-9 {
     /* width: 32px;
@@ -159,7 +160,7 @@
     /* flex-grow: 1; */
 }
 
-.as {
+/* .as {
     position: absolute;
     width: 21.33px;
     height: 7.62px;
@@ -168,11 +169,23 @@
     font-weight: 400;
     font-size: 12px;
     line-height: 120%;
-    /* or 14px */
     display: flex;
     align-items: center;
     text-align: center;
     color: #FFFFFF;
+}  */
+
+.circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #ff00ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
 }
 
 .elipse {
@@ -183,6 +196,18 @@
     left: 0px;
     top: 0px;
     background: #9327FF;
+    border: 1px solid #FFFFFF;
+    border-radius: 45px;
+}
+
+.elipse1 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    left: 0px;
+    top: 0px;
+    background: #33d75a;
     border: 1px solid #FFFFFF;
     border-radius: 45px;
 }
