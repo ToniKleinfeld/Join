@@ -4,6 +4,7 @@
     align-items: center;
     flex-direction: column;
     gap: 40px;
+    padding-left: 2%;
 }
 
 .title {
@@ -11,7 +12,6 @@
     display: flex;
     align-items: center;
     align-self: flex-start;
-    
 }
 
 .title b {
@@ -26,7 +26,7 @@
 
 .blueborder {
     border: 1px solid #29ABE2;
-    height: 65%;
+    height: 50px;
 }
 
 .gretting {
@@ -53,7 +53,11 @@
     flex-direction: column;
     width: 560px;
     height: 562px;
-    gap: 25px
+    gap: 25px;
+}
+
+.overwiev-box a {
+    color: black;
 }
 
 .mediumbox img {
@@ -131,10 +135,15 @@
 .box:hover {
     color: #D1D1D1;
     background-color: #2A3647;
-    -webkit-box-shadow: 0px 10px 13px -4px rgba(143,136,143,1);
-    -moz-box-shadow: 0px 10px 13px -4px rgba(143,136,143,1);
-    box-shadow: 0px 10px 13px -4px rgba(143,136,143,1);
+    -webkit-box-shadow: 0px 10px 13px -4px rgba(143, 136, 143, 1);
+    -moz-box-shadow: 0px 10px 13px -4px rgba(143, 136, 143, 1);
+    box-shadow: 0px 10px 13px -4px rgba(143, 136, 143, 1);
     border-color: #2A3647;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
 }
 
 .checkcircle {
@@ -161,6 +170,73 @@
     background-image: url(../assets/icons/whitepencircle.svg);
 }
 
-@media (max-width:1200px) {
-    
+.showinmobile {
+    display: none;
+}
+
+@media (max-width:1150px) {
+    .greeting_user {
+        display: none;
+    }
+}
+
+@media (max-width:840px) {
+    .title {
+        gap: 15px;
+    }
+}
+
+@media (max-width:585px) {
+    .showdesktop {
+        display: none;
+    }
+
+    .showinmobile {
+        margin-top: 5px;
+        display: block;
+        height: 0;
+        width: 90px;
+    }
+
+    .title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        margin-top: 5px;
+    }
+
+    .title b,
+    .number {
+        font-size: 47px;
+    }
+
+    .title span {
+        font-size: 20px;
+    }
+
+    .mobilefont-size {
+        font-size: 14px !important;
+    }
+
+    .circlepen,
+    .checkcircle,
+    .big img {
+        min-height: 40px;
+        min-width: 40px;
+    }
+
+    .overwiev-box {
+        height: 384px;
+        width: 396px;
+        gap: 10px;
+    }
+
+    .box {
+        padding: 15px;
+    }
+
+    .big,
+    .medium {
+        height: auto;
+    }
 }
