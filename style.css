@@ -299,7 +299,7 @@ select::-ms-expand {
 }
 
 .category-container-container {
-    border: 1px solid;
+    /* border: 1px solid; */
     width: 100%;
     display: flex;
     justify-content: start;
