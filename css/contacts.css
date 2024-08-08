@@ -1,0 +1,73 @@
+.contacts-main {
+    background-color: #F6F7F8;
+}
+
+.contacts-slider {
+    height: 100%;
+    width: 456px;
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    align-items: start;
+    padding: 16px;
+    overflow-y: scroll;
+    position: fixed;
+    filter: drop-shadow(4px 0 6px rgba(0, 0, 0, 0.08));
+}
+
+.add-button {
+    width: 352px;
+    gap: 16px;
+    margin-top: 7px;
+    position: sticky;
+    top: 10px;
+    z-index: 999;
+}
+
+.add-button::after {
+    content: url(../assets/icons/person_add.svg);
+    height: 32px;
+    width: auto;
+}
+
+.contacts-slider::-webkit-scrollbar {
+    width: 24px;
+    /* Breite der Scroll-Leiste */
+}
+
+.contacts-slider::-webkit-scrollbar-track {
+    background: white;
+    border: 5px solid white;
+}
+
+.contacts-slider::-webkit-scrollbar-thumb {
+    height: 53px;
+    width: 14px;
+    background-color: #A8A8A8;
+    /* Farbe des Scroll-Thumbnails */
+    border: 5px solid white;
+    border-radius: 10px;
+}
+
+.contacts-motto {
+    height: 73px;
+    width: 569px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 109px;
+    margin-left: 511px;
+    gap: 30px;
+}
+
+.seperator-2 {
+    height: 70px;
+    width: 3px;
+    background-color: #29ABE2;
+    margin: 30px 0;
+}
+
+.contacts-h2 {
+    margin-top: 33px;
+    font-weight: 500;
+}

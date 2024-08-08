@@ -6,16 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Summary </title>
     <link rel="icon" href="./assets/icons/favicon.svg">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./css/menu.css">
     <link rel="stylesheet" href="./css/summary.css">
 </head>
 
 <body>
     <header>
-        <h2>Kanban Project Managment Tool</h2>
+        <h2 class="showindesktop">Kanban Project Managment Tool</h2>
+        <img src="./assets/icons/capa 2.svg" alt="" class="showmobile">
         <div class="header-icon-container">
-            <a href="./help.html"><img src="./assets/icons/help.svg"></a>
+            <a class="showindesktop" href="./help.html"><img src="./assets/icons/help.svg"></a>
             <div class="account-info"></div>
         </div>
         <div class="dropdownmenu d-none">
@@ -25,78 +26,80 @@
         </div>
     </header>
     <nav>
-        <div class="logo">
+        <div class="logo showindesktop">
             <img src="./assets/icons/capa 1.svg">
         </div>
         <div class="nav-links-container">
-            <a href="./summary.html"><i class="summaryicon"></i> Summary</a>
+            <a class="aktivesheet" href="./summary.html"><i class="summaryicon"></i> Summary</a>
             <a href="./add-task.html"><i class="taskicon"></i> Add Task</a>
             <a href="./board.html"><i class="boardicon"></i> Board</a>
             <a href="./contacts.html"><i class="contactsicon"></i> Contacts</a>
         </div>
 
-        <div class="legal-links">
+        <div class="legal-links showindesktop">
             <a href="./privacy.html">Privacy Policy</a>
             <a href="./legal.html">Legal Notice</a>
         </div>
     </nav>
     <div class="desktop">
-        <div class="maincontent">
-            <div class="title">
-                <p><span><b>Join 360</b></span>
-                    <div class="blueborder"></div>
+        <div class="maincontent center">
+            <div class="content">
+                <div class="title">
+                    <p><span><b>Join 360</b></span></p>
+                    <div class="blueborder showdesktop"></div>
                     <span>Key Metrics at a Glance</span>
-                </p>
-            </div>
-            <div class="overwiev-container-box center">
-                <div class="overwiev-box center">
-                    <div class="center mediumbox ">
-                        <div class="medium box center">
-                            <div class="circlepen"></div>
-                            <div class="center column"><b class="number">1</b>
-                                <p>To-do</p>
-                            </div>
+                    <div class="blueborder showinmobile"></div>
+                </div>
+                <div class="overwiev-container-box center">
+                    <div class="overwiev-box center">
+                        <div class="center mediumbox ">
+                            <a href="./board.html" class="medium box center">
+                                <div class="circlepen"></div>
+                                <div class="center column"><b class="number">1</b>
+                                    <p class="mobilefont-size">To-do</p>
+                                </div>
+                            </a>
+                            <a href="./board.html" class="medium box center">
+                                <div class="checkcircle"></div>
+                                <div class="center column">
+                                    <b class="number">1</b>
+                                    <p class="mobilefont-size">Done</p>
+                                </div>
+                            </a>
                         </div>
-                        <div class="medium box center">
-                            <div class="checkcircle"></div>
+                        <a href="./board.html" class="big box center">
+                            <img src="./assets/icons/urgent.svg" alt="">
                             <div class="center column">
                                 <b class="number">1</b>
-                                <p>Done</p>
+                                <p class="mobilefont-size">Urgent</p>
                             </div>
+                            <div class="greyborder"></div>
+                            <div class="urgentdescription">
+                                <b>October 16,2022</b>
+                                <p class="mobilefont-size">Upcoming Deadline</p>
+                            </div>
+                        </a>
+                        <div class="center smallbox">
+                            <a href="./board.html" class="small box center column">
+                                <b class="number">5</b>
+                                <p class="mobilefont-size">Task in Board</p>
+                            </a>
+                            <a href="./board.html" class="small box center column">
+                                <b class="number">2</b>
+                                <p class="mobilefont-size">Task in Progress</p>
+                            </a>
+                            <a href="./board.html" class="small box center column">
+                                <b class="number">2</b>
+                                <p class="mobilefont-size">Awaiting Feedback</p>
+                            </a>
                         </div>
                     </div>
-                    <div class="big box center">
-                        <img src="./assets/icons/urgent.svg" alt="">
-                        <div class="center column">
-                            <b class="number">1</b>
-                            <p>Urgent</p>
-                        </div>
-                        <div class="greyborder"></div>
-                        <div class="urgentdescription">
-                            <b>October 16,2022</b>
-                            <p>Upcoming Deadline</p>
-                        </div>
+                    <div class="greeting_user">
+                        <p class="gretting">
+                            Good morning,
+                        </p>
+                        <p class="user">Sofia Müller</p>
                     </div>
-                    <div class="center smallbox">
-                        <div class="small box center column">
-                            <b class="number">5</b>
-                            <p>Task in Board</p>
-                        </div>
-                        <div class="small box center column">
-                            <b class="number">2</b>
-                            <p>Task in Progress</p>
-                        </div>
-                        <div class="small box center column">
-                            <b class="number">2</b>
-                            <p>Awaiting Feedback</p>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <p class="gretting">
-                        Good morning,
-                    </p>
-                    <p class="user">Sofia Müller</p>
                 </div>
             </div>
         </div>
