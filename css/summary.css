@@ -31,7 +31,7 @@
 
 .gretting {
     font-size: 47px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .user {
@@ -107,9 +107,9 @@
 }
 
 .box {
-    padding: 25px 25px;
+    padding: 25px 30px;
     background-color: white;
-    border-radius: 30px;
+    border-radius: 25px;
     border: 1px solid rgb(238, 239, 240);
 }
 
@@ -152,6 +152,7 @@ a {
     width: 69px;
     background-repeat: no-repeat;
     background-position: center center;
+    background-size: cover;
 }
 
 .box:hover .checkcircle {
@@ -164,6 +165,7 @@ a {
     width: 69px;
     background-repeat: no-repeat;
     background-position: center center;
+    background-size: cover;
 }
 
 .box:hover .circlepen {
@@ -183,6 +185,11 @@ a {
 @media (max-width:840px) {
     .title {
         gap: 15px;
+    }
+ 
+    .maincontent {
+        align-items: flex-start;
+        margin-top: 100px;
     }
 }
 
@@ -221,8 +228,8 @@ a {
     .circlepen,
     .checkcircle,
     .big img {
-        min-height: 40px;
-        min-width: 40px;
+        height: 40px;
+        width: 40px;
     }
 
     .overwiev-box {
@@ -233,10 +240,48 @@ a {
 
     .box {
         padding: 15px;
+        border-radius: 20px;
     }
 
     .big,
     .medium {
         height: auto;
     }
+
+    .urgentdescription b {
+        font-size: 16px;
+    }
+}
+
+@media (max-width:410px) {
+    .content {
+        padding-left: 0;
+        gap: 20px;
+    }
+
+    .overwiev-box {
+        width: 310px;
+        gap: 5px;
+        height: 300px;
+    }
+
+    .mediumbox {
+        gap: 10px;
+    }
+
+    .smallbox {
+        gap: 5px;
+    }
+
+    .number {
+        font-size: 37px;
+    }
+
+    .circlepen,
+    .checkcircle,
+    .big img {
+        height: 30px;
+        width: 30px;
+    }
+    
 }
