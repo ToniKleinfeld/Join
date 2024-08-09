@@ -6,12 +6,12 @@
     display: flex;
     flex-direction: column;
     justify-content: start;
-    align-items: start;
+    align-items: center;
     padding: 64px;
 }
 
 .board-headline {
-    border: 1px solid;
+    /* border: 1px solid; */
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -31,6 +31,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    position: relative;
 }
 
 .line-search-container {
@@ -52,12 +53,13 @@
     justify-content: start;
     align-items: center;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .category-containers {
-    border: 1px solid;
+    /* border: 1px solid; */
     height: 50vh;
-    width: 100%;
+    width: 274px;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -81,6 +83,10 @@
     color: #33a8e2;
 } */
 
+.input-search-container img{
+    position: absolute;
+    padding-right: 15px;
+}
 .cards {
     display: flex;
     flex-direction: column;
@@ -89,7 +95,7 @@
     padding: 16px;
     gap: 10px;
     width: 252px;
-    height: 244px;
+    /* height: 244px; */
     background: #FFFFFF;
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
     border-radius: 24px;
@@ -104,7 +110,7 @@
     padding: 0px;
     gap: 24px;
     width: 220px;
-    height: 212px;
+    /* height: 212px; */
 }
 
 
@@ -188,6 +194,14 @@
     border-radius: 16px;
 }
 
+.filler-in-pro {
+    /* display: none; */
+    width: 64px;
+    height: 8px;
+    background: #4589FF;
+    border-radius: 16px;
+}
+
 .subtasks {
     position: absolute;
     width: 75px;
@@ -226,19 +240,38 @@
     border: 1px solid white;
 }
 
-.circle:nth-child(1) {
+.circle-to-do:nth-child(1) {
     background-color: #8000ff;
 }
 
-.circle:nth-child(2) {
+.circle-to-do:nth-child(2) {
     background-color: #ff80ff;
     position: absolute;
     left: 24px;
     z-index: 1;
 }
 
-.circle:nth-child(3) {
+.circle-to-do:nth-child(3) {
     background-color: #ffbf00;
+    position: absolute;
+    z-index: 2;
+    left: 48px;
+}
+
+
+.circle-in-progress:nth-child(1) {
+    background-color: #ff7e00;
+}
+
+.circle-in-progress:nth-child(2) {
+    background-color: #0dd7c1;
+    position: absolute;
+    left: 24px;
+    z-index: 1;
+}
+
+.circle-in-progress:nth-child(3) {
+    background-color: #4b2a8a;
     position: absolute;
     z-index: 2;
     left: 48px;
