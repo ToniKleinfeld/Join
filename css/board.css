@@ -1,13 +1,14 @@
 /*---------------Board--------------------------*/
 
 .board-main {
-    height: 100vh;
-    width: 100%;
+    height: 100%;
+    max-width: 1284px;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: center;
+    /* justify-content: start; */
+    align-items: flex-start;
     padding: 64px;
+    margin: auto;
 }
 
 .board-headline {
@@ -16,6 +17,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    padding-right: 24px;
 }
 
 .board-headline-input-button-container {
@@ -48,10 +51,10 @@
 
 .category-container-container {
     /* border: 1px solid; */
-    width: 100%;
+    /* width: 100%; */
     display: flex;
-    justify-content: start;
-    align-items: center;
+    /* justify-content: center; */
+    /* align-items: center; */
     gap: 20px;
     flex-wrap: wrap;
 }
@@ -62,8 +65,8 @@
     width: 274px;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: start;
+    /* justify-content: start;
+    align-items: start; */
     padding: 10px;
 }
 
@@ -318,4 +321,3 @@ button {
     font-size: 21px;
 }
 
-.input-search-icon {}
