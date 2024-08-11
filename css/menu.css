@@ -190,6 +190,7 @@ header {
         width: 100%;
         padding-left: 4%;
         padding-right: 4%;
+        z-index: 99;
     }
 
     .header-icon-container {
