@@ -182,6 +182,9 @@ p {
 input {
     height: 48px;
     width: 422px;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-position-x: 380px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     padding: 12px 16px;
@@ -219,45 +222,29 @@ select {
     border: none;
 }
 
-  /* Select Standartdesign (Pfeil) für den Internet-Explorer entfernen*/
+/* Select Standartdesign (Pfeil) für den Internet-Explorer entfernen*/
 select::-ms-expand {
     display: none;
 }
 
 .input-name {
     background-image: url(../assets/icons/person.svg);
-    background-position: right;
-    background-repeat: no-repeat;
-    background-position-x: 380px;
 }
 
 .input-date {
     background-image: url(../assets/icons/event.svg);
-    background-position: right;
-    background-repeat: no-repeat;
-    background-position-x: 380px;
 }
 
 .input-mail {
     background-image: url(../assets/icons/mail.svg);
-    background-position: right;
-    background-repeat: no-repeat;
-    background-position-x: 380px;
 }
-
 
 .input-password {
     background-image: url(../assets/icons/lock.svg);
-    background-position: right;
-    background-repeat: no-repeat;
-    background-position-x: 380px;
 }
 
 .input-subtask {
     background-image: url(../assets/icons/subtasks-icon.svg);
-    background-position: right;
-    background-repeat: no-repeat;
-    background-position-x: 380px;
 }
 
 .checkbox {
@@ -272,4 +259,3 @@ select::-ms-expand {
     height: 100vh;
     display: flex;
 }
-

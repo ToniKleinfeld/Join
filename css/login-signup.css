@@ -44,6 +44,7 @@
 }
 
 .login-form {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -70,19 +71,25 @@
 }
 
 .button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 30px;
 }
 
 .legal-links-container {
     width: 100%;
     font-size: 16px;
-    display: flex;
-    justify-content: center;
     gap: 50px;
 }
+
+.legal-links {
+    color: #B6B6B7;
+    text-decoration: none;
+}
+
+.legal-links:hover {
+    font-weight: bold;
+    color: #29ABE2;
+}
+
 
 /****************************SIGN UP***********************************/
 
@@ -117,4 +124,73 @@
 .privacy-link:hover {
     text-decoration: underline;
     font-weight: 600;
+}
+
+.d-none {
+    display: none;
+}
+
+/****************************RESPONSIVE**********************************/
+
+
+
+
+
+/****************************MOBILE**********************************/
+
+@media (max-width:825px) {
+
+    .log-in-head-links {
+        display: none;
+    }
+
+    .login-container {
+        height: 600px;
+        width: 90%;
+    }
+
+    .sign-up-container {
+        height: 600px;
+        width: 90%;
+    }
+
+    .button-container {
+        flex-direction: column;
+    }
+
+    .log-in-button {
+        width: 177px;
+    }
+
+    .checkbox-container {
+        padding-left: 0;
+    }
+
+    .log-in-head-links-mobile {
+        display: flex;
+        gap: 35px;
+        margin-bottom: 42px;
+    }
+
+    .headtext-and-arrow-container {
+        width: 90%;
+    }
+}
+
+@media (max-width:550px) {
+
+
+    .button-container {
+        flex-direction: column;
+    }
+
+    .checkbox-container {
+        padding-left: 0;
+    }
+
+    input {
+        width: 97%;
+        background-position-x: 380px;
+    }
+    
 }
