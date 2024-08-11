@@ -176,35 +176,22 @@
 
 .progressbar {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 10px;
-    position: absolute;
+    align-items: center;
     width: 128px;
     height: 8px;
-    left: 0px;
-    top: 4px;
     background: #F4F4F4;
     border-radius: 8px;
+    position: relative;
 }
 
 .filler {
-    display: none;
-    width: 128px;
-    height: 8px;
-    background: #4589FF;
-    border-radius: 16px;
-}
-
-.filler-in-pro {
     /* display: none; */
     width: 64px;
     height: 8px;
     background: #4589FF;
     border-radius: 16px;
 }
+
 
 .subtasks {
     position: absolute;
@@ -335,6 +322,9 @@ button {
         flex-direction: column;
     }
 
+    .category-containers{
+        width: auto;
+    }
     .tabelle-card {
         display: flex;
         flex-direction: row;
