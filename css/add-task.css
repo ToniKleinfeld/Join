@@ -7,12 +7,10 @@
     height: 550px;
     display: flex;
     justify-content: start;
-    align-items: center;
     gap: 100px;
     border-radius: 25px;
-    margin-top: -50px;
-    margin-bottom: 100px;
-}
+    margin-bottom: 70px;
+} 
 
 .taskform-half {
     height: 416px;
@@ -49,14 +47,21 @@
 
 .check-button-container {
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+
+.check-button-container button {
+    font-size: 20px;
+    font-weight: 400;
 }
 
 .add-task-page-footer {
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
-    gap: 490px;
 }
 
 .task-footer-button-container {
@@ -109,10 +114,68 @@
     color: red;
 }
 
+@media (max-height:800px) {
+
+    .add-task-page-footer{
+        position: sticky;
+        bottom: 1px;
+        background-color: #f6f7f9;
+        padding: 10px 0;
+    }
+
+    .maincontent{
+        align-items: baseline;
+     }
+}
+
+@media (max-width:1220px) {
+
+    .taskform {
+        flex-direction: column;
+        height: auto;
+        margin-top: auto;
+        gap: unset;
+        margin-bottom: 150px;
+    }
+        
+    .add-task-page-footer{
+        position: sticky;
+        bottom: 0px;
+        background-color: #f6f7f9;
+        padding: 10px 0;
+    }
+
+    .mobileoff {
+        display: none;
+    }
+
+    .maincontent{
+       align-items: baseline;
+    }
+
+    .contentcontainer h1{
+        padding-top: 50px;
+    }
+
+    .check-button-container {
+        justify-content: space-between;
+        width: 100%;
+        gap:unset;
+    }
+
+    .button-empty-small-2 {
+        width: 31%;
+    }
+}
+
 @media (max-width:825px) {
 
-.taskform {
-    flex-direction: column;
-}
+    .maincontent {
+        height: calc(100vh - 80px);
+    }
+
+    .contentcontainer {
+        margin-top: 80px;
+    }
 
 }
