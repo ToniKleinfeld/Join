@@ -77,7 +77,8 @@
     gap: 10px;
 }
 
-.small p,  .medium p {
+.small p,
+.medium p {
     font-size: 20px;
     font-weight: 400;
     text-align: center;
@@ -180,7 +181,7 @@ a {
     .title {
         gap: 15px;
     }
- 
+
     .maincontent {
         align-items: flex-start;
         margin-top: 100px;
@@ -275,5 +276,5 @@ a {
     .big img {
         height: 30px;
         width: 30px;
-    }  
+    }
 }
