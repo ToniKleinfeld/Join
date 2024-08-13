@@ -1,5 +1,10 @@
 /*---------------Board--------------------------*/
 
+h2 {
+    font-weight: 600;
+    color: #42526e;
+}
+
 .board-main {
     height: 100%;
     max-width: 1284px;
@@ -308,6 +313,36 @@ button {
     font-size: 21px;
 }
 
+.no-task-done-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+    width: 246px;
+    height: 48px;
+
+    background: #E7E7E7;
+    /* icon */
+    border: 1px dashed #A8A8A8;
+    /* nuevo */
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+    border-radius: 10px;
+}
+
+.no-task-done-text{
+width: 111px;
+height: 19px;
+
+font-weight: 400;
+font-size: 16px;
+line-height: 120%;
+color: #A8A8A8;
+}
+
+
 /*******************Overlay***********************/
 
 
@@ -480,9 +515,10 @@ h1 {
         overflow-x: hidden;
     }
 
-    h2{
+    h2 {
         font-weight: bold;
     }
+
     .category-container-container {
         display: flex;
         /* justify-content: center; */
@@ -534,7 +570,7 @@ h1 {
         justify-content: space-between;
     }
 
-    .search{
+    .search {
         width: 100%;
     }
 }
