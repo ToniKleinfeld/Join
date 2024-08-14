@@ -1,16 +1,19 @@
 /****************************LOG IN************************************/
 
+body {
+    background-color: #F6F7F8;
+}
+
 .login-page-main-container {
     height: 100vh;
     width: 100%;
-    background-color: #F6F7F8;
     flex-direction: column;
     padding-bottom: 25px;
 }
 
 .log-in-headline {
     height: 20vh;
-    width: 100%;
+    width: 100vw;
     display: flex;
     justify-content: space-between;
     align-items: start;
@@ -26,8 +29,18 @@
     gap: 30px;
 }
 
+.log-in-head-links button {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.log-in-head-links p {
+    font-size: 20px;
+    font-weight: 400;
+}
+
 .login-container {
-    height: 493px;
+    height: auto;
     width: 652px;
     background-color: white;
     border-radius: 25px;
@@ -57,8 +70,8 @@
 .checkbox-container {
     height: 24px;
     width: 422px;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: 400;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -67,6 +80,14 @@
 
 .button-container {
     gap: 30px;
+}
+
+.button-container button {
+    font-size: 21px;
+    font-weight: 700;
+    height: auto;
+    width: auto;
+    padding: 15px 24px;
 }
 
 .legal-links-container {
@@ -86,18 +107,6 @@
 }
 
 /****************************SIGN UP***********************************/
-
-.sign-up-container {
-    height: 630px;
-    width: 598px;
-    background-color: white;
-    border-radius: 30px;
-    flex-direction: column;
-    gap: 32px;
-    padding: 48px 0;
-    margin: 50px 0;
-    box-shadow: 2px 0 6px 0 rgb(0, 0, 0, 0.2);
-}
 
 .headtext-and-arrow-container {
     width: 100%;
@@ -132,30 +141,15 @@
 @media(max-width: 825px) {
 
     .login-container {
-        margin-bottom: 20px;
-    }
-
-    .log-in-head-links {
-        display: none;
-    }
-
-    .log-in-head-links-mobile {
-        width: 95%;
-        display: flex;
-        gap: 10%;
-        margin-bottom: 20px;
-    }
-
-    .log-in-headline {
-        padding: 50px 7%;
+        margin: 0 5% 10%;
     }
 
     .button-container {
         flex-direction: column;
     }
 
-    .button-filled-small {
-        width: 177px;
+    .button-container button {
+        width: 100%;
     }
 }
 
@@ -167,38 +161,85 @@
 
     .login-container {
         width: 95%;
-    }
-
-    .login-form {
-        width: 100%;
+        height: auto;
     }
 
     input {
-        width: 95%;
         background-position-x: 95%;
-    }
-
-    .log-in-head-links-mobile {
-        font-size: 12px;
-    }
-
-    .button-filled-small {
-        font-size: 12px;
-    }
-
-    .checkbox-container {
-        width: 95%;
-    }
-
-    @media(max-width: 450px) {
-
-        h1 {
-            font-size: 46px;
-        }
     }
 
     .seperator {
         width: 100px;
     }
 
+}
+
+@media (max-width:600px) {
+
+    .log-in-headline {
+        position: fixed;
+        top: 1%;
+    }
+
+    .login-container {
+        position: fixed;
+        top: 20%;
+        margin-top: 40px;
+    }
+
+    .log-in-head-links {
+        position: fixed;
+        bottom: 12%;
+        left: 0;
+        right: 0;
+    }
+
+    .legal-links-container {
+        position: fixed;
+        bottom: 2%;
+    }
+}
+
+@media(max-width: 460px) {
+
+    .login-container {
+        top: 20%;
+        margin-top: unset;
+    }
+
+    .log-in-headline img {
+        height: 50%;
+    }
+
+    h1 {
+        font-size: 47px;
+    }
+
+    input {
+        width: auto;
+    }
+
+    .checkbox-container {
+        width: 277px;
+    }
+
+    .checkbox-container p {
+        font-size: 16px;
+    }
+}
+
+@media (max-height:788px) {
+    .login-container {
+        top: 15%;
+    }
+
+    .button-container,
+    .login-form,
+    .login-container {
+        gap: 15px;
+    }
+
+    h1 {
+        margin-bottom: 25px;
+    }
 }

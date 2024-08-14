@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log in</title>
+    <title>Log in / Sign up Join</title>
     <link rel="icon" href="./assets/icons/favicon.svg">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./css/login-signup.css">
@@ -13,17 +13,17 @@
 
 <body>
 
-    <div class="login-page-main-container center">
+    <div class="login-page-main-container center ">
 
         <div class="log-in-headline">
             <img class="logo" src="./assets/icons/capa 2.svg">
-            <div class="log-in-head-links center">
+            <div class="log-in-head-links center mobileposition" id="signupbutton">
                 <p>Not a Join User?</p>
-                <button class="button-filled-small">Sign up</button>
+                <button class="button-filled-small" onclick="switchloginSignupWindow()">Sign up</button>
             </div>
         </div>
 
-        <div class="login-container center">
+        <div class="login-container center" id="loginscreen">
 
             <h1>Log in</h1>
 
@@ -46,9 +46,32 @@
             </div>
         </div>
 
-        <div class="log-in-head-links-mobile center d-none">
-            <p>Not a Join User?</p>
-            <button class="button-filled-small">Sign up</button>
+        <div class="login-container center d-none signup" id="signup">
+
+            <div class="headtext-and-arrow-container center">
+                <img class="arrow" src="./assets/icons/arrowleft.svg" onclick="switchloginSignupWindow()">
+                <h1 class="headline">Sign up</h1>
+            </div>
+
+            <div class="seperator"></div>
+
+            <form class="login-form center">
+
+                <input type="text" class="input-name" placeholder="Name">
+                <input type="email" class="input-mail" placeholder="Email">
+                <input type="password" class="input-password" placeholder="Password">
+                <input type="password" class="input-password" placeholder="Confirm Password">
+
+                <div class="checkbox-container">
+                    <input class="checkbox" type="checkbox">
+                    <p>I confirm the</p><a href="#" class="privacy-link">Privacy policy</a>
+                </div>
+
+            </form>
+
+            <div class="button-container">
+                <button class="button-filled-small">Sign up</button>
+            </div>
         </div>
 
         <div class="legal-links-container center">
