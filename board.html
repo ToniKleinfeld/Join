@@ -15,7 +15,7 @@
     <script src="./js/add-task.js"></script>
 </head>
 
-<body>
+<body onload="initBoard()">
     <header>
         <h2 class="showindesktop">Kanban Project Managment Tool</h2>
         <img src="./assets/icons/capa 2.svg" alt="" class="showmobile">
@@ -46,7 +46,7 @@
         </div>
     </nav>
     <div class="desktop">
-        <div class="maincontent">
+        <div id="MainContent" class="maincontent">
             <div class="board-main">
                 <div class="board-headline">
                     <div class="resp-h1-plus-add-task-button">
@@ -56,19 +56,10 @@
                     <div class="board-headline-input-button-container">
                         <div class="input-search-container">
                             <input class="search" type="search" placeholder="Find Task">
-                            <!-- <div class="line-search-container"> -->
-                            <!-- <img src="./assets/icons/line-vertical.svg" alt=""> -->
                             <img src="./assets/icons/search.svg">
-                            <!-- </div> -->
                         </div>
                         <button class="add-task-button">Add Task +</button>
                     </div>
-                    <!-- <div class="resp-input-search-container">
-                        <div class="input-search-container">
-                            <input class="search" type="search" placeholder="Find Task">
-                            <img src="./assets/icons/search.svg">
-                        </div>
-                    </div> -->
                 </div>
                 <div class="category-container-container">
                     <div class="category-containers">

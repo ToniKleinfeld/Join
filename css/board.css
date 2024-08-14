@@ -506,15 +506,7 @@ h1 {
 
 
 /*********************Media Query*****************/
-@media (max-width:825px) {
-
-    /* .maincontent {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        padding-left: 10px;
-    } */
-
+@media (max-width:930px) {
 
     .board-main {
         margin-top: 80px;
