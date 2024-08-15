@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./css/login-signup.css">
     <script src="./script.js"></script>
+    <script src="./js/login.js"></script>
 </head>
 
 <body>
@@ -29,10 +30,10 @@
 
             <div class="seperator"></div>
 
-            <form class="login-form center">
+            <form class="login-form center" id="loginform" onsubmit="event.preventDefault(), checkValidLogIn()">
 
-                <input type="email" class="input-mail" placeholder="Email">
-                <input type="password" class="input-password" placeholder="Password">
+                <input type="email" class="input-mail" placeholder="Email" required id="email">
+                <input type="password" class="input-password" placeholder="Password" required id="password">
                 <div class="checkbox-container">
                     <input class="checkbox" type="checkbox">
                     <p>Remember me</p>
@@ -41,7 +42,7 @@
             </form>
 
             <div class="button-container center">
-                <button class="button-filled-small log-in-button">Log in</button>
+                <button type="submit" form="loginform" class="button-filled-small log-in-button">Log in</button>
                 <button class="button-empty-large">Guest Log in</button>
             </div>
         </div>
@@ -57,13 +58,13 @@
 
             <form class="login-form center">
 
-                <input type="text" class="input-name" placeholder="Name">
-                <input type="email" class="input-mail" placeholder="Email">
-                <input type="password" class="input-password" placeholder="Password">
-                <input type="password" class="input-password" placeholder="Confirm Password">
+                <input type="text" class="input-name" placeholder="Name" required>
+                <input type="email" class="input-mail" placeholder="Email" required>
+                <input type="password" class="input-password" placeholder="Password" required>
+                <input type="password" class="input-password" placeholder="Confirm Password" required>
 
                 <div class="checkbox-container">
-                    <input class="checkbox" type="checkbox">
+                    <input class="checkbox" type="checkbox" required>
                     <p>I confirm the</p><a href="#" class="privacy-link">Privacy policy</a>
                 </div>
 

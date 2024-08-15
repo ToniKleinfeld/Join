@@ -116,10 +116,26 @@ let contacts = [{
 let user = 'Boban';
 
 /**
- * This function is used to switch beweetn Login screen and Signup Screen.
+ * this function load the wantet Array from firebase
+ * 
+ * @param {string} path - This set the path which data should be loaded  
  */
-function switchloginSignupWindow() {
-    document.getElementById('loginscreen').classList.toggle('d-none');
-    document.getElementById('signupbutton').classList.toggle('d-none');
-    document.getElementById('signup').classList.toggle('d-none');
+async function getData(path) {
+  const BASE_URL = "https://remotestorage-fe678-default-rtdb.europe-west1.firebasedatabase.app/";
+  
+  try {    
+    let response = await fetch(BASE_URL + path + ".json");
+    let responseAsJson = await response.json();
+   return (responseAsJson)
+   } catch(error){
+    console.error("Error can't get the data.");
+   }
+}
+
+/**
+ * Load the tasks an contacts from Firebase
+ */
+async function loadTasksandContactsinfos(){
+ tasks = await getData("tasks");
+ contacts = await getData("contacts");
 }

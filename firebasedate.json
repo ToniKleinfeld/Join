@@ -1,96 +1,5 @@
 {
-  "user": [
-    {
-      "account": "Boban",
-      "code": 4321
-    },
-    {
-      "account": "Patric",
-      "code": 3412
-    },
-    {
-      "account": "Toni",
-      "code": 1234
-    }
-  ],
-  "tasks": [
-    {
-      "Assigned To": [
-        "Emmanuel Mauer",
-        "Marcel Bauer",
-        "Anton Mayer"
-      ],
-      "category": "User story",
-      "description": "Build start page with recipe recommendation.",
-      "duedate": "10/05/2023",
-      "prio": "Medium",
-      "subtask": [
-        {
-          "state": true,
-          "title": "Implement Recipe Recommendation"
-        },
-        {
-          "state": false,
-          "title": "Start Page Layout"
-        }
-      ],
-      "title": "Kochwelt Page & Recipe Recommender",
-      "progress": "in progress"      
-    },
-    {
-      "Assigned To": [
-        "Sofia Müller (You)",
-        "Benedikt Ziegler"
-      ],
-      "category": "Technical Task",
-      "description": "Define CSS naming conventions and structure.",
-      "duedate": "02/09/2023",
-      "prio": "Urgent",
-      "subtask": [
-        {
-          "state": true,
-          "title": "Establish CSS Methodology"
-        },
-        {
-          "state": true,
-          "title": "Setup Base Styles"
-        }
-      ],
-      "title": "CSS Architecture Planning",
-      "progress": "Done"      
-    },
-    {
-      "Assigned To": [
-        "David Eisenberg",
-        "Benedikt Ziegler",
-        "Anja Schulz"
-      ],
-      "category": "Technical Task",
-      "description": "Create reuseable HTML base templates",
-      "duedate": "15/05/2023",
-      "prio": "Low",
-      "subtask": [
-      ],
-      "title": "HTML Base Template Creation",
-      "progress": "Await feedback"      
-    },
-    {
-      "Assigned To": [
-        "Eva Fischer",
-        "Anja Schulz",
-        "Tatjana Wolf"
-      ],
-      "category": "User story",
-      "description": "Implement daily recipe and portion calculator",
-      "duedate": "12/05/2023",
-      "prio": "Medium",
-      "subtask": [
-      ],
-      "title": "Daily Kochwelt Recipe",
-      "progress": "Await feedback"      
-    }
-  ],
-  "contacts": [    
+  "contacts": [
     {
       "mail": "anton@gmx.com",
       "name": "Anton Mayer",
@@ -130,7 +39,96 @@
       "mail": "wolfi@gmx.com",
       "name": "Tatjana Wolf",
       "phonenumber": "+49 176 127674765"
-    }    
+    }
+  ],
+  "tasks": [
+    {
+      "Assigned To": [
+        "Emmanuel Mauer",
+        "Marcel Bauer",
+        "Anton Mayer"
+      ],
+      "category": "User story",
+      "description": "Build start page with recipe recommendation.",
+      "duedate": "10/05/2023",
+      "prio": "Medium",
+      "progress": "in progress",
+      "subtask": [
+        {
+          "state": true,
+          "title": "Implement Recipe Recommendation"
+        },
+        {
+          "state": false,
+          "title": "Start Page Layout"
+        }
+      ],
+      "title": "Kochwelt Page & Recipe Recommender"
+    },
+    {
+      "Assigned To": [
+        "Sofia Müller (You)",
+        "Benedikt Ziegler"
+      ],
+      "category": "Technical Task",
+      "description": "Define CSS naming conventions and structure.",
+      "duedate": "02/09/2023",
+      "prio": "Urgent",
+      "progress": "Done",
+      "subtask": [
+        {
+          "state": true,
+          "title": "Establish CSS Methodology"
+        },
+        {
+          "state": true,
+          "title": "Setup Base Styles"
+        }
+      ],
+      "title": "CSS Architecture Planning"
+    },
+    {
+      "Assigned To": [
+        "David Eisenberg",
+        "Benedikt Ziegler",
+        "Anja Schulz"
+      ],
+      "category": "Technical Task",
+      "description": "Create reuseable HTML base templates",
+      "duedate": "15/05/2023",
+      "prio": "Low",
+      "progress": "Await feedback",
+      "title": "HTML Base Template Creation"
+    },
+    {
+      "Assigned To": [
+        "Eva Fischer",
+        "Anja Schulz",
+        "Tatjana Wolf"
+      ],
+      "category": "User story",
+      "description": "Implement daily recipe and portion calculator",
+      "duedate": "12/05/2023",
+      "prio": "Medium",
+      "progress": "Await feedback",
+      "title": "Daily Kochwelt Recipe"
+    }
+  ],
+  "user": [
+    {
+      "account": "Boban",
+      "code": 4321,
+      "mail": "boban@hotmail.de"
+    },
+    {
+      "account": "Patric",
+      "code": 3412,
+      "mail": "Patric@gmail.com"
+    },
+    {
+      "account": "Toni",
+      "code": 1234,
+      "mail": "toni@aol.com"
+    }
   ]
 }
-  
