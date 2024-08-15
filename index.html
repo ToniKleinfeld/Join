@@ -30,10 +30,15 @@
 
             <div class="seperator"></div>
 
-            <form class="login-form center" id="loginform" onsubmit="event.preventDefault(), checkValidLogIn()">
+            <form class="login-form center" id="loginform" onsubmit="event.preventDefault(), checkValidLogIn()"
+                autocomplete="off">
 
                 <input type="email" class="input-mail" placeholder="Email" required id="email">
-                <input type="password" class="input-password" placeholder="Password" required id="password">
+                <div class="passwortcontainer">
+                    <input type="password" class="input-password" placeholder="Password" required id="password"><br>
+                    <label for="password" class="redtext d-none" id="wronglogintext">Check your email and password. Please try
+                        again.</label>
+                </div>
                 <div class="checkbox-container">
                     <input class="checkbox" type="checkbox">
                     <p>Remember me</p>

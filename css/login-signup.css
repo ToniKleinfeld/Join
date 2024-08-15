@@ -107,6 +107,18 @@ body {
     color: #29ABE2;
 }
 
+.wronglogin input {
+    border-color: red !important;
+}
+
+.passwortcontainer{
+    font-size: 12px;
+}
+
+.redtext {
+    color: red;
+}
+
 /****************************SIGN UP***********************************/
 
 .headtext-and-arrow-container {
