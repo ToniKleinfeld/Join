@@ -147,8 +147,8 @@ body {
     display: none;
 }
 
-.eye-closed{
-    cursor: pointer;
+.eye-container{
+    cursor: text;
     font-size: 20px;
     position: absolute;
     top: 13px;
@@ -156,12 +156,16 @@ body {
     padding: 12px;
 }
 
-.input-password[type=password]:focus {
-    background-image: url(../assets/icons/visibility_off.svg)
+.pointer{
+    cursor: pointer;
 }
 
-.input-password[type=text]:focus {
-    background-image: url(../assets/icons/visibility.svg)
+.eye[type=password]{
+    background-image: url(../assets/icons/visibility_off.svg);
+}
+
+.eye[type=text]{
+    background-image: url(../assets/icons/visibility.svg);
 }
 /****************************MOBILE**********************************/
 

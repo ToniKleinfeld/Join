@@ -27,8 +27,8 @@ function switchloginSignupWindow() {
  */
 function checkLoginData(users){
     users.forEach(element => { 
-        let email = document.getElementById('email').value;
-        let password = document.getElementById('password').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
       if (element.code == password && element.mail == email) {
         check = true
@@ -47,6 +47,7 @@ function wronguserorpassword(){
 }
 
 /**
+ * Change attribute of inputfield , to Show the value if wanted
  * 
  * @param {string} id  write id in html in the onclick function, to adress the wanted id with 'here id'
  */
@@ -55,4 +56,23 @@ function hideShowPassword(id){
   const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
 
   password.setAttribute('type', type);
+}
+
+
+/**
+ * Change the Icon's , when there is input in the passwordfield 
+ * 
+ * @param {string} id  write id in html in the onclick function, to adress the wanted id with 'here id'
+ */
+function addEyeIcons(id){
+  const passwordfield = document.getElementById(`${id}`);  
+  const icon = document.getElementById(`${id+'icon'}`)
+
+  if (passwordfield.value == '') {
+    passwordfield.classList.remove('eye');
+    icon.classList.remove('pointer');
+  } else {    
+    passwordfield.classList.add('eye');
+    icon.classList.add('pointer');
+  }
 }

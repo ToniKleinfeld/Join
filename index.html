@@ -35,8 +35,8 @@
 
                 <input type="email" class="input-mail" placeholder="Email" required id="email">
                 <div class="passwortcontainer">
-                    <input type="password" class="input-password" placeholder="Password" required id="password">
-                    <icon class="eye-closed" onclick="hideShowPassword('password')"></icon>
+                    <input type="password" class="input-password" placeholder="Password" required id="password" onkeyup="addEyeIcons('password')">
+                    <icon class="eye-container" onclick="hideShowPassword('password')" id="passwordicon"></icon>
                     <br>
                     <label for="password" class="redtext d-none" id="wronglogintext">Check your email and password. Please try
                         again.</label>
@@ -67,8 +67,17 @@
 
                 <input type="text" class="input-name" placeholder="Name" required>
                 <input type="email" class="input-mail" placeholder="Email" required>
-                <input type="password" class="input-password" placeholder="Password" required>
-                <input type="password" class="input-password" placeholder="Confirm Password" required>
+                <div class="passwortcontainer">
+                    <input type="password" class="input-password" placeholder="Password" required  id="setpassword" onkeyup="addEyeIcons('setpassword')">
+                    <icon class="eye-container" onclick="hideShowPassword('setpassword')" id="setpasswordicon"></icon>
+                    
+                </div>                
+                <div class="passwortcontainer">
+                    <input type="password" class="input-password" placeholder="Confirm Password" required id="confirmpassword" onkeyup="addEyeIcons('confirmpassword')">
+                    <icon class="eye-container" onclick="hideShowPassword('confirmpassword')" id="confirmpasswordicon"></icon><br>
+                    <label for="password" class="redtext d-none" id="passwordnomatch">Check your email and password. Please try
+                        again.</label>
+                </div>                
 
                 <div class="checkbox-container">
                     <input class="checkbox" type="checkbox" required>
