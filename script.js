@@ -128,7 +128,8 @@ async function getData(path) {
     let responseAsJson = await response.json();
    return (responseAsJson)
    } catch(error){
-    console.error("Error can't get the data.");
+    console.error("Sorry something went wrong.");
+    return false
    }
 }
 

@@ -46,3 +46,9 @@ function wronguserorpassword(){
     document.getElementById('wronglogintext').classList.remove('d-none')
 }
 
+function hideShowPassword(){
+  const password = document.getElementById('password');
+  const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+
+  password.setAttribute('type', type);
+}
