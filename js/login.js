@@ -46,8 +46,12 @@ function wronguserorpassword(){
     document.getElementById('wronglogintext').classList.remove('d-none')
 }
 
-function hideShowPassword(){
-  const password = document.getElementById('password');
+/**
+ * 
+ * @param {string} id  write id in html in the onclick function, to adress the wanted id with 'here id'
+ */
+function hideShowPassword(id){
+  const password = document.getElementById(id);
   const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
 
   password.setAttribute('type', type);
