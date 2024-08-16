@@ -45,7 +45,6 @@
                     <input class="checkbox" type="checkbox">
                     <p>Remember me</p>
                 </div>
-
             </form>
 
             <div class="button-container center">
@@ -63,23 +62,22 @@
 
             <div class="seperator"></div>
 
-            <form class="login-form center">
+            <form class="login-form center" id="signupform" onsubmit="event.preventDefault()">
 
                 <input type="text" class="input-name" placeholder="Name" required>
                 <input type="email" class="input-mail" placeholder="Email" required>
                 <div class="passwortcontainer">
-                    <input type="password" class="input-password" placeholder="Password" required  id="setpassword" onkeyup="addEyeIcons('setpassword')">
+                    <input type="password" class="input-password" placeholder="Password" required  id="setpassword" onkeyup="addEyeIcons('setpassword'), checkPasswordMatch()">
                     <icon class="eye-container" onclick="hideShowPassword('setpassword')" id="setpasswordicon"></icon>
                     
                 </div>                
                 <div class="passwortcontainer">
-                    <input type="password" class="input-password" placeholder="Confirm Password" required id="confirmpassword" onkeyup="addEyeIcons('confirmpassword')">
+                    <input type="password" class="input-password" placeholder="Confirm Password" required id="confirmpassword" onkeyup="addEyeIcons('confirmpassword'), checkPasswordMatch()">
                     <icon class="eye-container" onclick="hideShowPassword('confirmpassword')" id="confirmpasswordicon"></icon><br>
-                    <label for="password" class="redtext d-none" id="passwordnomatch">Check your email and password. Please try
-                        again.</label>
+                    <label for="password" class="redtext d-none" id="passwordnomatch">Your password don't match. Please try again.</label>
                 </div>                
 
-                <div class="checkbox-container">
+                <div class="confirmbox">
                     <input class="checkbox" type="checkbox" required>
                     <p>I confirm the</p><a href="#" class="privacy-link">Privacy policy</a>
                 </div>
@@ -87,7 +85,7 @@
             </form>
 
             <div class="button-container">
-                <button class="button-filled-small">Sign up</button>
+                <button class="button-filled-small" form="signupform" id="submitsignup" disabled="true">Sign up</button>
             </div>
         </div>
 

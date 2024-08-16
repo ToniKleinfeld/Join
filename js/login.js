@@ -58,7 +58,6 @@ function hideShowPassword(id){
   password.setAttribute('type', type);
 }
 
-
 /**
  * Change the Icon's , when there is input in the passwordfield 
  * 
@@ -74,5 +73,26 @@ function addEyeIcons(id){
   } else {    
     passwordfield.classList.add('eye');
     icon.classList.add('pointer');
+  }
+}
+
+
+/**
+ * Disable button for signup when passwords not match, show message when wrong.
+ */
+function checkPasswordMatch() {
+  const firstPass = document.getElementById('setpassword').value;
+  const confirmPass = document.getElementById('confirmpassword').value;
+  const submitButton = document.getElementById('submitsignup');
+
+  if (firstPass === confirmPass ) {
+    submitButton.disabled = false
+  } else if ( firstPass.length  === confirmPass.length ){
+    submitButton.disabled = true
+    document.getElementById('setpassword').classList.add('wronglogin');
+    document.getElementById('confirmpassword').classList.add('wronglogin');
+    document.getElementById('passwordnomatch').classList.remove('d-none')
+  } else {
+    submitButton.disabled = true
   }
 }
