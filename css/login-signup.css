@@ -120,6 +120,10 @@ body {
     border-color: red !important;
 }
 
+.wronglogin{
+    border-color: red !important;
+}
+
 .passwortcontainer{
     font-size: 12px;
     position: relative;
