@@ -13,7 +13,7 @@
     <script src="./js/add-task.js"></script>
 </head>
 
-<body>
+<body onload="checkIfUserlogin()">
     <header>
         <h2 class="showindesktop">Kanban Project Managment Tool</h2>
         <img src="./assets/icons/capa 2.svg" alt="" class="showmobile">
@@ -31,7 +31,7 @@
         <div class="logo showindesktop">
             <img src="./assets/icons/capa 1.svg">
         </div>
-        <div class="nav-links-container">
+        <div class="nav-links-container" id="navlinks">
             <a href="./summary.html"><i class="summaryicon"></i> Summary</a>
             <a class="aktivesheet" href="./add-task.html"><i class="taskicon"></i> Add Task</a>
             <a href="./board.html"><i class="boardicon"></i> Board</a>
