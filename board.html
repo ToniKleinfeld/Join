@@ -58,7 +58,7 @@
                             <input class="search" type="search" placeholder="Find Task">
                             <img src="./assets/icons/search.svg">
                         </div>
-                        <button class="add-task-button">Add Task +</button>
+                        <button onclick="openAddTaskDialog()" class="add-task-button">Add Task +</button>
                     </div>
                 </div>
                 <div id="categoryContainerContainer" class="category-container-container">
@@ -281,7 +281,7 @@
             </div>
         </div>
     </div>
-    <div id="addTaskOverlay" class="add-task-overlay"> <!--style="display: none;" später einfügen -->
+    <div id="addTaskOverlay" class="add-task-overlay" style="display: none;">
         <div class="add-task-bg">
             <h1>Add Task</h1>
 

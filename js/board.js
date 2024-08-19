@@ -16,8 +16,14 @@ function renderMainContent() {
 }
 
 
-function fillTheTask(){
+function fillTheTask() {
     let title = document.getElementById('enterATitle');
     console.log(title.value);
-    
+
+}
+
+function openAddTaskDialog() {
+    let overlay = document.getElementById('overlay');
+    overlay.style.display = 'block';
+    // document.getElementById('overlayTask').classList.add('contentcontainer');
 }
