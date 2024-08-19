@@ -76,7 +76,6 @@ function addEyeIcons(id){
   }
 }
 
-
 /**
  * Disable button for signup when passwords not match, show message when wrong.
  */
