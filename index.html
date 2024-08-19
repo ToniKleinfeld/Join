@@ -38,9 +38,9 @@
             <div class="seperator"></div>
 
             <form class="login-form center" id="loginform" onsubmit="event.preventDefault(), checkValidLogIn()"
-                autocomplete="off">
+                autocomplete="off" >
 
-                <input type="email" class="input-mail" placeholder="Email" required id="email">
+                <input type="email" class="input-mail" placeholder="Email" required id="email" autocomplete="on">
                 <div class="passwortcontainer">
                     <input type="password" class="input-password" placeholder="Password" required id="password" onkeyup="addEyeIcons('password')">
                     <icon class="eye-container" onclick="hideShowPassword('password')" id="passwordicon"></icon>
@@ -49,14 +49,14 @@
                         again.</label>
                 </div>
                 <div class="checkbox-container">
-                    <input class="checkbox" type="checkbox">
-                    <p>Remember me</p>
+                    <input class="checkbox" type="checkbox" name="remember" id="remember">
+                    <label for="remember">Remember me</label>
                 </div>
             </form>
 
             <div class="button-container center">
                 <button type="submit" form="loginform" class="button-filled-small log-in-button">Log in</button>
-                <button class="button-empty-large">Guest Log in</button>
+                <button class="button-empty-large" onclick="guestLogIn()" >Guest Log in</button>
             </div>
         </div>
 
@@ -71,8 +71,8 @@
 
             <form class="login-form center" id="signupform" onsubmit="event.preventDefault()">
 
-                <input type="text" class="input-name" placeholder="Name" required>
-                <input type="email" class="input-mail" placeholder="Email" required>
+                <input type="text" class="input-name" placeholder="Name" required id="signupname">
+                <input type="email" class="input-mail" placeholder="Email" required id="signupmail">
                 <div class="passwortcontainer">
                     <input type="password" class="input-password" placeholder="Password" required  id="setpassword" onkeyup="addEyeIcons('setpassword'), checkPasswordMatch()">
                     <icon class="eye-container" onclick="hideShowPassword('setpassword')" id="setpasswordicon"></icon>
@@ -85,8 +85,8 @@
                 </div>                
 
                 <div class="confirmbox">
-                    <input class="checkbox" type="checkbox" required>
-                    <p>I confirm the</p><a href="#" class="privacy-link">Privacy policy</a>
+                    <input class="checkbox" type="checkbox" name="confirmread" required id="confirmread">
+                    <label for="confirmread">I confirm the <a href="./privacy.html" class="privacy-link">Privacy policy</a></label>
                 </div>
 
             </form>

@@ -112,8 +112,9 @@ let contacts = [{
     "mail": "wolfi@gmx.com",
     "name": "Tatjana Wolf",
     "phonenumber": "+49 176 127674765"
-  }]
+  }]  
 let user = '';
+ user = getDataFromStorage();
 
 /**
  * this function load the wantet Array from firebase
@@ -141,8 +142,28 @@ async function loadTasksandContactsinfos(){
  contacts = await getData("contacts");
 }
 
+
+/**
+ * disbale navmenu and Userfield, when no user or Guest logged in.
+ */
 function checkIfUserlogin() {
   if (user == '') {
  document.getElementById('navlinks').classList.add('d-none');
+ document.getElementById('showuser').classList.add('d-none');
  }
+}
+
+/**
+ * 
+ * @returns Empty user and Arrays data from localseasonstorage when no User in SessionStorage
+ */
+ function getDataFromStorage() {   
+
+  if (sessionStorage.getItem("user") == undefined) {
+    // tasks = [];
+    // contacts = [];
+    return user = ''
+  } else {
+    return user = sessionStorage.getItem("user");
+  }
 }

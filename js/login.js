@@ -3,12 +3,12 @@
  */
 async function checkValidLogIn(){
     let users = await getData("user")
-    let check =  ''; 
-    
-    checkLoginData(users);
+    let check = checkLoginData(users);     
   
     if ( check == !true) {    
       wronguserorpassword()
+    } else {
+      window.location.href = "./summary.html";
     }
   }
 
@@ -26,16 +26,19 @@ function switchloginSignupWindow() {
  * @param {array} users - userarray from Firebase
  */
 function checkLoginData(users){
+  let check = false;
     users.forEach(element => { 
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-
+        
       if (element.code == password && element.mail == email) {
         check = true
         user = element.account
-        loadTasksandContactsinfos();
+        sessionStorage.setItem("user", user)
+        loadTasksandContactsinfos();        
       }
-    });
+    });  
+    return check  
 }
 
 /**
@@ -94,4 +97,15 @@ function checkPasswordMatch() {
   } else {
     submitButton.disabled = true
   }
+}
+
+
+/**
+ * This function set the User to guest and loads the Array
+ */
+function guestLogIn() {
+  user = 'Guest'
+  sessionStorage.setItem("user", user)
+  loadTasksandContactsinfos(); 
+  window.location.href = "./summary.html";
 }
