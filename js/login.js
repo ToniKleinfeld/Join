@@ -103,9 +103,8 @@ function checkPasswordMatch() {
 /**
  * This function set the User to guest and loads the Array
  */
-function guestLogIn() {
-  user = 'Guest'
-  sessionStorage.setItem("user", user)
-  loadTasksandContactsinfos(); 
+async function guestLogIn() {
+  sessionStorage.setItem("user", 'Guest')
+  await loadTasksandContactsinfos(); 
   window.location.href = "./summary.html";
 }

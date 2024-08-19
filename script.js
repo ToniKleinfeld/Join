@@ -140,8 +140,20 @@ async function getData(path) {
 async function loadTasksandContactsinfos(){
  tasks = await getData("tasks");
  contacts = await getData("contacts");
+
+saveAsSessionStorage();
 }
 
+/**
+ * load Arrays into SessionStorage
+ */
+function saveAsSessionStorage(){
+  let taskssAsText = JSON.stringify(tasks);
+ sessionStorage.setItem('tasks', taskssAsText);
+
+ let contactsAsText = JSON.stringify(contacts);
+ sessionStorage.setItem('contacts', contactsAsText); 
+}
 
 /**
  * disbale navmenu and Userfield, when no user or Guest logged in.
@@ -158,12 +170,13 @@ function checkIfUserlogin() {
  * @returns Empty user and Arrays data from localseasonstorage when no User in SessionStorage
  */
  function getDataFromStorage() {   
-
   if (sessionStorage.getItem("user") == undefined) {
-    // tasks = [];
-    // contacts = [];
+    tasks = [];
+    contacts = [];
     return user = ''
   } else {
+    tasks = JSON.parse(sessionStorage.getItem("tasks"));
+    contacts = JSON.parse(sessionStorage.getItem("contacts"));
     return user = sessionStorage.getItem("user");
   }
 }
