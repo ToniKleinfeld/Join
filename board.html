@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="./css/menu.css">
     <link rel="stylesheet" href="./css/board.css">
     <link rel="stylesheet" href="./css/add-task.css">
-    <script src="./script.js"></script>
     <script src="./js/board.js"></script>
+    <script src="./script.js"></script>
     <script src="./js/add-task.js"></script>
 </head>
 
@@ -47,7 +47,7 @@
     </nav>
     <div class="desktop">
         <div id="MainContent" class="maincontent">
-            <div class="board-main">
+            <div id="boardMain" class="board-main">
                 <div class="board-headline">
                     <div class="resp-h1-plus-add-task-button">
                         <h1>Board</h1>
@@ -61,13 +61,13 @@
                         <button class="add-task-button">Add Task +</button>
                     </div>
                 </div>
-                <div class="category-container-container">
+                <div id="categoryContainerContainer" class="category-container-container">
                     <div class="category-containers">
                         <div class="to-do-title">
                             <h2>To do</h2>
-                            <img class="plus-button" src="./assets/icons/plus-button.svg" alt="">
+                            <img  class="plus-button" src="./assets/icons/plus-button.svg" alt="">
                         </div>
-                        <div class="tabelle-card">
+                        <div id="tabelToDo" class="tabelle-card">
                             <div class="inner-category-container">
                                 <div class="card">
                                     <div class="frame-119">
@@ -106,7 +106,7 @@
                             <h2>In progress</h2>
                             <img class="plus-button" src="./assets/icons/plus-button.svg" alt="">
                         </div>
-                        <div class="tabelle-card">
+                        <div id="tableInProgress" class="tabelle-card">
                             <div class="inner-category-container">
                                 <div class="card">
                                     <div class="frame-119">
@@ -177,7 +177,7 @@
                             <h2>Await feedback</h2>
                             <img class="plus-button" src="./assets/icons/plus-button.svg" alt="">
                         </div>
-                        <div class="tabelle-card">
+                        <div id="tableAwaitFeedback" class="tabelle-card">
                             <div class="inner-category-container">
                                 <div class="card">
                                     <div class="frame-119">
@@ -216,7 +216,7 @@
                             <h2>Done</h2>
                             <img src="" alt="">
                         </div>
-                        <div class="tabelle-card">
+                        <div id="tableDone" class="tabelle-card">
                             <div class="inner-category-container"></div>
                             <div class="no-task-done-container">
                                 <span class="no-task-done-text">no task Done</span>
