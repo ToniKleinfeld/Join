@@ -113,7 +113,7 @@ let contacts = [{
     "name": "Tatjana Wolf",
     "phonenumber": "+49 176 127674765"
   }]
-let user = 'Boban';
+let user = '';
 
 /**
  * this function load the wantet Array from firebase
@@ -139,4 +139,10 @@ async function getData(path) {
 async function loadTasksandContactsinfos(){
  tasks = await getData("tasks");
  contacts = await getData("contacts");
+}
+
+function checkIfUserlogin() {
+  if (user == '') {
+ document.getElementById('navlinks').classList.add('d-none');
+ }
 }
