@@ -15,8 +15,9 @@ function renderMainContent() {
     }
 }
 
+
 function fillTheTask(){
-    titlr = document.getElementById('enterATitle');
-    console.log(titlr.value);
+    let title = document.getElementById('enterATitle');
+    console.log(title.value);
     
 }

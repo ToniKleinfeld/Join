@@ -65,7 +65,7 @@
                     <div class="category-containers">
                         <div class="to-do-title">
                             <h2>To do</h2>
-                            <img  class="plus-button" src="./assets/icons/plus-button.svg" alt="">
+                            <img class="plus-button" src="./assets/icons/plus-button.svg" alt="">
                         </div>
                         <div id="tabelToDo" class="tabelle-card">
                             <div class="inner-category-container">
@@ -281,7 +281,7 @@
             </div>
         </div>
     </div>
-    <div id="addTaskOverlay" class="add-task-overlay" style="display: none;">
+    <div id="addTaskOverlay" class="add-task-overlay"> <!--style="display: none;" später einfügen -->
         <div class="add-task-bg">
             <h1>Add Task</h1>
 
@@ -307,8 +307,8 @@
                             <option value="2">Contact 2</option>
                             <option value="3">Contact 3</option>
                             <option value="4">Contact 4</option>
-                         </select>
-                        
+                        </select>
+
                     </div>
 
                 </div>
@@ -350,10 +350,12 @@
             <div class="add-task-page-footer">
                 <p class="required-info">This field is required</p>
                 <div class="task-footer-button-container">
-                    <button class="button-empty-small mobileoff">Clear<span class="input-and-button-icons closex"
-                            ></span></button>
-                    <button class="button-filled-large"><span>Create Task</span><img class="input-and-button-icons"
-                            src="./assets/icons/check.svg"></button>
+                    <button class="button-empty-small mobileoff">Clear<span
+                            class="input-and-button-icons closex"></span></button>
+                    <button onclick="fillTheTask()" class="button-filled-large">
+                        <span>Create Task</span>
+                        <img class="input-and-button-icons" src="./assets/icons/check.svg">
+                    </button>
                 </div>
             </div>
         </div>
