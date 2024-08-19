@@ -1,6 +1,7 @@
 
 function initBoard() {
-    renderMainContent();
+    // renderMainContent();
+    // fillTheTask();
 }
 
 
@@ -14,8 +15,8 @@ function renderMainContent() {
     }
 }
 
-
-function addCategoryContainer(){
-
+function fillTheTask(){
+    titlr = document.getElementById('enterATitle');
+    console.log(titlr.value);
+    
 }
-

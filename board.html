@@ -291,12 +291,12 @@
 
                     <div class="input-container">
                         <h2 class="required input-title">Title</h2>
-                        <input type="text" placeholder="Enter a title">
+                        <input id="enterATitle" type="text" placeholder="Enter a title">
                     </div>
 
                     <div class="text-area-container">
                         <h2 class="input-title">Description</h2>
-                        <textarea placeholder="Enter a Description"></textarea>
+                        <textarea id="EnterADescriptioin" placeholder="Enter a Description"></textarea>
                     </div>
 
                     <div class="input-container">
@@ -307,8 +307,8 @@
                             <option value="2">Contact 2</option>
                             <option value="3">Contact 3</option>
                             <option value="4">Contact 4</option>
-                        </select>
-
+                         </select>
+                        
                     </div>
 
                 </div>
@@ -350,9 +350,9 @@
             <div class="add-task-page-footer">
                 <p class="required-info">This field is required</p>
                 <div class="task-footer-button-container">
-                    <button class="button-empty-small">Clear<img class="input-and-button-icons"
-                            src="./assets/icons/close.svg"></button>
-                    <button class="button-filled-large">Create Task<img class="input-and-button-icons"
+                    <button class="button-empty-small mobileoff">Clear<span class="input-and-button-icons closex"
+                            ></span></button>
+                    <button class="button-filled-large"><span>Create Task</span><img class="input-and-button-icons"
                             src="./assets/icons/check.svg"></button>
                 </div>
             </div>
