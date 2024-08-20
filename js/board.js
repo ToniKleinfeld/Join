@@ -16,14 +16,57 @@ function renderMainContent() {
 }
 
 
-function fillTheTask() {
+function fillTask() {
     let title = document.getElementById('enterATitle');
+    let description = document.getElementById('enterADescription');
+    let selectContact = document.getElementById('selectContacts');
+    let date = document.getElementById('iputDate');
+    let category = document.getElementById('category');
+    let subtasks = document.getElementById('subtasks');
+
+    document.getElementById('prioUrgendBtn').onclick = function () {
+        console.log('Urgent button clicked');
+    };
+
+    document.getElementById('prioMediumBtn').onclick = function () {
+        console.log('Medium button clicked');
+    };
+
+    document.getElementById('prioLowBtn').onclick = function () {
+        console.log('Low button clicked');
+    };
+
+
     console.log(title.value);
+    console.log(selectContact.value);
+    console.log(description.value);
+    console.log(date.value);
+    console.log(category.value);
+    console.log(subtasks.value);
 
 }
 
 function openAddTaskDialog() {
-    let overlay = document.getElementById('overlay');
-    overlay.style.display = 'block';
-    // document.getElementById('overlayTask').classList.add('contentcontainer');
+    let overlay = document.getElementById('addTaskOverlay');
+    overlay.style.display = 'flex';
+}
+
+function closeTaskDialog() {
+    let overlay = document.getElementById('addTaskOverlay');
+    overlay.style.display = 'none';
+}
+
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData('text', ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    let data = ev.dataTransfer.getData('text');
+    ev.target.appendChild(document.getElementById(data));
 }
