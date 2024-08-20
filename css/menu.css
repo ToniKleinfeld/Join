@@ -127,10 +127,16 @@ header {
 }
 
 .account-info {
-    border: 3px solid;
+    border: 3px solid black;
     height: 50px;
     width: 50px;
     border-radius: 50%;
+    display: inherit;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: #29aae0;
 }
 
 .dropdownmenu{

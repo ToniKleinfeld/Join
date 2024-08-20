@@ -162,6 +162,8 @@ function checkIfUserlogin() {
   if (user == '') {
  document.getElementById('navlinks').classList.add('d-none');
  document.getElementById('showuser').classList.add('d-none');
+ } else {
+  setHeaderUserName()
  }
 }
 
@@ -171,12 +173,27 @@ function checkIfUserlogin() {
  */
  function getDataFromStorage() {   
   if (sessionStorage.getItem("user") == undefined) {
-    // tasks = [];
-    // contacts = [];
+ 
     return user = ''
   } else {
     tasks = JSON.parse(sessionStorage.getItem("tasks"));
     contacts = JSON.parse(sessionStorage.getItem("contacts"));
     return user = sessionStorage.getItem("user");
   }
+}
+
+/**
+ * Split the Username into first Lesters and use it for Usericon in Header
+ */
+function setHeaderUserName(){
+  let userIcon = user.match(/\b(\w)/g);
+  document.getElementById('showuser').innerHTML = userIcon.join('');
+}
+
+
+/**
+ * Display the Usermenu under the Usericon
+ */
+function showUserMenue(){
+  document.getElementById('usermenue').classList.toggle('d-none');
 }
