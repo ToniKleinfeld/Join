@@ -171,8 +171,8 @@ function checkIfUserlogin() {
  */
  function getDataFromStorage() {   
   if (sessionStorage.getItem("user") == undefined) {
-    tasks = [];
-    contacts = [];
+    // tasks = [];
+    // contacts = [];
     return user = ''
   } else {
     tasks = JSON.parse(sessionStorage.getItem("tasks"));
