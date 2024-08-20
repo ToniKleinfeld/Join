@@ -141,7 +141,7 @@ async function loadTasksandContactsinfos(){
  tasks = await getData("tasks");
  contacts = await getData("contacts");
 
-saveAsSessionStorage();
+await saveAsSessionStorage();
 }
 
 /**
@@ -173,7 +173,8 @@ function checkIfUserlogin() {
  */
  function getDataFromStorage() {   
   if (sessionStorage.getItem("user") == undefined) {
- 
+    // tasks = [];
+    // contacts = [];
     return user = ''
   } else {
     tasks = JSON.parse(sessionStorage.getItem("tasks"));
@@ -196,4 +197,11 @@ function setHeaderUserName(){
  */
 function showUserMenue(){
   document.getElementById('usermenue').classList.toggle('d-none');
+}
+
+/**
+ * Clear the seassionStorage
+ */
+function logOut() {
+  sessionStorage.clear()
 }

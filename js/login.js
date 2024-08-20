@@ -8,6 +8,7 @@ async function checkValidLogIn(){
     if ( check == !true) {    
       wronguserorpassword()
     } else {
+      await loadTasksandContactsinfos(); 
       window.location.href = "./summary.html";
     }
   }
@@ -34,8 +35,7 @@ function checkLoginData(users){
       if (element.code == password && element.mail == email) {
         check = true
         user = element.account
-        sessionStorage.setItem("user", user)
-        loadTasksandContactsinfos();        
+        sessionStorage.setItem("user", user)       
       }
     });  
     return check  
@@ -99,7 +99,6 @@ function checkPasswordMatch() {
   }
 }
 
-
 /**
  * This function set the User to guest and loads the Array
  */
@@ -108,3 +107,4 @@ async function guestLogIn() {
   await loadTasksandContactsinfos(); 
   window.location.href = "./summary.html";
 }
+
