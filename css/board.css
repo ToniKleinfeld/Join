@@ -201,7 +201,7 @@ img:hover {
 }
 
 
-.subtasks {
+.card-subtasks {
     position: absolute;
     width: 75px;
     height: 14px;

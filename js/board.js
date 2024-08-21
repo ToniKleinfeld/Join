@@ -4,10 +4,13 @@ const typeColors = {
 };
 
 let currentDraggedElement;
+let initials = [];
+
+
+
 
 function initBoard() {
     renderMainContent();
-    // fillTheTask();
 }
 
 function openAddTaskDialog() {
@@ -20,6 +23,9 @@ function closeTaskDialog() {
     overlay.style.display = 'none';
 }
 
+function calcProgressbarSubtasks() {
+
+}
 
 function renderMainContent() {
     let content = document.getElementById('tabelToDo');
@@ -27,12 +33,14 @@ function renderMainContent() {
 
     for (let i = 0; i < tasks.length; i++) {
         const element = tasks[i];
-        console.log(element);
+        // console.log(element);
 
         content.innerHTML += renderCardHTML(i);
         getTypeColor(element, i);
-        console.log(i);
+        firstLastInitial(i);
+        // console.log(i);
     }
+
 }
 
 function renderCardHTML(i) {
@@ -53,13 +61,13 @@ function renderCardHTML(i) {
                     <div class="progressbar">
                         <div class="filler"></div>
                     </div>
-                    <div id="cardSubtasks" class="subtasks"> 0/2 Subtask</div>
+                    <div id="cardSubtasks" class="card-subtasks"> 0/2 Subtask</div>
                 </div>
                 <div class="circle-prio-container">
                     <div class="circle-container">
-                        <div class="circle circle-to-do">AS</div>
-                        <div class="circle circle-to-do">DE</div>
-                        <div class="circle circle-to-do">EF</div>
+                        <div id="initial${i}" class="circle circle-to-do"></div>
+                        <!-- <div class="circle circle-to-do">DE</div>
+                        <div class="circle circle-to-do">EF</div> -->
                     </div>
                     <div class="priority-symbols">
                         <img src="./assets/icons/priority-hight.svg" alt="">
@@ -72,6 +80,7 @@ function renderCardHTML(i) {
     `;
 }
 
+
 function getTypeColor(task, i) {
     let color = task['category'];
     let bgcolor = typeColors[color.toLowerCase()] || '#A8A878'; // Standardfarbe, falls Typ nicht gefunden
@@ -79,35 +88,55 @@ function getTypeColor(task, i) {
 }
 
 
-function fillTask() {
-    let title = document.getElementById('enterATitle');
-    let description = document.getElementById('enterADescription');
-    let selectContact = document.getElementById('selectContacts');
-    let date = document.getElementById('iputDate');
-    let category = document.getElementById('category');
-    let subtasks = document.getElementById('subtasks');
+function firstLastInitial(i) {
+    let fullNames = tasks[i]['Assigned To'];  // Array von vollständigen Namen
+    console.log("Namensliste ", fullNames);
 
-    document.getElementById('prioUrgendBtn').onclick = function () {
-        console.log('Urgent button clicked');
-    };
+    fullNames.forEach(fullName => {
 
-    document.getElementById('prioMediumBtn').onclick = function () {
-        console.log('Medium button clicked');
-    };
+        let nameParts = fullName.split(" ");   // Trenne den vollen Namen in Vorname und Nachname
 
-    document.getElementById('prioLowBtn').onclick = function () {
-        console.log('Low button clicked');
-    };
+        // Hole den ersten Buchstaben von Vorname und Nachname
+        let firstInitial = nameParts[0].charAt(0);
+        let lastInitial = nameParts[1].charAt(0);
 
-
-    console.log(title.value);
-    console.log(selectContact.value);
-    console.log(description.value);
-    console.log(date.value);
-    console.log(category.value);
-    console.log(subtasks.value);
+        initials.push(firstInitial + lastInitial);   // Ausgabe der Initialen
+        
+        // console.log("Initialien: ", firstInitial + lastInitial);
+    });
 
 }
+
+
+// function fillTask() {
+//     let title = document.getElementById('enterATitle');
+//     let description = document.getElementById('enterADescription');
+//     let selectContact = document.getElementById('selectContacts');
+//     let date = document.getElementById('iputDate');
+//     let category = document.getElementById('category');
+//     let subtasks = document.getElementById('subtasks');
+
+//     document.getElementById('prioUrgendBtn').onclick = function () {
+//         console.log('Urgent button clicked');
+//     };
+
+//     document.getElementById('prioMediumBtn').onclick = function () {
+//         console.log('Medium button clicked');
+//     };
+
+//     document.getElementById('prioLowBtn').onclick = function () {
+//         console.log('Low button clicked');
+//     };
+
+
+//     console.log(title.value);
+//     console.log(selectContact.value);
+//     console.log(description.value);
+//     console.log(date.value);
+//     console.log(category.value);
+//     console.log(subtasks.value);
+
+// }
 
 
 
