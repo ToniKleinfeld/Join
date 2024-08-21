@@ -30,15 +30,25 @@ function checkLoginData(users){
   let check = false;
     users.forEach(element => { 
         const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+        const password = document.getElementById('password').value;        
         
       if (element.code == password && element.mail == email) {
+        userAndPasswordMatch(element, email);
         check = true
-        user = element.account
-        sessionStorage.setItem("user", user)       
       }
     });  
     return check  
+}
+
+/**
+ * 
+ * @param {string} element - string wich pass the if statement
+ * @param {*} email - get the current loginmail
+ */
+function userAndPasswordMatch(element, email){  
+  user = element.account;
+  rememberMe(email);
+  sessionStorage.setItem("user", user);   
 }
 
 /**
@@ -108,7 +118,9 @@ async function guestLogIn() {
   window.location.href = "./summary.html";
 }
 
-
+/**
+ * check if in localstorage information for remember login 
+ */
 function remeberMeCheck() {
   const rmCheck = document.getElementById("remember"),
   emailInput = document.getElementById("email");
@@ -122,10 +134,15 @@ function remeberMeCheck() {
   }
 }
 
+/**
+ * 
+ * @param {string} emailInput -get the value from Emailinput
+ */
+function rememberMe(emailInput) {
+  const rmCheck = document.getElementById("remember");
 
-function lsRememberMe() {
-  if (rmCheck.checked && emailInput.value !== "") {
-    localStorage.username = emailInput.value;
+  if (rmCheck.checked && emailInput !== "") {
+    localStorage.username = emailInput;
     localStorage.checkbox = rmCheck.value;
   } else {
     localStorage.username = "";
