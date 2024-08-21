@@ -1,18 +1,81 @@
+const typeColors = {
+    "technical task": '#1fd7c1',
+    "user story": '#0038ff',
+};
+
+let currentDraggedElement;
 
 function initBoard() {
-    // renderMainContent();
+    renderMainContent();
     // fillTheTask();
+}
+
+function openAddTaskDialog() {
+    let overlay = document.getElementById('addTaskOverlay');
+    overlay.style.display = 'flex';
+}
+
+function closeTaskDialog() {
+    let overlay = document.getElementById('addTaskOverlay');
+    overlay.style.display = 'none';
 }
 
 
 function renderMainContent() {
-    let content = document.getElementById('tabelleCard');
+    let content = document.getElementById('tabelToDo');
     content.innerHTML = '';
 
     for (let i = 0; i < tasks.length; i++) {
         const element = tasks[i];
         console.log(element);
+
+        content.innerHTML += renderCardHTML(i);
+        getTypeColor(element, i);
+        console.log(i);
     }
+}
+
+function renderCardHTML(i) {
+    return /*html*/`
+    <div id="cardContainer${i}" class="card-container" draggable="true" ondragstart="startDragging(${i})">
+        <div class="card">
+            <div class="frame-119">
+                <div id="labelBoardCard${i}" class="label-board-card">
+                    <div id="cardTaskCategory" class="user-story">
+                        ${tasks[i]['category']}
+                    </div>
+                </div>
+                <div class="frame-114">
+                    <div id="cardTitle" class="title">${tasks[i]['title']}</div>
+                    <div id="cardDescription" class="card-description">${tasks[i]['description']}</div>
+                </div>
+                <div class="progress">
+                    <div class="progressbar">
+                        <div class="filler"></div>
+                    </div>
+                    <div id="cardSubtasks" class="subtasks"> 0/2 Subtask</div>
+                </div>
+                <div class="circle-prio-container">
+                    <div class="circle-container">
+                        <div class="circle circle-to-do">AS</div>
+                        <div class="circle circle-to-do">DE</div>
+                        <div class="circle circle-to-do">EF</div>
+                    </div>
+                    <div class="priority-symbols">
+                        <img src="./assets/icons/priority-hight.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    `;
+}
+
+function getTypeColor(task, i) {
+    let color = task['category'];
+    let bgcolor = typeColors[color.toLowerCase()] || '#A8A878'; // Standardfarbe, falls Typ nicht gefunden
+    document.getElementById(`labelBoardCard${i}`).style.backgroundColor = bgcolor;
 }
 
 
@@ -46,27 +109,25 @@ function fillTask() {
 
 }
 
-function openAddTaskDialog() {
-    let overlay = document.getElementById('addTaskOverlay');
-    overlay.style.display = 'flex';
-}
-
-function closeTaskDialog() {
-    let overlay = document.getElementById('addTaskOverlay');
-    overlay.style.display = 'none';
-}
 
 
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function drag(ev) {
-    ev.dataTransfer.setData('text', ev.target.id);
+function startDragging(id) {
+    currentDraggedElement = id;
 }
 
-function drop(ev) {
-    ev.preventDefault();
-    let data = ev.dataTransfer.getData('text');
-    ev.target.appendChild(document.getElementById(data));
+function moveTo(category) {
+    document.getElementById('category').classList('tabelle-card') = category;
 }
+// function drag(ev) {
+//     ev.dataTransfer.setData('text', ev.target.id);
+// }
+
+// function drop(ev) {
+//     ev.preventDefault();
+//     let data = ev.dataTransfer.getData('text');
+//     ev.target.appendChild(document.getElementById(data));
+// }

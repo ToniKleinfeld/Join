@@ -13,6 +13,7 @@
     <script src="./js/board.js"></script>
     <script src="./script.js"></script>
     <script src="./js/add-task.js"></script>
+    <script src="./firebasedate.json"></script>
 </head>
 
 <body onload="initBoard(), checkIfUserlogin()">
@@ -61,34 +62,34 @@
                         <button onclick="openAddTaskDialog()" class="add-task-button">Add Task +</button>
                     </div>
                 </div>
-                <div id="categoryContainerContainer" class="category-container-container">
+                <div id="categoryMainContainer" class="category-main-container">
                     <!--------------to do------------------>
                     <div class="category-containers">
                         <div class="to-do-title">
                             <h2>To do</h2>
                             <img onclick="openAddTaskDialog()" class="plus-button" src="./assets/icons/plus-button.svg" alt="">
                         </div>
-                        <div id="tabelToDo" class="tabelle-card" ondrop="moveTo(event)" ondragover="allowDrop(event)">
-                            <div class="card-container" draggable="true">
+                        <div id="tabelToDo" class="tabelle-card" ondrop="moveTo('tabelToDo')" ondragover="allowDrop(event)">
+                            <div class="card-container" draggable="true" ondragstart="startDragging(0)">
                                 <div class="card">
                                     <div class="frame-119">
-                                        <div class="labe-board-card-label">
-                                            <div class="user-story">
+                                        <div class="label-board-card">
+                                            <div id="cardTaskCategory" class="user-story">
                                                 User Story
                                             </div>
                                         </div>
                                         <div class="frame-114">
-                                            <div class="title">Contact Form & Imprint</div>
-                                            <div class="content">Create a contact form and imprint page</div>
+                                            <div id="cardTitle" class="title">Contact Form & Imprint</div>
+                                            <div id="cardDescription" class="card-description">Create a contact form and imprint page</div>
                                         </div>
                                         <div class="progress">
                                             <div class="progressbar">
                                                 <div class="filler"></div>
                                             </div>
-                                            <div class="subtasks"> 0/2 Subtask</div>
+                                            <div id="cardSubtasks" class="subtasks"> 0/2 Subtask</div>
                                         </div>
-                                        <div class="frame-139">
-                                            <div class="frame-217">
+                                        <div class="circle-prio-container">
+                                            <div class="circle-container">
                                                 <div class="circle circle-to-do">AS</div>
                                                 <div class="circle circle-to-do">DE</div>
                                                 <div class="circle circle-to-do">EF</div>
@@ -108,11 +109,11 @@
                             <h2>In progress</h2>
                             <img class="plus-button" src="./assets/icons/plus-button.svg" alt="">
                         </div>
-                        <div id="tableInProgress" class="tabelle-card" ondrop="moveTo(event)" ondragover="allowDrop(event)">
-                            <div class="card-container">
+                        <div id="tableInProgress" class="tabelle-card" ondrop="moveTo('tableInProgress')" ondragover="allowDrop(event)">
+                            <div class="card-container" draggable="true" ondragstart="startDragging(1)">
                                 <div class="card">
                                     <div class="frame-119">
-                                        <div class="labe-board-card-label">
+                                        <div class="label-board-card">
                                             <div class="user-story">
                                                 User Story
                                             </div>
@@ -127,8 +128,8 @@
                                             </div>
                                             <div class="subtasks"> 1/2 Subtask</div>
                                         </div>
-                                        <div class="frame-139">
-                                            <div class="frame-217">
+                                        <div class="circle-prio-container">
+                                            <div class="circle-container">
                                                 <div class="circle circle-in-progress">AM</div>
                                                 <div class="circle circle-in-progress">EM</div>
                                                 <div class="circle circle-in-progress">MB</div>
@@ -144,7 +145,7 @@
                             <div class="card-container">
                                 <div class="card">
                                     <div class="frame-119">
-                                        <div class="labe-board-card-label">
+                                        <div class="label-board-card">
                                             <div class="user-story">
                                                 User Story
                                             </div>
@@ -159,8 +160,8 @@
                                             </div>
                                             <div class="subtasks"> 1/2 Subtask</div>
                                         </div>
-                                        <div class="frame-139">
-                                            <div class="frame-217">
+                                        <div class="circle-prio-container">
+                                            <div class="circle-container">
                                                 <div class="circle circle-in-progress">AM</div>
                                                 <div class="circle circle-in-progress">EM</div>
                                                 <div class="circle circle-in-progress">MB</div>
@@ -184,7 +185,7 @@
                             <div class="card-container">
                                 <div class="card">
                                     <div class="frame-119">
-                                        <div class="labe-board-card-label">
+                                        <div class="label-board-card">
                                             <div class="user-story">
                                                 User Story
                                             </div>
@@ -199,8 +200,8 @@
                                             </div>
                                             <div class="subtasks"> 1/2 Subtask</div>
                                         </div>
-                                        <div class="frame-139">
-                                            <div class="frame-217">
+                                        <div class="circle-prio-container">
+                                            <div class="circle-container">
                                                 <div class="circle circle-in-progress">AM</div>
                                                 <div class="circle circle-in-progress">EM</div>
                                                 <div class="circle circle-in-progress">MB</div>

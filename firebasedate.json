@@ -1,4 +1,4 @@
-{
+let data = {
   "contacts": [
     {
       "mail": "anton@gmx.com",
