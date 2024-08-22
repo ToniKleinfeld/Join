@@ -66,8 +66,8 @@ function renderCardHTML(i) {
                 <div class="circle-prio-container">
                     <div class="circle-container">
                         <div id="initial${i}" class="circle circle-to-do"></div>
-                        <!-- <div class="circle circle-to-do">DE</div>
-                        <div class="circle circle-to-do">EF</div> -->
+                        <div class="circle circle-to-do">DE</div>
+                        <div class="circle circle-to-do">EF</div>
                     </div>
                     <div class="priority-symbols">
                         <img src="./assets/icons/priority-hight.svg" alt="">
