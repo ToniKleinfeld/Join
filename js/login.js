@@ -149,3 +149,20 @@ function rememberMe(emailInput) {
     localStorage.checkbox = "";
   }
 }
+
+function signUp() {
+
+  let username = document.getElementById('signupname').value;
+  let emailadress = document.getElementById('signupmail').value;
+  let password = document.getElementById('setpassword').value;
+
+  let data = {
+    "account": username,
+    "code": password,
+    "mail": emailadress
+  };
+
+  path = "user"
+
+  postData(path,data);
+}

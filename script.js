@@ -205,3 +205,15 @@ function showUserMenue(){
 function logOut() {
   sessionStorage.clear()
 }
+
+async function postData(path="", data={}) {  
+  const BASE_URL = "https://remotestorage-fe678-default-rtdb.europe-west1.firebasedatabase.app/"; 
+  let response = await fetch(BASE_URL + path + ".json",{
+     method: "POST",
+     header: {
+           "Content-Type": "application/json",
+     },
+     body: JSON.stringify(data)
+  });
+  return responsetoJson = await response.json();
+}
