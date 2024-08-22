@@ -50,7 +50,7 @@ function renderMainContent() {
         firstLastInitial(i);
         content.innerHTML += renderCardHTML(i);
         getTypeColor(element, i);
-        getInitialColor(element, i);
+        getTypeInitialColor(element['Assigned To'], i);
     }
 
 }
@@ -117,8 +117,6 @@ function renderCardHTML(i) {
                         <div id="initial${i}" class="circle circle-to-do">${initialsArray[i][0]}</div>
                         <div id="initial${i}" class="circle circle-to-do">${initialsArray[i][1]}</div>
                         <div id="initial${i}" class="circle circle-to-do">${initialsArray[i]?.[2] || ''}</div>
-                        <!-- <div class="circle circle-to-do">DE</div> -->
-                        <!-- <div class="circle circle-to-do">EF</div> -->
                     </div>
                     <div class="priority-symbols">
                         <img src="./assets/icons/priority-hight.svg" alt="">
