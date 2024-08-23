@@ -206,10 +206,10 @@ function logOut() {
   sessionStorage.clear()
 }
 
-async function postData(path="", data={}) {  
+async function putData(path="", data={}) {  
   const BASE_URL = "https://remotestorage-fe678-default-rtdb.europe-west1.firebasedatabase.app/"; 
   let response = await fetch(BASE_URL + path + ".json",{
-     method: "POST",
+     method: "PUT",
      header: {
            "Content-Type": "application/json",
      },

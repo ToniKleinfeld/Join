@@ -150,11 +150,15 @@ function rememberMe(emailInput) {
   }
 }
 
-function signUp() {
-
+/**
+ * Give the signup Input Data to the firebase
+ */
+async function signUp() {
   let username = document.getElementById('signupname').value;
   let emailadress = document.getElementById('signupmail').value;
   let password = document.getElementById('setpassword').value;
+  let index = await getData("user");
+  path = "user/"+index.length;
 
   let data = {
     "account": username,
@@ -162,7 +166,5 @@ function signUp() {
     "mail": emailadress
   };
 
-  path = "user"
-
-  postData(path,data);
+  putData(path,data);
 }
