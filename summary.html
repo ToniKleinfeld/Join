@@ -13,7 +13,7 @@
     <script src="./js/summary.js"></script>
 </head>
 
-<body onload="checkIfUserlogin()">
+<body onload="checkIfUserlogin(), init()">
     <header>
         <h2 class="showindesktop">Kanban Project Managment Tool</h2>
         <img src="./assets/icons/capa 2.svg" alt="" class="showmobile">
@@ -57,14 +57,14 @@
                         <div class="center mediumbox ">
                             <a href="./board.html" class="medium box center">
                                 <div class="circlepen"></div>
-                                <div class="center column"><b class="number">1</b>
+                                <div class="center column"><b id="counttodo" class="number">1</b>
                                     <p class="mobilefont-size">To-do</p>
                                 </div>
                             </a>
                             <a href="./board.html" class="medium box center">
                                 <div class="checkcircle"></div>
                                 <div class="center column">
-                                    <b class="number">1</b>
+                                    <b class="number" id="countdone">1</b>
                                     <p class="mobilefont-size">Done</p>
                                 </div>
                             </a>
@@ -72,35 +72,35 @@
                         <a href="./board.html" class="big box center">
                             <img src="./assets/icons/urgent.svg" alt="">
                             <div class="center column">
-                                <b class="number">1</b>
+                                <b class="number" id="counturgent">1</b>
                                 <p class="mobilefont-size">Urgent</p>
                             </div>
                             <div class="greyborder"></div>
                             <div class="urgentdescription">
-                                <b>October 16,2022</b>
+                                <b id="deadline">October 16,2022</b>
                                 <p class="mobilefont-size">Upcoming Deadline</p>
                             </div>
                         </a>
                         <div class="center smallbox">
                             <a href="./board.html" class="small box center column">
-                                <b class="number">5</b>
+                                <b class="number" id="countalltask"></b>
                                 <p class="mobilefont-size">Task in Board</p>
                             </a>
                             <a href="./board.html" class="small box center column">
-                                <b class="number">2</b>
+                                <b class="number" id="counttaskinprogress">2</b>
                                 <p class="mobilefont-size">Task in Progress</p>
                             </a>
                             <a href="./board.html" class="small box center column">
-                                <b class="number">2</b>
+                                <b class="number" id="countfeedback">2</b>
                                 <p class="mobilefont-size">Awaiting Feedback</p>
                             </a>
                         </div>
                     </div>
                     <div class="greeting_user">
-                        <p class="gretting">
+                        <p class="gretting" id="greeting">
                             Good morning,
                         </p>
-                        <p class="user">Sofia Müller</p>
+                        <p class="user" id="userlogedin">Sofia Müller</p>
                     </div>
                 </div>
             </div>
