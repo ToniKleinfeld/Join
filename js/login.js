@@ -170,7 +170,6 @@ async function signUp() {
   signUpSuccses()
 }
 
-
 /**
  * show message , when signUp succses , link back to Login
  */
