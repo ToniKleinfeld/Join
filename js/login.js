@@ -167,4 +167,15 @@ async function signUp() {
   };
 
   putData(path,data);
+  signUpSuccses()
+}
+
+
+/**
+ * show message , when signUp succses , link back to Login
+ */
+function signUpSuccses() {
+  signUpDone = document.getElementById('signupdone').classList.toggle('d-none');
+
+  setTimeout(()=> {signUpDone ; window.location.href = "./index.html"} , 2000);     
 }

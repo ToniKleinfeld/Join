@@ -199,6 +199,37 @@ body {
 .eye[type=text]{
     background-image: url(../assets/icons/visibility.svg);
 }
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #B6B6B7;
+    z-index: 99;
+}
+
+.signupmessage {
+    border: solid 1px transparent;
+    border-radius: 15px;
+    padding: 25px;
+    background: #2a3547;
+    font-size: 20px;
+    color: white; 
+    animation: slide-in-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) ;
+}
+
+@keyframes slide-in-bottom {
+    0% {
+      transform: translateY(1000px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 /****************************MOBILE**********************************/
 
 @media(max-width: 825px) {
