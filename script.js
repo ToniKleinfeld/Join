@@ -4,6 +4,7 @@ let tasks = [{
       "Marcel Bauer",
       "Anton Mayer"
     ],
+    "id": 0,
     "category": "User story",
     "description": "Build start page with recipe recommendation.",
     "duedate": "10/05/2023",
@@ -26,6 +27,7 @@ let tasks = [{
       "Sofia Müller (You)",
       "Benedikt Ziegler"
     ],
+    "id": 1,
     "category": "Technical Task",
     "description": "Define CSS naming conventions and structure.",
     "duedate": "02/09/2023",
@@ -49,6 +51,7 @@ let tasks = [{
       "Benedikt Ziegler",
       "Anja Schulz"
     ],
+    "id": 2,
     "category": "Technical Task",
     "description": "Create reuseable HTML base templates",
     "duedate": "15/05/2023",
@@ -64,6 +67,7 @@ let tasks = [{
       "Anja Schulz",
       "Tatjana Wolf"
     ],
+    "id": 3,
     "category": "User story",
     "description": "Implement daily recipe and portion calculator",
     "duedate": "12/05/2023",

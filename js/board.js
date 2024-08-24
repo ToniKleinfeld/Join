@@ -48,7 +48,7 @@ function renderMainContent() {
     for (let i = 0; i < tasks.length; i++) {
         const element = tasks[i];
 
-        firstLastInitial(i);
+        // firstLastInitial(i);
         content.innerHTML += renderCardHTML(i);
         getTypeColor(element, i);
         getTypeInitialColor(element['Assigned To'], i);
@@ -95,17 +95,17 @@ function firstLastInitial(i) {
 function renderCardHTML(element, i) {
 
     return /*html*/`
-    <div id="cardContainer${i}" class="card-container" draggable="true" ondragstart="startDragging(${i})">
+    <div id="cardContainer${i}" class="card-container" draggable="true" ondragstart="startDragging(${element['id']})">
         <div class="card">
             <div class="frame-119">
                 <div id="labelBoardCard${i}" class="label-board-card">
                     <div id="cardTaskCategory" class="user-story">
-                        ${element.progress}
+                        ${element['progress']}
                     </div>
                 </div>
                 <div class="frame-114">
-                    <div id="cardTitle" class="title">${element.title}</div>
-                    <div id="cardDescription" class="card-description">${element.description}</div>
+                    <div id="cardTitle" class="title">${element['title']}</div>
+                    <div id="cardDescription" class="card-description">${element['description']}</div>
                 </div>
                 <div class="progress">
                     <div class="progressbar">
@@ -139,8 +139,9 @@ function startDragging(id) {
     currentDraggedElement = id;
 }
 
-function moveTo(category) {
-    document.getElementById('category').classList('tabelle-card') = category;
+function moveTo(progress) {
+    tasks[currentDraggedElement]['progress'] = progress;
+    updateTableHTML();
 }
 
 
