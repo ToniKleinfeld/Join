@@ -67,12 +67,40 @@
                     <div class="category-containers">
                         <div class="to-do-title">
                             <h2>To do</h2>
-                            <img onclick="openAddTaskDialog()" class="plus-button" src="./assets/icons/plus-button.svg"
-                                alt="">
+                            <img onclick="openAddTaskDialog()" class="plus-button" src="./assets/icons/plus-button.svg" alt="">
                         </div>
-                        <div id="tabelToDo" class="tabelle-card" ondrop="moveTo('tabelToDo')"
-                            ondragover="allowDrop(event)">
-                            <!--hier werden die karten gerendert-->
+                        <div id="tabelToDo" class="tabelle-card" ondrop="moveTo('tabelToDo')" ondragover="allowDrop(event)">
+                            <div class="card-container" draggable="true" ondragstart="startDragging(0)">
+                                <div class="card">
+                                    <div class="frame-119">
+                                        <div class="label-board-card">
+                                            <div id="cardTaskCategory" class="user-story">
+                                                User Story
+                                            </div>
+                                        </div>
+                                        <div class="frame-114">
+                                            <div id="cardTitle" class="title">Contact Form & Imprint</div>
+                                            <div id="cardDescription" class="card-description">Create a contact form and imprint page</div>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progressbar">
+                                                <div class="filler"></div>
+                                            </div>
+                                            <div id="cardSubtasks" class="card-subtasks"> 0/2 Subtask</div>
+                                        </div>
+                                        <div class="circle-prio-container">
+                                            <div class="circle-container">
+                                                <div class="circle circle-to-do">AS</div>
+                                                <div class="circle circle-to-do">DE</div>
+                                                <div class="circle circle-to-do">EF</div>
+                                            </div>
+                                            <div class="priority-symbols">
+                                                <img src="./assets/icons/priority-hight.svg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!--------------in progress-------------->
@@ -81,9 +109,38 @@
                             <h2>In progress</h2>
                             <img class="plus-button" src="./assets/icons/plus-button.svg" alt="">
                         </div>
-                        <div id="tableInProgress" class="tabelle-card" ondrop="moveTo('tableInProgress')"
-                            ondragover="allowDrop(event)">
-                            <!--hier werden die karten gerendert-->
+                        <div id="tableInProgress" class="tabelle-card" ondrop="moveTo('tableInProgress')" ondragover="allowDrop(event)">
+                            <div class="card-container" draggable="true" ondragstart="startDragging(1)">
+                                <div class="card">
+                                    <div class="frame-119">
+                                        <div class="label-board-card">
+                                            <div class="user-story">
+                                                User Story
+                                            </div>
+                                        </div>
+                                        <div class="frame-114">
+                                            <p class="title">Kochwelt Page & Recipe Recommender</p>
+                                            <p class="content">Build start page with recipe recommendation...</p>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progressbar">
+                                                <div class="filler"></div>
+                                            </div>
+                                            <div class="card-subtasks"> 1/2 Subtask</div>
+                                        </div>
+                                        <div class="circle-prio-container">
+                                            <div class="circle-container">
+                                                <div class="circle circle-in-progress">AM</div>
+                                                <div class="circle circle-in-progress">EM</div>
+                                                <div class="circle circle-in-progress">MB</div>
+                                            </div>
+                                            <div class="priority-symbols">
+                                                <img src="./assets/icons/priority-equal.svg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <br>
                             <div class="card-container">
                                 <div class="card">
@@ -124,9 +181,38 @@
                             <h2>Await feedback</h2>
                             <img class="plus-button" src="./assets/icons/plus-button.svg" alt="">
                         </div>
-                        <div id="tableAwaitFeedback" class="tabelle-card" ondrop="moveTo('tableAwaitFeedback')"
-                            ondragover="allowDrop(event)">
-                            <!--hier werden die karten gerendert-->
+                        <div id="tableAwaitFeedback" class="tabelle-card" ondrop="moveTo('tableAwaitFeedback')" ondragover="allowDrop(event)">
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="frame-119">
+                                        <div class="label-board-card">
+                                            <div class="user-story">
+                                                User Story
+                                            </div>
+                                        </div>
+                                        <div class="frame-114">
+                                            <p class="title">Kochwelt Page & Recipe Recommender</p>
+                                            <p class="content">Build start page with recipe recommendation...</p>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progressbar">
+                                                <div class="filler"></div>
+                                            </div>
+                                            <div class="card-subtasks"> 1/2 Subtask</div>
+                                        </div>
+                                        <div class="circle-prio-container">
+                                            <div class="circle-container">
+                                                <div class="circle circle-in-progress">AM</div>
+                                                <div class="circle circle-in-progress">EM</div>
+                                                <div class="circle circle-in-progress">MB</div>
+                                            </div>
+                                            <div class="priority-symbols">
+                                                <img src="./assets/icons/priority-equal.svg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-------------------done----------------->
@@ -135,8 +221,7 @@
                             <h2>Done</h2>
                             <img src="" alt="">
                         </div>
-                        <div id="tableDone" class="tabelle-card" ondrop="moveTo('tableDone')"
-                            ondragover="allowDrop(event)">
+                        <div id="tableDone" class="tabelle-card" ondrop="moveTo('tableDone')" ondragover="allowDrop(event)">
                             <div class="card-container"></div>
                             <div class="no-task-done-container">
                                 <span class="no-task-done-text">no task Done</span>
@@ -246,8 +331,7 @@
                         <h2 class="input-title">Prio</h2>
                         <div class="check-button-container">
                             <button id="prioUrgendBtn" class="button-empty-small-2 check-btn-1">Urgent</button>
-                            <button id="prioMediumBtn"
-                                class="button-empty-small-2  check-btn-2 orange-button">Medium</button>
+                            <button id="prioMediumBtn" class="button-empty-small-2  check-btn-2 orange-button">Medium</button>
                             <button id="prioLowBtn" class="button-empty-small-2  check-btn-3">Low</button>
                         </div>
                     </div>
@@ -263,8 +347,7 @@
 
                     <div class="input-container">
                         <h2>Subtasks</h2>
-                        <input id="subtasks" class="input-subtask input-title" type="text"
-                            placeholder="Add new subtask">
+                        <input id="subtasks" class="input-subtask input-title" type="text" placeholder="Add new subtask">
                     </div>
 
                 </div>
