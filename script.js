@@ -77,6 +77,7 @@ let tasks = [{
     "title": "Daily Kochwelt Recipe",
     "progress": "Await feedback"      
   }];
+  
 let contacts = [{
     "mail": "anton@gmx.com",
     "name": "Anton Mayer",

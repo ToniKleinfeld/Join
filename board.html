@@ -70,8 +70,8 @@
                             <img onclick="openAddTaskDialog()" class="plus-button" src="./assets/icons/plus-button.svg"
                                 alt="">
                         </div>
-                        <div id="tabelToDo" class="tabelle-card" ondrop="moveTo('tabelToDo')"
-                            ondragover="allowDrop(event)">
+                        <div id="tableToDo" class="tabelle-card" ondrop="moveTo('To do')" ondragover="allowDrop(event)">
+                            <div class="no-tasks-container">No tasks to do</div>
                             <!--hier werden die karten gerendert-->
                         </div>
                     </div>
@@ -81,41 +81,9 @@
                             <h2>In progress</h2>
                             <img class="plus-button" src="./assets/icons/plus-button.svg" alt="">
                         </div>
-                        <div id="tableInProgress" class="tabelle-card" ondrop="moveTo('tableInProgress')"
+                        <div id="tableInProgress" class="tabelle-card" ondrop="moveTo('In progress')"
                             ondragover="allowDrop(event)">
                             <!--hier werden die karten gerendert-->
-                            <br>
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="frame-119">
-                                        <div class="label-board-card">
-                                            <div class="user-story">
-                                                User Story
-                                            </div>
-                                        </div>
-                                        <div class="frame-114">
-                                            <p class="title">Kochwelt Page & Recipe Recommender</p>
-                                            <p class="content">Build start page with recipe recommendation...</p>
-                                        </div>
-                                        <div class="progress">
-                                            <div class="progressbar">
-                                                <div class="filler"></div>
-                                            </div>
-                                            <div class="card-subtasks"> 1/2 Subtask</div>
-                                        </div>
-                                        <div class="circle-prio-container">
-                                            <div class="circle-container">
-                                                <div class="circle circle-in-progress">AM</div>
-                                                <div class="circle circle-in-progress">EM</div>
-                                                <div class="circle circle-in-progress">MB</div>
-                                            </div>
-                                            <div class="priority-symbols">
-                                                <img src="./assets/icons/priority-equal.svg" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <!-------------await feedback------------>
@@ -124,7 +92,7 @@
                             <h2>Await feedback</h2>
                             <img class="plus-button" src="./assets/icons/plus-button.svg" alt="">
                         </div>
-                        <div id="tableAwaitFeedback" class="tabelle-card" ondrop="moveTo('tableAwaitFeedback')"
+                        <div id="tableAwaitFeedback" class="tabelle-card" ondrop="moveTo('Await feedback')"
                             ondragover="allowDrop(event)">
                             <!--hier werden die karten gerendert-->
                         </div>
@@ -135,8 +103,7 @@
                             <h2>Done</h2>
                             <img src="" alt="">
                         </div>
-                        <div id="tableDone" class="tabelle-card" ondrop="moveTo('tableDone')"
-                            ondragover="allowDrop(event)">
+                        <div id="tableDone" class="tabelle-card" ondrop="moveTo('Done')" ondragover="allowDrop(event)">
                             <div class="card-container"></div>
                             <div class="no-task-done-container">
                                 <span class="no-task-done-text">no task Done</span>

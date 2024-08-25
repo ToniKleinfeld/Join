@@ -41,20 +41,20 @@ function calcProgressbarSubtasks() {
 
 }
 
-function renderMainContent() {
-    let content = document.getElementById('tabelToDo');
-    content.innerHTML = '';
+// function renderMainContent() {
+//     let content = document.getElementById('tabelToDo');
+//     content.innerHTML = '';
 
-    for (let i = 0; i < tasks.length; i++) {
-        const element = tasks[i];
+//     for (let i = 0; i < tasks.length; i++) {
+//         const element = tasks[i];
 
-        // firstLastInitial(i);
-        content.innerHTML += renderCardHTML(i);
-        getTypeColor(element, i);
-        getTypeInitialColor(element['Assigned To'], i);
-    }
+//         // firstLastInitial(i);
+//         content.innerHTML += renderCardHTML(i);
+//         getTypeColor(element, i);
+//         getTypeInitialColor(element['Assigned To'], i);
+//     }
 
-}
+// }
 
 function getInitialColor(initial) {
     return initialColors[initial] || '#A8A878'; // Standardfarbe, falls Initiale nicht gefunden
@@ -92,69 +92,29 @@ function firstLastInitial(i) {
 }
 
 
-function renderCardHTML(element, i) {
 
-    return /*html*/`
-    <div id="cardContainer${i}" class="card-container" draggable="true" ondragstart="startDragging(${element['id']})">
-        <div class="card">
-            <div class="frame-119">
-                <div id="labelBoardCard${i}" class="label-board-card">
-                    <div id="cardTaskCategory" class="user-story">
-                        ${element['progress']}
-                    </div>
-                </div>
-                <div class="frame-114">
-                    <div id="cardTitle" class="title">${element['title']}</div>
-                    <div id="cardDescription" class="card-description">${element['description']}</div>
-                </div>
-                <div class="progress">
-                    <div class="progressbar">
-                        <div class="filler"></div>
-                    </div>
-                    <div id="cardSubtasks" class="card-subtasks"> 0/2 Subtask</div>
-                </div>
-                <div class="circle-prio-container">
-                    <div id="initialsContainer" class="circle-container">
-                        <div id="initial${i}" class="circle circle-to-do">${initialsArray[i][0]}</div>
-                        <div id="initial${i}" class="circle circle-to-do">${initialsArray[i][1]}</div>
-                        <div id="initial${i}" class="circle circle-to-do">${initialsArray[i]?.[2] || ''}</div>
-                    </div>
-                    <div class="priority-symbols">
-                        <img src="./assets/icons/priority-hight.svg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
+function showNoTaskContainer() {
+        return /*html*/`
+        <div class="no-tasks-container">No tasks to do</div>
     `;
 }
 
-
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-
-function startDragging(id) {
-    currentDraggedElement = id;
-}
-
-function moveTo(progress) {
-    tasks[currentDraggedElement]['progress'] = progress;
-    updateTableHTML();
-}
-
-
 function updateTableHTML() {
     let toDo = tasks.filter(t => t.progress == 'to do')
-    document.getElementById('tabelToDo').innerHTML = '';
+    console.log(toDo);
+
+    document.getElementById('tableToDo').innerHTML = '';
 
     for (let index = 0; index < toDo.length; index++) {
         firstLastInitial(index);
         const element = toDo[index];
-        document.getElementById('tabelToDo').innerHTML += renderCardHTML(element);
-
+        document.getElementById('tableToDo').innerHTML += renderCardHTML(element, index);
     }
+    // if (toDo.length == 0) {
+    //     document.getElementById('tableToDo').innerHTML = showNoTaskContainer();
+    // } else {
+
+    // }
 
 
     let inProgress = tasks.filter(t => t.progress == 'in progress')
@@ -188,4 +148,58 @@ function updateTableHTML() {
         document.getElementById('tableDone').innerHTML += renderCardHTML(element, index);
 
     }
+}
+
+
+function renderCardHTML(element, i) {
+
+    return /*html*/`
+    <div class="card-container" draggable="true" ondragstart="startDragging(${element['id']})">
+        <div class="card">
+            <div class="frame-119">
+                <div class="label-board-card">
+                    <div class="user-story">
+                        ${element['category']}
+                    </div>
+                </div>
+                <div class="frame-114">
+                    <div class="title">${element['title']}</div>
+                    <div class="card-description">${element['description']}</div>
+                </div>
+                <div class="progress">
+                    <div class="progressbar">
+                        <div class="filler"></div>
+                    </div>
+                    <div class="card-subtasks"> 0/2 Subtask</div>
+                </div>
+                <div class="circle-prio-container">
+                    <div class="circle-container">
+                        <div class="circle circle-to-do">${initialsArray[i][0]}</div>
+                        <div class="circle circle-to-do">${initialsArray[i][1]}</div>
+                        <div class="circle circle-to-do">${initialsArray[i]?.[2] || ''}</div>
+                    </div>
+                    <div class="priority-symbols">
+                        <img src="./assets/icons/priority-hight.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    `;
+}
+
+function startDragging(id) {
+    currentDraggedElement = id;
+}
+
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+
+function moveTo(progress) {
+    tasks[currentDraggedElement]['progress'] = progress;
+    updateTableHTML();
 }
