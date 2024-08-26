@@ -211,6 +211,12 @@ function logOut() {
   sessionStorage.clear()
 }
 
+/**
+ * 
+ * @param {string} path -path to wanted firebase API folder
+ * @param {*} data - wicht object or Array should be PUT to the firebase API
+ * @returns 
+ */
 async function putData(path="", data={}) {  
   const BASE_URL = "https://remotestorage-fe678-default-rtdb.europe-west1.firebasedatabase.app/"; 
   let response = await fetch(BASE_URL + path + ".json",{

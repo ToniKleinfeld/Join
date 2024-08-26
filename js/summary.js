@@ -5,6 +5,8 @@ function init() {
     countTaskTypes("in progress",'counttaskinprogress');
     countTaskTypes("Await feedback",'countfeedback');
     countUrgent()
+    greetingUser()
+    greetMobile()
 }
 
 /**
@@ -41,20 +43,40 @@ function countAllTask() {
  */
 function countUrgent() {    
     const urgentcount = tasks.filter(tasks => tasks.prio === "Urgent");
-    let deadline = urgentcount[0].duedate;
-    
-    console.log();
-   
+    let date =  new Date(urgentcount[0].duedate).toLocaleDateString('en-us', {month:"long", day:"numeric", year:"numeric"});
+       
     if (urgentcount.length === 0) {
         document.getElementById('deadline').innerHTML = '';
        return document.getElementById('counturgent').innerHTML = "0" ;
     } else {
-        document.getElementById('deadline').innerHTML = str
+        document.getElementById('deadline').innerHTML = date;
         return document.getElementById('counturgent').innerHTML = `${urgentcount.length}`;
     }
 }
 
+/**
+ * Greet massage for the loged user or guest
+ */
+function greetingUser() {
+    greeting = document.getElementById('greeting');
+    userName = document.getElementById('userlogedin');
 
-// all id's=  {
-//       userlogedin, greeting
-// }
+    if (user === 'Guest') {
+        greeting.innerHTML = 'Good morning!'
+    } else {
+        greeting.innerHTML = 'Good morning, ';
+        userName.innerHTML = `${user}`;
+    }
+}
+
+/**
+ * Show the welcome screen once in mobile
+ */
+function greetMobile() {
+    if (window.innerWidth <= 1150 && sessionStorage.getItem("greet") == undefined ) {
+        document.getElementById('greeting_user').classList.toggle('mobiled-none');
+        sessionStorage.setItem('greet', true);
+
+        setTimeout(()=> {document.getElementById('greeting_user').classList.toggle('mobiled-none');}, 2000);  
+    }    
+  }

@@ -125,6 +125,7 @@
 .urgentdescription p {
     font-size: 16px;
     font-weight: 400;
+    padding-top: 8px;
 }
 
 .box:hover {
@@ -172,8 +173,43 @@ a {
 }
 
 @media (max-width:1150px) {
-    .greeting_user {
+    @keyframes slide-out-bck-center {
+        0% {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0px;
+            right: 0;
+            opacity: 1;
+            z-index: 99;
+            background-color: white;
+        }
+
+        100% {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0px;
+            right: 0;
+            opacity: 1;
+            z-index: 99;
+            background-color: white;
+            opacity: 0;
+        }
+    }
+
+    .mobiled-none{
         display: none;
+    }
+
+    .greeting_user {
+        animation: slide-out-bck-center 3s both;
     }
 }
 
@@ -185,6 +221,37 @@ a {
     .maincontent {
         align-items: flex-start;
         margin-top: 100px;
+    }
+
+    @keyframes slide-out-bck-center {
+        0% {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 80px;
+            right: 0;
+            opacity: 1;
+            z-index: 99;
+            background-color: white;
+        }
+
+        100% {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 80px;
+            right: 0;
+            opacity: 1;
+            z-index: 99;
+            background-color: white;
+            opacity: 0;
+        }
     }
 }
 
