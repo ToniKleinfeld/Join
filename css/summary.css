@@ -179,6 +179,7 @@ a {
             justify-content: center;
             align-items: center;
             position: absolute;
+            flex-direction: column;
             top: 0;
             left: 0;
             bottom: 0px;
@@ -193,6 +194,7 @@ a {
             justify-content: center;
             align-items: center;
             position: absolute;
+            flex-direction: column;
             top: 0;
             left: 0;
             bottom: 0px;
@@ -221,6 +223,7 @@ a {
     .maincontent {
         align-items: flex-start;
         margin-top: 100px;
+        height: auto !important;
     }
 
     @keyframes slide-out-bck-center {
@@ -229,6 +232,7 @@ a {
             justify-content: center;
             align-items: center;
             position: absolute;
+            flex-direction: column;
             top: 0;
             left: 0;
             bottom: 80px;
@@ -243,6 +247,7 @@ a {
             justify-content: center;
             align-items: center;
             position: absolute;
+            flex-direction: column;
             top: 0;
             left: 0;
             bottom: 80px;
@@ -334,7 +339,7 @@ a {
         gap: 5px;
     }
 
-    .number {
+    .number, .gretting {
         font-size: 37px;
     }
 
@@ -343,5 +348,9 @@ a {
     .big img {
         height: 30px;
         width: 30px;
+    }
+
+    .user {
+        font-size: 42px;
     }
 }
