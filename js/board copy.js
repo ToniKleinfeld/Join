@@ -4,7 +4,7 @@ const typeColors = {
 };
 
 
-const initialColors ={
+const initialColors = {
     "EM": '#1fd7c1',
     "MB": '#462f8a',
     "AM": '#ff7a00',
@@ -16,6 +16,7 @@ const initialColors ={
     "TW": '#ff4646',
 }
 
+
 let currentDraggedElement;
 let initialsArray = [];
 
@@ -23,47 +24,53 @@ let initialsArray = [];
 
 
 function initBoard() {
-    renderMainContent();
+    // renderMainContent();
+    updateTableHTML();
 }
+
 
 function openAddTaskDialog() {
     let overlay = document.getElementById('addTaskOverlay');
     overlay.style.display = 'flex';
 }
 
+
 function closeTaskDialog() {
     let overlay = document.getElementById('addTaskOverlay');
     overlay.style.display = 'none';
 }
 
+
 function calcProgressbarSubtasks() {
-
 }
 
-function renderMainContent() {
-    let content = document.getElementById('tabelToDo');
-    content.innerHTML = '';
+// function renderMainContent() {
+//     let content = document.getElementById('tabelToDo');
+//     content.innerHTML = '';
 
-    for (let i = 0; i < tasks.length; i++) {
-        const element = tasks[i];
+//     for (let i = 0; i < tasks.length; i++) {
+//         const element = tasks[i];
 
-        firstLastInitial(i);
-        content.innerHTML += renderCardHTML(i);
-        getTypeColor(element, i);
-        getTypeInitialColor(element['Assigned To'], i);
-    }
+//         // firstLastInitial(i);
+//         content.innerHTML += renderCardHTML(i);
+//         getTypeColor(element, i);
+//         getTypeInitialColor(element['Assigned To'], i);
+//     }
 
-}
+// }
 
 function getInitialColor(initial) {
     return initialColors[initial] || '#A8A878'; // Standardfarbe, falls Initiale nicht gefunden
 }
+
+
 function getTypeInitialColor(task, i) {
     let initials = initialsArray[i]; // Holt das Initialen-Array für den aktuellen Task
     let color = initials.length > 0 ? initials[0] : ''; // Nimmt die erste Initiale (oder einen Fallback)
     let bgcolor = getInitialColor(color);
     document.getElementById(`initial${i}`).style.backgroundColor = bgcolor;
 }
+
 
 function getTypeColor(task, i) {
     let color = task['category'];
@@ -74,49 +81,117 @@ function getTypeColor(task, i) {
 
 function firstLastInitial(i) {
     let fullNames = tasks[i]['Assigned To'];  // Array von vollständigen Namen
-
     let initials = [];  // Initialen-Array für diese spezielle Gruppe von Namen
 
     fullNames.forEach(fullName => {
         let nameParts = fullName.split(" ");   // Trenne den vollen Namen in Vorname und Nachname
-
         // Hole den ersten Buchstaben von Vorname und Nachname
         let firstInitial = nameParts[0].charAt(0);
         let lastInitial = nameParts[1].charAt(0);
 
         initials.push(firstInitial + lastInitial);   // Füge Initialen in das spezielle Initialen-Array ein
-    });
+    }
+    );
 
     initialsArray.push(initials);  // Füge das spezifische Initialen-Array in das übergeordnete Array ein
     // console.log("Initialien-Arrays: ", initialsArray);  // Ausgabe des übergeordneten Initialen-Arrays
 }
 
 
-function renderCardHTML(i) {
+function showNoTaskContainer(text) {
     return /*html*/`
-    <div id="cardContainer${i}" class="card-container" draggable="true" ondragstart="startDragging(${i})">
+        <div class="no-tasks-container">No tasks ${text}</div>
+    `;
+}
+
+function updateTableHTML() {
+
+    let toDo = tasks.filter(t => t.progress === 'To do');
+    document.getElementById('tableToDo').innerHTML = '';
+
+    if (toDo.length == 0) {
+        document.getElementById('tableToDo').innerHTML = showNoTaskContainer('To do');
+    } else {
+        for (let index = 0; index < toDo.length; index++) {
+            firstLastInitial(index);
+            const element = toDo[index];
+            document.getElementById('tableToDo').innerHTML += renderCardHTML(element, index);
+        }
+    }
+
+
+    let inProgress = tasks.filter(t => t.progress === 'in progress');
+    document.getElementById('tableInProgress').innerHTML = '';
+
+    if (inProgress.length == 0) {
+        document.getElementById('tableInProgress').innerHTML = showNoTaskContainer('In progress');
+    } else {
+        for (let index = 0; index < inProgress.length; index++) {
+            firstLastInitial(index);
+            const element = inProgress[index];
+            document.getElementById('tableInProgress').innerHTML += renderCardHTML(element, index);
+
+        }
+    }
+
+
+    let awaitFeedback = tasks.filter(t => t.progress === 'Await feedback');
+    document.getElementById('tableAwaitFeedback').innerHTML = '';
+
+    if (awaitFeedback.length == 0) {
+        document.getElementById('tableAwaitFeedback').innerHTML = showNoTaskContainer('Await feedback');
+    } else {
+        for (let index = 0; index < awaitFeedback.length; index++) {
+            firstLastInitial(index);
+            const element = awaitFeedback[index];
+            document.getElementById('tableAwaitFeedback').innerHTML += renderCardHTML(element, index);
+
+        }
+    }
+
+
+    let done = tasks.filter(t => t.progress === 'Done');
+    document.getElementById('tableDone').innerHTML = '';
+
+    if (done.length == 0) {
+        document.getElementById('tableDone').innerHTML = showNoTaskContainer('Done');
+    } else {
+        for (let index = 0; index < done.length; index++) {
+            firstLastInitial(index);
+            const element = done[index];
+            document.getElementById('tableDone').innerHTML += renderCardHTML(element, index);
+
+        }
+    }
+}
+
+
+function renderCardHTML(element, i) {
+
+    return /*html*/`
+    <div class="card-container" draggable="true" ondragstart="startDragging(${element['id']})">
         <div class="card">
             <div class="frame-119">
-                <div id="labelBoardCard${i}" class="label-board-card">
-                    <div id="cardTaskCategory" class="user-story">
-                        ${tasks[i]['category']}
+                <div class="label-board-card">
+                    <div class="user-story">
+                        ${element['category']}
                     </div>
                 </div>
-                <div class="frame-114">
-                    <div id="cardTitle" class="title">${tasks[i]['title']}</div>
-                    <div id="cardDescription" class="card-description">${tasks[i]['description']}</div>
+                <div class="title-description-container">
+                    <div class="title">${element['title']}</div>
+                    <div class="card-description">${element['description']}</div>
                 </div>
                 <div class="progress">
                     <div class="progressbar">
                         <div class="filler"></div>
                     </div>
-                    <div id="cardSubtasks" class="card-subtasks"> 0/2 Subtask</div>
+                    <div class="card-subtasks"> 0/2 Subtask</div>
                 </div>
                 <div class="circle-prio-container">
-                    <div id="initialsContainer" class="circle-container">
-                        <div id="initial${i}" class="circle circle-to-do">${initialsArray[i][0]}</div>
-                        <div id="initial${i}" class="circle circle-to-do">${initialsArray[i][1]}</div>
-                        <div id="initial${i}" class="circle circle-to-do">${initialsArray[i]?.[2] || ''}</div>
+                    <div class="circle-container">
+                        <div class="circle circle-to-do">${initialsArray[i][0]}</div>
+                        <div class="circle circle-to-do">${initialsArray[i][1]}</div>
+                        <div class="circle circle-to-do">${initialsArray[i]?.[2] || ''}</div>
                     </div>
                     <div class="priority-symbols">
                         <img src="./assets/icons/priority-hight.svg" alt="">
@@ -130,58 +205,17 @@ function renderCardHTML(i) {
 }
 
 
-
-
-
-// function fillTask() {
-//     let title = document.getElementById('enterATitle');
-//     let description = document.getElementById('enterADescription');
-//     let selectContact = document.getElementById('selectContacts');
-//     let date = document.getElementById('iputDate');
-//     let category = document.getElementById('category');
-//     let subtasks = document.getElementById('subtasks');
-
-//     document.getElementById('prioUrgendBtn').onclick = function () {
-//         console.log('Urgent button clicked');
-//     };
-
-//     document.getElementById('prioMediumBtn').onclick = function () {
-//         console.log('Medium button clicked');
-//     };
-
-//     document.getElementById('prioLowBtn').onclick = function () {
-//         console.log('Low button clicked');
-//     };
-
-
-//     console.log(title.value);
-//     console.log(selectContact.value);
-//     console.log(description.value);
-//     console.log(date.value);
-//     console.log(category.value);
-//     console.log(subtasks.value);
-
-// }
-
+function startDragging(id) {
+    currentDraggedElement = id;
+}
 
 
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function startDragging(id) {
-    currentDraggedElement = id;
-}
 
-function moveTo(category) {
-    document.getElementById('category').classList('tabelle-card') = category;
+function moveTo(progress) {
+    tasks[currentDraggedElement]['progress'] = progress;
+    updateTableHTML();
 }
-// function drag(ev) {
-//     ev.dataTransfer.setData('text', ev.target.id);
-// }
-
-// function drop(ev) {
-//     ev.preventDefault();
-//     let data = ev.dataTransfer.getData('text');
-//     ev.target.appendChild(document.getElementById(data));
-// }

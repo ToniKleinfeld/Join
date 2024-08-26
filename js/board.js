@@ -16,6 +16,7 @@ const initialColors = {
     "TW": '#ff4646',
 }
 
+
 let currentDraggedElement;
 let initialsArray = [];
 
@@ -27,18 +28,20 @@ function initBoard() {
     updateTableHTML();
 }
 
+
 function openAddTaskDialog() {
-    let overlay = document.getElementById('addTaskOverlay');
-    overlay.style.display = 'flex';
+    let addTaskOverlay = document.getElementById('addTaskOverlay');
+    addTaskOverlay.style.display = 'flex';
 }
+
 
 function closeTaskDialog() {
-    let overlay = document.getElementById('addTaskOverlay');
-    overlay.style.display = 'none';
+    let addTaskOverlay = document.getElementById('addTaskOverlay');
+    addTaskOverlay.style.display = 'none';
 }
 
-function calcProgressbarSubtasks() {
 
+function calcProgressbarSubtasks() {
 }
 
 // function renderMainContent() {
@@ -59,12 +62,15 @@ function calcProgressbarSubtasks() {
 function getInitialColor(initial) {
     return initialColors[initial] || '#A8A878'; // Standardfarbe, falls Initiale nicht gefunden
 }
+
+
 function getTypeInitialColor(task, i) {
     let initials = initialsArray[i]; // Holt das Initialen-Array für den aktuellen Task
     let color = initials.length > 0 ? initials[0] : ''; // Nimmt die erste Initiale (oder einen Fallback)
     let bgcolor = getInitialColor(color);
     document.getElementById(`initial${i}`).style.backgroundColor = bgcolor;
 }
+
 
 function getTypeColor(task, i) {
     let color = task['category'];
@@ -92,61 +98,71 @@ function firstLastInitial(i) {
 }
 
 
-
-function showNoTaskContainer() {
-        return /*html*/`
-        <div class="no-tasks-container">No tasks to do</div>
+function showNoTaskContainer(text) {
+    return /*html*/`
+        <div class="no-tasks-container">No tasks ${text}</div>
     `;
 }
 
-function updateTableHTML() {
-    let toDo = tasks.filter(t => t.progress == 'to do')
-    console.log(toDo);
 
+function updateTableHTML() {
+
+    let toDo = tasks.filter(t => t.progress === 'To do');
     document.getElementById('tableToDo').innerHTML = '';
 
-    for (let index = 0; index < toDo.length; index++) {
-        firstLastInitial(index);
-        const element = toDo[index];
-        document.getElementById('tableToDo').innerHTML += renderCardHTML(element, index);
+    if (toDo.length == 0) {
+        document.getElementById('tableToDo').innerHTML = showNoTaskContainer('To do');
+    } else {
+        for (let index = 0; index < toDo.length; index++) {
+            firstLastInitial(index);
+            const element = toDo[index];
+            document.getElementById('tableToDo').innerHTML += renderCardHTML(element, index);
+        }
     }
-    // if (toDo.length == 0) {
-    //     document.getElementById('tableToDo').innerHTML = showNoTaskContainer();
-    // } else {
-
-    // }
 
 
-    let inProgress = tasks.filter(t => t.progress == 'in progress')
+    let inProgress = tasks.filter(t => t.progress === 'in progress');
     document.getElementById('tableInProgress').innerHTML = '';
 
-    for (let index = 0; index < inProgress.length; index++) {
-        firstLastInitial(index);
-        const element = inProgress[index];
-        document.getElementById('tableInProgress').innerHTML += renderCardHTML(element, index);
+    if (inProgress.length == 0) {
+        document.getElementById('tableInProgress').innerHTML = showNoTaskContainer('In progress');
+    } else {
+        for (let index = 0; index < inProgress.length; index++) {
+            firstLastInitial(index);
+            const element = inProgress[index];
+            document.getElementById('tableInProgress').innerHTML += renderCardHTML(element, index);
 
+        }
     }
 
 
-    let awaitFeedback = tasks.filter(t => t.progress == 'Await feedback')
+    let awaitFeedback = tasks.filter(t => t.progress === 'Await feedback');
     document.getElementById('tableAwaitFeedback').innerHTML = '';
 
-    for (let index = 0; index < awaitFeedback.length; index++) {
-        firstLastInitial(index);
-        const element = awaitFeedback[index];
-        document.getElementById('tableAwaitFeedback').innerHTML += renderCardHTML(element, index);
+    if (awaitFeedback.length == 0) {
+        document.getElementById('tableAwaitFeedback').innerHTML = showNoTaskContainer('Await feedback');
+    } else {
+        for (let index = 0; index < awaitFeedback.length; index++) {
+            firstLastInitial(index);
+            const element = awaitFeedback[index];
+            document.getElementById('tableAwaitFeedback').innerHTML += renderCardHTML(element, index);
 
+        }
     }
 
 
-    let done = tasks.filter(t => t.progress == 'Done')
+    let done = tasks.filter(t => t.progress === 'Done');
     document.getElementById('tableDone').innerHTML = '';
 
-    for (let index = 0; index < done.length; index++) {
-        firstLastInitial(index);
-        const element = done[index];
-        document.getElementById('tableDone').innerHTML += renderCardHTML(element, index);
+    if (done.length == 0) {
+        document.getElementById('tableDone').innerHTML = showNoTaskContainer('Done');
+    } else {
+        for (let index = 0; index < done.length; index++) {
+            firstLastInitial(index);
+            const element = done[index];
+            document.getElementById('tableDone').innerHTML += renderCardHTML(element, index);
 
+        }
     }
 }
 
@@ -154,7 +170,7 @@ function updateTableHTML() {
 function renderCardHTML(element, i) {
 
     return /*html*/`
-    <div class="card-container" draggable="true" ondragstart="startDragging(${element['id']})">
+    <div onclick="showTaskOverlay(${element['id']})" class="card-container" draggable="true" ondragstart="startDragging(${element['id']})">
         <div class="card">
             <div class="frame-119">
                 <div class="label-board-card">
@@ -162,7 +178,7 @@ function renderCardHTML(element, i) {
                         ${element['category']}
                     </div>
                 </div>
-                <div class="frame-114">
+                <div class="title-description-container">
                     <div class="title">${element['title']}</div>
                     <div class="card-description">${element['description']}</div>
                 </div>
@@ -188,6 +204,18 @@ function renderCardHTML(element, i) {
     <br>
     `;
 }
+
+function showTaskOverlay() {
+    let overlay = document.getElementById('overlay');
+    overlay.style.display = 'flex';
+}
+
+
+function closeTaskOverlay() {
+    let overlay = document.getElementById('overlay');
+    overlay.style.display = 'none';
+}
+
 
 function startDragging(id) {
     currentDraggedElement = id;

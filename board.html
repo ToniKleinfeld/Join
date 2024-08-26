@@ -14,7 +14,7 @@
     <script src="./script.js"></script>
     <script src="./js/add-task.js"></script>
     <script src="./js/template.js"></script>
-    <script src="./firebasedate.json"></script>
+    <!-- <script src="./firebasedate.json"></script> -->
 </head>
 
 <body onload="initBoard(), checkIfUserlogin()">
@@ -72,7 +72,6 @@
                                 alt="">
                         </div>
                         <div id="tableToDo" class="tabelle-card" ondrop="moveTo('To do')" ondragover="allowDrop(event)">
-                            <div class="no-tasks-container">No tasks to do</div>
                             <!--hier werden die karten gerendert-->
                         </div>
                     </div>
@@ -80,9 +79,10 @@
                     <div class="category-containers">
                         <div class="in-progress-title">
                             <h2>In progress</h2>
-                            <img class="plus-button" src="./assets/icons/plus-button.svg" alt="">
+                            <img onclick="openAddTaskDialog()" class="plus-button" src="./assets/icons/plus-button.svg"
+                                alt="">
                         </div>
-                        <div id="tableInProgress" class="tabelle-card" ondrop="moveTo('In progress')"
+                        <div id="tableInProgress" class="tabelle-card" ondrop="moveTo('in progress')"
                             ondragover="allowDrop(event)">
                             <!--hier werden die karten gerendert-->
                         </div>
@@ -91,7 +91,8 @@
                     <div class="category-containers">
                         <div class="await-feedback-title">
                             <h2>Await feedback</h2>
-                            <img class="plus-button" src="./assets/icons/plus-button.svg" alt="">
+                            <img onclick="openAddTaskDialog()" class="plus-button" src="./assets/icons/plus-button.svg"
+                                alt="">
                         </div>
                         <div id="tableAwaitFeedback" class="tabelle-card" ondrop="moveTo('Await feedback')"
                             ondragover="allowDrop(event)">
@@ -120,7 +121,7 @@
         <div class="task-overlay-container">
             <div class="user-story-close-container">
                 <div class="user-story-overlay">User Story</div>
-                <img src="./assets/icons/close.svg" alt="">
+                <img onclick="closeTaskOverlay()" src="./assets/icons/close.svg" alt="">
             </div>
             <h1>Kochwelt Page & Recipe Recommender</h1>
             <p class="content-overlay">Build start page with recipe recommendation...</p>

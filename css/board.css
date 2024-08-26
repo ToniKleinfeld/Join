@@ -169,7 +169,7 @@ img:hover {
     color: #FFFFFF;
 }
 
-.frame-114 {
+.title-description-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -531,7 +531,7 @@ h1 {
 
 
 /*********************Media Query*****************/
-@media (max-width:930px) {
+@media (max-width:950px) {
 
     .board-main {
         margin-top: 80px;
