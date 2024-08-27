@@ -208,6 +208,65 @@ function renderCardHTML(element, i) {
 function showTaskOverlay() {
     let overlay = document.getElementById('overlay');
     overlay.style.display = 'flex';
+
+    document.getElementById('overlay').innerHTML = rendertaskOverlayHTML();
+}
+
+function rendertaskOverlayHTML() {
+    return /*html*/`
+    <div class="task-overlay-container">
+        <div class="user-story-close-container">
+            <div class="user-story-overlay">User Story</div>
+            <img onclick="closeTaskOverlay()" src="./assets/icons/close.svg" alt="">
+        </div>
+        <h1>Kochwelt Page & Recipe Recommender</h1>
+        <p class="content-overlay">Build start page with recipe recommendation...</p>
+        <div class="date-overlay">
+            <span>Due date:</span>
+            <span>11/08/2024</span>
+        </div>
+        <div class="priority-overlay">
+            <span>Priority:</span>
+            <div>
+                <span>Medium</span>
+                <img src="./assets/icons/priority-equal.svg" alt="">
+            </div>
+        </div>
+        <div>
+            <div class="assigned-grid-overlay">
+                <div>Assigned To:</div>
+                <div class="assigned-row-overlay"><span class="circle circle-in-progress">EM</span><span>Emanuell
+                        Mauer</span></div>
+                <div class="assigned-row-overlay"><span class="circle circle-in-progress">MB</span><span>Marcel
+                        Bauer</span></div>
+                <div class="assigned-row-overlay"><span class="circle circle-in-progress">AM</span><span>Anton
+                        Mayer</span></div>
+            </div>
+        </div>
+        <div>
+            <div class="subtasks-grid-overlay">
+                <div>Subtasks</div>
+                <form action="">
+                    <div class="checkbox-title-container">
+                        <input class="checkbox" type="checkbox" id="checkbox1" name="toDo" value="" />
+                        <label for="checkbox1">Implement Recipe Recommendation</label>
+                    </div>
+                    <div class="checkbox-title-container">
+                        <input class="checkbox" type="checkbox" id="checkbox2" name="toDo" value="" />
+                        <label for="checkbox2">Start Page Layout</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="delete-edit-container">
+            <img class="trash-delete" src="./assets/icons/trash-board.svg" alt="">
+            <span>Delete</span>
+            <img class="line-vertical" src="./assets/icons/line-vertical.svg" alt="">
+            <img class="trash-delete" src="./assets/icons/edit.svg" alt="">
+            <span>Edit</span>
+        </div>
+    </div>
+`;
 }
 
 
