@@ -154,11 +154,12 @@
   }
   
   .dropdown-check-list-contacts ul.items {
-    padding: 2px;
+    padding: 12px 16px;
     display: none;
     margin: 0;
-    border: 1px solid #ccc;
-    border-top: none;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    width: 422px;
   }
   
   .dropdown-check-list-contacts ul.items li {
@@ -171,6 +172,13 @@
 
   .contactslistassign input{
     height: auto !important;
+    width: auto;
+  }
+
+  .items li {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
   }
 
 @media (max-height:800px) {
