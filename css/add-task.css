@@ -171,7 +171,7 @@
   }
 
   .contactslistassign input{
-    height: auto !important;
+    height: auto;
     width: auto;
   }
 
@@ -179,6 +179,15 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row-reverse;
+    height: fit-content;
+  }
+
+  .contacticon {
+    font-size: 20px;
+    background-color: lightcoral;
+    border: solid 1px white;
+    border-radius: 50%;
+    padding: 2px;
   }
 
 @media (max-height:800px) {

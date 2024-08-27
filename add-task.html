@@ -65,18 +65,10 @@
 
                     <div class="input-container dropdown-check-list-contacts" tabindex="100" id="contact-select">
                         <h2 class="input-title">Assigned to</h2>
-                        <!-- <select name="names" id="contactsdropdown">
-                            <option value="0">Select contacts to assign</option>
-                            <option value="1">Contact 1</option>
-                            <option value="2">Contact 2</option>
-                            <option value="3">Contact 3</option>
-                            <option value="4">Contact 4</option>
-                         </select> -->
-
                          <span class="anchor" onclick="showContactslistToAssign()">Select contacts to assign</span>
                          <ul class="items">
-                           <li class="contactslistassign"><input  type="checkbox" /><span class="">AT</span>contact 1 </li>
-                           <li class="contactslistassign"><input  type="checkbox" /><span class="">BM</span>contact 2</li>
+                           <li class="contactslistassign"><input  type="checkbox" /><div><span class="contacticon">AT</span> contact 1 </div></li>
+                           <li class="contactslistassign"><input  type="checkbox" /><div><span class="contacticon">BZ</span> contact 2 </div></li>
                          </ul>
                     </div>
                 </div>
@@ -100,7 +92,7 @@
                     <div class="input-container">
                         <h2 class="required input-title">Category</h2>
                         <select name="category">
-                            <option value="category" selected hidden >Select task category</option>
+                            <option value="category" selected hidden disabled>Select task category</option>
                             <option value="category">Technical Task</option>
                             <option value="category">User Story</option>
                         </select>
