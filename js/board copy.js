@@ -25,19 +25,23 @@ let initialsArray = [];
 
 function initBoard() {
     // renderMainContent();
-    updateTableHTML();
+    // updateTableHTML();
+    updateTaskTable(tasks, 'To do', 'tableToDo');
+    updateTaskTable(tasks, 'in progress', 'tableInProgress');
+    updateTaskTable(tasks, 'Await feedback', 'tableAwaitFeedback');
+    updateTaskTable(tasks, 'Done', 'tableDone');
 }
 
 
 function openAddTaskDialog() {
-    let overlay = document.getElementById('addTaskOverlay');
-    overlay.style.display = 'flex';
+    let addTaskOverlay = document.getElementById('addTaskOverlay');
+    addTaskOverlay.style.display = 'flex';
 }
 
 
 function closeTaskDialog() {
-    let overlay = document.getElementById('addTaskOverlay');
-    overlay.style.display = 'none';
+    let addTaskOverlay = document.getElementById('addTaskOverlay');
+    addTaskOverlay.style.display = 'none';
 }
 
 
@@ -104,72 +108,88 @@ function showNoTaskContainer(text) {
     `;
 }
 
-function updateTableHTML() {
+function updateTaskTable(tasks, status, tableId) {
+    const filteredTasks = tasks.filter(t => t.progress === status);
+    const tableElement = document.getElementById(tableId);
+    tableElement.innerHTML = '';
 
-    let toDo = tasks.filter(t => t.progress === 'To do');
-    document.getElementById('tableToDo').innerHTML = '';
-
-    if (toDo.length == 0) {
-        document.getElementById('tableToDo').innerHTML = showNoTaskContainer('To do');
+    if (filteredTasks.length == 0) {
+        tableElement.innerHTML = showNoTaskContainer('status');
     } else {
-        for (let index = 0; index < toDo.length; index++) {
+        for (let index = 0; index < filteredTasks.length; index++) {
             firstLastInitial(index);
-            const element = toDo[index];
-            document.getElementById('tableToDo').innerHTML += renderCardHTML(element, index);
-        }
-    }
-
-
-    let inProgress = tasks.filter(t => t.progress === 'in progress');
-    document.getElementById('tableInProgress').innerHTML = '';
-
-    if (inProgress.length == 0) {
-        document.getElementById('tableInProgress').innerHTML = showNoTaskContainer('In progress');
-    } else {
-        for (let index = 0; index < inProgress.length; index++) {
-            firstLastInitial(index);
-            const element = inProgress[index];
-            document.getElementById('tableInProgress').innerHTML += renderCardHTML(element, index);
-
-        }
-    }
-
-
-    let awaitFeedback = tasks.filter(t => t.progress === 'Await feedback');
-    document.getElementById('tableAwaitFeedback').innerHTML = '';
-
-    if (awaitFeedback.length == 0) {
-        document.getElementById('tableAwaitFeedback').innerHTML = showNoTaskContainer('Await feedback');
-    } else {
-        for (let index = 0; index < awaitFeedback.length; index++) {
-            firstLastInitial(index);
-            const element = awaitFeedback[index];
-            document.getElementById('tableAwaitFeedback').innerHTML += renderCardHTML(element, index);
-
-        }
-    }
-
-
-    let done = tasks.filter(t => t.progress === 'Done');
-    document.getElementById('tableDone').innerHTML = '';
-
-    if (done.length == 0) {
-        document.getElementById('tableDone').innerHTML = showNoTaskContainer('Done');
-    } else {
-        for (let index = 0; index < done.length; index++) {
-            firstLastInitial(index);
-            const element = done[index];
-            document.getElementById('tableDone').innerHTML += renderCardHTML(element, index);
-
+            const element = filteredTasks[index];
+            tableElement.innerHTML += renderCardHTML(element, index);
         }
     }
 }
+
+// function updateTableHTML() {
+
+//     let toDo = tasks.filter(t => t.progress === 'To do');
+//     document.getElementById('tableToDo').innerHTML = '';
+
+//     if (toDo.length == 0) {
+//         document.getElementById('tableToDo').innerHTML = showNoTaskContainer('To do');
+//     } else {
+//         for (let index = 0; index < toDo.length; index++) {
+//             firstLastInitial(index);
+//             const element = toDo[index];
+//             document.getElementById('tableToDo').innerHTML += renderCardHTML(element, index);
+//         }
+//     }
+
+
+//     let inProgress = tasks.filter(t => t.progress === 'in progress');
+//     document.getElementById('tableInProgress').innerHTML = '';
+
+//     if (inProgress.length == 0) {
+//         document.getElementById('tableInProgress').innerHTML = showNoTaskContainer('In progress');
+//     } else {
+//         for (let index = 0; index < inProgress.length; index++) {
+//             firstLastInitial(index);
+//             const element = inProgress[index];
+//             document.getElementById('tableInProgress').innerHTML += renderCardHTML(element, index);
+
+//         }
+//     }
+
+
+//     let awaitFeedback = tasks.filter(t => t.progress === 'Await feedback');
+//     document.getElementById('tableAwaitFeedback').innerHTML = '';
+
+//     if (awaitFeedback.length == 0) {
+//         document.getElementById('tableAwaitFeedback').innerHTML = showNoTaskContainer('Await feedback');
+//     } else {
+//         for (let index = 0; index < awaitFeedback.length; index++) {
+//             firstLastInitial(index);
+//             const element = awaitFeedback[index];
+//             document.getElementById('tableAwaitFeedback').innerHTML += renderCardHTML(element, index);
+
+//         }
+//     }
+
+
+//     let done = tasks.filter(t => t.progress === 'Done');
+//     document.getElementById('tableDone').innerHTML = '';
+
+//     if (done.length == 0) {
+//         document.getElementById('tableDone').innerHTML = showNoTaskContainer('Done');
+//     } else {
+//         for (let index = 0; index < done.length; index++) {
+//             firstLastInitial(index);
+//             const element = done[index];
+//             document.getElementById('tableDone').innerHTML += renderCardHTML(element, index);
+
+//         }
+//     }
+// }
 
 
 function renderCardHTML(element, i) {
 
     return /*html*/`
-    <div class="card-container" draggable="true" ondragstart="startDragging(${element['id']})">
+    <div onclick="showTaskOverlay(${element['id']})" class="card-container" draggable="true" ondragstart="startDragging(${element['id']})">
         <div class="card">
             <div class="frame-119">
                 <div class="label-board-card">
@@ -204,6 +224,76 @@ function renderCardHTML(element, i) {
     `;
 }
 
+function showTaskOverlay() {
+    let overlay = document.getElementById('overlay');
+    overlay.style.display = 'flex';
+
+    document.getElementById('overlay').innerHTML = rendertaskOverlayHTML();
+}
+
+function rendertaskOverlayHTML() {
+    return /*html*/`
+    <div class="task-overlay-container">
+        <div class="user-story-close-container">
+            <div class="user-story-overlay">User Story</div>
+            <img onclick="closeTaskOverlay()" src="./assets/icons/close.svg" alt="">
+        </div>
+        <h1>Kochwelt Page & Recipe Recommender</h1>
+        <p class="content-overlay">Build start page with recipe recommendation...</p>
+        <div class="date-overlay">
+            <span>Due date:</span>
+            <span>11/08/2024</span>
+        </div>
+        <div class="priority-overlay">
+            <span>Priority:</span>
+            <div>
+                <span>Medium</span>
+                <img src="./assets/icons/priority-equal.svg" alt="">
+            </div>
+        </div>
+        <div>
+            <div class="assigned-grid-overlay">
+                <div>Assigned To:</div>
+                <div class="assigned-row-overlay"><span class="circle circle-in-progress">EM</span><span>Emanuell
+                        Mauer</span></div>
+                <div class="assigned-row-overlay"><span class="circle circle-in-progress">MB</span><span>Marcel
+                        Bauer</span></div>
+                <div class="assigned-row-overlay"><span class="circle circle-in-progress">AM</span><span>Anton
+                        Mayer</span></div>
+            </div>
+        </div>
+        <div>
+            <div class="subtasks-grid-overlay">
+                <div>Subtasks</div>
+                <form action="">
+                    <div class="checkbox-title-container">
+                        <input class="checkbox" type="checkbox" id="checkbox1" name="toDo" value="" />
+                        <label for="checkbox1">Implement Recipe Recommendation</label>
+                    </div>
+                    <div class="checkbox-title-container">
+                        <input class="checkbox" type="checkbox" id="checkbox2" name="toDo" value="" />
+                        <label for="checkbox2">Start Page Layout</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="delete-edit-container">
+            <img class="trash-delete" src="./assets/icons/trash-board.svg" alt="">
+            <span>Delete</span>
+            <img class="line-vertical" src="./assets/icons/line-vertical.svg" alt="">
+            <img class="trash-delete" src="./assets/icons/edit.svg" alt="">
+            <span>Edit</span>
+        </div>
+    </div>
+`;
+}
+
+
+function closeTaskOverlay() {
+    let overlay = document.getElementById('overlay');
+    overlay.style.display = 'none';
+}
+
 
 function startDragging(id) {
     currentDraggedElement = id;
@@ -217,5 +307,9 @@ function allowDrop(ev) {
 
 function moveTo(progress) {
     tasks[currentDraggedElement]['progress'] = progress;
-    updateTableHTML();
+    // updateTableHTML();
+    updateTaskTable(tasks, 'To do', 'tableToDo');
+    updateTaskTable(tasks, 'in progress', 'tableInProgress');
+    updateTaskTable(tasks, 'Await feedback', 'tableAwaitFeedback');
+    updateTaskTable(tasks, 'Done', 'tableDone');
 }

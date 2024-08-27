@@ -22,10 +22,12 @@ let initialsArray = [];
 
 
 
-
 function initBoard() {
     // renderMainContent();
-    updateTableHTML();
+    updateTaskTable(tasks, 'To do', 'tableToDo');
+    updateTaskTable(tasks, 'in progress', 'tableInProgress');
+    updateTaskTable(tasks, 'Await feedback', 'tableAwaitFeedback');
+    updateTaskTable(tasks, 'Done', 'tableDone');
 }
 
 
@@ -104,64 +106,18 @@ function showNoTaskContainer(text) {
     `;
 }
 
+function updateTaskTable(tasks, status, tableId) {
+    const filteredTasks = tasks.filter(t => t.progress === status);
+    const tableElement = document.getElementById(tableId);
+    tableElement.innerHTML = '';
 
-function updateTableHTML() {
-
-    let toDo = tasks.filter(t => t.progress === 'To do');
-    document.getElementById('tableToDo').innerHTML = '';
-
-    if (toDo.length == 0) {
-        document.getElementById('tableToDo').innerHTML = showNoTaskContainer('To do');
+    if (filteredTasks.length == 0) {
+        tableElement.innerHTML = showNoTaskContainer('status');
     } else {
-        for (let index = 0; index < toDo.length; index++) {
+        for (let index = 0; index < filteredTasks.length; index++) {
             firstLastInitial(index);
-            const element = toDo[index];
-            document.getElementById('tableToDo').innerHTML += renderCardHTML(element, index);
-        }
-    }
-
-
-    let inProgress = tasks.filter(t => t.progress === 'in progress');
-    document.getElementById('tableInProgress').innerHTML = '';
-
-    if (inProgress.length == 0) {
-        document.getElementById('tableInProgress').innerHTML = showNoTaskContainer('In progress');
-    } else {
-        for (let index = 0; index < inProgress.length; index++) {
-            firstLastInitial(index);
-            const element = inProgress[index];
-            document.getElementById('tableInProgress').innerHTML += renderCardHTML(element, index);
-
-        }
-    }
-
-
-    let awaitFeedback = tasks.filter(t => t.progress === 'Await feedback');
-    document.getElementById('tableAwaitFeedback').innerHTML = '';
-
-    if (awaitFeedback.length == 0) {
-        document.getElementById('tableAwaitFeedback').innerHTML = showNoTaskContainer('Await feedback');
-    } else {
-        for (let index = 0; index < awaitFeedback.length; index++) {
-            firstLastInitial(index);
-            const element = awaitFeedback[index];
-            document.getElementById('tableAwaitFeedback').innerHTML += renderCardHTML(element, index);
-
-        }
-    }
-
-
-    let done = tasks.filter(t => t.progress === 'Done');
-    document.getElementById('tableDone').innerHTML = '';
-
-    if (done.length == 0) {
-        document.getElementById('tableDone').innerHTML = showNoTaskContainer('Done');
-    } else {
-        for (let index = 0; index < done.length; index++) {
-            firstLastInitial(index);
-            const element = done[index];
-            document.getElementById('tableDone').innerHTML += renderCardHTML(element, index);
-
+            const element = filteredTasks[index];
+            tableElement.innerHTML += renderCardHTML(element, index);
         }
     }
 }
@@ -288,5 +244,8 @@ function allowDrop(ev) {
 
 function moveTo(progress) {
     tasks[currentDraggedElement]['progress'] = progress;
-    updateTableHTML();
+    updateTaskTable(tasks, 'To do', 'tableToDo');
+    updateTaskTable(tasks, 'in progress', 'tableInProgress');
+    updateTaskTable(tasks, 'Await feedback', 'tableAwaitFeedback');
+    updateTaskTable(tasks, 'Done', 'tableDone');
 }
