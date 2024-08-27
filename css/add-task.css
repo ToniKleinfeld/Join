@@ -118,6 +118,61 @@
     font-size: 20px;
 }
 
+/*here try dropdown menu contacts*/
+/* .dropdown-check-list-contacts {
+    display: inline-block;
+  } */
+  
+  .dropdown-check-list-contacts .anchor {
+    position: relative;    
+    display: inline-block;
+    height: 48px;
+    width: 422px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 12px 16px;
+    outline: none;
+    cursor: pointer;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    font-size: 20px;
+    background-color: white;
+  }
+  
+  .dropdown-check-list-contacts .anchor:after {
+    position: absolute;
+    content: url(../assets/icons/arrow_drop_downaa.svg);
+    padding: 5px;
+    right: 10px;
+    top: 20%;
+  }
+  
+  .dropdown-check-list-contacts .anchor:active:after {
+    right: 8px;
+    top: 21%;
+  }
+  
+  .dropdown-check-list-contacts ul.items {
+    padding: 2px;
+    display: none;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+  
+  .dropdown-check-list-contacts ul.items li {
+    list-style: none;
+  }
+    
+  .dropdown-check-list-contacts.visible .items {
+    display: block;
+  }
+
+  .contactslistassign input{
+    height: auto !important;
+  }
+
 @media (max-height:800px) {
 
     .add-task-page-footer {

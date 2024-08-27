@@ -63,16 +63,21 @@
                         <textarea placeholder="Enter a Description"></textarea>
                     </div>
 
-                    <div class="input-container">
+                    <div class="input-container dropdown-check-list-contacts" tabindex="100" id="contact-select">
                         <h2 class="input-title">Assigned to</h2>
-                        <select name="names">
-                            <option selected hidden>Select contacts to assign</option>
+                        <!-- <select name="names" id="contactsdropdown">
+                            <option value="0">Select contacts to assign</option>
                             <option value="1">Contact 1</option>
                             <option value="2">Contact 2</option>
                             <option value="3">Contact 3</option>
                             <option value="4">Contact 4</option>
-                         </select>
-                        
+                         </select> -->
+
+                         <span class="anchor" onclick="showContactslistToAssign()">Select contacts to assign</span>
+                         <ul class="items">
+                           <li><input class="contactslistassign" type="checkbox" />contact 1 </li>
+                           <li><input class="contactslistassign" type="checkbox" />contact 2</li>
+                         </ul>
                     </div>
                 </div>
 
