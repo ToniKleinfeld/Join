@@ -57,6 +57,12 @@ function userAndPasswordMatch(element, email){
 function wronguserorpassword(){
     document.getElementById('loginform').classList.add('wronglogin');
     document.getElementById('wronglogintext').classList.remove('d-none')
+
+    setTimeout(()=> { 
+      document.getElementById('loginform').classList.remove('wronglogin');
+      document.getElementById('wronglogintext').classList.add('d-none')
+      document.getElementById('password').value = '';
+    } , 4500);
 }
 
 /**
@@ -98,10 +104,11 @@ function checkPasswordMatch() {
   const submitButton = document.getElementById('submitsignup');
 
   if (firstPass === confirmPass ) {
+    document.getElementById('confirmpassword').classList.remove('wronglogin');
+    document.getElementById('passwordnomatch').classList.add('d-none')
     submitButton.disabled = false
   } else if ( firstPass.length  === confirmPass.length ){
     submitButton.disabled = true
-    document.getElementById('setpassword').classList.add('wronglogin');
     document.getElementById('confirmpassword').classList.add('wronglogin');
     document.getElementById('passwordnomatch').classList.remove('d-none')
   } else {
