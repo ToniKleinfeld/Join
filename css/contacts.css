@@ -6,13 +6,19 @@
     height: 100%;
     width: 456px;
     display: flex;
+    flex-direction: column;
     background-color: white;
-    justify-content: center;
-    align-items: start;
-    padding: 16px;
+    justify-content: start;
+    align-items: center;
+    padding-bottom: 16px;
     overflow-y: scroll;
     position: fixed;
     filter: drop-shadow(4px 0 6px rgba(0, 0, 0, 0.08));
+    gap: 30px;
+}
+
+.contacts-slider a {
+    text-decoration: none;
 }
 
 .add-button {
@@ -83,7 +89,7 @@
 /********************************************************************/
 
 @media (max-width:825px) {
-    .contacts-slider{
+    .contacts-slider {
         width: 100vh;
     }
 }
@@ -155,8 +161,6 @@
         border-radius: 10px;
         border: solid 1px #091931;
     }
-
-
 }
 
 @media (max-width:1320px) {
@@ -176,7 +180,7 @@
         gap: 11px;
     }
 
-    .contacts-h2{
+    .contacts-h2 {
         margin: 0px;
     }
 
@@ -190,5 +194,310 @@
     .seperator-2-responsive {
         display: none;
     }
+}
 
+/***********************JAVA SCRIPT HTML TEMPLATES*********************************/
+
+.font-stripe {
+    height: 70px;
+    width: 90%;
+    font-weight: bold;
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    gap: 50px;
+    border-bottom: 1px solid #A8A8A8;
+    margin-left: 25px;
+    filter: drop-shadow(4px 0 6px rgba(0, 0, 0, 0.08));
+}
+
+.contact-stripe {
+    height: 70px;
+    width: 90%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 25px;
+    gap: 50px;
+}
+
+.contact-stripe:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.initials {
+    height: 50px;
+    width: 50px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: orangered;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.name-mail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 7px;
+}
+
+.contact-name {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.contact-e-mail {
+    text-align: center;
+}
+
+.contact-e-mail a {
+    text-align: center;
+}
+
+.the-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    margin-left: 45px;
+}
+
+.card-of-contact {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    margin-left: 520px;
+    margin-top: 70px;
+    gap: 25px;
+}
+
+.card-of-contact a {
+    text-decoration: none;
+}
+
+.contact-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 50px;
+}
+
+.contact-headline {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    gap: 25px;
+
+}
+
+.contact-initials {
+    width: 20%;
+    border: 1px solid;
+}
+
+.big-contact-name {
+    width: 100%;
+    padding: 10px 0;
+}
+
+.contact-card-initials {
+    height: 100px;
+    width: 110px;
+    font-size: 37px;
+    font-weight: bold;
+    color: white;
+    background-color: orangered;
+    border-radius: 50%;
+    border: 1px solid;
+}
+
+.name {
+    font-size: 37px;
+    font-weight: bold;
+}
+
+.icons {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 0;
+}
+
+.edit::before {
+    content: url(../assets/icons/edit.svg);
+    padding-right: 7px;
+}
+
+.delete::before {
+    content: url(../assets/icons/delete.svg);
+    padding-right: 7px;
+}
+
+.phone-and-e-mail-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 10px;
+}
+
+.add-edit-contact {
+    height: 55vh;
+    width: 64%;
+    background-color: white;
+    position: absolute;
+    top: 25%;
+    left: 20%;
+    border-radius: 16px;
+    z-index: 997;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-and-button-container {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.left-container {
+    height: 100%;
+    width: 40%;
+    background-color: #2A3647;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding-left: 50px;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+.input-container {
+    height: 100%;
+    width: 40%;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.button-container-add {
+    height: 100%;
+    width: 100%;
+    gap: 25px;
+    margin-top: 37px;
+}
+
+.seperator-3 {
+    height: 3px;
+    width: 70px;
+    background-color: #29ABE2;
+    margin: 30px 0;
+    margin-top: 10px;
+}
+
+.headliner {
+    font-size: 54px;
+    color: white;
+    font-weight: bold;
+}
+
+.sub-text {
+    font-size: 26px;
+    color: white;
+}
+
+.logo-sign {
+    height: 50px;
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.person-container {
+    height: 100px;
+    width: 100px;
+    background-color: #D1D1D1;
+    border-radius: 50%;
+}
+
+.mid-container {
+    height: 100%;
+    width: 20%;
+    background-color: white;
+}
+
+.person {
+    height: 70%;
+    filter: brightness(+7);
+}
+
+.input-box {
+    height: 100%;
+    width: 40%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 21px;
+    padding-right: 50px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+.button-box {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 25px;
+    padding-left: 10px;
+    margin-top: 16px;
+}
+
+.cancel-button::after {
+    content: url(../assets/icons/close.svg);
+}
+
+.create-button::after {
+    content: url(../assets/icons/check.svg);
+}
+
+.close-icon {
+    height: 30px;
+    width: 30px;
+    margin-left: 390px;
+    margin-bottom: 50px;
+}
+
+.close-icon:hover {
+    background-color: #D1D1D1;
+    border-radius: 50%;
+}
+
+.d-none {
+    display: none;
+}
+
+.contact-stripe {
+    transition: background-color 0.3s ease; /* Für eine sanfte Übergangsanimation */
+}
+
+.contact-stripe.active-contact {
+    background-color: darkblue;
+    color: white; /* Optional: Textfarbe ändern, damit sie besser lesbar ist */
 }
