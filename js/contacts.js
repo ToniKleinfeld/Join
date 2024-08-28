@@ -27,7 +27,7 @@ function contactsHtml(i, isActive = false) {
     if (currentInitial !== lastInitial) {
         html += /*Html*/`
         <div class="font-stripe">${currentInitial}</div>`;
-        lastInitial = currentInitial; // Aktualisiere den letzten Initialbuchstaben
+        lastInitial = currentInitial; 
     }
 
     html += /*Html*/`
@@ -53,9 +53,9 @@ function getRandomColor() {
     return colors[randomIndex];
 }
 
-// Beim Initialisieren den Kontakten Farben zuweisen
+
 contacts.forEach(contact => {
-    contact.color = getRandomColor(); // Füge die Farbe als neue Eigenschaft hinzu
+    contact.color = getRandomColor(); 
 });
 
 
@@ -93,7 +93,7 @@ function contactCardHtml(contact, index) {
 function deleteContact(index) {
     contacts.splice(index, 1);
 
-    // Kontakte im Local Storage speichern
+
     saveContactsToLocalStorage();
 
     renderContactStripes();
@@ -101,7 +101,7 @@ function deleteContact(index) {
 }
 
 function clearContactCard() {
-    // Löscht den Inhalt der Kontaktkarte
+
     let contactCard = document.getElementById('card-of-contact');
     contactCard.innerHTML = '';
 }
@@ -110,9 +110,9 @@ function clearContactCard() {
 
 function editContact(index) {
     let popUp = document.getElementById('add-edit-contact');
-    popUp.innerHTML = addContactHtml(index); // Setze das HTML für das Pop-up
+    popUp.innerHTML = addContactHtml(index); 
 
-    popUp.classList.remove('d-none'); // Pop-up sichtbar machen
+    popUp.classList.remove('d-none'); 
 
     let contact = contacts[index];
 
@@ -126,15 +126,15 @@ function editContact(index) {
         phoneInput.value = contact.phonenumber;
 
         document.querySelector('.create-button').onclick = function() {
-            // Werte aktualisieren
+     
             contact.name = nameInput.value;
             contact.mail = mailInput.value;
             contact.phonenumber = phoneInput.value;
 
-            // Kontakte im Local Storage speichern
+
             saveContactsToLocalStorage();
 
-            // Kontaktliste neu rendern und Pop-up schließen
+           
             renderContactStripes();
             closePopUp();
         };
@@ -182,8 +182,8 @@ function sortContacts() {
 
 function renderContactStripes() {
     let contactContainer = document.getElementById('contacts-slider');
-    contactContainer.innerHTML = ''; // Leert die Kontaktliste
-    lastInitial = ''; // Setzt die letzte Initiale zurück
+    contactContainer.innerHTML = ''; 
+    lastInitial = ''; 
 
     // Kontakte alphabetisch sortieren
     sortContacts();
@@ -201,7 +201,7 @@ function renderContactStripes() {
 
 function setActiveContact(index) {
     activeContactIndex = index;
-    renderContactStripes(); // Rendern der Kontaktliste, um die aktive Markierung zu zeigen
+    renderContactStripes(); 
 }
 
 function renderContactCard(index) {
@@ -210,7 +210,7 @@ function renderContactCard(index) {
 
     if (contacts[index]) {
         contactCard.innerHTML = contactCardHtml(contacts[index], index);
-        setActiveContact(index); // Setzt den aktiven Kontakt
+        setActiveContact(index); 
     } else {
         console.error(`Kein Kontakt gefunden für Index ${index}`);
     }
@@ -228,7 +228,7 @@ function addContact() {
 /*DATEN LADEN/SPEICHERN*/
 
 function createContact() {
-    // Werte aus den Input-Feldern auslesen
+
     let nameInput = document.getElementById('name-input');
     let mailInput = document.getElementById('mail-input');
     let phoneInput = document.getElementById('phone-input');
@@ -237,7 +237,7 @@ function createContact() {
     let mail = mailInput.value;
     let phonenumber = phoneInput.value;
 
-    // Neuen Kontakt erstellen und dem Array hinzufügen
+
     contacts.push({
         "mail": mail,
         "name": name,
@@ -245,22 +245,22 @@ function createContact() {
         "color": getRandomColor() // Farbe zuweisen
     });
 
-    // Kontakte im Local Storage speichern
+
     saveContactsToLocalStorage();
 
-    // Input-Felder leeren
+
     nameInput.value = '';
     mailInput.value = '';
     phoneInput.value = '';
 
-    // Kontaktliste neu rendern
+
     renderContactStripes();
 }
 
 function closePopUp() {
     let popUp = document.getElementById('add-edit-contact');
     popUp.classList.add('d-none');
-    popUp.innerHTML = ''; // Pop-up leeren
+    popUp.innerHTML = ''; 
 }
 
 
@@ -275,14 +275,14 @@ function saveContact() {
     let phonenumber = phoneInput.value;
 
     if (index) {
-        // Update existing contact
+
         contacts[index] = {
             "mail": mail,
             "name": name,
             "phonenumber": phonenumber
         };
     } else {
-        // Create new contact
+
         contacts.push({
             "mail": mail,
             "name": name,
@@ -290,13 +290,13 @@ function saveContact() {
         });
     }
 
-    // Clear input fields
+
     nameInput.value = '';
     mailInput.value = '';
     phoneInput.value = '';
 
-    closePopUp();  // Schließe das Pop-up nach dem Speichern
-    renderContactStripes(); // Kontakte neu rendern
+    closePopUp();
+    renderContactStripes();
 }
 
 function saveContactsToLocalStorage() {
