@@ -4,7 +4,6 @@ let activeContactIndex = null;
 
 
 function init() {
-    loadContactsFromLocalStorage();  // Kontakte aus dem Local Storage laden
     sortContacts();                  // Kontakte alphabetisch sortieren
     renderContactStripes();          // Kontakte rendern
 }
@@ -93,9 +92,6 @@ function contactCardHtml(contact, index) {
 function deleteContact(index) {
     contacts.splice(index, 1);
 
-
-    saveContactsToLocalStorage();
-
     renderContactStripes();
     clearContactCard();
 }
@@ -130,9 +126,6 @@ function editContact(index) {
             contact.name = nameInput.value;
             contact.mail = mailInput.value;
             contact.phonenumber = phoneInput.value;
-
-
-            saveContactsToLocalStorage();
 
            
             renderContactStripes();
@@ -246,7 +239,7 @@ function createContact() {
     });
 
 
-    saveContactsToLocalStorage();
+
 
 
     nameInput.value = '';
@@ -254,7 +247,7 @@ function createContact() {
     phoneInput.value = '';
 
 
-    renderContactStripes();
+
 }
 
 function closePopUp() {
@@ -297,17 +290,6 @@ function saveContact() {
 
     closePopUp();
     renderContactStripes();
-}
-
-function saveContactsToLocalStorage() {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-}
-
-function loadContactsFromLocalStorage() {
-    const storedContacts = localStorage.getItem('contacts');
-    if (storedContacts) {
-        contacts = JSON.parse(storedContacts);
-    }
 }
 
 
