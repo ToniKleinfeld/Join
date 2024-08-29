@@ -12,7 +12,7 @@
     align-items: center;
     padding-bottom: 16px;
     overflow-y: scroll;
-    position: fixed;
+    position: sticky;
     filter: drop-shadow(4px 0 6px rgba(0, 0, 0, 0.08));
     gap: 30px;
 }
@@ -21,13 +21,13 @@
     text-decoration: none;
 }
 
+
 .add-button {
+    height: 48px;
     width: 352px;
     gap: 16px;
-    margin-top: 7px;
-    position: absolute;
+    position: static;
     top: 10px;
-    z-index: 999;
 }
 
 .add-button::after {
@@ -494,10 +494,12 @@
 }
 
 .contact-stripe {
-    transition: background-color 0.3s ease; /* Für eine sanfte Übergangsanimation */
+    transition: background-color 0.3s ease;
+    /* Für eine sanfte Übergangsanimation */
 }
 
 .contact-stripe.active-contact {
     background-color: darkblue;
-    color: white; /* Optional: Textfarbe ändern, damit sie besser lesbar ist */
+    color: white;
+    /* Optional: Textfarbe ändern, damit sie besser lesbar ist */
 }

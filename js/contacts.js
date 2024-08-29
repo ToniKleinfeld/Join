@@ -12,6 +12,7 @@ function renderContactStripes() {
     contactContainer.innerHTML = '';
     lastInitial = '';
     sortContacts();
+    contactContainer.innerHTML = /*Html*/`<div class="add-button-container"><button class="button-filled-large add-button" onclick="addContact()">Add new contact</button></div>`
     for (let i = 0; i < contacts.length; i++) {
         contactContainer.innerHTML += contactsHtml(i, i === activeContactIndex);
     }

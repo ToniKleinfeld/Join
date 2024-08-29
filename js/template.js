@@ -21,7 +21,6 @@ function contactsHtml(i, isActive = false) {
         </div>
     </div>
     `;
-
     return html;
 }
 
