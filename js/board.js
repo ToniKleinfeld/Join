@@ -128,19 +128,6 @@ function calcProgressbarSubtasks() {
 
 }
 
-// function renderMainContent() {
-//     let content = document.getElementById('tabelToDo');
-//     content.innerHTML = '';
-
-//     for (let i = 0; i < tasks.length; i++) {
-//         const element = tasks[i];
-
-//         // firstLastInitial(i);
-//         getTypeLabelBoardColor(element, i);
-//         getTypeInitialColor(element['Assigned To'], i);
-//     }
-
-// }
 
 function getInitialColor(initial) {
     return initialColors[initial] || '#A8A878'; // Standardfarbe, falls Initiale nicht gefunden
@@ -179,31 +166,30 @@ function rendertaskOverlayHTML(indexOfTask) {
     return /*html*/`
     <div class="task-overlay-container">
         <div class="user-story-close-container">
-            <div class="user-story-overlay">User Story</div>
+            <div class="user-story-overlay">${tasks[indexOfTask]['category']}</div>
             <img onclick="closeTaskOverlay()" src="./assets/icons/close.svg" alt="">
         </div>
-        <h1>${tasks[indexOfTask]['']}</h1>
-        <p class="content-overlay">Build start page with recipe recommendation...</p>
+        <h1>${tasks[indexOfTask]['title']}</h1>
+        <p class="content-overlay">${tasks[indexOfTask]['description']}</p>
         <div class="date-overlay">
             <span>Due date:</span>
-            <span>11/08/2024</span>
+            <span>${tasks[indexOfTask]['duedate']}</span>
         </div>
         <div class="priority-overlay">
             <span>Priority:</span>
             <div>
-                <span>Medium</span>
+                <span>${tasks[indexOfTask]['prio']}</span>
                 <img src="./assets/icons/priority-equal.svg" alt="">
             </div>
         </div>
         <div>
             <div class="assigned-grid-overlay">
                 <div>Assigned To:</div>
-                <div class="assigned-row-overlay"><span class="circle circle-in-progress">EM</span><span>Emanuell
-                        Mauer</span></div>
-                <div class="assigned-row-overlay"><span class="circle circle-in-progress">MB</span><span>Marcel
+                <div class="assigned-row-overlay"><span class="circle circle-in-progress">EM</span><span>${tasks[indexOfTask]['Assigned To']}</span></div>
+                <!-- <div class="assigned-row-overlay"><span class="circle circle-in-progress">MB</span><span>Marcel
                         Bauer</span></div>
                 <div class="assigned-row-overlay"><span class="circle circle-in-progress">AM</span><span>Anton
-                        Mayer</span></div>
+                        Mayer</span></div> -->
             </div>
         </div>
         <div>
@@ -250,3 +236,17 @@ function moveTo(progress) {
     updateTaskTable(tasks, 'Await feedback', 'tableAwaitFeedback');
     updateTaskTable(tasks, 'Done', 'tableDone');
 }
+
+// function renderMainContent() {
+//     let content = document.getElementById('tabelToDo');
+//     content.innerHTML = '';
+
+//     for (let i = 0; i < tasks.length; i++) {
+//         const element = tasks[i];
+
+//         // firstLastInitial(i);
+//         getTypeLabelBoardColor(element, i);
+//         getTypeInitialColor(element['Assigned To'], i);
+//     }
+
+// }

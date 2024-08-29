@@ -414,7 +414,7 @@ h1 {
     padding: 4px 24px;
     gap: 10px;
 
-    width: 164px;
+    width: auto;
     height: 36px;
 
     background: #0038FF;
