@@ -14,7 +14,7 @@
     <script src="./js/template.js"></script>
 </head>
 
-<body onload="checkIfUserlogin()">
+<body onload="checkIfUserlogin(), initTasks()">
     <header>
         <h2 class="showindesktop">Kanban Project Managment Tool</h2>
         <img src="./assets/icons/capa 2.svg" alt="" class="showmobile">
@@ -65,17 +65,13 @@
 
                     <div class="input-container dropdown-check-list-contacts" id="contact-select">
                         <h2 class="input-title">Assigned to</h2>
-                         <span class="anchor" onclick="showContactslistToAssign()">Select contacts to assign</span>
-                         <ul class="items">
-                           <li class="contactslistassign"><input type="checkbox" id="contact1"/> <span class="checkmark"></span> <label for="contact1"><span class="contacticon">AT</span> contact 1 </label></li>
-                           <li class="contactslistassign"><input type="checkbox" id="contact2"/> <span class="checkmark"></span> <label for="contact2"><span class="contacticon">BZ</span> contact 2 </label></li>
-                           <li class="contactslistassign"><input type="checkbox" id="contact3"/> <span class="checkmark"></span> <label for="contact3"><span class="contacticon">BZ</span> contact 2 </label></li>
-                           <li class="contactslistassign"><input type="checkbox" id="contact4"/> <span class="checkmark"></span> <label for="contact4"><span class="contacticon">BZ</span> contact 2 </label></li>
-                           <li class="contactslistassign"><input type="checkbox" id="contact5"/> <span class="checkmark"></span> <label for="contact5"><span class="contacticon">BZ</span> contact 2 </label></li>
-                           <li class="contactslistassign"><input type="checkbox" id="contact6"/> <span class="checkmark"></span> <label for="contact6"><span class="contacticon">BZ</span> contact 2 </label></li>
-
+                        <span class="anchor" id="anchorButton" onclick="showContactslistToAssign()">Select contacts to assign</span>
+                        <input type="text" class="anchorinput d-none" id="anchorinput">
+                        <icon class="arrowupanchorinput d-none" id="anchoricon" onclick="showContactslistToAssign()"></icon>
+                        <ul class="items" id="assignlist">
                         </ul>
                     </div>
+                    <div class="showassignedcontacts" id="showassignedcontacts">x</div>
                 </div>
 
                 <div class="taskform-half">

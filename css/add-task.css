@@ -121,6 +121,7 @@
 /*here try dropdown menu contacts*/
 .dropdown-check-list-contacts {
     justify-content: unset;
+    position: relative;
 }
 
 .dropdown-check-list-contacts .anchor {
@@ -245,6 +246,20 @@
     border: solid 2px white;
     border-radius: 50%;
     padding: 10px;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.arrowupanchorinput {
+    content: url(../assets/icons/arrow_drop_downaa.svg);
+    transform: rotate(180deg);
+    position: absolute;
+    padding: 5px;
+    right: 20px;
+    top: 18%;
+    cursor: pointer;
 }
 
 @media (max-height:800px) {
