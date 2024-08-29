@@ -16,7 +16,7 @@ const initialColors = {
     "TW": '#ff4646',
 }
 
-
+let counter = 0;
 let currentDraggedElement;
 let initialsArray = [];
 
@@ -106,6 +106,7 @@ function showNoTaskContainer(text) {
     `;
 }
 
+
 function updateTaskTable(tasks, status, tableId) {
     const filteredTasks = tasks.filter(t => t.progress === status);
     const tableElement = document.getElementById(tableId);
@@ -115,18 +116,19 @@ function updateTaskTable(tasks, status, tableId) {
         tableElement.innerHTML = showNoTaskContainer('status');
     } else {
         for (let index = 0; index < filteredTasks.length; index++) {
+            let indexOfTask = tasks.indexOf(filteredTasks[index]);
             firstLastInitial(index);
             const element = filteredTasks[index];
-            tableElement.innerHTML += renderCardHTML(element, index);
+            tableElement.innerHTML += renderCardHTML(element, index, indexOfTask);
         }
     }
 }
 
 
-function renderCardHTML(element, i) {
+function renderCardHTML(element, i, indexOfTask) {
 
     return /*html*/`
-    <div onclick="showTaskOverlay(${element['id']})" class="card-container" draggable="true" ondragstart="startDragging(${element['id']})">
+    <div onclick="showTaskOverlay(${element[i]})" class="card-container" draggable="true" ondragstart="startDragging(${indexOfTask})">
         <div class="card">
             <div class="frame-119">
                 <div class="label-board-card">
@@ -232,8 +234,8 @@ function closeTaskOverlay() {
 }
 
 
-function startDragging(id) {
-    currentDraggedElement = id;
+function startDragging(i) {
+    currentDraggedElement = i;
 }
 
 
@@ -248,4 +250,5 @@ function moveTo(progress) {
     updateTaskTable(tasks, 'in progress', 'tableInProgress');
     updateTaskTable(tasks, 'Await feedback', 'tableAwaitFeedback');
     updateTaskTable(tasks, 'Done', 'tableDone');
+    // counter = 0;
 }

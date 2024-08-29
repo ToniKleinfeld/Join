@@ -16,7 +16,6 @@ const initialColors = {
     "TW": '#ff4646',
 }
 
-let counter = 0;
 let currentDraggedElement;
 let initialsArray = [];
 
@@ -30,54 +29,30 @@ function initBoard() {
     updateTaskTable(tasks, 'Done', 'tableDone');
 }
 
+function updateTaskTable(tasks, status, tableId) {
+    const filteredTasks = tasks.filter(t => t.progress === status);
+    const tableElement = document.getElementById(tableId);
+    tableElement.innerHTML = '';
 
-function openAddTaskDialog() {
-    let addTaskOverlay = document.getElementById('addTaskOverlay');
-    addTaskOverlay.style.display = 'flex';
+    if (filteredTasks.length == 0) {
+        tableElement.innerHTML = showNoTaskContainer('status');
+    } else {
+        for (let index = 0; index < filteredTasks.length; index++) {
+            let indexOfTask = tasks.indexOf(filteredTasks[index]);
+            firstLastInitial(index);
+            const element = filteredTasks[index];
+            tableElement.innerHTML += renderCardHTML(element, index, indexOfTask);
+
+            getTypeLabelBoardColor(element, indexOfTask);
+        }
+    }
 }
 
 
-function closeTaskDialog() {
-    let addTaskOverlay = document.getElementById('addTaskOverlay');
-    addTaskOverlay.style.display = 'none';
-}
-
-
-function calcProgressbarSubtasks() {
-}
-
-// function renderMainContent() {
-//     let content = document.getElementById('tabelToDo');
-//     content.innerHTML = '';
-
-//     for (let i = 0; i < tasks.length; i++) {
-//         const element = tasks[i];
-
-//         // firstLastInitial(i);
-//         content.innerHTML += renderCardHTML(i);
-//         getTypeColor(element, i);
-//         getTypeInitialColor(element['Assigned To'], i);
-//     }
-
-// }
-
-function getInitialColor(initial) {
-    return initialColors[initial] || '#A8A878'; // Standardfarbe, falls Initiale nicht gefunden
-}
-
-
-function getTypeInitialColor(task, i) {
-    let initials = initialsArray[i]; // Holt das Initialen-Array für den aktuellen Task
-    let color = initials.length > 0 ? initials[0] : ''; // Nimmt die erste Initiale (oder einen Fallback)
-    let bgcolor = getInitialColor(color);
-    document.getElementById(`initial${i}`).style.backgroundColor = bgcolor;
-}
-
-
-function getTypeColor(task, i) {
-    let color = task['category'];
-    let bgcolor = typeColors[color.toLowerCase()] || '#A8A878'; // Standardfarbe, falls Typ nicht gefunden
-    document.getElementById(`labelBoardCard${i}`).style.backgroundColor = bgcolor;
+function showNoTaskContainer(text) {
+    return /*html*/`
+        <div class="no-tasks-container">No tasks ${text}</div>
+    `;
 }
 
 
@@ -100,40 +75,12 @@ function firstLastInitial(i) {
 }
 
 
-function showNoTaskContainer(text) {
+function renderCardHTML(element, i, indexOfTask) {
     return /*html*/`
-        <div class="no-tasks-container">No tasks ${text}</div>
-    `;
-}
-
-
-function updateTaskTable(tasks, status, tableId) {
-    const filteredTasks = tasks.filter(t => t.progress === status);
-    const tableElement = document.getElementById(tableId);
-    tableElement.innerHTML = '';
-
-    if (filteredTasks.length == 0) {
-        tableElement.innerHTML = showNoTaskContainer('status');
-    } else {
-        for (let index = 0; index < filteredTasks.length; index++) {
-            firstLastInitial(index);
-            const element = filteredTasks[index];
-            tableElement.innerHTML += renderCardHTML(element, index);
-        }
-    }
-}
-
-function renderCardHTML(element, i) {
-    if (element) {
-        counter++;
-        console.log(counter);
-    }
-
-    return /*html*/`
-    <div onclick="showTaskOverlay(${element[i]})" class="card-container" draggable="true" ondragstart="startDragging(${counter-1})">
+    <div onclick="showTaskOverlay(${indexOfTask})" class="card-container" draggable="true" ondragstart="startDragging(${indexOfTask})">
         <div class="card">
             <div class="frame-119">
-                <div class="label-board-card">
+                <div id="labelBoardCard${indexOfTask}" class="label-board-card">
                     <div class="user-story">
                         ${element['category']}
                     </div>
@@ -144,9 +91,9 @@ function renderCardHTML(element, i) {
                 </div>
                 <div class="progress">
                     <div class="progressbar">
-                        <div class="filler"></div>
+                        <div id="fillerProgressbar${indexOfTask}" class="filler"></div>
                     </div>
-                    <div class="card-subtasks"> 0/2 Subtask</div>
+                    <div id="cardSubtasks${indexOfTask}" class="card-subtasks"> 0/2 Subtask</div>
                 </div>
                 <div class="circle-prio-container">
                     <div class="circle-container">
@@ -165,21 +112,77 @@ function renderCardHTML(element, i) {
     `;
 }
 
-function showTaskOverlay() {
+
+function openAddTaskDialog() {
+    let addTaskOverlay = document.getElementById('addTaskOverlay');
+    addTaskOverlay.style.display = 'flex';
+}
+
+function closeAddTaskDialog() {
+    let addTaskOverlay = document.getElementById('addTaskOverlay');
+    addTaskOverlay.style.display = 'none';
+}
+
+
+function calcProgressbarSubtasks() {
+
+}
+
+// function renderMainContent() {
+//     let content = document.getElementById('tabelToDo');
+//     content.innerHTML = '';
+
+//     for (let i = 0; i < tasks.length; i++) {
+//         const element = tasks[i];
+
+//         // firstLastInitial(i);
+//         getTypeLabelBoardColor(element, i);
+//         getTypeInitialColor(element['Assigned To'], i);
+//     }
+
+// }
+
+function getInitialColor(initial) {
+    return initialColors[initial] || '#A8A878'; // Standardfarbe, falls Initiale nicht gefunden
+}
+
+
+function getTypeInitialColor(task, i) {
+    let initials = initialsArray[i]; // Holt das Initialen-Array für den aktuellen Task
+    let color = initials.length > 0 ? initials[0] : ''; // Nimmt die erste Initiale (oder einen Fallback)
+    let bgcolor = getInitialColor(color);
+    document.getElementById(`initial${i}`).style.backgroundColor = bgcolor;
+}
+
+
+function getTypeLabelBoardColor(task, i) {
+    let color = task['category'];
+    let bgcolor = typeColors[color.toLowerCase()] || '#A8A878'; // Standardfarbe, falls Typ nicht gefunden
+    document.getElementById(`labelBoardCard${i}`).style.backgroundColor = bgcolor;
+}
+
+
+function showTaskOverlay(indexOfTask) {
     let overlay = document.getElementById('overlay');
     overlay.style.display = 'flex';
 
-    document.getElementById('overlay').innerHTML = rendertaskOverlayHTML();
+    document.getElementById('overlay').innerHTML = rendertaskOverlayHTML(indexOfTask);
 }
 
-function rendertaskOverlayHTML() {
+function closeTaskOverlay() {
+    let overlay = document.getElementById('overlay');
+    overlay.style.display = 'none';
+}
+
+
+function rendertaskOverlayHTML(indexOfTask) {
     return /*html*/`
     <div class="task-overlay-container">
         <div class="user-story-close-container">
             <div class="user-story-overlay">User Story</div>
             <img onclick="closeTaskOverlay()" src="./assets/icons/close.svg" alt="">
         </div>
-        <h1>Kochwelt Page & Recipe Recommender</h1>
+        <h1>${tasks[indexOfTask]['']}</h1>
         <p class="content-overlay">Build start page with recipe recommendation...</p>
         <div class="date-overlay">
             <span>Due date:</span>
@@ -230,12 +233,6 @@ function rendertaskOverlayHTML() {
 }
 
 
-function closeTaskOverlay() {
-    let overlay = document.getElementById('overlay');
-    overlay.style.display = 'none';
-}
-
-
 function startDragging(i) {
     currentDraggedElement = i;
 }
@@ -252,5 +249,4 @@ function moveTo(progress) {
     updateTaskTable(tasks, 'in progress', 'tableInProgress');
     updateTaskTable(tasks, 'Await feedback', 'tableAwaitFeedback');
     updateTaskTable(tasks, 'Done', 'tableDone');
-    counter = 0;
 }
