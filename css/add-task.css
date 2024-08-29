@@ -239,6 +239,8 @@
 }
   
 .contacticon {
+    width: 42px;
+    height: 42px;
     font-size: 12px !important;
     font-weight: 300 !important;
     color: white !important;
@@ -250,6 +252,13 @@
 
 .d-none {
     display: none !important;
+}
+
+.showassignedcontacts {
+    padding: 5px 0 0 15px;
+    width: 100%;
+    height: 40px;
+    display: flex;
 }
 
 .arrowupanchorinput {
