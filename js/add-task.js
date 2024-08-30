@@ -104,7 +104,12 @@
 
     assignedToArray.forEach(name => {
       shortname = shortNames(name);
-      color = getColorOfContact(name);
+      
+      if (name == user) {
+        color = 'lightcoral';
+      } else {
+        color = getColorOfContact(name);
+      }
       assignedConntacts.innerHTML += renderAssignedContactshtml(shortname,color);
     }); 
   }
@@ -133,9 +138,10 @@
     for (let index = 0; index < contacts.length; index++) {
       const name = contacts[index]['name'];
       const shortname = shortNames(name)
-      
+      color = getColorOfContact(name);
+
         if(name.toLowerCase().includes(search)) {          
-          list.innerHTML += renderHtmlContactLi(name,shortname);     
+          list.innerHTML += renderHtmlContactLi(name,shortname,color);     
         }                
       }
       checkboxChecked();
