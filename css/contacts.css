@@ -378,7 +378,35 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transform: translateX(0); /* Startet an der endgültigen Position */
+    animation: slideIn 0.5s forwards ease-in-out; /* Animation für das Einblenden */
 }
+
+/* Animation für das Hineinschieben */
+@keyframes slideIn {
+    from {
+        transform: translateX(100vw); /* Startet von rechts außerhalb des Bildschirms */
+    }
+    to {
+        transform: translateX(0); /* Endet an der ursprünglichen Position */
+    }
+}
+
+/* Animation für das Herausschieben */
+@keyframes slideOut {
+    from {
+        transform: translateX(0); /* Startet an der ursprünglichen Position */
+    }
+    to {
+        transform: translateX(100vw); /* Endet außerhalb des Bildschirms (rechts) */
+    }
+}
+
+/* Klasse zum Schließen des Elements */
+.add-edit-contact.hide {
+    animation: slideOut 0.5s forwards ease-in-out; /* Animation für das Ausblenden */
+}
+
 
 .input-and-button-container {
     height: 100%;

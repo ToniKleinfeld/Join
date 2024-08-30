@@ -49,6 +49,7 @@ function editContact(index) {
     popUp.innerHTML = addContactHtml(index);
 
     popUp.classList.remove('d-none');
+    popUp.classList.remove('hide');
 
     let contact = contacts[index];
 
@@ -92,6 +93,7 @@ function renderContactCard(index) {
 function addContact() {
     let popUp = document.getElementById('add-edit-contact');
     popUp.classList.remove('d-none');
+    popUp.classList.remove('hide');
     popUp.innerHTML = addContactHtml();
 }
 
@@ -117,8 +119,7 @@ function createContact() {
 
 function closePopUp() {
     let popUp = document.getElementById('add-edit-contact');
-    popUp.classList.add('d-none');
-    popUp.innerHTML = ''; // Pop-up leeren
+    popUp.classList.add('hide');
 }
 
 function saveContact() {
