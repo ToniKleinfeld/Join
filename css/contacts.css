@@ -402,11 +402,26 @@
     }
 }
 
-/* Klasse zum Schließen des Elements */
-.add-edit-contact.hide {
-    animation: slideOut 0.5s forwards ease-in-out; /* Animation für das Ausblenden */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.8);
+    }
 }
 
+/* Klasse für das Herausschieben */
+.add-edit-contact.slide-out {
+    animation: slideOut 0.5s forwards ease-in-out;
+}
+
+/* Klasse für das Ausblenden an Ort und Stelle */
+.add-edit-contact.fade-out {
+    animation: fadeOut 0.3s forwards ease-in-out;
+}
 
 .input-and-button-container {
     height: 100%;
@@ -512,6 +527,9 @@
 
 .cancel-button::after {
     content: url(../assets/icons/close.svg);
+}
+.create-button {
+    width: 200px;
 }
 
 .create-button::after {

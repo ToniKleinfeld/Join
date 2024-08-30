@@ -31,15 +31,15 @@ function addContactHtml(index = null) {
     </div>
     <div class="input-box">
         <div class="close-icon center">
-            <img src="./assets/icons/close.svg" onclick="closePopUp()">
+            <img src="./assets/icons/close.svg" onclick="closePopUpSlide()">
         </div>
         <input class="input input-name" id="name-input" type="text" placeholder="Name">
         <input class="input input-mail" id="mail-input" type="email" placeholder="Email">
         <input class="input input-phone" id="phone-input" type="tel" placeholder="Phone">
         <input type="hidden" id="contact-index"> <!-- Verstecktes Feld für den Index -->
         <div class="button-box">
-            <button class="button-empty-small cancel-button" onclick="closePopUp()">Cancel</button>
-            <button class="button-filled-large create-button" onclick="saveContact()">Save Contact</button>
+            <button class="button-empty-small cancel-button" onclick="closePopUpSlide()">Cancel</button>
+            <button class="button-filled-large create-button" id="create-save-button" onclick="createContact()">Create Contact</button>
         </div>
     </div>
     `;

@@ -5,6 +5,7 @@ function init() {
     sortContacts();
     renderContactStripes();
 }
+//RENDERN***************************************************
 
 function renderContactStripes() {
     let contactContainer = document.getElementById('contacts-slider');
@@ -33,51 +34,20 @@ function contactRegisterHtml(i, isActive = false) {
     return `${fontStripeHtml}${contactStripeHtml}`;
 }
 
-function deleteContact(index) {
-    contacts.splice(index, 1);
-    renderContactStripes();
-    clearContactCard();
-}
-
-function clearContactCard() {
-    let contactCard = document.getElementById('card-of-contact');
-    contactCard.innerHTML = '';
-}
-
-function editContact(index) {
-    let popUp = document.getElementById('add-edit-contact');
-    popUp.innerHTML = addContactHtml(index);
-
-    popUp.classList.remove('d-none');
-    popUp.classList.remove('hide');
-
-    let contact = contacts[index];
-
-    let nameInput = document.getElementById('name-input');
-    let mailInput = document.getElementById('mail-input');
-    let phoneInput = document.getElementById('phone-input');
-    if (nameInput && mailInput && phoneInput) {
-        nameInput.value = contact.name;
-        mailInput.value = contact.mail;
-        phoneInput.value = contact.phonenumber;
-        document.querySelector('.create-button').onclick = function () {
-            contact.name = nameInput.value;
-            contact.mail = mailInput.value;
-            contact.phonenumber = phoneInput.value;
-            renderContactStripes();
-            closePopUp();
-        };
-    }
-}
+//KONTAKTE SORTIEREN***************************************************
 
 function sortContacts() {
     contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
+//KONTAKT AKTIV MARKIEREN***************************************************
+
 function setActiveContact(index) {
     activeContactIndex = index;
     renderContactStripes(); // Rendern der Kontaktliste, um die aktive Markierung zu zeigen
 }
+
+//KONTAKT ANSEHEN***************************************************
 
 function renderContactCard(index) {
     let contactCard = document.getElementById('card-of-contact');
@@ -89,6 +59,8 @@ function renderContactCard(index) {
         console.error(`Kein Kontakt gefunden für Index ${index}`);
     }
 }
+
+//KONTAKTE HINZUFÜGEN***************************************************
 
 function addContact() {
     let popUp = document.getElementById('add-edit-contact');
@@ -110,16 +82,74 @@ function createContact() {
         "phonenumber": phonenumber,
         "color": getRandomColor() // Farbe zuweisen
     });
-    saveContactsToLocalStorage();
     nameInput.value = '';
     mailInput.value = '';
     phoneInput.value = '';
     renderContactStripes();
 }
 
-function closePopUp() {
+function deleteContact(index) {
+    contacts.splice(index, 1);
+    renderContactStripes();
+    clearContactCard();
+}
+
+function clearContactCard() {
+    let contactCard = document.getElementById('card-of-contact');
+    contactCard.innerHTML = '';
+}
+
+//KONTAKT EDITIEREN***************************************************
+
+function editContact(index) {
     let popUp = document.getElementById('add-edit-contact');
-    popUp.classList.add('hide');
+    popUp.innerHTML = addContactHtml(index);
+    let saveButton = document.getElementById('create-save-button');
+    saveButton.innerHTML = `Save Contact`;
+
+    popUp.classList.remove('d-none');
+    popUp.classList.remove('hide');
+
+    let contact = contacts[index];
+
+    let nameInput = document.getElementById('name-input');
+    let mailInput = document.getElementById('mail-input');
+    let phoneInput = document.getElementById('phone-input');
+    if (nameInput && mailInput && phoneInput) {
+        nameInput.value = contact.name;
+        mailInput.value = contact.mail;
+        phoneInput.value = contact.phonenumber;
+        document.querySelector('.create-button').onclick = function () {
+            contact.name = nameInput.value;
+            contact.mail = mailInput.value;
+            contact.phonenumber = phoneInput.value;
+            renderContactStripes();
+        };
+    }
+}
+
+//KONTAKT ERSTELLEN/SPEICHERN/LÖSCHEN**************************************************
+
+function closePopUpSlide() {
+    let popUp = document.getElementById('add-edit-contact');
+    popUp.classList.add('slide-out');
+}
+
+function closePopUpFade() {
+    let popUp = document.getElementById('add-edit-contact');
+    popUp.classList.add('fade-out');
+}
+
+function chooseCreateOrSave() {
+    let button = document.getElementById('create-save-button');
+    let text = button.innerHTML;
+
+    if (text === 'Create Contact') {
+        createContact();
+    } else if (text === 'Save Contact') { // Sicherstellen, dass die andere Option auch korrekt überprüft wird
+        saveContact();
+    }
+    closePopUpFade();
 }
 
 function saveContact() {
@@ -148,19 +178,7 @@ function saveContact() {
     nameInput.value = '';
     mailInput.value = '';
     phoneInput.value = '';
-    closePopUp();  // Schließe das Pop-up nach dem Speichern
     renderContactStripes(); // Kontakte neu rendern
-}
-
-function saveContactsToLocalStorage() {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-}
-
-function loadContactsFromLocalStorage() {
-    const storedContacts = localStorage.getItem('contacts');
-    if (storedContacts) {
-        contacts = JSON.parse(storedContacts);
-    }
 }
 
 /*BAUSTELLE---------------------------------------------------------------
