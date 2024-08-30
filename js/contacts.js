@@ -73,7 +73,7 @@ function addContact() {
     popUp.classList.remove('hide');
     popUp.innerHTML = addContactHtml();
 }
-
+//DA IST DER FEHLER DRIN !!!************************************************
 function createContact() {
     let nameInput = document.getElementById('name-input');
     let mailInput = document.getElementById('mail-input');
@@ -85,7 +85,6 @@ function createContact() {
         "mail": mail,
         "name": name,
         "phonenumber": phonenumber,
-        "color": getRandomColor() // Farbe zuweisen
     });
     nameInput.value = '';
     mailInput.value = '';
@@ -99,6 +98,8 @@ function createContact() {
 function editContact(index) {
     let popUp = document.getElementById('add-edit-contact');
     popUp.innerHTML = addContactHtml(index);
+    let text = document.getElementById('create-save-button');
+    text.innerHTML = `Save Contact`;
 
     popUp.classList.remove('d-none');
     popUp.classList.remove('hide');
@@ -108,41 +109,15 @@ function editContact(index) {
     let nameInput = document.getElementById('name-input');
     let mailInput = document.getElementById('mail-input');
     let phoneInput = document.getElementById('phone-input');
+
     if (nameInput && mailInput && phoneInput) {
         nameInput.value = contact.name;
         mailInput.value = contact.mail;
         phoneInput.value = contact.phonenumber;
-        document.getElementById('create-save-button').onclick = function () {
-            contact.name = nameInput.value;
-            contact.mail = mailInput.value;
-            contact.phonenumber = phoneInput.value;
-            renderContactStripes();
-        };
     }
 }
 
 //KONTAKT ERSTELLEN/SPEICHERN/LÖSCHEN**************************************************
-
-function chooseCreateOrSave() {
-    let button = document.getElementById('create-save-button');
-    let text = button.innerHTML;
-
-    if (text === 'Create Contact') {
-        createContact();
-    } else if (text === 'Save Contact') { // Sicherstellen, dass die andere Option auch korrekt überprüft wird
-        saveContact();
-    }
-}
-
-function closePopUpSlide() {
-    let popUp = document.getElementById('add-edit-contact');
-    popUp.classList.add('slide-out');
-}
-
-function closePopUpFade() {
-    let popUp = document.getElementById('add-edit-contact');
-    popUp.classList.add('fade-out');
-}
 
 function saveContact() {
     let index = document.getElementById('contact-index').value;
@@ -172,6 +147,27 @@ function saveContact() {
     phoneInput.value = '';
     closePopUpFade();
     renderContactStripes(); // Kontakte neu rendern
+}
+
+function chooseCreateOrSave() {
+    let button = document.getElementById('create-save-button');
+    let text = button.innerHTML;
+
+    if (text === 'Create Contact') {
+        createContact();
+    } else if (text === 'Save Contact') { // Sicherstellen, dass die andere Option auch korrekt überprüft wird
+        saveContact();
+    }
+}
+
+function closePopUpSlide() {
+    let popUp = document.getElementById('add-edit-contact');
+    popUp.classList.add('slide-out');
+}
+
+function closePopUpFade() {
+    let popUp = document.getElementById('add-edit-contact');
+    popUp.classList.add('fade-out');
 }
 
 function deleteContact(index) {
