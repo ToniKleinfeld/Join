@@ -26,3 +26,7 @@
 .maincontent{
     padding: 64px;
 }
+
+.help-privacy-legal-main img{
+    cursor: pointer;
+}
