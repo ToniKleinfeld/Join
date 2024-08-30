@@ -8,7 +8,7 @@ function init() {
 
 function renderContactStripes() {
     let contactContainer = document.getElementById('contacts-slider');
-    contactContainer.innerHTML = '';
+    contactContainer.innerHTML = /*Html*/`<div class="button-container"><button class="button-filled-large add-button" onclick="addContact()">Add contact</button></div>`;
     lastInitial = '';
     sortContacts();
     for (let i = 0; i < contacts.length; i++) {
@@ -66,7 +66,7 @@ function editContact(index) {
             renderContactStripes();
             closePopUp();
         };
-    } 
+    }
 }
 
 function sortContacts() {

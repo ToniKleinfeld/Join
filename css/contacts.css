@@ -15,20 +15,31 @@
     position: fixed;
     filter: drop-shadow(4px 0 6px rgba(0, 0, 0, 0.08));
     gap: 30px;
+    z-index: 1;
 }
 
 .contacts-slider a {
     text-decoration: none;
 }
 
+.button-container {
+    width: 100%;
+    position: sticky; /* Verändert zu 'sticky' */
+    top: 0; /* Damit es oben bleibt, sobald der Scrollbereich diesen erreicht */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding-top: 25px;
+    z-index: 2; /* Höher als der Scroll-Inhalt */
+}
 
 .add-button {
-    width: 352px;
+    height: 50px;
+    width: 90%;
     gap: 16px;
-    margin-top: 7px;
-    position: sticky;
-    top: 10px;
-    z-index: 999;
+    position: relative; /* Innerhalb des 'sticky'-Containers braucht es keine 'fixed' Positionierung */
+    z-index: 3; /* Höher als der Button-Container */
 }
 
 .add-button::after {
@@ -36,6 +47,7 @@
     height: 32px;
     width: auto;
 }
+
 
 .contacts-slider::-webkit-scrollbar {
     width: 24px;
@@ -490,10 +502,6 @@
     border-radius: 50%;
 }
 
-.d-none {
-    display: none;
-}
-
 .contact-stripe {
     transition: background-color 0.3s ease; /* Für eine sanfte Übergangsanimation */
 }
@@ -501,4 +509,8 @@
 .contact-stripe.active-contact {
     background-color: darkblue;
     color: white; /* Optional: Textfarbe ändern, damit sie besser lesbar ist */
+}
+
+.d-none {
+    display: none;
 }
