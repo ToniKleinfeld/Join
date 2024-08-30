@@ -46,14 +46,15 @@
     for (let index = 0; index < contacts.length; index++) {
       const name = contacts[index]['name'];
       let shortname = shortNames(name);
+      let color = contacts[index]['color']
       
-      list.innerHTML += renderHtmlContactLi(name,shortname)      
+      list.innerHTML += renderHtmlContactLi(name,shortname,color)      
     }  
     checkboxChecked() 
   }
 
   /**
-   * render the Contacts to assign to dropdown menü
+   * render the Username to dropdown menü assigned to
    * 
    * @param {string} list - where to create the HTMLcode
    */
@@ -65,7 +66,7 @@
 
   /**
    * 
-   * @param {string} name - from Contacts
+   * @param {string} name - from Contacts or User
    * @returns - First letter of each Word
    */
   function shortNames(name) {
@@ -103,7 +104,8 @@
 
     assignedToArray.forEach(name => {
       shortname = shortNames(name);
-      assignedConntacts.innerHTML += renderAssignedContactshtml(shortname);
+      color = getColorOfContact(name);
+      assignedConntacts.innerHTML += renderAssignedContactshtml(shortname,color);
     }); 
   }
 
@@ -133,9 +135,7 @@
       const shortname = shortNames(name)
       
         if(name.toLowerCase().includes(search)) {          
-          list.innerHTML += renderHtmlContactLi(name,shortname);
-          
-          
+          list.innerHTML += renderHtmlContactLi(name,shortname);     
         }                
       }
       checkboxChecked();
@@ -153,21 +153,32 @@
     });
   }
 
-  function renderAssignedContactshtml(shortname) {
-    return /*html*/`
-       <div class="contacticon center">${shortname}</div>
-    `
+  /**
+   * filter contacts array for colorinformation
+   * 
+   * @param {string} name - get the current name from foreach 
+   * @returns - the colorcode
+   */
+  function getColorOfContact(name){
+    const filtercontacs = contacts.filter(contact => contact.name == name
+    );
+    return filtercontacs[0].color
   }
 
-  
 
-  function renderHtmlContactLi(name,shortname) {
+  function renderAssignedContactshtml(shortname,color) {
+    return /*html*/`
+       <div class="contacticon center" style="background-color:${color};">${shortname}</div>
+    `
+  }  
+
+  function renderHtmlContactLi(name,shortname,color) {
     return /*html*/`
       <li class="contactslistassign">
         <input type="checkbox" id="${name}" onchange="assignedToTasK('${name}')"/>
         <span class="checkmark"></span>
         <label for="${name}">
-          <span class="contacticon center">${shortname}</span> ${name} 
+          <span class="contacticon center" style="background-color:${color};">${shortname}</span> ${name} 
         </label>
         </li>
     `
