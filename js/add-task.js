@@ -47,9 +47,9 @@
       const name = contacts[index]['name'];
       let shortname = shortNames(name);
       
-      list.innerHTML += renderHtmlContactLi(name,shortname)
-      checkboxChecked(name)
-    }   
+      list.innerHTML += renderHtmlContactLi(name,shortname)      
+    }  
+    checkboxChecked() 
   }
 
   /**
@@ -134,19 +134,23 @@
       
         if(name.toLowerCase().includes(search)) {          
           list.innerHTML += renderHtmlContactLi(name,shortname);
-        }
-        checkboxChecked(name);
+          
+          
+        }                
       }
+      checkboxChecked();
   }
 
-  function checkboxChecked(name) {
-    const contact = assignedToArray.filter(assignedToArray => assignedToArray == name);
-    console.log(contact);
-    console.log(name)
-        
-    if (contact == name) {
-      document.getElementById(name).checked = true;
-    }
+  /**
+   *  Check if name already in array and check ist when true
+   */
+  function checkboxChecked() {
+    assignedToArray.forEach(id => {
+      let nameid = document.getElementById(id);
+      if (nameid !== null) {
+        nameid.checked = true;
+      }      
+    });
   }
 
   function renderAssignedContactshtml(shortname) {
@@ -154,6 +158,8 @@
        <div class="contacticon center">${shortname}</div>
     `
   }
+
+  
 
   function renderHtmlContactLi(name,shortname) {
     return /*html*/`
