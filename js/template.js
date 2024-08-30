@@ -39,7 +39,7 @@ function addContactHtml(index = null) {
         <input type="hidden" id="contact-index"> <!-- Verstecktes Feld für den Index -->
         <div class="button-box">
             <button class="button-empty-small cancel-button" onclick="closePopUpSlide()">Cancel</button>
-            <button class="button-filled-large create-button" id="create-save-button" onclick="createContact()">Create Contact</button>
+            <button class="button-filled-large create-button" id="create-save-button" onclick="chooseCreateOrSave()">Create Contact</button>
         </div>
     </div>
     `;

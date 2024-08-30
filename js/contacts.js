@@ -60,6 +60,11 @@ function renderContactCard(index) {
     }
 }
 
+function clearContactCard() {
+    let contactCard = document.getElementById('card-of-contact');
+    contactCard.innerHTML = '';
+}
+
 //KONTAKTE HINZUFÜGEN***************************************************
 
 function addContact() {
@@ -85,18 +90,8 @@ function createContact() {
     nameInput.value = '';
     mailInput.value = '';
     phoneInput.value = '';
+    closePopUpFade();
     renderContactStripes();
-}
-
-function deleteContact(index) {
-    contacts.splice(index, 1);
-    renderContactStripes();
-    clearContactCard();
-}
-
-function clearContactCard() {
-    let contactCard = document.getElementById('card-of-contact');
-    contactCard.innerHTML = '';
 }
 
 //KONTAKT EDITIEREN***************************************************
@@ -104,8 +99,6 @@ function clearContactCard() {
 function editContact(index) {
     let popUp = document.getElementById('add-edit-contact');
     popUp.innerHTML = addContactHtml(index);
-    let saveButton = document.getElementById('create-save-button');
-    saveButton.innerHTML = `Save Contact`;
 
     popUp.classList.remove('d-none');
     popUp.classList.remove('hide');
@@ -119,7 +112,7 @@ function editContact(index) {
         nameInput.value = contact.name;
         mailInput.value = contact.mail;
         phoneInput.value = contact.phonenumber;
-        document.querySelector('.create-button').onclick = function () {
+        document.getElementById('create-save-button').onclick = function () {
             contact.name = nameInput.value;
             contact.mail = mailInput.value;
             contact.phonenumber = phoneInput.value;
@@ -130,16 +123,6 @@ function editContact(index) {
 
 //KONTAKT ERSTELLEN/SPEICHERN/LÖSCHEN**************************************************
 
-function closePopUpSlide() {
-    let popUp = document.getElementById('add-edit-contact');
-    popUp.classList.add('slide-out');
-}
-
-function closePopUpFade() {
-    let popUp = document.getElementById('add-edit-contact');
-    popUp.classList.add('fade-out');
-}
-
 function chooseCreateOrSave() {
     let button = document.getElementById('create-save-button');
     let text = button.innerHTML;
@@ -149,7 +132,16 @@ function chooseCreateOrSave() {
     } else if (text === 'Save Contact') { // Sicherstellen, dass die andere Option auch korrekt überprüft wird
         saveContact();
     }
-    closePopUpFade();
+}
+
+function closePopUpSlide() {
+    let popUp = document.getElementById('add-edit-contact');
+    popUp.classList.add('slide-out');
+}
+
+function closePopUpFade() {
+    let popUp = document.getElementById('add-edit-contact');
+    popUp.classList.add('fade-out');
 }
 
 function saveContact() {
@@ -178,7 +170,14 @@ function saveContact() {
     nameInput.value = '';
     mailInput.value = '';
     phoneInput.value = '';
+    closePopUpFade();
     renderContactStripes(); // Kontakte neu rendern
+}
+
+function deleteContact(index) {
+    contacts.splice(index, 1);
+    renderContactStripes();
+    clearContactCard();
 }
 
 /*BAUSTELLE---------------------------------------------------------------
