@@ -1,4 +1,4 @@
- let Data = {
+ let data = {
     "Assigned To": [
       ""
     ],
