@@ -74,46 +74,54 @@ let tasks = [{
     "progress": "Await feedback"      
   }];
   
-let contacts = [{
-    "mail": "anton@gmx.com",
-    "name": "Anton Mayer",
-    "phonenumber": "+49 173 867654653"
-  },
-  {
-    "mail": "schulz@gmail.com",
-    "name": "Anja Schulz",
-    "phonenumber": "+49 174 987674765"
-  },
-  {
-    "mail": "benedikt@googlemail.com",
-    "name": "Benedit Ziegler",
-    "phonenumber": "+49 174 987674765"
-  },
-  {
-    "mail": "davidberg@hotmail.de",
-    "name": "David Eisenberg",
-    "phonenumber": "+49 176 983474765"
-  },
-  {
-    "mail": "eva@gmx.com",
-    "name": "Eva Fischer",
-    "phonenumber": "+49 174 9876723765"
-  },
-  {
-    "mail": "emmalnuelma@live.com",
-    "name": "Emmanuel Mauer",
-    "phonenumber": "+49 174 987674765"
-  },
-  {
-    "mail": "bauer@gmail.com",
-    "name": "Marcel Bauer",
-    "phonenumber": "+49 172 932674765"
-  },
-  {
-    "mail": "wolfi@gmx.com",
-    "name": "Tatjana Wolf",
-    "phonenumber": "+49 176 127674765"
-  }]  
+let contacts = [    {
+  "mail": "anton@gmx.com",
+  "name": "Anton Mayer",
+  "phonenumber": "+49 173 867654653",
+  "color": "#9327FF"
+},
+{
+  "mail": "schulz@gmail.com",
+  "name": "Anja Schulz",
+  "phonenumber": "+49 174 987674765",
+  "color": "#6E52FF"
+},
+{
+  "mail": "benedikt@googlemail.com",
+  "name": "Benedit Ziegler",
+  "phonenumber": "+49 174 987674765",
+  "color": "#FC71FF"
+},
+{
+  "mail": "davidberg@hotmail.de",
+  "name": "David Eisenberg",
+  "phonenumber": "+49 176 983474765",
+  "color": "#FFBB2B"
+},
+{
+  "mail": "eva@gmx.com",
+  "name": "Eva Fischer",
+  "phonenumber": "+49 174 9876723765",
+  "color": "#1FD7C1"
+},
+{
+  "mail": "emmalnuelma@live.com",
+  "name": "Emmanuel Mauer",
+  "phonenumber": "+49 174 987674765",
+  "color": "#462F8A"
+},
+{
+  "mail": "bauer@gmail.com",
+  "name": "Marcel Bauer",
+  "phonenumber": "+49 172 932674765",
+  "color": "#FF4646"
+},
+{
+  "mail": "wolfi@gmx.com",
+  "name": "Tatjana Wolf",
+  "phonenumber": "+49 176 127674765",
+  "color": "#9437FF"
+}]  
 let user = '';
  user = getDataFromStorage();
 

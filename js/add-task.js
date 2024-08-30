@@ -48,6 +48,7 @@
       let shortname = shortNames(name);
       
       list.innerHTML += renderHtmlContactLi(name,shortname)
+      checkboxChecked(name)
     }   
   }
 
@@ -104,6 +105,48 @@
       shortname = shortNames(name);
       assignedConntacts.innerHTML += renderAssignedContactshtml(shortname);
     }); 
+  }
+
+  /**
+   * Search function for Contacts -->
+   */
+  function filterContacts(){
+    let search = document.getElementById("anchorinput").value.toLowerCase(); 
+    let list = document.getElementById("assignlist");
+
+  if (search.length >= 1) {
+    list.innerHTML = '';    
+    searchfor(list,search);
+    } else {
+      renderAndloadContactsToAssign();
+    }
+  }
+
+  /**
+   * 
+   * @param {string} list - area where the seachresults shown
+   * @param {string} search - inputvalue 
+   */
+  function searchfor(list,search){
+    for (let index = 0; index < contacts.length; index++) {
+      const name = contacts[index]['name'];
+      const shortname = shortNames(name)
+      
+        if(name.toLowerCase().includes(search)) {          
+          list.innerHTML += renderHtmlContactLi(name,shortname);
+        }
+        checkboxChecked(name);
+      }
+  }
+
+  function checkboxChecked(name) {
+    const contact = assignedToArray.filter(assignedToArray => assignedToArray == name);
+    console.log(contact);
+    console.log(name)
+        
+    if (contact == name) {
+      document.getElementById(name).checked = true;
+    }
   }
 
   function renderAssignedContactshtml(shortname) {

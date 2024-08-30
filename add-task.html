@@ -66,7 +66,7 @@
                     <div class="input-container dropdown-check-list-contacts" id="contact-select">
                         <h2 class="input-title">Assigned to</h2>
                         <span class="anchor" id="anchorButton" onclick="showContactslistToAssign()">Select contacts to assign</span>
-                        <input type="text" class="anchorinput d-none" id="anchorinput">
+                        <input type="text" class="anchorinput d-none" id="anchorinput" onkeyup="filterContacts()" autocomplete="off">
                         <icon class="arrowupanchorinput d-none" id="anchoricon" onclick="showContactslistToAssign()"></icon>
                         <ul class="items" id="assignlist">
                         </ul>
