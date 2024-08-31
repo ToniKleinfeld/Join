@@ -4,7 +4,7 @@
 
 .contacts-slider {
     height: 100%;
-    width: 456px;
+    width: 500px;
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -22,24 +22,33 @@
     text-decoration: none;
 }
 
+.contacts-slider a.active-contact {
+    color: lightblue;
+}
+
 .button-container {
     width: 100%;
-    position: sticky; /* Verändert zu 'sticky' */
-    top: 0; /* Damit es oben bleibt, sobald der Scrollbereich diesen erreicht */
+    position: sticky;
+    /* Verändert zu 'sticky' */
+    top: 0;
+    /* Damit es oben bleibt, sobald der Scrollbereich diesen erreicht */
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: white;
     padding-top: 25px;
-    z-index: 2; /* Höher als der Scroll-Inhalt */
+    z-index: 2;
+    /* Höher als der Scroll-Inhalt */
 }
 
 .add-button {
     height: 50px;
     width: 90%;
     gap: 16px;
-    position: relative; /* Innerhalb des 'sticky'-Containers braucht es keine 'fixed' Positionierung */
-    z-index: 3; /* Höher als der Button-Container */
+    position: relative;
+    /* Innerhalb des 'sticky'-Containers braucht es keine 'fixed' Positionierung */
+    z-index: 3;
+    /* Höher als der Button-Container */
 }
 
 .add-button::after {
@@ -227,14 +236,22 @@
 }
 
 .contact-stripe {
-    height: 70px;
+    height: 80px;
     width: 90%;
     border-radius: 10px;
     display: flex;
     justify-content: start;
     align-items: center;
-    padding: 25px;
+    padding: 30px;
     gap: 50px;
+    transition: background-color 0.3s ease;
+    /* Für eine sanfte Übergangsanimation */
+}
+
+.contact-stripe.active-contact {
+    background-color: #2A3647;
+    color: white;
+    /* Optional: Textfarbe ändern, damit sie besser lesbar ist */
 }
 
 .contact-stripe:hover {
@@ -250,6 +267,10 @@
     border-radius: 50%;
     font-size: 20px;
     font-weight: bold;
+}
+
+.initials.active-contact {
+    border: 3px solid white;
 }
 
 .name-mail-container {
@@ -325,7 +346,7 @@
 
 .contact-card-initials {
     height: 100px;
-    width: 110px;
+    width: 120px;
     font-size: 37px;
     font-weight: bold;
     color: white;
@@ -376,27 +397,35 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transform: translateX(0); /* Startet an der endgültigen Position */
-    animation: slideIn 0.5s forwards ease-in-out; /* Animation für das Einblenden */
+    transform: translateX(0);
+    /* Startet an der endgültigen Position */
+    animation: slideIn 0.5s forwards ease-in-out;
+    /* Animation für das Einblenden */
 }
 
 /* Animation für das Hineinschieben */
 @keyframes slideIn {
     from {
-        transform: translateX(100vw); /* Startet von rechts außerhalb des Bildschirms */
+        transform: translateX(100vw);
+        /* Startet von rechts außerhalb des Bildschirms */
     }
+
     to {
-        transform: translateX(0); /* Endet an der ursprünglichen Position */
+        transform: translateX(0);
+        /* Endet an der ursprünglichen Position */
     }
 }
 
 /* Animation für das Herausschieben */
 @keyframes slideOut {
     from {
-        transform: translateX(0); /* Startet an der ursprünglichen Position */
+        transform: translateX(0);
+        /* Startet an der ursprünglichen Position */
     }
+
     to {
-        transform: translateX(100vw); /* Endet außerhalb des Bildschirms (rechts) */
+        transform: translateX(100vw);
+        /* Endet außerhalb des Bildschirms (rechts) */
     }
 }
 
@@ -405,6 +434,7 @@
         opacity: 1;
         transform: scale(1);
     }
+
     to {
         opacity: 0;
         transform: scale(0.8);
@@ -526,6 +556,7 @@
 .cancel-button::after {
     content: url(../assets/icons/close.svg);
 }
+
 .create-button {
     width: 200px;
 }
@@ -546,15 +577,6 @@
     border-radius: 50%;
 }
 
-.contact-stripe {
-    transition: background-color 0.3s ease; /* Für eine sanfte Übergangsanimation */
-}
-
-.contact-stripe.active-contact {
-    background-color: darkblue;
-    color: white; /* Optional: Textfarbe ändern, damit sie besser lesbar ist */
-}
-
 .d-none {
     display: none;
 }
@@ -569,8 +591,10 @@
     z-index: 999;
     border-radius: 10px;
     color: white;
-    transform: translateX(0); /* Startet an der endgültigen Position */
-    animation: slideIn 0.5s forwards ease-in-out; /* Animation für das Einblenden */
+    transform: translateX(0);
+    /* Startet an der endgültigen Position */
+    animation: slideIn 0.5s forwards ease-in-out;
+    /* Animation für das Einblenden */
 }
 
 .successfull-message.slide-in {
@@ -580,4 +604,3 @@
 .successfull-message.slide-out {
     animation: slideOut 0.5s backwards ease-in-out;
 }
-

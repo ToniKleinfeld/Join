@@ -5,12 +5,12 @@ function createContactStripeHtml(i, isActive) {
     const activeClass = isActive ? 'active-contact' : '';
     return /*Html*/`
     <div class="contact-stripe ${activeClass}" onclick="renderContactCard(${i}); setActiveContact(${i})">
-        <div class="initials center" style="background-color:${contact.color};">
+        <div class="initials ${activeClass} center" style="background-color:${contact.color};">
             ${contact.name.split(' ').map(n => n[0]).join('')}
         </div>
         <div class="name-mail-container">
             <p class="contact-name">${contact.name}</p>
-            <a class="contact-e-mail" type="e-mail" href="mailto:${contact.mail}">${contact.mail}</a>
+            <a class="contact-e-mail ${activeClass}"" type="e-mail" href="mailto:${contact.mail}">${contact.mail}</a>
         </div>
     </div>`;
 }
