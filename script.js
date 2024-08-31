@@ -78,7 +78,7 @@ let contacts = [    {
   "mail": "anton@gmx.com",
   "name": "Anton Mayer",
   "phonenumber": "+49 173 867654653",
-  "color": "#9327FF"
+  "color": "#9327FF",
 },
 {
   "mail": "schulz@gmail.com",

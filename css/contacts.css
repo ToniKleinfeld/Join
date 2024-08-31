@@ -248,7 +248,6 @@
     color: white;
     border: 1px solid black;
     border-radius: 50%;
-    background-color: orangered;
     font-size: 20px;
     font-weight: bold;
 }
@@ -330,7 +329,6 @@
     font-size: 37px;
     font-weight: bold;
     color: white;
-    background-color: orangered;
     border-radius: 50%;
     border: 1px solid;
 }
@@ -560,3 +558,26 @@
 .d-none {
     display: none;
 }
+
+.successfull-message {
+    height: 48px;
+    width: 300px;
+    background-color: #2A3647;
+    position: absolute;
+    left: 40%;
+    top: 80%;
+    z-index: 999;
+    border-radius: 10px;
+    color: white;
+    transform: translateX(0); /* Startet an der endgültigen Position */
+    animation: slideIn 0.5s forwards ease-in-out; /* Animation für das Einblenden */
+}
+
+.successfull-message.slide-in {
+    animation: slideOut 0.5s forwards ease-in-out;
+}
+
+.successfull-message.slide-out {
+    animation: slideOut 0.5s backwards ease-in-out;
+}
+

@@ -15,8 +15,13 @@ function createContactStripeHtml(i, isActive) {
     </div>`;
 }
 
-function addContactHtml(index = null) { 
+function addContactHtml(contact = null, index = null) {
     let headerText = index !== null ? 'Edit Contact' : 'Add Contact';
+
+    // Calculate initials and background color if a contact is provided
+    let contactInitials = contact ? contact.name.split(' ').map(n => n[0]).join('') : '';
+    let contactColor = contact ? contact.color : '#ccc'; // Fallback color
+
     return /*Html*/`
     <div class="left-container center">
         <img class="logo-sign" src="./assets/icons/capa 1.svg">
@@ -25,32 +30,33 @@ function addContactHtml(index = null) {
         <div class="seperator-3"></div>
     </div>    
     <div class="mid-container center">
-        <div class="person-container center">
-            <img class="person" src="./assets/icons/person.svg">
+        <div class="person-container center" id="edit-initials" style="background-color:${contactColor};">
+            ${contactInitials ? `<div class="contact-card-initials center">${contactInitials}</div>` : `<img class="person" src="./assets/icons/person.svg">`}
         </div>
     </div>
     <div class="input-box">
         <div class="close-icon center">
             <img src="./assets/icons/close.svg" onclick="closePopUpSlide()">
         </div>
-        <input class="input input-name" id="name-input" type="text" placeholder="Name">
-        <input class="input input-mail" id="mail-input" type="email" placeholder="Email">
-        <input class="input input-phone" id="phone-input" type="tel" placeholder="Phone">
-        <input type="hidden" id="contact-index"> <!-- Verstecktes Feld für den Index -->
+        <input class="input input-name" id="name-input" type="text" placeholder="Name" value="${contact ? contact.name : ''}">
+        <input class="input input-mail" id="mail-input" type="email" placeholder="Email" value="${contact ? contact.mail : ''}">
+        <input class="input input-phone" id="phone-input" type="tel" placeholder="Phone" value="${contact ? contact.phonenumber : ''}">
+        <input type="hidden" id="contact-index" value="${index !== null ? index : ''}">
         <div class="button-box">
             <button class="button-empty-small cancel-button" onclick="closePopUpSlide()">Cancel</button>
-            <button class="button-filled-large create-button" id="create-save-button" onclick="chooseCreateOrSave()">Create Contact</button>
+            <button class="button-filled-large create-button" id="create-save-button" onclick="chooseCreateOrSave()">${index !== null ? 'Save Contact' : 'Create Contact'}</button>
         </div>
     </div>
     `;
 }
+
 
 function contactCardHtml(contact, index) {
     let contactColor = contact.color;
     return /*Html*/`
     <div class="contact-container center">
         <div class="contact-headline">
-            <div class="contact-card-initials center" style="background-color:${contactColor};">
+            <div class="contact-card-initials center" id="initials-and-color" style="background-color:${contactColor};">
                 ${contact.name.split(' ').map(n => n[0]).join('')}
             </div>
             <div class="big-contact-name">

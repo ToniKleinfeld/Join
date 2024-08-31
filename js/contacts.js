@@ -73,7 +73,27 @@ function addContact() {
     popUp.classList.remove('hide');
     popUp.innerHTML = addContactHtml();
 }
-//DA IST DER FEHLER DRIN !!!************************************************
+function showMessage() {
+    let popUp = document.getElementById('successfull-message');
+    popUp.classList.remove('d-none');
+
+    // Aufruf von hideMessage nach 3 Sekunden (3000 Millisekunden)
+    setTimeout(hideMessage, 1500);
+}
+
+function hideMessage() {
+    let popUp = document.getElementById('successfull-message');
+    popUp.classList.remove('slide-in'); // Entferne den Slide-In-Effekt, falls vorhanden
+    popUp.classList.add('slide-out');
+
+    // Zeit basierend auf der Dauer der slide-out-Animation
+    setTimeout(() => {
+        popUp.classList.add('d-none'); // Verstecke das Element nach der Animation
+        popUp.classList.remove('slide-out'); // Entferne die slide-out-Klasse
+    }, 500); // Setze dies auf die Dauer der Animation in Millisekunden
+}
+
+
 function createContact() {
     let nameInput = document.getElementById('name-input');
     let mailInput = document.getElementById('mail-input');
@@ -81,30 +101,67 @@ function createContact() {
     let name = nameInput.value;
     let mail = mailInput.value;
     let phonenumber = phoneInput.value;
+
+    // Generiere eine zufällige Farbe
+    let randomColor = getRandomColor();
+
+    // Generiere Initialen aus dem Namen
+    let initials = getInitials(name);
+
     contacts.push({
         "mail": mail,
         "name": name,
         "phonenumber": phonenumber,
+        "color": randomColor, // Die zufällige Farbe wird hier hinzugefügt
+        "initials": initials  // Die Initialen werden hier hinzugefügt
     });
+
+    // Felder leeren
     nameInput.value = '';
     mailInput.value = '';
     phoneInput.value = '';
+
     closePopUpFade();
+    showMessage();
     renderContactStripes();
 }
+
+// Funktion zur Generierung einer zufälligen Farbe
+function getRandomColor() {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+// Funktion zur Generierung der Initialen aus einem Namen
+function getInitials(name) {
+    let nameParts = name.trim().split(' ');
+    if (nameParts.length >= 2) {
+        return nameParts[0][0].toUpperCase() + nameParts[1][0].toUpperCase();
+    } else if (nameParts.length === 1) {
+        return nameParts[0][0].toUpperCase();
+    }
+    return ''; // Fallback, falls der Name leer ist oder aus unerwarteten Gründen keine Initialen gefunden werden können
+}
+
 
 //KONTAKT EDITIEREN***************************************************
 
 function editContact(index) {
+    let contact = contacts[index];
+
+    // Pass the contact and index to addContactHtml
     let popUp = document.getElementById('add-edit-contact');
-    popUp.innerHTML = addContactHtml(index);
+    popUp.innerHTML = addContactHtml(contact, index);
+
     let text = document.getElementById('create-save-button');
     text.innerHTML = `Save Contact`;
 
     popUp.classList.remove('d-none');
     popUp.classList.remove('hide');
-
-    let contact = contacts[index];
 
     let nameInput = document.getElementById('name-input');
     let mailInput = document.getElementById('mail-input');
@@ -116,6 +173,7 @@ function editContact(index) {
         phoneInput.value = contact.phonenumber;
     }
 }
+
 
 //KONTAKT ERSTELLEN/SPEICHERN/LÖSCHEN**************************************************
 
@@ -176,17 +234,16 @@ function deleteContact(index) {
     clearContactCard();
 }
 
-/*BAUSTELLE---------------------------------------------------------------
 
-function getRandomColor() {
-    let randomIndex = Math.floor(Math.random() * colors.length);
-    return colors[randomIndex];
-}
+/*EXPERIMENTELL
 
-// Beim Initialisieren den Kontakten Farben zuweisen
-contacts.forEach(contact => {
-    contact.color = getRandomColor(); // Füge die Farbe als neue Eigenschaft hinzu
-});
+function shortNames(name) {
+    return  name.match(/\b(\w)/g).join('');
+  }
 
---------------------------------------------------------------------------*/
-
+  function getColorOfContact(name){
+    const filtercontacs = contacts.filter(contact => contact.name == name
+    );
+    return filtercontacs[0].color
+  }
+*/
