@@ -44,6 +44,7 @@ function updateTaskTable(tasks, status, tableId) {
             tableElement.innerHTML += renderCardHTML(element, index, indexOfTask);
 
             getTypeLabelBoardColor(element, indexOfTask);
+            choosePrioSymbol(element['prio']);
         }
     }
 }
@@ -102,7 +103,9 @@ function renderCardHTML(element, i, indexOfTask) {
                         <div class="circle circle-to-do">${initialsArray[i]?.[2] || ''}</div>
                     </div>
                     <div class="priority-symbols">
-                        <img src="./assets/icons/priority-hight.svg" alt="">
+                        <!-- <img src="./assets/icons/priority-hight.svg" alt=""> -->
+                        <!-- <div id="priorityImage" onload></div> -->
+                        <img onload="this.src = choosePrioSymbol(${element['prio']})">
                     </div>
                 </div>
             </div>
@@ -110,6 +113,21 @@ function renderCardHTML(element, i, indexOfTask) {
     </div>
     <br>
     `;
+}
+
+
+function choosePrioSymbol(priority) {
+    // let chosedSymbol = document.getElementById('priorityImage').src;
+    if (priority === 'Low') {
+        console.log('Low');
+        return './assets/icons/priority-low.svg';
+    } else if (priority === 'Medium') {
+        console.log('Medium');
+        return './assets/icons/priority-equal.svg';
+    } else if (priority === 'Urgent') {
+        console.log('Urgent');
+        return './assets/icons/priority-hight.svg';
+    }
 }
 
 
