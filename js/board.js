@@ -40,7 +40,7 @@ function updateTaskTable(tasks, status, tableId) {
         for (let index = 0; index < filteredTasks.length; index++) {
             let indexOfTask = tasks.indexOf(filteredTasks[index]);
             firstLastInitial(index);
-            const element = filteredTasks[index];
+            let element = filteredTasks[index];
             tableElement.innerHTML += renderCardHTML(element, index, indexOfTask);
 
             getTypeLabelBoardColor(element, indexOfTask);
@@ -78,7 +78,7 @@ function firstLastInitial(i) {
 
 function renderCardHTML(element, i, indexOfTask) {
     return /*html*/`
-    <div onclick="showTaskOverlay(${indexOfTask})" class="card-container" draggable="true" ondragstart="startDragging(${indexOfTask})">
+    <div onclick="showTaskOverlay(${indexOfTask}, ${element})" class="card-container" draggable="true" ondragstart="startDragging(${indexOfTask})">
         <div class="card">
             <div class="frame-119">
                 <div id="labelBoardCard${indexOfTask}" class="label-board-card">
@@ -103,9 +103,7 @@ function renderCardHTML(element, i, indexOfTask) {
                         <div class="circle circle-to-do">${initialsArray[i]?.[2] || ''}</div>
                     </div>
                     <div class="priority-symbols">
-                        <!-- <img src="./assets/icons/priority-hight.svg" alt=""> -->
-                        <!-- <div id="priorityImage" onload></div> -->
-                        <img onload="this.src = choosePrioSymbol(${element['prio']})">
+                        <img src="${choosePrioSymbol(element['prio'])}">
                     </div>
                 </div>
             </div>
@@ -167,11 +165,11 @@ function getTypeLabelBoardColor(task, i) {
 }
 
 
-function showTaskOverlay(indexOfTask) {
+function showTaskOverlay(indexOfTask, element) {
     let overlay = document.getElementById('overlay');
     overlay.style.display = 'flex';
 
-    document.getElementById('overlay').innerHTML = rendertaskOverlayHTML(indexOfTask);
+    document.getElementById('overlay').innerHTML = rendertaskOverlayHTML(indexOfTask, element);
 }
 
 function closeTaskOverlay() {
@@ -180,7 +178,7 @@ function closeTaskOverlay() {
 }
 
 
-function rendertaskOverlayHTML(indexOfTask) {
+function rendertaskOverlayHTML(indexOfTask, element) {
     return /*html*/`
     <div class="task-overlay-container">
         <div class="user-story-close-container">
@@ -197,7 +195,7 @@ function rendertaskOverlayHTML(indexOfTask) {
             <span>Priority:</span>
             <div>
                 <span>${tasks[indexOfTask]['prio']}</span>
-                <img src="./assets/icons/priority-equal.svg" alt="">
+                <img src="${choosePrioSymbol(element['prio'])}" alt="">
             </div>
         </div>
         <div>
