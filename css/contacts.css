@@ -3,7 +3,7 @@
 
 .contacts-register {
     height: 100%;
-    width: 30%;
+    width: 25%;
     position: fixed;
     flex-direction: column;
     background-color: white;
@@ -147,13 +147,14 @@
 /*OPEN CONTACT********************************************************/
 
 .open-contact-container {
+    height: 100%;
     width: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    padding-left: 3%;
-    margin-left: 37%;
+    position: sticky;
+    top: 0;
+    left: 42%;
+    padding-left: 40px;
+    border: 1px solid;
+    background-color: #F6F7F8;
 }
 
 .open-contact-container a {
@@ -165,7 +166,13 @@
     width: 100%;
     display: flex;
     gap: 5%;
+    padding-left: 25px;
     margin-top: 100px;
+}
+
+.contacts-h2 {
+    margin-block-start: 0;
+    margin-block-end: 10px;
 }
 
 .seperator-2 {
@@ -177,8 +184,9 @@
 .seperator-2-responsive {
     width: 70px;
     height: 3px;
+    display: block;
     background-color: #29ABE2;
-    margin: 30px 0;
+    display: none;
 }
 
 .open-contact {
@@ -188,17 +196,22 @@
     justify-content: start;
     align-items: start;
     gap: 50px;
+    padding-left: 25px;
     margin-top: 50px;
 }
 
 .open-contact-headline {
     width: 100%;
+    display: flex;
     justify-content: start;
+    align-items: center;
     gap: 3%;
 }
 
 .open-contact-name-and-icons {
+    display: flex;
     flex-direction: column;
+    justify-content: start;
     align-items: start;
 }
 
@@ -382,7 +395,8 @@ input {
 .successfull-message {
     height: 48px;
     width: 300px;
-    background-color: #2A3647;;
+    background-color: #2A3647;
+    ;
     position: absolute;
     left: 40%;
     top: 80%;
@@ -437,28 +451,7 @@ input {
 
 /***********************************************/
 
-@media (max-width: 1250px) {
 
-    .open-contact-container {
-        width: 65%;
-       margin-left: 46%;
-       font-size: 16px;
-    }
-    
-    .contacts-register {
-
-        width: 35%;
-        font-size: 16px;
-    }
-
-    .contacts-motto {
-    flex-direction: column;
-    }
-}
-
-@media (max-width: 1050px) {}
-
-@media (max-width: 1000px) {}
 
 /*MOBILE VERSION***********************************************/
 
@@ -467,7 +460,7 @@ input {
     .contacts-slider {
         width: 320px;
     }
-    
+
 }
 
 
@@ -479,104 +472,67 @@ input {
 
 /*DESKTOP VERSION***********************************************/
 
-@media (max-width:1024px) {
+@media (max-width: 1250px) {
 
-    .showindesktop {
-        display: none;
+    .contacts-register {
+        width: 35%;
+        padding-left: 0;
     }
 
-    .showmobile {
-        display: block;
-        height: 39px;
-        width: 32px;
-    }
-
-    header {
-        left: 0;
-        right: 0;
-        height: 80px;
+    .contact {
         width: 100%;
-        padding-left: 4%;
-        padding-right: 4%;
-        z-index: 99;
+        border-radius: 0;
     }
 
-    .header-icon-container {
-        width: auto;
-    }
-
-    nav {
-        top: auto;
-        right: 0;
-        height: 80px;
-        width: 100%;
-        padding: 0;
-        z-index: 99;
-    }
-
-    .maincontent {
-        margin-top: 0;
-        margin-left: 0;
-        height: 100vh;
-        width: 100vw;
-    }
-
-    .nav-links-container {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
-        height: 100%;
-        padding-bottom: 0;
-    }
-
-    .nav-links-container a {
-        position: relative;
-        font-size: 14px;
-        font-weight: 400;
-        padding: 0;
-        width: 80px;
-        height: 76px;
-        justify-content: center;
-        flex-direction: column;
-        gap: 0;
-    }
-
-    .aktivesheet {
-        border-radius: 10px;
-        border: solid 1px #091931;
-    }
-}
-
-@media (max-width:1320px) {
-    .seperator-2 {
-        display: none;
+    .open-contact-container {
+        width: 60%;
     }
 
     .contacts-motto {
         height: auto;
-        width: auto;
-        display: flex;
-        justify-content: start;
-        align-items: flex-start;
-        margin-top: 109px;
-        margin-left: 511px;
         flex-direction: column;
-        gap: 11px;
     }
 
-    .contacts-h2 {
-        margin: 0px;
-    }
-
-    .seperator-2-responsive {
-        margin: 0px;
-    }
-}
-
-
-@media (min-width:1321px) {
-    .seperator-2-responsive {
+    .seperator-2 {
         display: none;
     }
+
+    .seperator-2-responsive {
+
+        display: block;
+    }
 }
 
+@media (max-width: 1060px) {}
+
+@media(max-width: 825px) {}
+
+@media(max-width: 700px) {
+
+    input {
+        background-position-x: 95%;
+    }
+
+    .seperator {
+        width: 100px;
+    }
+
+    .logomobile {
+        animation: zoom 1s;
+    }
+}
+
+@media (max-width:600px) {}
+
+@media(max-width: 460px) {
+
+    h1 {
+        font-size: 47px;
+    }
+
+    input {
+        width: auto;
+    }
+}
+
+@media (max-height:788px) {}
