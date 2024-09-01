@@ -1,98 +1,179 @@
-.contacts-main {
-    background-color: #F6F7F8;
-}
 
-.contacts-slider {
+/*CONTACT REGISTER*/
+
+.contacts-register {
     height: 100%;
-    width: 500px;
-    display: flex;
+    width: 25%;
+    position: fixed;
+    font-size: 1vw;
     flex-direction: column;
     background-color: white;
     justify-content: start;
-    align-items: center;
-    padding-bottom: 16px;
     overflow-y: scroll;
-    position: fixed;
-    filter: drop-shadow(4px 0 6px rgba(0, 0, 0, 0.08));
     gap: 30px;
+    padding-bottom: 16px;
+    filter: drop-shadow(4px 0 6px rgba(0, 0, 0, 0.08));
     z-index: 1;
 }
 
-.contacts-slider a {
+.contacts-register a {
     text-decoration: none;
 }
 
-.contacts-slider a.active-contact {
+.contacts-register a.active-contact {
     color: lightblue;
 }
 
-.button-container {
+.register-button-container {
+    height: 100px;
     width: 100%;
+    background-color: white;
     position: sticky;
-    /* Verändert zu 'sticky' */
     top: 0;
-    /* Damit es oben bleibt, sobald der Scrollbereich diesen erreicht */
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
     padding-top: 25px;
     z-index: 2;
-    /* Höher als der Scroll-Inhalt */
 }
 
-.add-button {
+.register-add-button {
     height: 50px;
     width: 90%;
     gap: 16px;
     position: relative;
-    /* Innerhalb des 'sticky'-Containers braucht es keine 'fixed' Positionierung */
     z-index: 3;
-    /* Höher als der Button-Container */
 }
 
-.add-button::after {
+.register-add-button::after {
     content: url(../assets/icons/person_add.svg);
     height: 32px;
     width: auto;
 }
 
+/*SCROLLBAR*/
 
-.contacts-slider::-webkit-scrollbar {
+.contacts-register::-webkit-scrollbar {
     width: 24px;
-    /* Breite der Scroll-Leiste */
 }
 
-.contacts-slider::-webkit-scrollbar-track {
+.contacts-register::-webkit-scrollbar-track {
+    justify-content: center;
     background: white;
     border: 5px solid white;
 }
 
-.contacts-slider::-webkit-scrollbar-thumb {
+.contacts-register::-webkit-scrollbar-thumb {
     height: 53px;
     width: 14px;
     background-color: #A8A8A8;
-    /* Farbe des Scroll-Thumbnails */
     border: 5px solid white;
     border-radius: 10px;
 }
 
-.contacts-motto {
-    height: 73px;
-    width: 569px;
+/*SINGLECONTACTS*/
+
+.register-letter {
+    height: 70px;
+    width: 90%;
+    font-weight: bold;
+    justify-content: start;
+    align-items: end;
+    gap: 50px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    border-bottom: 1px solid #A8A8A8;
+    padding-left: 50px;
+    margin-bottom: 10px;
+    filter: drop-shadow(4px 0 6px rgba(0, 0, 0, 0.08));
+}
+
+.contact {
+    height: 80px;
+    width: 90%;
+    border-radius: 10px;
     display: flex;
     justify-content: start;
     align-items: center;
-    margin-top: 109px;
-    margin-left: 511px;
-    gap: 30px;
+    gap: 10%;
+    margin-left: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.contact.active-contact {
+    background-color: #2A3647;
+    color: white;
+}
+
+.contact:hover {
+    background-color: rgb(235, 235, 235);
+    cursor: pointer;
+}
+
+.initials {
+    height: 45%;
+    width: auto;
+    aspect-ratio: 1 / 1;
+    color: white;
+    font-size: 1.5vmin;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin-left: 15px;
+}
+
+.initials.active-contact {
+    border: 3px solid white;
+}
+
+.name-mail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 7px;
+}
+
+.contact-name {
+    text-align: center;
+    font-weight: bold;
+}
+
+.contact-e-mail {
+    text-align: center;
+}
+
+.contact-e-mail a {
+    text-align: center;
+}
+
+/*OPEN CONTACT********************************************************/
+
+.open-contact-container {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    margin-left: 30%;
+}
+
+.open-contact-container a {
+    text-decoration: none;
+}
+
+.contacts-motto {
+    height: 73px;
+    width: 60%;
+    display: flex;
+    gap: 5%;
+    padding-left: 5%;
+    margin-top: 100px;
 }
 
 .seperator-2 {
-    height: 70px;
+    height: 100%;
     width: 3px;
     background-color: #29ABE2;
-    margin: 30px 0;
 }
 
 .seperator-2-responsive {
@@ -102,13 +183,270 @@
     margin: 30px 0;
 }
 
-.contacts-h2 {
-    margin-top: 33px;
-    font-weight: 500;
-    font-size: 27px;
+.open-contact {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 50px;
+    padding-left: 5%;
+    margin-top: 50px;
 }
 
-/********************************************************************/
+.open-contact-headline {
+    width: 100%;
+    justify-content: start;
+    gap: 3%;
+}
+
+.open-contact-name-and-icons {
+    flex-direction: column;
+    align-items: start;
+}
+
+.open-contact-initials-container {
+    height: 100px;
+    width: auto;
+    aspect-ratio: 1 / 1;
+    font-size: 37px;
+    font-weight: bold;
+    color: white;
+    border-radius: 50%;
+    border: 1px solid;
+}
+
+.open-contact-initials {
+    width: 20%;
+    border: 1px solid;
+}
+
+.open-contact-name-and-icons {
+    width: 100%;
+    padding: 10px 0;
+}
+
+.name {
+    font-size: 37px;
+    font-weight: bold;
+}
+
+.icons {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.edit::before {
+    content: url(../assets/icons/edit.svg);
+    padding-right: 7px;
+}
+
+.delete::before {
+    content: url(../assets/icons/delete.svg);
+    padding-right: 7px;
+}
+
+.phone-and-e-mail-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 10px;
+}
+
+/***OVERLAYS*****************************************************/
+
+.overlay {
+    height: 55vh;
+    width: 64%;
+    background-color: white;
+    position: absolute;
+    top: 25%;
+    left: 20%;
+    border-radius: 16px;
+    z-index: 997;
+    transform: translateX(0);
+    animation: slideIn 0.5s forwards ease-in-out;
+}
+
+.overlay.slide-out {
+    animation: slideOut 0.5s forwards ease-in-out;
+}
+
+.overlay.fade-out {
+    animation: fadeOut 0.3s forwards ease-in-out;
+}
+
+/***OVERLAY GENERATED HTML*****************************************************/
+
+.left-container {
+    height: 100%;
+    width: 40%;
+    background-color: #2A3647;
+    flex-direction: column;
+    align-items: start;
+    padding-left: 50px;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+.seperator-3 {
+    height: 3px;
+    width: 85px;
+    background-color: #29ABE2;
+    margin: 30px 0;
+    margin-top: 10px;
+}
+
+.label {
+    color: white;
+}
+
+.label-subtext {
+    font-size: 25px;
+    color: white;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.mid-container {
+    height: 100%;
+    width: 20%;
+    background-color: white;
+}
+
+.person {
+    height: 70%;
+    filter: brightness(+7);
+}
+
+.input-and-button-container {
+    height: 100%;
+    width: 40%;
+    background-color: white;
+    flex-direction: column;
+    align-items: start;
+    gap: 5%;
+}
+
+.close-icon {
+    height: 30px;
+    width: 30px;
+    margin-left: 390px;
+    margin-bottom: 50px;
+}
+
+.close-icon:hover {
+    background-color: #D1D1D1;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input {
+    width: 90%;
+    cursor: pointer;
+}
+
+.button-box {
+    width: 90%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 25px;
+    margin-top: 16px;
+}
+
+.cancel-button::after {
+    content: url(../assets/icons/close.svg);
+}
+
+.create-button {
+    width: 200px;
+}
+
+.create-button::after {
+    content: url(../assets/icons/check.svg);
+}
+
+/***SUCCESSFULL CONTACT CREATED MESSAGE*/
+
+.d-none {
+    display: none;
+}
+
+.successfull-message {
+    height: 48px;
+    width: 300px;
+    background-color: #2A3647;;
+    position: absolute;
+    left: 40%;
+    top: 80%;
+    z-index: 999;
+    border-radius: 10px;
+    color: white;
+    transform: translateX(0);
+    animation: slideIn 0.5s forwards ease-in-out;
+}
+
+.successfull-message.slide-in {
+    animation: slideOut 0.5s forwards ease-in-out;
+}
+
+.successfull-message.slide-out {
+    animation: slideOut 0.5s backwards ease-in-out;
+}
+
+/***ANIMATIONS*****************************************************/
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100vw);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100vw);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+/*MOBILE************************************************
+
+@media (max-width:500px) {
+    .contacts-slider {
+        width: 320px;
+    }
+    
+}
+
 
 @media (max-width:825px) {
     .contacts-slider {
@@ -217,390 +555,4 @@
         display: none;
     }
 }
-
-/***********************JAVA SCRIPT HTML TEMPLATES*********************************/
-
-.font-stripe {
-    height: 70px;
-    width: 90%;
-    font-weight: bold;
-    display: flex;
-    justify-content: start;
-    align-items: end;
-    padding-bottom: 10px;
-    padding-left: 25px;
-    gap: 50px;
-    border-bottom: 1px solid #A8A8A8;
-    margin-left: 25px;
-    filter: drop-shadow(4px 0 6px rgba(0, 0, 0, 0.08));
-}
-
-.contact-stripe {
-    height: 80px;
-    width: 90%;
-    border-radius: 10px;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    padding: 30px;
-    gap: 50px;
-    transition: background-color 0.3s ease;
-    /* Für eine sanfte Übergangsanimation */
-}
-
-.contact-stripe.active-contact {
-    background-color: #2A3647;
-    color: white;
-    /* Optional: Textfarbe ändern, damit sie besser lesbar ist */
-}
-
-.contact-stripe:hover {
-    background-color: lightgray;
-    cursor: pointer;
-}
-
-.initials {
-    height: 50px;
-    width: 50px;
-    color: white;
-    border: 1px solid black;
-    border-radius: 50%;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.initials.active-contact {
-    border: 3px solid white;
-}
-
-.name-mail-container {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 7px;
-}
-
-.contact-name {
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
-}
-
-.contact-e-mail {
-    text-align: center;
-}
-
-.contact-e-mail a {
-    text-align: center;
-}
-
-.the-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    margin-left: 45px;
-}
-
-.card-of-contact {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    margin-left: 520px;
-    margin-top: 70px;
-    gap: 25px;
-}
-
-.card-of-contact a {
-    text-decoration: none;
-}
-
-.contact-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    gap: 50px;
-}
-
-.contact-headline {
-    width: 100%;
-    display: flex;
-    justify-content: start;
-    gap: 25px;
-
-}
-
-.contact-initials {
-    width: 20%;
-    border: 1px solid;
-}
-
-.big-contact-name {
-    width: 100%;
-    padding: 10px 0;
-}
-
-.contact-card-initials {
-    height: 100px;
-    width: 120px;
-    font-size: 37px;
-    font-weight: bold;
-    color: white;
-    border-radius: 50%;
-    border: 1px solid;
-}
-
-.name {
-    font-size: 37px;
-    font-weight: bold;
-}
-
-.icons {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 16px;
-    padding: 10px 0;
-}
-
-.edit::before {
-    content: url(../assets/icons/edit.svg);
-    padding-right: 7px;
-}
-
-.delete::before {
-    content: url(../assets/icons/delete.svg);
-    padding-right: 7px;
-}
-
-.phone-and-e-mail-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    gap: 10px;
-}
-
-.add-edit-contact {
-    height: 55vh;
-    width: 64%;
-    background-color: white;
-    position: absolute;
-    top: 25%;
-    left: 20%;
-    border-radius: 16px;
-    z-index: 997;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transform: translateX(0);
-    /* Startet an der endgültigen Position */
-    animation: slideIn 0.5s forwards ease-in-out;
-    /* Animation für das Einblenden */
-}
-
-/* Animation für das Hineinschieben */
-@keyframes slideIn {
-    from {
-        transform: translateX(100vw);
-        /* Startet von rechts außerhalb des Bildschirms */
-    }
-
-    to {
-        transform: translateX(0);
-        /* Endet an der ursprünglichen Position */
-    }
-}
-
-/* Animation für das Herausschieben */
-@keyframes slideOut {
-    from {
-        transform: translateX(0);
-        /* Startet an der ursprünglichen Position */
-    }
-
-    to {
-        transform: translateX(100vw);
-        /* Endet außerhalb des Bildschirms (rechts) */
-    }
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    to {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-}
-
-/* Klasse für das Herausschieben */
-.add-edit-contact.slide-out {
-    animation: slideOut 0.5s forwards ease-in-out;
-}
-
-/* Klasse für das Ausblenden an Ort und Stelle */
-.add-edit-contact.fade-out {
-    animation: fadeOut 0.3s forwards ease-in-out;
-}
-
-.input-and-button-container {
-    height: 100%;
-    width: 100%;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-}
-
-.left-container {
-    height: 100%;
-    width: 40%;
-    background-color: #2A3647;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    padding-left: 50px;
-    border-top-left-radius: 16px;
-    border-bottom-left-radius: 16px;
-}
-
-.input-container {
-    height: 100%;
-    width: 40%;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.button-container-add {
-    height: 100%;
-    width: 100%;
-    gap: 25px;
-    margin-top: 37px;
-}
-
-.seperator-3 {
-    height: 3px;
-    width: 70px;
-    background-color: #29ABE2;
-    margin: 30px 0;
-    margin-top: 10px;
-}
-
-.headliner {
-    font-size: 54px;
-    color: white;
-    font-weight: bold;
-}
-
-.sub-text {
-    font-size: 26px;
-    color: white;
-}
-
-.logo-sign {
-    height: 50px;
-    width: auto;
-    margin-bottom: 10px;
-}
-
-.person-container {
-    height: 100px;
-    width: 100px;
-    background-color: #D1D1D1;
-    border-radius: 50%;
-}
-
-.mid-container {
-    height: 100%;
-    width: 20%;
-    background-color: white;
-}
-
-.person {
-    height: 70%;
-    filter: brightness(+7);
-}
-
-.input-box {
-    height: 100%;
-    width: 40%;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 21px;
-    padding-right: 50px;
-    border-top-right-radius: 16px;
-    border-bottom-right-radius: 16px;
-}
-
-.button-box {
-    width: 100%;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 25px;
-    padding-left: 10px;
-    margin-top: 16px;
-}
-
-.cancel-button::after {
-    content: url(../assets/icons/close.svg);
-}
-
-.create-button {
-    width: 200px;
-}
-
-.create-button::after {
-    content: url(../assets/icons/check.svg);
-}
-
-.close-icon {
-    height: 30px;
-    width: 30px;
-    margin-left: 390px;
-    margin-bottom: 50px;
-}
-
-.close-icon:hover {
-    background-color: #D1D1D1;
-    border-radius: 50%;
-}
-
-.d-none {
-    display: none;
-}
-
-.successfull-message {
-    height: 48px;
-    width: 300px;
-    background-color: #2A3647;
-    position: absolute;
-    left: 40%;
-    top: 80%;
-    z-index: 999;
-    border-radius: 10px;
-    color: white;
-    transform: translateX(0);
-    /* Startet an der endgültigen Position */
-    animation: slideIn 0.5s forwards ease-in-out;
-    /* Animation für das Einblenden */
-}
-
-.successfull-message.slide-in {
-    animation: slideOut 0.5s forwards ease-in-out;
-}
-
-.successfull-message.slide-out {
-    animation: slideOut 0.5s backwards ease-in-out;
-}
+********************************************************/

@@ -5,11 +5,20 @@ function init() {
     sortContacts();
     renderContactStripes();
 }
+
+
+/*TO DO:
+
+1. Mobile machen
+2. Alle CSS & JS Code von oben bis unten Strukturiert durcharbeiten (CSS Code verkürzen/Bessere Bezeichnungen/Java Script Code verkürzen/Slitten/kombinieren und die Kommunikation mit der Firebase einbinden (Funktionen in der Script.JS).
+3. Testen (auch mit Login)/Checkliste durchgehen
+4. Finale Version sichern (GIT-HUB/PC)
+*/
 //RENDERN***************************************************
 
 function renderContactStripes() {
     let contactContainer = document.getElementById('contacts-slider');
-    contactContainer.innerHTML = /*Html*/`<div class="button-container"><button class="button-filled-large add-button" onclick="addContact()">Add contact</button></div>`;
+    contactContainer.innerHTML = /*Html*/`<div class="register-button-container"><button class="button-filled-large register-add-button" onclick="addContact()">Add contact</button></div>`;
     lastInitial = '';
     sortContacts();
     for (let i = 0; i < contacts.length; i++) {
@@ -21,7 +30,7 @@ function createFontStripeHtml(currentInitial, lastInitial) {
     let html = '';
     if (currentInitial !== lastInitial) {
         html = /*Html*/`
-        <div class="font-stripe">${currentInitial}</div>`;
+        <div class="register-letter center">${currentInitial}</div>`;
     }
     return html;
 }
@@ -50,7 +59,7 @@ function setActiveContact(index) {
 //KONTAKT ANSEHEN***************************************************
 
 function renderContactCard(index) {
-    let contactCard = document.getElementById('card-of-contact');
+    let contactCard = document.getElementById('open-contact');
     contactCard.innerHTML = '';
     if (contacts[index]) {
         contactCard.innerHTML = contactCardHtml(contacts[index], index);
@@ -61,7 +70,7 @@ function renderContactCard(index) {
 }
 
 function clearContactCard() {
-    let contactCard = document.getElementById('card-of-contact');
+    let contactCard = document.getElementById('open-contact');
     contactCard.innerHTML = '';
 }
 

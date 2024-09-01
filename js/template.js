@@ -4,13 +4,13 @@ function createContactStripeHtml(i, isActive) {
     const contact = contacts[i];
     const activeClass = isActive ? 'active-contact' : '';
     return /*Html*/`
-    <div class="contact-stripe ${activeClass}" onclick="renderContactCard(${i}); setActiveContact(${i})">
+    <div class="contact ${activeClass}" onclick="renderContactCard(${i}); setActiveContact(${i})">
         <div class="initials ${activeClass} center" style="background-color:${contact.color};">
             ${contact.name.split(' ').map(n => n[0]).join('')}
         </div>
         <div class="name-mail-container">
             <p class="contact-name">${contact.name}</p>
-            <a class="contact-e-mail ${activeClass}"" type="e-mail" href="mailto:${contact.mail}">${contact.mail}</a>
+            <a class="contact-e-mail ${activeClass}" type="e-mail" href="mailto:${contact.mail}">${contact.mail}</a>
         </div>
     </div>`;
 }
@@ -24,17 +24,17 @@ function addContactHtml(contact = null, index = null) {
 
     return /*Html*/`
     <div class="left-container center">
-        <img class="logo-sign" src="./assets/icons/capa 1.svg">
-        <p class="headliner">${headerText}</p>
-        <p class="sub-text">Tasks are better with a team!</p>
+        <img class="logo" src="./assets/icons/capa 1.svg">
+        <h1 class="label">${headerText}</h1>
+        <p class="label-subtext">Tasks are better with a team!</h2>
         <div class="seperator-3"></div>
     </div>    
     <div class="mid-container center">
-        <div class="person-container center" id="edit-initials" style="background-color:${contactColor};">
+        <div class="open-contact-initials-container center" id="edit-initials" style="background-color:${contactColor};">
             ${contactInitials ? `<div class="contact-card-initials center">${contactInitials}</div>` : `<img class="person" src="./assets/icons/person.svg">`}
         </div>
     </div>
-    <div class="input-box">
+    <div class="input-and-button-container center">
         <div class="close-icon center">
             <img src="./assets/icons/close.svg" onclick="closePopUpSlide()">
         </div>
@@ -54,19 +54,18 @@ function addContactHtml(contact = null, index = null) {
 function contactCardHtml(contact, index) {
     let contactColor = contact.color;
     return /*Html*/`
-    <div class="contact-container center">
-        <div class="contact-headline">
-            <div class="contact-card-initials center" id="initials-and-color" style="background-color:${contactColor};">
+        <div class="open-contact-headline center">
+            <div class="open-contact-initials-container center" id="initials-and-color" style="background-color:${contactColor};">
                 ${contact.name.split(' ').map(n => n[0]).join('')}
             </div>
-            <div class="big-contact-name">
-                <p class="name" id="nameedit">${contact.name}</p>
+            <div class="open-contact-name-and-icons center">
+                <p class="name center" id="nameedit">${contact.name}</p>
                 <div class="icons">
                     <a class="edit" onclick="editContact(${index})">edit</a>
                     <a class="delete" onclick="deleteContact(${index})">Delete</a>
                 </div>
             </div>
-        </div>
+            </div>
         <p>Contact Information</p>
         <div class="phone-and-e-mail-container" id="mailedit">
             <p><b>Email</b></p>
@@ -75,7 +74,6 @@ function contactCardHtml(contact, index) {
         <div class="phone-and-e-mail-container">
             <p><b>Phone</b></p>
             <a href="tel:${contact.phonenumber}">${contact.phonenumber}</a>
-        </div>
     </div>
     `;
 }
