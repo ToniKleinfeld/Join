@@ -42,7 +42,6 @@ function updateTaskTable(tasks, status, tableId) {
             firstLastInitial(index);
             let element = filteredTasks[index];
             tableElement.innerHTML += renderCardHTML(element, index, indexOfTask);
-
             getTypeLabelBoardColor(element, indexOfTask);
             choosePrioSymbol(element['prio']);
         }
@@ -78,7 +77,7 @@ function firstLastInitial(i) {
 
 function renderCardHTML(element, i, indexOfTask) {
     return /*html*/`
-    <div onclick="showTaskOverlay(${indexOfTask}, ${element})" class="card-container" draggable="true" ondragstart="startDragging(${indexOfTask})">
+    <div onclick="showTaskOverlay(${indexOfTask})" class="card-container" draggable="true" ondragstart="startDragging(${indexOfTask})">
         <div class="card">
             <div class="frame-119">
                 <div id="labelBoardCard${indexOfTask}" class="label-board-card">
@@ -117,13 +116,10 @@ function renderCardHTML(element, i, indexOfTask) {
 function choosePrioSymbol(priority) {
     // let chosedSymbol = document.getElementById('priorityImage').src;
     if (priority === 'Low') {
-        console.log('Low');
         return './assets/icons/priority-low.svg';
     } else if (priority === 'Medium') {
-        console.log('Medium');
         return './assets/icons/priority-equal.svg';
     } else if (priority === 'Urgent') {
-        console.log('Urgent');
         return './assets/icons/priority-hight.svg';
     }
 }
@@ -139,6 +135,15 @@ function closeAddTaskDialog() {
     addTaskOverlay.style.display = 'none';
 }
 
+function tableAssignedTo(i, indexOfTask){
+    for (let index = 0; index < tasks.length; index++) {
+        const element = tasks[0]['Assigned To'][index];
+        
+        <div class="assigned-row-overlay"><span class="circle circle-in-progress">EM</span>
+        <span>${tasks[indexOfTask]['Assigned To'][i]}</span>
+        </div>
+    }
+}
 
 function calcProgressbarSubtasks() {
 
@@ -165,11 +170,11 @@ function getTypeLabelBoardColor(task, i) {
 }
 
 
-function showTaskOverlay(indexOfTask, element) {
+function showTaskOverlay(indexOfTask) {
     let overlay = document.getElementById('overlay');
     overlay.style.display = 'flex';
 
-    document.getElementById('overlay').innerHTML = rendertaskOverlayHTML(indexOfTask, element);
+    document.getElementById('overlay').innerHTML = rendertaskOverlayHTML(indexOfTask);
 }
 
 function closeTaskOverlay() {
@@ -178,7 +183,7 @@ function closeTaskOverlay() {
 }
 
 
-function rendertaskOverlayHTML(indexOfTask, element) {
+function rendertaskOverlayHTML(indexOfTask) {
     return /*html*/`
     <div class="task-overlay-container">
         <div class="user-story-close-container">
@@ -195,13 +200,15 @@ function rendertaskOverlayHTML(indexOfTask, element) {
             <span>Priority:</span>
             <div>
                 <span>${tasks[indexOfTask]['prio']}</span>
-                <img src="${choosePrioSymbol(element['prio'])}" alt="">
+                <img src="${choosePrioSymbol(tasks[indexOfTask]['prio'])}" alt="">
             </div>
         </div>
         <div>
             <div class="assigned-grid-overlay">
                 <div>Assigned To:</div>
-                <div class="assigned-row-overlay"><span class="circle circle-in-progress">EM</span><span>${tasks[indexOfTask]['Assigned To']}</span></div>
+                <!-- ${tableAssignedTo(indexOfTask)} -->
+                <!-- <div id="assignedToTable" class="assigned-row-overlay"><span class="circle circle-in-progress">EM</span>
+                <span>${tasks[indexOfTask]['Assigned To']}</span></div> -->
                 <!-- <div class="assigned-row-overlay"><span class="circle circle-in-progress">MB</span><span>Marcel
                         Bauer</span></div>
                 <div class="assigned-row-overlay"><span class="circle circle-in-progress">AM</span><span>Anton
