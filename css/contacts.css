@@ -3,14 +3,14 @@
 
 .contacts-register {
     height: 100%;
-    width: 25%;
+    width: 30%;
     position: fixed;
-    font-size: 1vw;
     flex-direction: column;
     background-color: white;
-    justify-content: start;
+    justify-content: center;
     overflow-y: scroll;
     gap: 30px;
+    padding-left: 10px;
     padding-bottom: 16px;
     filter: drop-shadow(4px 0 6px rgba(0, 0, 0, 0.08));
     z-index: 1;
@@ -40,8 +40,8 @@
 .register-add-button {
     height: 50px;
     width: 90%;
-    gap: 16px;
     position: relative;
+    gap: 10%;
     z-index: 3;
 }
 
@@ -83,20 +83,18 @@
     padding-bottom: 10px;
     padding-left: 25px;
     border-bottom: 1px solid #A8A8A8;
-    padding-left: 50px;
     margin-bottom: 10px;
     filter: drop-shadow(4px 0 6px rgba(0, 0, 0, 0.08));
 }
 
 .contact {
-    height: 80px;
-    width: 90%;
+    height: 10%;
+    width: 95%;
     border-radius: 10px;
     display: flex;
     justify-content: start;
     align-items: center;
-    gap: 10%;
-    margin-left: 30px;
+    gap: 7%;
     transition: background-color 0.3s ease;
 }
 
@@ -154,7 +152,8 @@
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    margin-left: 30%;
+    padding-left: 3%;
+    margin-left: 37%;
 }
 
 .open-contact-container a {
@@ -163,10 +162,9 @@
 
 .contacts-motto {
     height: 73px;
-    width: 60%;
+    width: 100%;
     display: flex;
     gap: 5%;
-    padding-left: 5%;
     margin-top: 100px;
 }
 
@@ -190,7 +188,6 @@
     justify-content: start;
     align-items: start;
     gap: 50px;
-    padding-left: 5%;
     margin-top: 50px;
 }
 
@@ -438,7 +435,33 @@ input {
     }
 }
 
-/*MOBILE************************************************
+/***********************************************/
+
+@media (max-width: 1250px) {
+
+    .open-contact-container {
+        width: 65%;
+       margin-left: 46%;
+       font-size: 16px;
+    }
+    
+    .contacts-register {
+
+        width: 35%;
+        font-size: 16px;
+    }
+
+    .contacts-motto {
+    flex-direction: column;
+    }
+}
+
+@media (max-width: 1050px) {}
+
+@media (max-width: 1000px) {}
+
+/*MOBILE VERSION***********************************************/
+
 
 @media (max-width:500px) {
     .contacts-slider {
@@ -454,6 +477,7 @@ input {
     }
 }
 
+/*DESKTOP VERSION***********************************************/
 
 @media (max-width:1024px) {
 
@@ -555,4 +579,4 @@ input {
         display: none;
     }
 }
-********************************************************/
+

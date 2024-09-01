@@ -18,7 +18,7 @@ function init() {
 
 function renderContactStripes() {
     let contactContainer = document.getElementById('contacts-slider');
-    contactContainer.innerHTML = /*Html*/`<div class="register-button-container"><button class="button-filled-large register-add-button" onclick="addContact()">Add contact</button></div>`;
+    contactContainer.innerHTML = /*Html*/`<div class="register-button-container"><button class="button-filled-large register-add-button" onclick="addContact()">Add new contact</button></div>`;
     lastInitial = '';
     sortContacts();
     for (let i = 0; i < contacts.length; i++) {
