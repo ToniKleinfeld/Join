@@ -16,7 +16,7 @@ function createContactStripeHtml(i, isActive) {
 }
 
 function addContactHtml(contact = null, index = null) {
-    let headerText = index !== null ? 'Edit Contact' : 'Add Contact';
+    let headerText = index !== null ? 'Edit contact' : 'Add contact';
 
     // Calculate initials and background color if a contact is provided
     let contactInitials = contact ? contact.name.split(' ').map(n => n[0]).join('') : '';

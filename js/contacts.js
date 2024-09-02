@@ -60,6 +60,7 @@ function toggleClass() {
 function showMobileEditMenu() {
     let popUp = document.getElementById('mobile-edit-menu');
     let mobileButtonIcon = document.getElementById('relative-icon');
+    let mobileButton = document.getElementById('mobile-button-container');
     
     // Extrahiere nur den Dateinamen aus der src-Eigenschaft
     let iconSrc = mobileButtonIcon.src.split('/').pop();
@@ -67,8 +68,11 @@ function showMobileEditMenu() {
     if(iconSrc === 'burger-menu.svg'){
         popUp.classList.remove('d-none');
     } else {
-        alert('wasn schon wieder??!');
+        addContact();
     }
+
+
+    mobileButton.classList.add('hide');
 }
 
 
@@ -115,7 +119,8 @@ function clearContactCard() {
 //KONTAKTE HINZUFÜGEN***************************************************
 
 function addContact() {
-    let popUp = document.getElementById('add-edit-contact');
+    let popUp = document.getElementById('add-edit-contact')
+  
     popUp.classList.remove('d-none');
     popUp.classList.remove('hide');
     popUp.innerHTML = addContactHtml();
@@ -203,6 +208,9 @@ function editContact(index) {
     // Pass the contact and index to addContactHtml
     let popUp = document.getElementById('add-edit-contact');
     popUp.innerHTML = addContactHtml(contact, index);
+    
+    
+
 
     let text = document.getElementById('create-save-button');
     text.innerHTML = `Save Contact`;
@@ -267,7 +275,12 @@ function chooseCreateOrSave() {
 
 function closePopUpSlide() {
     let popUp = document.getElementById('add-edit-contact');
+    let mobileButton = document.getElementById('mobile-button-container');
+
+    
     popUp.classList.add('slide-out');
+    mobileButton.classList.remove('hide');
+
 }
 
 function closePopUpFade() {
