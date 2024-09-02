@@ -1,10 +1,10 @@
-/*CONTACT TEMPLATES*/
+/*CONTACT HTML*/
 
 function createContactStripeHtml(i, isActive) {
     const contact = contacts[i];
     const activeClass = isActive ? 'active-contact' : '';
     return /*Html*/`
-    <div class="contact ${activeClass}" onclick="renderContactCard(${i}); setActiveContact(${i})">
+    <div class="contact ${activeClass}" onclick="renderContactCard(${i}); setActiveContact(${i}); toggleClass()">
         <div class="initials ${activeClass} center" style="background-color:${contact.color};">
             ${contact.name.split(' ').map(n => n[0]).join('')}
         </div>

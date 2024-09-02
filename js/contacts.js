@@ -18,7 +18,8 @@ function init() {
 
 function renderContactStripes() {
     let contactContainer = document.getElementById('contacts-slider');
-    contactContainer.innerHTML = /*Html*/`<div class="register-button-container"><button class="button-filled-large register-add-button" onclick="addContact()">Add new contact</button></div>`;
+    contactContainer.innerHTML = /*Html*/`<div class="register-button-container">
+        <button class="button-filled-large register-add-button" onclick="addContact()">Add new contact</button> </div>`;
     lastInitial = '';
     sortContacts();
     for (let i = 0; i < contacts.length; i++) {
@@ -43,6 +44,43 @@ function contactRegisterHtml(i, isActive = false) {
     return `${fontStripeHtml}${contactStripeHtml}`;
 }
 
+function toggleClass() {
+    if (window.innerWidth <= 825) {
+        let register = document.getElementById('contacts-slider');
+        let mobileButtonIcon = document.getElementById('relative-icon');
+
+        // Klassen hinzufügen/entfernen
+        register.classList.add('d-none');
+    
+        // Quelle des mobileButton-Bildes ändern
+        mobileButtonIcon.src = './assets/icons/burger-menu.svg';  // Pfad zum neuen Bild einfügen
+    }
+}
+
+function showMobileEditMenu() {
+    let popUp = document.getElementById('mobile-edit-menu');
+    let mobileButtonIcon = document.getElementById('relative-icon');
+    
+    // Extrahiere nur den Dateinamen aus der src-Eigenschaft
+    let iconSrc = mobileButtonIcon.src.split('/').pop();
+
+    if(iconSrc === 'burger-menu.svg'){
+        popUp.classList.remove('d-none');
+    } else {
+        alert('wasn schon wieder??!');
+    }
+}
+
+
+
+function goBack() {
+    let register = document.getElementById('contacts-slider');
+    let mobileButtonIcon = document.getElementById('relative-icon');
+
+    register.classList.remove('d-none');
+    mobileButtonIcon.src = './assets/icons/person_add.svg';  // Pfad zum neuen Bild einfügen
+
+}
 //KONTAKTE SORTIEREN***************************************************
 
 function sortContacts() {
