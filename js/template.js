@@ -77,3 +77,35 @@ function contactCardHtml(contact, index) {
     </div>
     `;
 }
+
+/** Add Tasks HTML */
+
+function renderAssignedContactshtml(shortname,color) {
+    return /*html*/`
+       <div class="contacticon center" style="background-color:${color};">${shortname}</div>
+    `
+  }  
+
+  function renderHtmlContactLi(name,shortname,color) {
+    return /*html*/`
+      <li class="contactslistassign">
+        <input type="checkbox" id="${name}" onchange="assignedToTasK('${name}')"/>
+        <span class="checkmark"></span>
+        <label for="${name}">
+          <span class="contacticon center" style="background-color:${color};">${shortname}</span> ${name} 
+        </label>
+        </li>
+    `
+  }
+
+  function renderHtmlContactLiUser(name,shortname) {
+    return /*html*/`
+      <li class="contactslistassign">
+        <input type="checkbox" id="${name}" onchange="assignedToTasK('${name}')"/>
+        <span class="checkmark"></span>
+        <label for="${name}">
+          <span class="contacticon center">${shortname}</span> ${name} (You)
+        </label>
+        </li>
+    `
+  }
