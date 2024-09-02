@@ -169,6 +169,7 @@ function showTaskOverlay(indexOfTask) {
 
     document.getElementById('overlay').innerHTML = rendertaskOverlayHTML(indexOfTask);
     tableAssignedTo(indexOfTask);
+    listSubtasks(indexOfTask);
 }
 
 
@@ -191,6 +192,31 @@ function tableAssignedTo(indexOfTask) {
                 <span>${assignedToName}</span>
             </div>
             `;
+    }
+}
+
+function listSubtasks(indexOfTask) {
+    let subtask = document.getElementById('formSubtasks');
+    subtask.innerHTML = '';
+
+    // console.log(tasks[indexOfTask]['subtask']);
+
+    if (tasks[indexOfTask]['subtask']) {
+        console.log('true');
+        
+        for (let i = 0; i < tasks[indexOfTask]['subtask'].length; i++) {
+            const element = tasks[indexOfTask]?.['subtask'][i] || '';
+            console.log(element);
+
+            subtask.innerHTML += /*html*/`
+            <div class="checkbox-title-container">
+                <input class="checkbox" type="checkbox" id="checkbox${i}" name="toDo" value="checkboxSubtask${i}" />
+                <label for="checkboxSubtask${i}">${element.title}</label>
+            </div>
+        `;
+        }
+    } else {
+        return false;
     }
 }
 
@@ -224,16 +250,16 @@ function rendertaskOverlayHTML(indexOfTask) {
         </div>
         <div>
             <div class="subtasks-grid-overlay">
-                <div>Subtasks</div>
-                <form action="">
-                    <div class="checkbox-title-container">
+                <div>Subtasks:</div>
+                <form id="formSubtasks" action="">
+                    <!-- <div class="checkbox-title-container">
                         <input class="checkbox" type="checkbox" id="checkbox1" name="toDo" value="" />
                         <label for="checkbox1">Implement Recipe Recommendation</label>
                     </div>
                     <div class="checkbox-title-container">
                         <input class="checkbox" type="checkbox" id="checkbox2" name="toDo" value="" />
                         <label for="checkbox2">Start Page Layout</label>
-                    </div>
+                    </div> -->
                 </form>
             </div>
         </div>
