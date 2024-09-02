@@ -30,20 +30,21 @@ function initBoard() {
 }
 
 function updateTaskTable(tasks, status, tableId) {
-    const filteredTasks = tasks.filter(t => t.progress === status);
-    const tableElement = document.getElementById(tableId);
+    const filteredTasks = tasks.filter(t => t.progress === status);  // Filtert die Aufgaben nach dem gegebenen Status.
+    const tableElement = document.getElementById(tableId);  // Holt das HTML-Element der Tabelle anhand der übergebenen ID.
     tableElement.innerHTML = '';
 
-    if (filteredTasks.length == 0) {
+    if (filteredTasks.length == 0) {  // Überprüft, ob es Aufgaben im gefilterten Status gibt.
         tableElement.innerHTML = showNoTaskContainer('status');
     } else {
         for (let index = 0; index < filteredTasks.length; index++) {
-            let indexOfTask = tasks.indexOf(filteredTasks[index]);
+            let indexOfTask = tasks.indexOf(filteredTasks[index]);  // Findet den Index der Aufgabe im ursprünglichen `tasks`-Array.
             firstLastInitial(index);
             let element = filteredTasks[index];
             tableElement.innerHTML += renderCardHTML(element, index, indexOfTask);
             getTypeLabelBoardColor(element, indexOfTask);
             choosePrioSymbol(element['prio']);
+            // tableAssignedTo(index, indexOfTask);
         }
     }
 }
@@ -135,15 +136,7 @@ function closeAddTaskDialog() {
     addTaskOverlay.style.display = 'none';
 }
 
-function tableAssignedTo(i, indexOfTask){
-    for (let index = 0; index < tasks.length; index++) {
-        const element = tasks[0]['Assigned To'][index];
-        
-        <div class="assigned-row-overlay"><span class="circle circle-in-progress">EM</span>
-        <span>${tasks[indexOfTask]['Assigned To'][i]}</span>
-        </div>
-    }
-}
+
 
 function calcProgressbarSubtasks() {
 
@@ -175,11 +168,30 @@ function showTaskOverlay(indexOfTask) {
     overlay.style.display = 'flex';
 
     document.getElementById('overlay').innerHTML = rendertaskOverlayHTML(indexOfTask);
+    tableAssignedTo(indexOfTask);
 }
+
 
 function closeTaskOverlay() {
     let overlay = document.getElementById('overlay');
     overlay.style.display = 'none';
+}
+
+
+function tableAssignedTo(indexOfTask) {
+    let tableAssigned = document.getElementById('tableAssignedTo');
+    tableAssigned.innerHTML = '';
+
+    for (let index = 0; index < tasks[indexOfTask]['Assigned To'].length; index++) {
+        const assignedToName = tasks[indexOfTask]['Assigned To'][index];
+
+        tableAssigned.innerHTML += /*html*/`
+            <div class="assigned-row-overlay">
+                <span class="circle circle-in-progress">EM</span>
+                <span>${assignedToName}</span>
+            </div>
+            `;
+    }
 }
 
 
@@ -206,13 +218,8 @@ function rendertaskOverlayHTML(indexOfTask) {
         <div>
             <div class="assigned-grid-overlay">
                 <div>Assigned To:</div>
-                <!-- ${tableAssignedTo(indexOfTask)} -->
-                <!-- <div id="assignedToTable" class="assigned-row-overlay"><span class="circle circle-in-progress">EM</span>
-                <span>${tasks[indexOfTask]['Assigned To']}</span></div> -->
-                <!-- <div class="assigned-row-overlay"><span class="circle circle-in-progress">MB</span><span>Marcel
-                        Bauer</span></div>
-                <div class="assigned-row-overlay"><span class="circle circle-in-progress">AM</span><span>Anton
-                        Mayer</span></div> -->
+                <!--liste der ausgewählten namen-->
+                <div id="tableAssignedTo"></div>
             </div>
         </div>
         <div>
