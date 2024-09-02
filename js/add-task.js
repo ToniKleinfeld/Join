@@ -224,6 +224,9 @@
     }
   }
   
+  /**
+   *  Show and hide the subtasks Icons
+   */
   function changeIconsSubtask() {
     const inputfield = document.getElementById('subtaskinputfield').value
     const subtasksicons = document.getElementById('subtasksicons').classList;
@@ -235,6 +238,9 @@
     }
   }
 
+  /**
+   *  reset the Value from addsubtasks Input
+   */
   function resetsubtasksinput(){
     const inputfield = document.getElementById('subtaskinputfield');
 
