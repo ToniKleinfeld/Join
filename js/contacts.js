@@ -75,6 +75,17 @@ function showMobileEditMenu() {
     mobileButton.classList.add('hide');
 }
 
+function showOverlayBlur() {
+    let blur = document.getElementById('overlay-blur');
+
+    blur.classList.remove('hide');
+}
+
+function hideOverlayBlur() {
+    let blur = document.getElementById('overlay-blur');
+
+    blur.classList.add('hide');
+}
 
 
 function goBack() {
@@ -124,7 +135,10 @@ function addContact() {
     popUp.classList.remove('d-none');
     popUp.classList.remove('hide');
     popUp.innerHTML = addContactHtml();
+
+    showOverlayBlur();
 }
+
 function showMessage() {
     let popUp = document.getElementById('successfull-message');
     popUp.classList.remove('d-none');
@@ -227,6 +241,8 @@ function editContact(index) {
         mailInput.value = contact.mail;
         phoneInput.value = contact.phonenumber;
     }
+
+    showOverlayBlur();
 }
 
 
@@ -276,16 +292,18 @@ function chooseCreateOrSave() {
 function closePopUpSlide() {
     let popUp = document.getElementById('add-edit-contact');
     let mobileButton = document.getElementById('mobile-button-container');
-
     
     popUp.classList.add('slide-out');
     mobileButton.classList.remove('hide');
 
+    hideOverlayBlur();
 }
 
 function closePopUpFade() {
     let popUp = document.getElementById('add-edit-contact');
     popUp.classList.add('fade-out');
+
+    hideOverlayBlur();
 }
 
 function deleteContact(index) {
