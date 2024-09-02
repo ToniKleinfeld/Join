@@ -78,7 +78,7 @@ function contactCardHtml(contact, index) {
     `;
 }
 
-/** Add Tasks HTML */
+/* Add Tasks HTML */
 
 function renderAssignedContactshtml(shortname,color) {
     return /*html*/`
