@@ -26,14 +26,16 @@
       document.getElementById('anchorinput').classList.toggle('d-none');
       document.getElementById('anchorButton').classList.toggle('d-none');
       document.getElementById('anchoricon').classList.toggle('d-none');
+      document.getElementById("anchorinput").value = '';
+      filterContacts()
   }
 
   /**
    * Inialit all function, needed when start Add-Task side
    */
-  function initTasks() {
-    renderAndloadContactsToAssign()
-  }
+  // function initTasks() {
+  //   renderAndloadContactsToAssign()
+  // }
 
   /**
    * render the Contacts to assign to dropdown menü
@@ -171,33 +173,55 @@
     return filtercontacs[0].color
   }
 
+  /**
+   * 
+   * @param {string} id -get the id from html
+   */
+  function changePrio(id) {
+    const  urgentprio = document.getElementById('urgent').classList;
+    const  mediumprio = document.getElementById('medium').classList;
+    const  lowprio = document.getElementById('low').classList;
 
-  function renderAssignedContactshtml(shortname,color) {
-    return /*html*/`
-       <div class="contacticon center" style="background-color:${color};">${shortname}</div>
-    `
-  }  
-
-  function renderHtmlContactLi(name,shortname,color) {
-    return /*html*/`
-      <li class="contactslistassign">
-        <input type="checkbox" id="${name}" onchange="assignedToTasK('${name}')"/>
-        <span class="checkmark"></span>
-        <label for="${name}">
-          <span class="contacticon center" style="background-color:${color};">${shortname}</span> ${name} 
-        </label>
-        </li>
-    `
+    resetPrio(urgentprio,mediumprio,lowprio);
+    switchPrio(urgentprio,mediumprio,lowprio,id);
   }
 
-  function renderHtmlContactLiUser(name,shortname) {
-    return /*html*/`
-      <li class="contactslistassign">
-        <input type="checkbox" id="${name}" onchange="assignedToTasK('${name}')"/>
-        <span class="checkmark"></span>
-        <label for="${name}">
-          <span class="contacticon center">${shortname}</span> ${name} (You)
-        </label>
-        </li>
-    `
+  /**
+   * 
+   * @param {string} urgentprio - get the information which field change in html
+   * @param {string} mediumprio - get the information which field change in html
+   * @param {string} lowprio - get the information which field change in html
+   */
+  function resetPrio(urgentprio,mediumprio,lowprio) {
+    urgentprio.remove('urgentprioaktive');
+    mediumprio.remove('mediumprioaktive');
+    lowprio.remove('lowprioaktive'); 
   }
+
+  /**
+   * 
+   * @param {string} urgentprio - get the information which field to change
+   * @param {string} mediumprio - get the information which field to change
+   * @param {string} lowprio - get the information which field to change
+   * @param {string} id - get the information which field's id change to active
+   */
+  function switchPrio(urgentprio,mediumprio,lowprio,id) {
+    switch (id) {
+      case 'urgent':
+        urgentprio.add('urgentprioaktive');
+        data["prio"] = "Urgent";
+        break;
+      case 'medium':
+        mediumprio.add('mediumprioaktive');
+        data["prio"] = "Medium";
+        break;
+      case 'low':
+        lowprio.add('lowprioaktive');
+        data["prio"] = "Low";
+        break;    
+      default:
+        break;
+    }
+  }
+  
+    // data["Assigned To"] = assignedToArray  für später zum erstellen des Task mit data

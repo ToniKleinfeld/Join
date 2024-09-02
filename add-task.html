@@ -14,7 +14,7 @@
     <script src="./js/template.js"></script>
 </head>
 
-<body onload="checkIfUserlogin(), initTasks()">
+<body onload="checkIfUserlogin()">
     <header>
         <h2 class="showindesktop">Kanban Project Managment Tool</h2>
         <img src="./assets/icons/capa 2.svg" alt="" class="showmobile">
@@ -84,9 +84,9 @@
                     <div class="input-container">
                         <h2 class="input-title">Prio</h2>
                         <div class="check-button-container">
-                            <button class="button-empty-small-2 check-btn-1">Urgent</button>
-                            <button class="button-empty-small-2  check-btn-2 orange-button">Medium</button>
-                            <button class="button-empty-small-2  check-btn-3">Low</button>
+                            <button class="button-empty-small-2 urgentprio" id="urgent" onclick="changePrio('urgent')">Urgent</button>
+                            <button class="button-empty-small-2 mediumprio mediumprioaktive" id="medium" onclick="changePrio('medium')">Medium</button>
+                            <button class="button-empty-small-2 lowprio" id="low" onclick="changePrio('low')">Low</button>
                         </div>
                     </div>
 

@@ -70,38 +70,71 @@
     gap: 20px;
 }
 
-.check-btn-1::after {
-    content: '';
-    display: inline-block;
-    background-image: url(../assets/icons/red-arrows.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 15px;
-    width: 20px;
-    margin-left: 7px;
-    vertical-align: middle;
-}
-
-.check-btn-2 {
+/* .check-btn-2 {
     background-color: #FFA800;
     color: white;
-}
+} */
 
-.check-btn-2::after {
-    content: url(../assets/icons/priority-\ symbol.svg);
+.urgentprio::after {
+    content: url(../assets/icons/priority-hight.svg);
     margin-left: 7px;
 }
 
-.check-btn-3::after {
-    content: '';
-    display: inline-block;
-    background-image: url(../assets/icons/arrows\ down.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 15px;
-    width: 20px;
+.urgentprioaktive {
+    background-color: #ff3d00;
+    color: white;
+
+    &:after{    
+        content: url(../assets/icons/priority-highwhite.svg);
+        margin: 3px 3px 0 3px;
+    }
+}
+
+.urgentprioaktive:hover{
+    box-shadow: none !important;
+    cursor: unset !important;
+}
+
+
+.mediumprio::after {
+    content: url(../assets/icons/priority-equal.svg);
     margin-left: 7px;
-    vertical-align: middle;
+    margin-bottom: 5px;
+}
+
+.mediumprioaktive {
+    background-color: #ffa800;
+    color: white;
+
+    &:after{    
+        content: url(../assets/icons/priority-equalwhite.svg);
+        margin: 3px 3px 6px 4px;
+    }
+}
+
+.mediumprioaktive:hover{
+    box-shadow: none !important;
+    cursor: unset !important;
+}
+
+.lowprio::after {
+    content: url(../assets/icons/priority-low.svg);
+    margin-left: 7px;
+}
+
+.lowprioaktive {
+    background-color: #7ae229;
+    color: white;
+
+    &:after{    
+        content: url(../assets/icons/priority-lowwhite.svg);
+        margin: 3px 3px 0 3px;
+    }
+}
+
+.lowprioaktive:hover{
+    box-shadow: none !important;
+    cursor: unset !important;
 }
 
 .required::after {
@@ -364,7 +397,7 @@
         width: 100%;
     }
 
-    .required-info {
+    .required-info, .dropdown-check-list-contacts ul.items li {
         font-size: 16px;
     }
 
@@ -379,5 +412,9 @@
     .button-empty-small-2 {
         width: 32%;
         height: 40px;
+    }
+
+    .arrowupanchorinput {
+        top:58px
     }
 }
