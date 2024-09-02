@@ -224,4 +224,21 @@
     }
   }
   
+  function changeIconsSubtask() {
+    const inputfield = document.getElementById('subtaskinputfield').value
+    const subtasksicons = document.getElementById('subtasksicons').classList;
+
+    if (inputfield !== '') {
+      subtasksicons.remove('d-none')
+    } else {
+      subtasksicons.add('d-none')
+    }
+  }
+
+  function resetsubtasksinput(){
+    const inputfield = document.getElementById('subtaskinputfield');
+
+    inputfield.value = '';
+    changeIconsSubtask();
+  }
     // data["Assigned To"] = assignedToArray  für später zum erstellen des Task mit data

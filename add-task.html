@@ -99,10 +99,20 @@
                         </select>
                     </div>
 
-                    <div class="input-container">
+                    <div class="subtask input-container ">
                         <h2>Subtasks</h2>
-                        <input class="input-subtask input-title" type="text" placeholder="Add new subtask">
+                        <input class="input-subtask input-title" type="text" placeholder="Add new subtask" id="subtaskinputfield" onkeyup="changeIconsSubtask()">
+                        <div class="iconssubtask center d-none" id="subtasksicons">
+                        <i class="clearsubtask" onclick="resetsubtasksinput()"></i>
+                        <i class="addsubtask" onclick="addsubtasktoList()"></i>
+                        </div>
                     </div>
+                    <ul id="showsubtasks" class="showsubtasks">
+                        <li><input class="subtasksli" type="text" disabled value="test">
+                            <i class="editbutton"></i>
+                            <i class="deletebutton"></i>
+                        </li>
+                    </ul>
 
                 </div>
 

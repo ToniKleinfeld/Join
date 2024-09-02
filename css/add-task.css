@@ -70,11 +70,6 @@
     gap: 20px;
 }
 
-/* .check-btn-2 {
-    background-color: #FFA800;
-    color: white;
-} */
-
 .urgentprio::after {
     content: url(../assets/icons/priority-hight.svg);
     margin-left: 7px;
@@ -303,6 +298,49 @@
     top: 63px;
     cursor: pointer;
 }
+
+.showsubtasks {
+    width: 422px;
+    margin: 0;
+}
+
+.subtasksli {
+    border: none;
+    cursor: default;
+    height: auto;
+    padding: 10px 8px; 
+    width: 80%;
+    font-size: 16px; 
+    font-weight: 400;
+}
+
+.clearsubtask, .addsubtask, .editbutton, .deletebutton {
+    padding: 4px;
+}
+
+.subtask {
+    position: relative;
+}
+
+.iconssubtask {
+    position: absolute;
+    bottom: 29px;
+    right: 18px;
+    z-index: 4;
+    background-color: white;
+    
+    .clearsubtask {
+        content: url(../assets/icons/close.svg);
+        height: 22px;
+    }
+    .addsubtask{
+        content: url(../assets/icons/checksubtasks.svg);
+        height: 22px;
+        border-left: solid 1px lightgrey;
+    }
+}
+
+
 
 @media (max-height:800px) {
 
