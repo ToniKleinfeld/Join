@@ -101,16 +101,40 @@
 
                     <div class="subtask input-container ">
                         <h2>Subtasks</h2>
-                        <input class="input-subtask input-title" type="text" placeholder="Add new subtask" id="subtaskinputfield" onkeyup="changeIconsSubtask()">
+                        <input class="input-subtask input-title" type="text" autocomplete="off" placeholder="Add new subtask" id="subtaskinputfield" onkeyup="changeIconsSubtask()">
                         <div class="iconssubtask center d-none" id="subtasksicons">
                         <i class="clearsubtask" onclick="resetsubtasksinput()"></i>
                         <i class="addsubtask" onclick="addsubtasktoList()"></i>
                         </div>
                     </div>
                     <ul id="showsubtasks" class="showsubtasks">
-                        <li><input class="subtasksli" type="text" disabled value="test">
-                            <i class="editbutton"></i>
-                            <i class="deletebutton"></i>
+                        <li>
+                            <span class="dot" id="dotsub1"></span>
+                            <label for="subtask1" class="subtaskslable ">                            
+                                <input class="subtasksli" type="text" disabled value="test" id="subtask1">                             
+                                <span id="subspan2">
+                                    <i class="editbutton"></i>
+                                    <i class="deletebutton"></i>
+                                </span>
+                                <span class="subtaskediticons d-none" id="subtaskediticons2">
+                                    <i class="deletebuton"></i>
+                                    <i class="addsubtask"></i>
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                            <span class="dot d-none" id="dotsub2"></span>
+                            <label for="subtask2" class="subtaskslable ">                            
+                                <input class="subtasksli" type="text" value="test" id="subtask2">
+                                <span class="d-none" id="subspan2">
+                                    <i class="editbutton"></i>
+                                    <i class="deletebutton"></i>
+                                </span>
+                                <span class="subtaskediticons" id="subtaskediticons2">
+                                    <i class="deletebuton"></i>
+                                    <i class="addsubtask"></i>
+                                </span>
+                            </label>
                         </li>
                     </ul>
 

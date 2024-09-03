@@ -13,7 +13,6 @@
 }
 
 .taskform-half {
-    /* height: 416px; */
     width: 440px;
     display: flex;
     flex-direction: column;
@@ -22,7 +21,6 @@
 }
 
 .input-container {
-    /* height: 150px; */
     width: 440px;
     display: flex;
     flex-direction: column;
@@ -146,7 +144,6 @@
     font-size: 20px;
 }
 
-/*here try dropdown menu contacts*/
 .dropdown-check-list-contacts {
     justify-content: unset;
     position: relative;
@@ -302,6 +299,14 @@
 .showsubtasks {
     width: 422px;
     margin: 0;
+    list-style: none;
+    padding: 10px;
+
+    li{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
 }
 
 .subtasksli {
@@ -314,12 +319,41 @@
     font-weight: 400;
 }
 
+.showsubtasks li:hover{    
+  background-color:#f2f0f5;
+  border-radius: 10px; 
+
+  .editbutton {
+    content: url(../assets/icons/edit.svg);
+    cursor: pointer;    
+    }
+
+    .deletebutton {
+    content: url(../assets/icons/delete.svg);
+    border-left: 1px solid grey;
+    padding-left: 10px;
+    cursor: pointer;
+    }
+}
+
+.dot {
+    content: url(../assets/icons/dot.svg);
+    height: 37px;       
+}
+
 .clearsubtask, .addsubtask, .editbutton, .deletebutton {
     padding: 4px;
 }
 
-.subtask {
+.subtask, .subtaskslable {
     position: relative;
+}
+.addsubtask{
+    content: url(../assets/icons/checksubtasks.svg);
+    height: 22px;
+    border-left: solid 1px lightgrey;
+    padding-left: 5px;
+    cursor: pointer;
 }
 
 .iconssubtask {
@@ -328,18 +362,38 @@
     right: 18px;
     z-index: 4;
     background-color: white;
+}
     
-    .clearsubtask {
-        content: url(../assets/icons/close.svg);
-        height: 22px;
-    }
-    .addsubtask{
-        content: url(../assets/icons/checksubtasks.svg);
-        height: 22px;
-        border-left: solid 1px lightgrey;
-    }
+.clearsubtask {
+    content: url(../assets/icons/close.svg);
+    height: 22px;
+    padding-right: 5px;
+    cursor: pointer;
 }
 
+.deletebuton {
+    content: url(../assets/icons/delete.svg);
+    padding-right: 5px;
+    cursor: pointer;
+}
+
+.subtaskslable {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.subtasksli:enabled {
+    width: 100%;
+    padding-left: 15px;
+    border-bottom: 1px solid #d8e5eb;
+}
+
+.subtaskediticons {
+    position: absolute;
+    right: 5px;
+}
 
 
 @media (max-height:800px) {
@@ -418,11 +472,12 @@
         background-position: 95%;
     }
 
-    input,
-    .input-container {
-        width: 100%;
+    .subtasksli {
+        width: unset;
     }
 
+    input,
+    .input-container, .showsubtasks,
     .contentcontainer,
     .taskform,
     .taskform-half,

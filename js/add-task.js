@@ -31,13 +31,6 @@
   }
 
   /**
-   * Inialit all function, needed when start Add-Task side
-   */
-  // function initTasks() {
-  //   renderAndloadContactsToAssign()
-  // }
-
-  /**
    * render the Contacts to assign to dropdown menü
    */
   function renderAndloadContactsToAssign(){
