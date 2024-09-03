@@ -158,12 +158,6 @@ function getTypeInitialColor(task, i) {
 }
 
 
-// function getTypeLabelBoardColor(tasks, indexOfTask) {
-//     let color = tasks['category'];
-//     let bgcolor = typeColors[color.toLowerCase()] || '#A8A878'; // Standardfarbe, falls Typ nicht gefunden
-//     document.getElementById(`labelBoardCard${indexOfTask}`).style.backgroundColor = bgcolor;
-// }
-
 function getTypeLabelBoardColor(indexOfTask, labelBoardID) {
     let color = tasks[indexOfTask]['category'];
     let bgcolor = typeColors[color.toLowerCase()] || '#A8A878'; // Standardfarbe, falls Typ nicht gefunden

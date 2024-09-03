@@ -16,7 +16,6 @@ const initialColors = {
     "TW": '#ff4646',
 }
 
-let counter = 0;
 let currentDraggedElement;
 let initialsArray = [];
 
@@ -31,53 +30,32 @@ function initBoard() {
 }
 
 
-function openAddTaskDialog() {
-    let addTaskOverlay = document.getElementById('addTaskOverlay');
-    addTaskOverlay.style.display = 'flex';
+function updateTaskTable(tasks, status, tableId) {
+    const filteredTasks = tasks.filter(t => t.progress === status);  // Filtert die Aufgaben nach dem gegebenen Status.
+    const tableElement = document.getElementById(tableId);  // Holt das HTML-Element der Tabelle anhand der übergebenen ID.
+    tableElement.innerHTML = '';
+
+    if (filteredTasks.length == 0) {  // Überprüft, ob es Aufgaben im gefilterten Status gibt.
+        tableElement.innerHTML = showNoTaskContainer('status');
+    } else {
+        for (let index = 0; index < filteredTasks.length; index++) {
+            let indexOfTask = tasks.indexOf(filteredTasks[index]);  // Findet den Index der Aufgabe im ursprünglichen `tasks`-Array.
+            firstLastInitial(index);
+            let element = filteredTasks[index];
+            tableElement.innerHTML += renderCardHTML(element, index, indexOfTask);
+            // getTypeLabelBoardColor(element, indexOfTask);
+            getTypeLabelBoardColor(indexOfTask, 'labelBoardCard');
+
+            choosePrioSymbol(element['prio']);
+        }
+    }
 }
 
 
-function closeTaskDialog() {
-    let addTaskOverlay = document.getElementById('addTaskOverlay');
-    addTaskOverlay.style.display = 'none';
-}
-
-
-function calcProgressbarSubtasks() {
-}
-
-// function renderMainContent() {
-//     let content = document.getElementById('tabelToDo');
-//     content.innerHTML = '';
-
-//     for (let i = 0; i < tasks.length; i++) {
-//         const element = tasks[i];
-
-//         // firstLastInitial(i);
-//         content.innerHTML += renderCardHTML(i);
-//         getTypeColor(element, i);
-//         getTypeInitialColor(element['Assigned To'], i);
-//     }
-
-// }
-
-function getInitialColor(initial) {
-    return initialColors[initial] || '#A8A878'; // Standardfarbe, falls Initiale nicht gefunden
-}
-
-
-function getTypeInitialColor(task, i) {
-    let initials = initialsArray[i]; // Holt das Initialen-Array für den aktuellen Task
-    let color = initials.length > 0 ? initials[0] : ''; // Nimmt die erste Initiale (oder einen Fallback)
-    let bgcolor = getInitialColor(color);
-    document.getElementById(`initial${i}`).style.backgroundColor = bgcolor;
-}
-
-
-function getTypeColor(task, i) {
-    let color = task['category'];
-    let bgcolor = typeColors[color.toLowerCase()] || '#A8A878'; // Standardfarbe, falls Typ nicht gefunden
-    document.getElementById(`labelBoardCard${i}`).style.backgroundColor = bgcolor;
+function showNoTaskContainer(text) {
+    return /*html*/`
+        <div class="no-tasks-container">No tasks ${text}</div>
+    `;
 }
 
 
@@ -100,38 +78,12 @@ function firstLastInitial(i) {
 }
 
 
-function showNoTaskContainer(text) {
-    return /*html*/`
-        <div class="no-tasks-container">No tasks ${text}</div>
-    `;
-}
-
-
-function updateTaskTable(tasks, status, tableId) {
-    const filteredTasks = tasks.filter(t => t.progress === status);
-    const tableElement = document.getElementById(tableId);
-    tableElement.innerHTML = '';
-
-    if (filteredTasks.length == 0) {
-        tableElement.innerHTML = showNoTaskContainer('status');
-    } else {
-        for (let index = 0; index < filteredTasks.length; index++) {
-            let indexOfTask = tasks.indexOf(filteredTasks[index]);
-            firstLastInitial(index);
-            const element = filteredTasks[index];
-            tableElement.innerHTML += renderCardHTML(element, index, indexOfTask);
-        }
-    }
-}
-
-
 function renderCardHTML(element, i, indexOfTask) {
-
     return /*html*/`
-    <div onclick="showTaskOverlay(${element[i]})" class="card-container" draggable="true" ondragstart="startDragging(${indexOfTask})">
+    <div onclick="showTaskOverlay(${indexOfTask})" class="card-container" draggable="true" ondragstart="startDragging(${indexOfTask})">
         <div class="card">
             <div class="frame-119">
-                <div class="label-board-card">
+                <div id="labelBoardCard${indexOfTask}" class="label-board-card">
                     <div class="user-story">
                         ${element['category']}
                     </div>
@@ -142,9 +94,9 @@ function renderCardHTML(element, i, indexOfTask) {
                 </div>
                 <div class="progress">
                     <div class="progressbar">
-                        <div class="filler"></div>
+                        <div id="fillerProgressbar${indexOfTask}" class="filler"></div>
                     </div>
-                    <div class="card-subtasks"> 0/2 Subtask</div>
+                    <div id="cardSubtasks${indexOfTask}" class="card-subtasks"> 0/2 Subtask</div>
                 </div>
                 <div class="circle-prio-container">
                     <div class="circle-container">
@@ -153,7 +105,7 @@ function renderCardHTML(element, i, indexOfTask) {
                         <div class="circle circle-to-do">${initialsArray[i]?.[2] || ''}</div>
                     </div>
                     <div class="priority-symbols">
-                        <img src="./assets/icons/priority-hight.svg" alt="">
+                        <img src="${choosePrioSymbol(element['prio'])}">
                     </div>
                 </div>
             </div>
@@ -163,56 +115,155 @@ function renderCardHTML(element, i, indexOfTask) {
     `;
 }
 
-function showTaskOverlay() {
+
+function choosePrioSymbol(priority) {
+    // let chosedSymbol = document.getElementById('priorityImage').src;
+    if (priority === 'Low') {
+        return './assets/icons/priority-low.svg';
+    } else if (priority === 'Medium') {
+        return './assets/icons/priority-equal.svg';
+    } else if (priority === 'Urgent') {
+        return './assets/icons/priority-hight.svg';
+    }
+}
+
+
+function openAddTaskDialog() {
+    let addTaskOverlay = document.getElementById('addTaskOverlay');
+    addTaskOverlay.style.display = 'flex';
+}
+
+function closeAddTaskDialog() {
+    let addTaskOverlay = document.getElementById('addTaskOverlay');
+    addTaskOverlay.style.display = 'none';
+}
+
+
+
+function calcProgressbarSubtasks() {
+
+}
+
+
+function getInitialColor(initial) {
+    return initialColors[initial] || '#A8A878'; // Standardfarbe, falls Initiale nicht gefunden
+}
+
+
+function getTypeInitialColor(task, i) {
+    let initials = initialsArray[i]; // Holt das Initialen-Array für den aktuellen Task
+    let color = initials.length > 0 ? initials[0] : ''; // Nimmt die erste Initiale (oder einen Fallback)
+    let bgcolor = getInitialColor(color);
+    document.getElementById(`initial${i}`).style.backgroundColor = bgcolor;
+}
+
+
+// function getTypeLabelBoardColor(tasks, indexOfTask) {
+//     let color = tasks['category'];
+//     let bgcolor = typeColors[color.toLowerCase()] || '#A8A878'; // Standardfarbe, falls Typ nicht gefunden
+//     document.getElementById(`labelBoardCard${indexOfTask}`).style.backgroundColor = bgcolor;
+// }
+
+function getTypeLabelBoardColor(indexOfTask, labelBoardID) {
+    let color = tasks[indexOfTask]['category'];
+    let bgcolor = typeColors[color.toLowerCase()] || '#A8A878'; // Standardfarbe, falls Typ nicht gefunden
+    document.getElementById(labelBoardID + indexOfTask).style.backgroundColor = bgcolor;
+}
+
+
+function showTaskOverlay(indexOfTask) {
     let overlay = document.getElementById('overlay');
     overlay.style.display = 'flex';
 
-    document.getElementById('overlay').innerHTML = rendertaskOverlayHTML();
+    document.getElementById('overlay').innerHTML = rendertaskOverlayHTML(indexOfTask);
+    tableAssignedTo(indexOfTask);
+    listSubtasks(indexOfTask);
+    getTypeLabelBoardColor(indexOfTask, 'labelOverlay');
 }
 
-function rendertaskOverlayHTML() {
+
+function closeTaskOverlay() {
+    let overlay = document.getElementById('overlay');
+    overlay.style.display = 'none';
+}
+
+
+function tableAssignedTo(indexOfTask) {
+    let tableAssigned = document.getElementById('tableAssignedTo');
+    tableAssigned.innerHTML = '';
+
+    for (let index = 0; index < tasks[indexOfTask]['Assigned To'].length; index++) {
+        const assignedToName = tasks[indexOfTask]['Assigned To'][index];
+
+        tableAssigned.innerHTML += /*html*/`
+            <div class="assigned-row-overlay">
+                <span class="circle circle-in-progress">EM</span>
+                <span>${assignedToName}</span>
+            </div>
+            `;
+    }
+}
+
+function listSubtasks(indexOfTask) {
+    let subtask = document.getElementById('formSubtasks');
+    subtask.innerHTML = '';
+
+    if (tasks[indexOfTask]['subtask']) {
+        for (let i = 0; i < tasks[indexOfTask]['subtask'].length; i++) {
+            const element = tasks[indexOfTask]?.['subtask'][i] || '';
+
+            subtask.innerHTML += /*html*/`
+            <div class="checkbox-title-container">
+                <input class="checkbox" type="checkbox" id="checkbox${indexOfTask, i}" name="checkbox${i}" value="checkboxSubtask${indexOfTask, i}" />
+                <label for="checkbox${i}">${element.title}</label>
+            </div>
+        `;
+        }
+    } else {
+        return false;
+    }
+}
+
+
+function rendertaskOverlayHTML(indexOfTask) {
     return /*html*/`
     <div class="task-overlay-container">
         <div class="user-story-close-container">
-            <div class="user-story-overlay">User Story</div>
+            <div id="labelOverlay${indexOfTask}" class="user-story-overlay">${tasks[indexOfTask]['category']}</div>
             <img onclick="closeTaskOverlay()" src="./assets/icons/close.svg" alt="">
         </div>
-        <h1>Kochwelt Page & Recipe Recommender</h1>
-        <p class="content-overlay">Build start page with recipe recommendation...</p>
+        <h1>${tasks[indexOfTask]['title']}</h1>
+        <p class="content-overlay">${tasks[indexOfTask]['description']}</p>
         <div class="date-overlay">
             <span>Due date:</span>
-            <span>11/08/2024</span>
+            <span>${tasks[indexOfTask]['duedate']}</span>
         </div>
         <div class="priority-overlay">
             <span>Priority:</span>
             <div>
-                <span>Medium</span>
-                <img src="./assets/icons/priority-equal.svg" alt="">
+                <span>${tasks[indexOfTask]['prio']}</span>
+                <img src="${choosePrioSymbol(tasks[indexOfTask]['prio'])}" alt="">
             </div>
         </div>
         <div>
             <div class="assigned-grid-overlay">
                 <div>Assigned To:</div>
-                <div class="assigned-row-overlay"><span class="circle circle-in-progress">EM</span><span>Emanuell
-                        Mauer</span></div>
-                <div class="assigned-row-overlay"><span class="circle circle-in-progress">MB</span><span>Marcel
-                        Bauer</span></div>
-                <div class="assigned-row-overlay"><span class="circle circle-in-progress">AM</span><span>Anton
-                        Mayer</span></div>
+                <!--liste der ausgewählten namen-->
+                <div id="tableAssignedTo"></div>
             </div>
         </div>
         <div>
             <div class="subtasks-grid-overlay">
-                <div>Subtasks</div>
-                <form action="">
-                    <div class="checkbox-title-container">
+                <div>Subtasks:</div>
+                <form id="formSubtasks" action="">
+                    <!-- <div class="checkbox-title-container">
                         <input class="checkbox" type="checkbox" id="checkbox1" name="toDo" value="" />
                         <label for="checkbox1">Implement Recipe Recommendation</label>
                     </div>
                     <div class="checkbox-title-container">
                         <input class="checkbox" type="checkbox" id="checkbox2" name="toDo" value="" />
                         <label for="checkbox2">Start Page Layout</label>
-                    </div>
+                    </div> -->
                 </form>
             </div>
         </div>
@@ -225,12 +276,6 @@ function rendertaskOverlayHTML() {
         </div>
     </div>
 `;
-}
-
-
-function closeTaskOverlay() {
-    let overlay = document.getElementById('overlay');
-    overlay.style.display = 'none';
 }
 
 
@@ -250,5 +295,18 @@ function moveTo(progress) {
     updateTaskTable(tasks, 'in progress', 'tableInProgress');
     updateTaskTable(tasks, 'Await feedback', 'tableAwaitFeedback');
     updateTaskTable(tasks, 'Done', 'tableDone');
-    // counter = 0;
 }
+
+// function renderMainContent() {
+//     let content = document.getElementById('tabelToDo');
+//     content.innerHTML = '';
+
+//     for (let i = 0; i < tasks.length; i++) {
+//         const element = tasks[i];
+
+//         // firstLastInitial(i);
+//         getTypeLabelBoardColor(element, i);
+//         getTypeInitialColor(element['Assigned To'], i);
+//     }
+
+// }
