@@ -29,6 +29,7 @@ function initBoard() {
     updateTaskTable(tasks, 'Done', 'tableDone');
 }
 
+
 function updateTaskTable(tasks, status, tableId) {
     const filteredTasks = tasks.filter(t => t.progress === status);  // Filtert die Aufgaben nach dem gegebenen Status.
     const tableElement = document.getElementById(tableId);  // Holt das HTML-Element der Tabelle anhand der übergebenen ID.
@@ -42,9 +43,10 @@ function updateTaskTable(tasks, status, tableId) {
             firstLastInitial(index);
             let element = filteredTasks[index];
             tableElement.innerHTML += renderCardHTML(element, index, indexOfTask);
-            getTypeLabelBoardColor(element, indexOfTask);
+            // getTypeLabelBoardColor(element, indexOfTask);
+            getTypeLabelBoardColor(indexOfTask, 'labelBoardCard');
+
             choosePrioSymbol(element['prio']);
-            // tableAssignedTo(index, indexOfTask);
         }
     }
 }
@@ -156,10 +158,16 @@ function getTypeInitialColor(task, i) {
 }
 
 
-function getTypeLabelBoardColor(task, i) {
-    let color = task['category'];
+// function getTypeLabelBoardColor(tasks, indexOfTask) {
+//     let color = tasks['category'];
+//     let bgcolor = typeColors[color.toLowerCase()] || '#A8A878'; // Standardfarbe, falls Typ nicht gefunden
+//     document.getElementById(`labelBoardCard${indexOfTask}`).style.backgroundColor = bgcolor;
+// }
+
+function getTypeLabelBoardColor(indexOfTask, labelBoardID) {
+    let color = tasks[indexOfTask]['category'];
     let bgcolor = typeColors[color.toLowerCase()] || '#A8A878'; // Standardfarbe, falls Typ nicht gefunden
-    document.getElementById(`labelBoardCard${i}`).style.backgroundColor = bgcolor;
+    document.getElementById(labelBoardID + indexOfTask).style.backgroundColor = bgcolor;
 }
 
 
@@ -170,6 +178,7 @@ function showTaskOverlay(indexOfTask) {
     document.getElementById('overlay').innerHTML = rendertaskOverlayHTML(indexOfTask);
     tableAssignedTo(indexOfTask);
     listSubtasks(indexOfTask);
+    getTypeLabelBoardColor(indexOfTask, 'labelOverlay');
 }
 
 
@@ -199,19 +208,14 @@ function listSubtasks(indexOfTask) {
     let subtask = document.getElementById('formSubtasks');
     subtask.innerHTML = '';
 
-    // console.log(tasks[indexOfTask]['subtask']);
-
     if (tasks[indexOfTask]['subtask']) {
-        console.log('true');
-        
         for (let i = 0; i < tasks[indexOfTask]['subtask'].length; i++) {
             const element = tasks[indexOfTask]?.['subtask'][i] || '';
-            console.log(element);
 
             subtask.innerHTML += /*html*/`
             <div class="checkbox-title-container">
-                <input class="checkbox" type="checkbox" id="checkbox${i}" name="toDo" value="checkboxSubtask${i}" />
-                <label for="checkboxSubtask${i}">${element.title}</label>
+                <input class="checkbox" type="checkbox" id="checkbox${indexOfTask, i}" name="checkbox${i}" value="checkboxSubtask${indexOfTask, i}" />
+                <label for="checkbox${i}">${element.title}</label>
             </div>
         `;
         }
@@ -225,7 +229,7 @@ function rendertaskOverlayHTML(indexOfTask) {
     return /*html*/`
     <div class="task-overlay-container">
         <div class="user-story-close-container">
-            <div class="user-story-overlay">${tasks[indexOfTask]['category']}</div>
+            <div id="labelOverlay${indexOfTask}" class="user-story-overlay">${tasks[indexOfTask]['category']}</div>
             <img onclick="closeTaskOverlay()" src="./assets/icons/close.svg" alt="">
         </div>
         <h1>${tasks[indexOfTask]['title']}</h1>
