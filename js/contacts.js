@@ -79,6 +79,7 @@ function showOverlayBlur() {
     let blur = document.getElementById('overlay-blur');
 
     blur.classList.remove('hide');
+    
 }
 
 function hideOverlayBlur() {
