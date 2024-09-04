@@ -17,21 +17,6 @@ a {
     text-decoration: none;
 }
 
-/*Fontsize*************************************************************************************/
-
-.headline {
-    font-size: 2em;
-    font-weight: bold;
-}
-
-.subtext {
-    font-size: 21px;
-}
-
-.bold-text {
-    font-weight: bold;
-}
-
 /*Logo*************************************************************************************/
 
 .logo {
@@ -151,6 +136,7 @@ input {
 .register-add-button {
     height: 50px;
     width: 90%;
+    font-size: 1.5vw;
     position: relative;
     gap: 10%;
     z-index: 3;
@@ -196,13 +182,14 @@ input {
     width: auto;
     aspect-ratio: 1 / 1;
     color: white;
+    font-size: 1.5vw;
     font-weight: bold;
     border-radius: 50%;
 }
 
 .initials--open-contact {
     height: 100px;
-    font-size: 37px;
+    font-size: 4vw;
 }
 
 .initials.active-contact {
@@ -214,6 +201,8 @@ input {
 .contacts-register {
     height: 100%;
     width: 100%;
+    font-size: 1.5vw;
+    font-weight: 600;
     flex-direction: column;
     background-color: white;
     overflow-y: scroll;
@@ -246,7 +235,7 @@ input {
 }
 
 .contact a {
-    font-size: 18px;
+    font-size: 1.2vw;
     font-weight: 200;
 }
 
@@ -282,6 +271,16 @@ input {
     gap: 15px;
     margin-top: 100px;
     margin-bottom: 50px;
+}
+
+.motto-label {
+    font-size: 3vw;
+    font-weight: bold;
+}
+
+.motto-subtext {
+    font-size: 2vw;
+    font-weight: 400;
 }
 
 .open-contact {
@@ -606,14 +605,6 @@ input {
         height: auto;
         gap: 0;
         margin-top: 5%;
-    }
-
-    .headline {
-        font-size: 40px;
-    }
-
-    .subtext {
-        font-size: 19px;
     }
 
     .initials--open-contact {

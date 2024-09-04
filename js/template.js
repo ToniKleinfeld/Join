@@ -25,8 +25,8 @@ function addContactHtml(contact = null, index = null) {
     return /*Html*/`
     <div class="left-container center">
         <img class="logo" src="./assets/icons/capa 1.svg">
-        <p class="headline">${headerText}</h1>
-        <p class="subtext" id="edit-subtext">Tasks are better with a team!</p>
+        <p class="motto-label">${headerText}</h1>
+        <p class="motto-subtext" id="edit-subtext">Tasks are better with a team!</p>
         <div class="seperator seperator--overlay"></div>
     </div>    
     <div class="mid-container center">
