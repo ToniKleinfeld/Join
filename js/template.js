@@ -109,3 +109,22 @@ function renderAssignedContactshtml(shortname,color) {
         </li>
     `
   }
+
+  function subTaskHtml(subtask,i) {
+    return /*html*/`
+      <li>
+        <span class="dot" id="dotsub${i}"></span>
+        <div class="subtaskslable">                            
+            <input class="subtasksli" type="text" disabled value="${subtask}" id="subtask${i}" onkeypress="checkPressEnter(event,'edit',${i})">                             
+            <span id="subhover${i}">
+                <i class="editbutton" onclick="editSubTask(${i})"></i>
+                <i class="deletebutton" onclick="delteSubTask(${i})"></i>
+            </span>
+            <span class="subtaskediticons d-none" id="subtaskediticons${i}">
+                <i class="deletebuton" onclick="renderSubTasks()"></i>
+                <i class="addsubtask" onclick="saveEditSubtask(${i})"></i>
+            </span>
+        </div>
+      </li>
+    `
+  }

@@ -17,6 +17,7 @@
   }
 
   let assignedToArray = [];
+  let subtaskArray = [];
 
   /**
    * Show and hide the dropdownmenu of Assigned to
@@ -240,4 +241,86 @@
     inputfield.value = '';
     changeIconsSubtask();
   }
+
+  /**
+   * Add the inputvalue from Subtask to subtaskarray and call rendersubtasks if value not empty
+   */
+  function addsubtasktoList() {
+    const newsubtask = document.getElementById('subtaskinputfield');
+
+    if (newsubtask.value !== '') {     
+      subtaskArray.push(newsubtask.value);
+      renderSubTasks();
+      newsubtask.value = '';
+      changeIconsSubtask();
+    }
+  }
+
+  /**
+   * Render the the tasks from tasksarray 
+   */
+  function renderSubTasks() {
+    const subtaskfield = document.getElementById('showsubtasks');
+
+    subtaskfield.innerHTML = '';
+
+    for (let index = 0; index < subtaskArray.length; index++) {
+      const subtask = subtaskArray[index];
+      subtaskfield.innerHTML += subTaskHtml(subtask,index);
+    }
+  }
+
+  /**
+   * Delete the Subtask from Array
+   * 
+   * @param {string} index - position in subtasksarray
+   */
+  function delteSubTask(index) {
+    subtaskArray.splice(index,1);
+    renderSubTasks();
+  }
+
+  /**
+   * change the Inputfield to enable , and change shown Icons for edit
+   * 
+   * @param {string} index - position in subtasksarray
+   */
+  function editSubTask(index) {
+    document.getElementById(`dotsub${index}`).classList.toggle('d-none');
+    document.getElementById(`subhover${index}`).classList.toggle('d-none');
+    document.getElementById(`subtaskediticons${index}`).classList.toggle('d-none');
+    document.getElementById(`subtask${index}`).disabled = false;
+  }
+
+  /**
+   * Save the changes from Inputfield , when in edit Mode
+   * 
+   * @param {string} index - position in subtasksarray
+   */
+  function saveEditSubtask(index) {
+    const editsubtask = document.getElementById(`subtask${index}`).value;
+
+    if (editsubtask !== '') {      
+      subtaskArray.splice(index,1,editsubtask);
+      renderSubTasks();      
+    } else {
+      delteSubTask(index)
+    }
+  } 
+
+  /**
+   * Make the addsubtask possible to check witch press enter
+   * 
+   * @param {event} e - check which key pressed
+   * @param {string} check - info which field create or edit (set in HTML)
+   * @param {string} index - position in subtasksarray
+   */
+  function checkPressEnter(e,check,index) {
+    if (e.keyCode == 13 && check == 'create') {
+      addsubtasktoList();
+    } else if (e.keyCode == 13 && check == 'edit') {
+      saveEditSubtask(index);
+    }
+  }
+
     // data["Assigned To"] = assignedToArray  für später zum erstellen des Task mit data

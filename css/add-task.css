@@ -292,7 +292,7 @@
     position: absolute;
     padding: 5px;
     right: 20px;
-    top: 63px;
+    top: 48px;
     cursor: pointer;
 }
 
@@ -300,13 +300,19 @@
     width: 422px;
     margin: 0;
     list-style: none;
-    padding: 10px;
+    padding: 0 10px 10px 10px !important;
+    height: 152px;
+    overflow-y: auto;
 
     li{
         display: flex;
         justify-content: flex-start;
         align-items: center;
     }
+}
+
+.subtask{
+    padding-bottom: 0 !important;
 }
 
 .subtasksli {
@@ -321,7 +327,7 @@
 
 .showsubtasks li:hover{    
   background-color:#f2f0f5;
-  border-radius: 10px; 
+  border-radius: 10px;
 
   .editbutton {
     content: url(../assets/icons/edit.svg);
@@ -358,7 +364,7 @@
 
 .iconssubtask {
     position: absolute;
-    bottom: 29px;
+    bottom: 20px;
     right: 18px;
     z-index: 4;
     background-color: white;
