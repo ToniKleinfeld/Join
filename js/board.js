@@ -45,7 +45,7 @@ function updateTaskTable(tasks, status, tableId) {
             tableElement.innerHTML += renderCardHTML(element, index, indexOfTask);
             // getTypeLabelBoardColor(element, indexOfTask);
             getTypeLabelBoardColor(indexOfTask, 'labelBoardCard');
-
+            calcProgressbarSubtasks(indexOfTask);
             choosePrioSymbol(element['prio']);
         }
     }
@@ -139,12 +139,6 @@ function closeAddTaskDialog() {
 }
 
 
-
-function calcProgressbarSubtasks() {
-
-}
-
-
 function getInitialColor(initial) {
     return initialColors[initial] || '#A8A878'; // Standardfarbe, falls Initiale nicht gefunden
 }
@@ -198,6 +192,22 @@ function tableAssignedTo(indexOfTask) {
     }
 }
 
+
+function calcProgressbarSubtasks(indexOfTask) {
+let numberOfSubtask = tasks[indexOfTask]['subtask'];
+// console.log('Number of subtask',numberOfSubtask);
+
+if (!Array.isArray(numberOfSubtask) || !numberOfSubtask.length ) {     // hier wird geprüft, ob es den Subtask-Array gibt.
+    console.log(indexOfTask, 'true');
+    
+} else {
+    console.log(indexOfTask, 'false');
+    
+}
+
+}
+
+
 function listSubtasks(indexOfTask) {
     let subtask = document.getElementById('formSubtasks');
     subtask.innerHTML = '';
@@ -218,11 +228,21 @@ function listSubtasks(indexOfTask) {
     }
 }
 
-function isChecked(i) {
-    let isChecked = document.getElementById(`checkbox${i}`).checked;
-    console.log(`Checkbox${i}: `, isChecked);
+function isChecked(index) {
+    let isChecked = document.getElementById(`checkbox${index}`).checked;
+    let subtask = tasks[index]['subtask'];
 
+    if (isChecked) {
+        for (let i = 0; i < subtask.length; i++) {
+            const element = subtask[i];
+            console.log(element.state);
+        }
+    } else {
+        // console.log(`Checkbox${index}: `, isChecked);
+        console.log('Kein Haken');
+    }
 }
+
 
 function rendertaskOverlayHTML(indexOfTask) {
     return /*html*/`
