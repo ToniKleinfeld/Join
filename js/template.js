@@ -35,8 +35,10 @@ function addContactHtml(contact = null, index = null) {
         </div>
     </div>
     <div class="input-and-button-container center">
+        <div class="close-icon-container center">
         <div class="close-icon center">
             <img src="./assets/icons/close.svg" onclick="closePopUpSlide()">
+        </div>
         </div>
         <input class="input input-name" id="name-input" type="text" placeholder="Name" value="${contact ? contact.name : ''}">
         <input class="input input-mail" id="mail-input" type="email" placeholder="Email" value="${contact ? contact.mail : ''}">

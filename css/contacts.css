@@ -1,6 +1,6 @@
 .maincontent {
     display: grid;
-    grid-template-columns: 35% auto;
+    grid-template-columns: 40% auto;
     overflow-y: hidden;
     margin-top: 97px;
     margin-left: 232px;
@@ -89,12 +89,19 @@ a {
     filter: brightness(7);
 }
 
+.close-icon-container {
+    height: 10%;
+    width: 100%;
+    justify-content: end;
+    align-items: start;
+    padding-bottom: 34%;
+    padding-right: 25px;
+}
+
 .close-icon {
     height: 30px;
     width: 30px;
     border-radius: 50%;
-    margin-left: 80%;
-    margin-bottom: 20%;
 }
 
 .close-icon:hover {
@@ -123,9 +130,10 @@ input {
 
 /*Buttons*************************************************************************************/
 
+
 .register-button-container {
     height: 100px;
-    width: 100%;
+    width: auto;
     background-color: white;
     position: sticky;
     top: 0;
@@ -162,7 +170,7 @@ input {
     right: 16px;
     z-index: 989;
     display: none;
-}
+} 
 
 .mobile-button-container:hover {
     background-color: #29ABE2;
@@ -178,18 +186,18 @@ input {
 /*Initials*************************************************************************************/
 
 .initials {
-    height: 50px;
+    height: 3.3vw;
     width: auto;
     aspect-ratio: 1 / 1;
     color: white;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
     font-weight: bold;
     border-radius: 50%;
 }
 
 .initials--open-contact {
-    height: 100px;
-    font-size: 4vw;
+    height: 6vw;
+    font-size: 3vw;
 }
 
 .initials.active-contact {
@@ -200,7 +208,7 @@ input {
 
 .contacts-register {
     height: 100%;
-    width: 100%;
+    width: auto;
     font-size: 1.5vw;
     font-weight: 600;
     flex-direction: column;
@@ -213,19 +221,19 @@ input {
 }
 
 .register-letter {
-    height: 46px;
+    height: 7vh;
     width: 95%;
     justify-content: start;
     align-items: end;
     gap: 50px;
-    padding: 5px 010px;
+    padding: 5px 25px;
     border-bottom: 1px solid #A8A8A8;
     margin-bottom: 10px;
     filter: drop-shadow(4px 0 6px rgba(0, 0, 0, 0.08));
 }
 
 .contact {
-    height: 10%;
+    height: 10vh;
     width: 95%;
     border-radius: 10px;
     justify-content: start;
@@ -256,7 +264,7 @@ input {
 /*Active Contact********************************************************/
 
 .open-contact-container {
-    width: 100%;
+    width: auto;
     padding-left: 3%;
     background-color: #F6F7F8;
     display: flex;
@@ -266,7 +274,7 @@ input {
 }
 
 .contacts-motto {
-    height: 73px;
+    height: auto;
     justify-content: start;
     gap: 15px;
     margin-top: 100px;
@@ -274,7 +282,7 @@ input {
 }
 
 .motto-label {
-    font-size: 3vw;
+    font-size: 4vw;
     font-weight: bold;
 }
 
@@ -294,7 +302,7 @@ input {
 
 .open-contact-headline {
     width: 100%;
-    font-size: 51px;
+    font-size: 3vw;
     justify-content: start;
     gap: 3%;
 }
@@ -366,6 +374,14 @@ input {
     border-bottom-left-radius: 16px;
 }
 
+.motto-label {
+    font-size: 3vw;
+}
+
+.motto-subtext {
+    font-size: 1.3vw;
+}
+
 .mid-container {
     height: 100%;
     width: 20%;
@@ -375,7 +391,6 @@ input {
     height: 100%;
     width: 40%;
     flex-direction: column;
-    align-items: start;
     gap: 5%;
 }
 
@@ -503,7 +518,7 @@ input {
     }
 }
 
-/********************************************/
+/*******************************************
 
 @media (max-width: 1200px) {
 
@@ -511,6 +526,8 @@ input {
         grid-template-columns: 40% auto;
     }
 }
+
+/********************************************
 
 @media (max-width: 1050px) {
 
@@ -562,7 +579,7 @@ input {
         font-size: 31px;
         font-weight: 500;
     }
-}
+}*/
 
 @media (max-width: 825px) {
 
