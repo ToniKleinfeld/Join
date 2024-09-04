@@ -242,6 +242,10 @@ select::-ms-expand {
     background-image: url(../assets/icons/event.svg);
 }
 
+.input-date[type='date']::-webkit-inner-spin-button, .input-date[type="date"]::-webkit-calendar-picker-indicator {
+    filter: opacity(0);
+}
+
 .input-mail {
     background-image: url(../assets/icons/mail.svg);
 }

@@ -323,4 +323,40 @@
     }
   }
 
+  /**
+   * Get the Id's from the required field and check if all have value
+   */
+  function checkRequiredfields() {
+    const inputtitle = document.getElementById('inputtitle');
+    const date = document.getElementById('inputdate');
+    const category = document.getElementById('categoryselect');
+        
+    if (inputtitle.value && date.value && category.value !== '') {
+      document.getElementById('createtask').disabled = false;
+    }
+
+    markMissingRequiredvalue(inputtitle);
+    markMissingRequiredvalue(date);
+    markMissingRequiredvalue(category);    
+  }
+
+  /**
+   * Check if value from Input ,date or selectbox are missing , when yes mark them red
+   * 
+   * @param {string} field -get id from inputfield to check
+   */
+  function markMissingRequiredvalue(field) {
+    if (field.value == '') {
+      field.classList.add('borderred')
+    } else {
+      field.classList.remove('borderred')
+    }
+  }
+
+  /**
+   * reload the side and clear it
+   */
+  function clearside() {
+    window.location.href = "./add-task.html"
+  }
     // data["Assigned To"] = assignedToArray  für später zum erstellen des Task mit data
