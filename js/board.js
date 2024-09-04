@@ -208,16 +208,21 @@ function listSubtasks(indexOfTask) {
 
             subtask.innerHTML += /*html*/`
             <div class="checkbox-title-container">
-                <input class="checkbox" type="checkbox" id="checkbox${indexOfTask, i}" name="checkbox${i}" value="checkboxSubtask${indexOfTask, i}" />
+                <input onclick="isChecked(${i})" class="checkbox" type="checkbox" id="checkbox${i}" name="checkbox${i}" value="checkboxSubtask${indexOfTask}${i}" />
                 <label for="checkbox${i}">${element.title}</label>
             </div>
-        `;
+            `;
         }
     } else {
         return false;
     }
 }
 
+function isChecked(i) {
+    let isChecked = document.getElementById(`checkbox${i}`).checked;
+    console.log(`Checkbox${i}: `, isChecked);
+
+}
 
 function rendertaskOverlayHTML(indexOfTask) {
     return /*html*/`

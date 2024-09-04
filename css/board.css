@@ -5,6 +5,11 @@ h2 {
     color: #42526e;
 }
 
+.mb-16{
+margin-bottom: 16px;
+}
+
+
 .board-main {
     height: 100%;
     max-width: 1284px;
