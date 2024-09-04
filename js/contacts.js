@@ -18,7 +18,7 @@ function init() {
 
 function renderContactStripes() {
     let contactContainer = document.getElementById('contacts-slider');
-    contactContainer.innerHTML = /*Html*/`<div class="register-button-container">
+    contactContainer.innerHTML = /*Html*/`<div class="register-button-container subtext">
         <button class="button-filled-large register-add-button" onclick="addContact()">Add new contact</button> </div>`;
     lastInitial = '';
     sortContacts();
@@ -31,7 +31,7 @@ function createFontStripeHtml(currentInitial, lastInitial) {
     let html = '';
     if (currentInitial !== lastInitial) {
         html = /*Html*/`
-        <div class="register-letter center">${currentInitial}</div>`;
+        <div class="register-letter bold-text center">${currentInitial}</div>`;
     }
     return html;
 }
@@ -56,6 +56,13 @@ function toggleClass() {
         mobileButtonIcon.src = './assets/icons/burger-menu.svg';  // Pfad zum neuen Bild einfügen
     }
 }
+
+
+function toggleMenu() {
+    const menu = document.getElementById('mobile-edit-menu');
+    menu.classList.add('slide-out'); 
+}
+
 
 function showMobileEditMenu() {
     let popUp = document.getElementById('mobile-edit-menu');
@@ -229,6 +236,9 @@ function editContact(index) {
 
     let text = document.getElementById('create-save-button');
     text.innerHTML = `Save Contact`;
+
+    let subtext = document.getElementById('edit-subtext');
+    subtext.classList.add('d-none');
 
     popUp.classList.remove('d-none');
     popUp.classList.remove('hide');
