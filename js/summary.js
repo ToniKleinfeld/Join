@@ -1,6 +1,6 @@
 function init() {
     countAllTask();
-    countTaskTypes("To do",'counttodo');
+    countTaskTypes("to do",'counttodo');
     countTaskTypes("Done",'countdone');
     countTaskTypes("in progress",'counttaskinprogress');
     countTaskTypes("Await feedback",'countfeedback');

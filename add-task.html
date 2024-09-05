@@ -60,7 +60,7 @@
 
                     <div class="text-area-container">
                         <h2 class="input-title">Description</h2>
-                        <textarea placeholder="Enter a Description"></textarea>
+                        <textarea placeholder="Enter a Description" id="textfieldinput"></textarea>
                     </div>
 
                     <div class="input-container dropdown-check-list-contacts" id="contact-select">
@@ -117,7 +117,7 @@
                 <div class="task-footer-button-container">
                     <button class="button-empty-small mobileoff" onclick="clearside()">Clear<span class="input-and-button-icons closex"
                             ></span></button>
-                    <button class="button-filled-large" id="createtask" disabled><span>Create Task</span><img class="input-and-button-icons"
+                    <button class="button-filled-large" id="createtask" disabled onclick="createNewTask()"><span>Create Task</span><img class="input-and-button-icons"
                             src="./assets/icons/check.svg"></button>
                 </div>
             </div>

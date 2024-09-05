@@ -6,14 +6,9 @@
     "description": "",
     "duedate": "",
     "prio": "Medium",
-    "subtask": [
-      {
-        "state": false,
-        "title": ""
-      }
-    ],
+    "subtask": [],
     "title": "",
-    "progress": "to Do"      
+    "progress": "to do"      
   }
 
   let assignedToArray = [];
@@ -349,7 +344,7 @@
     if (field.value == '') {
       field.classList.add('borderred')
     } else {
-      field.classList.remove('borderred')
+      field.classList.remove('borderred') 
     }
   }
 
@@ -359,4 +354,16 @@
   function clearside() {
     window.location.href = "./add-task.html"
   }
-    // data["Assigned To"] = assignedToArray  für später zum erstellen des Task mit data
+
+  function createNewTask() {    
+    data["title"] = document.getElementById('inputtitle').value;
+    data["duedate"] = document.getElementById('inputdate').value;
+    data["category"] = document.getElementById('categoryselect').value;
+    data["description"] = document.getElementById('textfieldinput').value;    
+    data["Assigned To"] = assignedToArray;
+    subtaskArray.map((sub) => data["subtask"].push({"state":false, "title":sub }));
+    tasks.push(data);
+    saveAsSessionStorage();
+    putData("tasks",tasks)
+  }
+  

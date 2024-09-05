@@ -308,6 +308,7 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        background-color:#F6F7F8;
     }
 }
 
@@ -393,7 +394,14 @@
 .subtasksli:enabled {
     width: 100%;
     padding-left: 15px;
-    border-bottom: 1px solid #d8e5eb;
+    border-bottom: 1px solid #539cbc;
+}
+
+.subtasksli:disabled {
+    background-color:#F6F7F8;
+    &:hover{
+        background-color:#f2f0f5;
+    }
 }
 
 .subtaskediticons {
@@ -410,6 +418,10 @@
         background-color: #2A3647 !important;
         cursor: unset;
     }
+}
+
+.input-container input:focus,.text-area-container textarea:focus {
+    border: solid 1px #539cbc;
 }
 
 @media (max-height:800px) {
