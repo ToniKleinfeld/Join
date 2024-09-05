@@ -373,8 +373,7 @@
     saveAsSessionStorage();
     // putData("tasks",tasks)
     linkToBoardOrReload()
-  } 
-  
+  }   
 
   /**
    * Show message for Succsessfully create new task
