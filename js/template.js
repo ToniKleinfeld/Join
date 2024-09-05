@@ -15,7 +15,7 @@ function createContactStripeHtml(i, isActive) {
     </div>`;
 }
 
-function addContactHtml(contact = null, index = null) {
+function showOverlayHtml(contact = null, index = null) {
     let headerText = index !== null ? 'Edit contact' : 'Add contact';
 
     // Calculate initials and background color if a contact is provided
@@ -36,7 +36,7 @@ function addContactHtml(contact = null, index = null) {
     </div>
     <div class="right-container center">
         <div class="close-icon center">
-            <img src="./assets/icons/close.svg" onclick="closePopUpSlide()">
+            <img src="./assets/icons/close.svg" onclick="closeOverlaySlide()">
         </div>
         <div class="input-button-box center">
         <input class="input input-name" id="name-input" type="text" placeholder="Name" value="${contact ? contact.name : ''}">
@@ -44,7 +44,7 @@ function addContactHtml(contact = null, index = null) {
         <input class="input input-phone" id="phone-input" type="tel" placeholder="Phone" value="${contact ? contact.phonenumber : ''}">
         <input type="hidden" id="contact-index" value="${index !== null ? index : ''}">
         <div class="button-box center">
-            <button class="button-empty-small cancel-button" onclick="closePopUpSlide()">Cancel</button>
+            <button class="button-empty-small cancel-button" onclick="closeOverlaySlide()">Cancel</button>
             <button class="button-filled-large create-button" id="create-save-button" onclick="chooseCreateOrSave()">${index !== null ? 'Save Contact' : 'Create Contact'}</button>
         </div>
         </div>
@@ -78,6 +78,23 @@ function contactCardHtml(contact, index) {
             <a href="tel:${contact.phonenumber}" style="color: black;">${contact.phonenumber}</a>
     </div>
     `;
+}
+
+function createFontStripeHtml(currentInitial, lastInitial) {
+    let html = '';
+    if (currentInitial !== lastInitial) {
+        html = /*Html*/`
+        <div class="register-letter bold-text center">${currentInitial}</div>`;
+    }
+    return html;
+}
+
+function contactRegisterHtml(i, isActive = false) {
+    const currentInitial = contacts[i].name.charAt(0).toUpperCase();
+    const fontStripeHtml = createFontStripeHtml(currentInitial, lastInitial);
+    lastInitial = currentInitial;
+    const contactStripeHtml = createContactStripeHtml(i, isActive);
+    return `${fontStripeHtml}${contactStripeHtml}`;
 }
 
 /* Add Tasks HTML */
