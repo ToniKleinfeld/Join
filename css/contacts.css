@@ -34,9 +34,11 @@ a {
     margin-top: 10px;
 }
 
-.seperator--overlay {
+.seperator-overlay {
     height: 1px;
     width: 82px;
+    background-color: #29ABE2;
+    margin-top: 10px;
 }
 
 .seperator-mobile {
@@ -122,7 +124,6 @@ input {
 }
 
 /*Buttons*************************************************************************************/
-
 
 .register-button-container {
     height: 100px;

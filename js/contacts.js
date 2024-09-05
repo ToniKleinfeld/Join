@@ -1,5 +1,6 @@
 let lastInitial = '';
 let activeContactIndex = null;
+let index = 1;
 
 function init() {
     sortContacts();
@@ -9,7 +10,7 @@ function init() {
 //RENDERN***************************************************
 
 function renderContactStripes() {
-    let contactContainer = document.getElementById('contacts-slider');
+    let contactContainer = document.getElementById('contacts-register');
     contactContainer.innerHTML = /*Html*/`<div class="register-button-container subtext">
         <button class="button-filled-large register-add-button" onclick="showOverlay()">Add new contact</button> </div>`;
     lastInitial = '';
@@ -26,25 +27,8 @@ function renderContactCard(index) {
         contactCard.innerHTML = contactCardHtml(contacts[index], index);
         setActiveContact(index);
     } else {
-        console.error(`Kein Kontakt gefunden für Index ${index}`);
+        console.error(`No contact found for index ${index}`);
     }
-}
-
-function showMobileEditMenu() {
-    let popUp = document.getElementById('mobile-edit-menu');
-    let mobileButtonIcon = document.getElementById('relative-icon');
-    let mobileButton = document.getElementById('mobile-button-container');
-
-    // Extrahiere nur den Dateinamen aus der src-Eigenschaft
-    let iconSrc = mobileButtonIcon.src.split('/').pop();
-
-    if (iconSrc === 'burger-menu.svg') {
-        popUp.classList.remove('d-none');
-    } else {
-        addContact();
-    }
-
-    mobileButton.classList.add('hide');
 }
 
 //Show-Hide Overlay/Add Conatct/Edit Contact**************************************************
@@ -55,7 +39,7 @@ function showOverlay() {
     overlay.classList.remove('fade-out');
     overlay.classList.remove('slide-out');
     overlay.classList.remove('hide');
-    overlay.innerHTML = showOverlayHtml();
+    overlay.innerHTML = overlayHtml();
 }
 
 function closeOverlaySlide() {
@@ -72,92 +56,116 @@ function closeOverlaySlide() {
 function closeOverlayFade() {
     let overlay = document.getElementById('overlay');
     let mobileButton = document.getElementById('mobile-button-container');
+    let isMobile = window.matchMedia("(max-width: 825px)").matches;
     overlay.classList.add('fade-out');
-    setTimeout(function () {
-        overlay.classList.add('d-none');
-        overlay.classList.remove('fade-out');
-    }, 500);
+    if (isMobile) {
+        overlay.addEventListener('animationend', function handler() {
+            overlay.classList.add('d-none');
+            overlay.removeEventListener('animationend', handler);
+        });
+    } else {
+        setTimeout(function () {
+            overlay.classList.add('d-none');
+            overlay.classList.remove('fade-out');
+        }, 500);
+    }
     mobileButton.classList.remove('hide');
 }
 
 
 function createContact() {
-    let nameInput = document.getElementById('name-input');
-    let mailInput = document.getElementById('mail-input');
-    let phoneInput = document.getElementById('phone-input');
-    let name = nameInput.value;
-    let mail = mailInput.value;
-    let phonenumber = phoneInput.value;
-
-    // Generiere eine zufällige Farbe
-    let randomColor = getRandomColor();
-
-    // Generiere Initialen aus dem Namen
-    let initials = getInitials(name);
-
+    let [nameInput, mailInput, phoneInput] = ['name-input', 'mail-input', 'phone-input'].map(id => document.getElementById(id));
+    let [name, mail, phonenumber] = [nameInput.value, mailInput.value, phoneInput.value];
     contacts.push({
-        "mail": mail,
-        "name": name,
-        "phonenumber": phonenumber,
-        "color": randomColor, // Die zufällige Farbe wird hier hinzugefügt
-        "initials": initials  // Die Initialen werden hier hinzugefügt
+        mail, name, phonenumber,
+        color: getRandomColor(),
+        initials: getInitials(name)
     });
-
-    // Felder leeren
-    nameInput.value = '';
-    mailInput.value = '';
-    phoneInput.value = '';
-
+    nameInput.value = mailInput.value = phoneInput.value = '';
     closeOverlayFade();
     showMessage();
     renderContactStripes();
 }
 
-
-
-
 function editContact(index) {
     let contact = contacts[index];
+    let overlay = document.getElementById('overlay');
+    overlay.innerHTML = overlayHtml(contact, index);
+    overlay.classList.remove('d-none', 'hide');
+    setTimeout(() => {
+        document.getElementById('create-save-button').innerHTML = 'Save Contact';
+        document.getElementById('edit-subtext').classList.add('d-none');
+        document.getElementById('name-input').value = contact.name;
+        document.getElementById('mail-input').value = contact.mail;
+        document.getElementById('phone-input').value = contact.phonenumber;
+    }, 0);
+}
 
-    // Pass the contact and index to addContactHtml
-    let popUp = document.getElementById('add-edit-contact');
-    popUp.innerHTML = addContactHtml(contact, index);
+//Add-Edit-Delete Conatct**************************************************
 
-
-
-
-    let text = document.getElementById('create-save-button');
-    text.innerHTML = `Save Contact`;
-
-    let subtext = document.getElementById('edit-subtext');
-    subtext.classList.add('d-none');
-
-    popUp.classList.remove('d-none');
-    popUp.classList.remove('hide');
-
-    let nameInput = document.getElementById('name-input');
-    let mailInput = document.getElementById('mail-input');
-    let phoneInput = document.getElementById('phone-input');
-
-    if (nameInput && mailInput && phoneInput) {
-        nameInput.value = contact.name;
-        mailInput.value = contact.mail;
-        phoneInput.value = contact.phonenumber;
+function chooseCreateOrSave() {
+    let button = document.getElementById('create-save-button');
+    let text = button.innerHTML;
+    if (text === 'Create Contact') {
+        createContact();
+    } else if (text === 'Save Contact') {
+        saveContact();
     }
 }
+
+function saveContact() {
+    let index = document.getElementById('contact-index').value;
+    let [nameInput, mailInput, phoneInput] = ['name-input', 'mail-input', 'phone-input'].map(id => document.getElementById(id));
+    let [name, mail, phonenumber] = [nameInput.value, mailInput.value, phoneInput.value];
+    let contactData = { mail, name, phonenumber };
+    if (index) {
+        contacts[index] = contactData;
+    } else {
+        contacts.push(contactData);
+    }
+    nameInput.value = mailInput.value = phoneInput.value = '';
+    closeOverlayFade();
+    renderContactStripes();
+}
+
+function deleteContact(index) {
+    contacts.splice(index, 1);
+    renderContactStripes();
+    clearContactCard();
+}
+
+//Dynamic Adjustments (Mobile)**************************************************
 
 function toggleClass() {
     if (window.innerWidth <= 825) {
-        let register = document.getElementById('contacts-slider');
+        let register = document.getElementById('contacts-register');
         let mobileButtonIcon = document.getElementById('relative-icon');
-
-        // Klassen hinzufügen/entfernen
         register.classList.add('d-none');
-
-        // Quelle des mobileButton-Bildes ändern
-        mobileButtonIcon.src = './assets/icons/burger-menu.svg';  // Pfad zum neuen Bild einfügen
+        mobileButtonIcon.src = './assets/icons/burger-menu.svg';
     }
 }
+
+function showMobileEditMenu() {
+    let popUp = document.getElementById('mobile-edit-menu');
+    let mobileButtonIcon = document.getElementById('relative-icon');
+    let mobileButton = document.getElementById('mobile-button-container');
+    if (popUp && mobileButtonIcon && mobileButton) {
+        let iconSrc = mobileButtonIcon.src.split('/').pop();
+        if (iconSrc === 'burger-menu.svg') {
+            popUp.classList.remove('d-none');
+            popUp.innerHTML = mobileMenuPopUpHtml();
+        } else {
+            showOverlay();
+        }
+        mobileButton.classList.add('hide');
+    }
+}
+
+
+
+
+
+
 
 function showMessage() {
     let popUp = document.getElementById('successfull-message');
@@ -187,7 +195,7 @@ function toggleMenu() {
 
 
 function goBack() {
-    let register = document.getElementById('contacts-slider');
+    let register = document.getElementById('contacts-register');
     let mobileButtonIcon = document.getElementById('relative-icon');
 
     register.classList.remove('d-none');
@@ -237,54 +245,6 @@ function getInitials(name) {
     return ''; // Fallback, falls der Name leer ist oder aus unerwarteten Gründen keine Initialen gefunden werden können
 }
 
-//KONTAKT ERSTELLEN/SPEICHERN/LÖSCHEN**************************************************
-
-function saveContact() {
-    let index = document.getElementById('contact-index').value;
-    let nameInput = document.getElementById('name-input');
-    let mailInput = document.getElementById('mail-input');
-    let phoneInput = document.getElementById('phone-input');
-    let name = nameInput.value;
-    let mail = mailInput.value;
-    let phonenumber = phoneInput.value;
-    if (index) {
-        // Update existing contact
-        contacts[index] = {
-            "mail": mail,
-            "name": name,
-            "phonenumber": phonenumber
-        };
-    } else {
-        // Create new contact
-        contacts.push({
-            "mail": mail,
-            "name": name,
-            "phonenumber": phonenumber
-        });
-    }
-    nameInput.value = '';
-    mailInput.value = '';
-    phoneInput.value = '';
-    closeOverlayFade();
-    renderContactStripes(); // Kontakte neu rendern
-}
-
-function chooseCreateOrSave() {
-    let button = document.getElementById('create-save-button');
-    let text = button.innerHTML;
-
-    if (text === 'Create Contact') {
-        createContact();
-    } else if (text === 'Save Contact') { // Sicherstellen, dass die andere Option auch korrekt überprüft wird
-        saveContact();
-    }
-}
-
-function deleteContact(index) {
-    contacts.splice(index, 1);
-    renderContactStripes();
-    clearContactCard();
-}
 
 
 /*EXPERIMENTELL

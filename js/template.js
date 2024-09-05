@@ -15,7 +15,7 @@ function createContactStripeHtml(i, isActive) {
     </div>`;
 }
 
-function showOverlayHtml(contact = null, index = null) {
+function overlayHtml(contact = null, index = null) {
     let headerText = index !== null ? 'Edit contact' : 'Add contact';
 
     // Calculate initials and background color if a contact is provided
@@ -27,7 +27,7 @@ function showOverlayHtml(contact = null, index = null) {
         <img class="logo" src="./assets/icons/capa 1.svg">
         <p class="motto-label">${headerText}</h1>
         <p class="motto-subtext" id="edit-subtext">Tasks are better with a team!</p>
-        <div class="seperator seperator--overlay"></div>
+        <div class="seperator-overlay"></div>
     </div>    
     <div class="mid-container center">
         <div class="initials initials--open-contact center" id="edit-initials" style="background-color:${contactColor};">
@@ -35,8 +35,8 @@ function showOverlayHtml(contact = null, index = null) {
         </div>
     </div>
     <div class="right-container center">
-        <div class="close-icon center">
-            <img src="./assets/icons/close.svg" onclick="closeOverlaySlide()">
+        <div class="close-icon center" onclick="closeOverlaySlide()">
+            <img src="./assets/icons/close.svg">
         </div>
         <div class="input-button-box center">
         <input class="input input-name" id="name-input" type="text" placeholder="Name" value="${contact ? contact.name : ''}">
@@ -51,7 +51,6 @@ function showOverlayHtml(contact = null, index = null) {
     </div>
     `;
 }
-
 
 function contactCardHtml(contact, index) {
     let contactColor = contact.color;
@@ -95,6 +94,13 @@ function contactRegisterHtml(i, isActive = false) {
     lastInitial = currentInitial;
     const contactStripeHtml = createContactStripeHtml(i, isActive);
     return `${fontStripeHtml}${contactStripeHtml}`;
+}
+
+function mobileMenuPopUpHtml() {
+    return /*HTML*/`
+       <p class="mobile-link edit" onclick="editContact(${index})">Edit</p>
+       <p class="mobile-link delete" onclick="deleteContact()">Delete</p>
+    `;
 }
 
 /* Add Tasks HTML */
