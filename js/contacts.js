@@ -53,10 +53,7 @@ function closeOverlaySlide() {
     mobileButton.classList.remove('hide');
 }
 
-function closeOverlayFade() {
-    let overlay = document.getElementById('overlay');
-    let mobileButton = document.getElementById('mobile-button-container');
-    let isMobile = window.matchMedia("(max-width: 825px)").matches;
+function fadeOutOverlay(overlay, isMobile) {
     overlay.classList.add('fade-out');
     if (isMobile) {
         overlay.addEventListener('animationend', function handler() {
@@ -64,14 +61,39 @@ function closeOverlayFade() {
             overlay.removeEventListener('animationend', handler);
         });
     } else {
-        setTimeout(function () {
+        setTimeout(() => {
             overlay.classList.add('d-none');
             overlay.classList.remove('fade-out');
         }, 500);
     }
+}
+
+function closeOverlayFade() {
+    let overlay = document.getElementById('overlay');
+    let mobileButton = document.getElementById('mobile-button-container');
+    let isMobile = window.matchMedia("(max-width: 825px)").matches;
+    overlay.classList.add('fade-out');
+    if (isMobile) {
+        handleMobileOverlay(overlay);
+    } else {
+        handleDesktopOverlay(overlay);
+    }
     mobileButton.classList.remove('hide');
 }
 
+function handleMobileOverlay(overlay) {
+    overlay.addEventListener('animationend', function handler() {
+        overlay.classList.add('d-none');
+        overlay.removeEventListener('animationend', handler);
+    });
+}
+
+function handleDesktopOverlay(overlay) {
+    setTimeout(() => {
+        overlay.classList.add('d-none');
+        overlay.classList.remove('fade-out');
+    }, 500);
+}
 
 function createContact() {
     let [nameInput, mailInput, phoneInput] = ['name-input', 'mail-input', 'phone-input'].map(id => document.getElementById(id));
@@ -136,6 +158,11 @@ function deleteContact(index) {
 
 //Dynamic Adjustments (Mobile)**************************************************
 
+function toggleMenu() {
+    const menu = document.getElementById('mobile-edit-menu');
+    menu.classList.add('slide-out');
+}
+
 function toggleClass() {
     if (window.innerWidth <= 825) {
         let register = document.getElementById('contacts-register');
@@ -161,70 +188,46 @@ function showMobileEditMenu() {
     }
 }
 
-
-
-
-
-
-
 function showMessage() {
     let popUp = document.getElementById('successfull-message');
     popUp.classList.remove('d-none');
-
-    // Aufruf von hideMessage nach 3 Sekunden (3000 Millisekunden)
     setTimeout(hideMessage, 1500);
 }
 
 function hideMessage() {
     let popUp = document.getElementById('successfull-message');
-    popUp.classList.remove('slide-in'); // Entferne den Slide-In-Effekt, falls vorhanden
+    popUp.classList.remove('slide-in');
     popUp.classList.add('slide-out');
-
-    // Zeit basierend auf der Dauer der slide-out-Animation
     setTimeout(() => {
-        popUp.classList.add('d-none'); // Verstecke das Element nach der Animation
-        popUp.classList.remove('slide-out'); // Entferne die slide-out-Klasse
-    }, 500); // Setze dies auf die Dauer der Animation in Millisekunden
+        popUp.classList.add('d-none');
+        popUp.classList.remove('slide-out');
+    }, 500);
 }
 
-
-function toggleMenu() {
-    const menu = document.getElementById('mobile-edit-menu');
-    menu.classList.add('slide-out');
-}
-
+//************************************************************
 
 function goBack() {
     let register = document.getElementById('contacts-register');
     let mobileButtonIcon = document.getElementById('relative-icon');
 
     register.classList.remove('d-none');
-    mobileButtonIcon.src = './assets/icons/person_add.svg';  // Pfad zum neuen Bild einfügen
-
+    mobileButtonIcon.src = './assets/icons/person_add.svg';
 }
-//KONTAKTE SORTIEREN***************************************************
 
 function sortContacts() {
     contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-//KONTAKT AKTIV MARKIEREN***************************************************
-
 function setActiveContact(index) {
     activeContactIndex = index;
-    renderContactStripes(); // Rendern der Kontaktliste, um die aktive Markierung zu zeigen
+    renderContactStripes();
 }
-
-
 
 function clearContactCard() {
     let contactCard = document.getElementById('open-contact');
     contactCard.innerHTML = '';
 }
 
-
-
-// Funktion zur Generierung einer zufälligen Farbe
 function getRandomColor() {
     let letters = '0123456789ABCDEF';
     let color = '#';
@@ -234,7 +237,6 @@ function getRandomColor() {
     return color;
 }
 
-// Funktion zur Generierung der Initialen aus einem Namen
 function getInitials(name) {
     let nameParts = name.trim().split(' ');
     if (nameParts.length >= 2) {
@@ -242,13 +244,10 @@ function getInitials(name) {
     } else if (nameParts.length === 1) {
         return nameParts[0][0].toUpperCase();
     }
-    return ''; // Fallback, falls der Name leer ist oder aus unerwarteten Gründen keine Initialen gefunden werden können
+    return '';
 }
 
-
-
-/*EXPERIMENTELL
-
+/*
 function shortNames(name) {
     return  name.match(/\b(\w)/g).join('');
   }
