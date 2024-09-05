@@ -34,12 +34,11 @@ function addContactHtml(contact = null, index = null) {
             ${contactInitials ? `<div>${contactInitials}</div>` : `<img class="person-svg" src="./assets/icons/person.svg">`}
         </div>
     </div>
-    <div class="input-and-button-container center">
-        <div class="close-icon-container center">
+    <div class="right-container center">
         <div class="close-icon center">
             <img src="./assets/icons/close.svg" onclick="closePopUpSlide()">
         </div>
-        </div>
+        <div class="input-button-box center">
         <input class="input input-name" id="name-input" type="text" placeholder="Name" value="${contact ? contact.name : ''}">
         <input class="input input-mail" id="mail-input" type="email" placeholder="Email" value="${contact ? contact.mail : ''}">
         <input class="input input-phone" id="phone-input" type="tel" placeholder="Phone" value="${contact ? contact.phonenumber : ''}">
@@ -47,6 +46,7 @@ function addContactHtml(contact = null, index = null) {
         <div class="button-box center">
             <button class="button-empty-small cancel-button" onclick="closePopUpSlide()">Cancel</button>
             <button class="button-filled-large create-button" id="create-save-button" onclick="chooseCreateOrSave()">${index !== null ? 'Save Contact' : 'Create Contact'}</button>
+        </div>
         </div>
     </div>
     `;
@@ -68,7 +68,7 @@ function contactCardHtml(contact, index) {
                 </div>
             </div>
             </div>
-        <p class="bold-text">Contact Information</p>
+        <p><b>Contact Information</b></p>
         <div class="phone-and-e-mail-container" id="mailedit">
             <p><b>Email</b></p>
             <a href="mailto:${contact.mail}" class="e-mail-card" id="phonedit">${contact.mail}</a>
