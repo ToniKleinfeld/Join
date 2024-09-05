@@ -522,7 +522,8 @@ h1 {
 }
 
 .add-task-bg {
-    background-color: #FFFFFF;
+    background-color: #F6F7F8;
+    padding: 60px;
     width: 1116px;
     height: 870px;
     display: grid;

@@ -349,12 +349,19 @@
   }
 
   /**
-   * reload the side and clear it
+   * reload the side and clear it , after check which is current side
    */
   function clearside() {
-    window.location.href = "./add-task.html"
+    if (window.location.pathname == "/add-task.html") {
+      window.location.href = "./add-task.html";
+    } else {
+      window.location.href = "./board.html";
+    }   
   }
 
+  /**
+   * get all Inputvalue and arrayinfo into data then push it into tasksarray , put to firebase
+   */
   function createNewTask() {    
     data["title"] = document.getElementById('inputtitle').value;
     data["duedate"] = document.getElementById('inputdate').value;
@@ -364,6 +371,15 @@
     subtaskArray.map((sub) => data["subtask"].push({"state":false, "title":sub }));
     tasks.push(data);
     saveAsSessionStorage();
-    putData("tasks",tasks)
-  }
+    // putData("tasks",tasks)
+    linkToBoardOrReload()
+  } 
   
+
+  /**
+   * Show message for Succsessfully create new task
+   */
+  function linkToBoardOrReload() {
+    document.getElementById('createdtaskmessage').classList.remove('d-none');
+    setTimeout(()=> {window.location.href = "./board.html"} , 2000);
+  }
