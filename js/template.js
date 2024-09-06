@@ -17,11 +17,8 @@ function createContactStripeHtml(i, isActive) {
 
 function overlayHtml(contact = null, index = null) {
     let headerText = index !== null ? 'Edit contact' : 'Add contact';
-
-    // Calculate initials and background color if a contact is provided
     let contactInitials = contact ? contact.name.split(' ').map(n => n[0]).join('') : '';
-    let contactColor = contact ? contact.color : '#ccc'; // Fallback color
-
+    let contactColor = contact ? contact.color : '#ccc';
     return /*Html*/`
     <div class="left-container center">
         <img class="logo" src="./assets/icons/capa 1.svg">
@@ -62,7 +59,7 @@ function contactCardHtml(contact, index) {
             <div class="open-contact-name-and-icons center">
                 <p class="center" id="nameedit">${contact.name}</p>
                 <div class="icons center">
-                    <a class="edit" onclick="editContact(${index})">edit</a>
+                    <a class="edit" onclick="showOverlay(); editContact(${index})">edit</a>
                     <a class="delete" onclick="deleteContact(${index})">Delete</a>
                 </div>
             </div>
@@ -98,7 +95,7 @@ function contactRegisterHtml(i, isActive = false) {
 
 function mobileMenuPopUpHtml() {
     return /*HTML*/`
-       <p class="mobile-link edit" onclick="editContact(${index})">Edit</p>
+       <p class="mobile-link edit" onclick="showOverlay(); editContact(${index})">Edit</p>
        <p class="mobile-link delete" onclick="deleteContact()">Delete</p>
     `;
 }

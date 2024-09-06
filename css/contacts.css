@@ -104,18 +104,6 @@ a {
     cursor: pointer;
 }
 
-.cancel-button::after {
-    content: url(../assets/icons/close.svg);
-}
-
-.create-button {
-    width: 200px;
-}
-
-.create-button::after {
-    content: url(../assets/icons/check.svg);
-}
-
 /*Inputs*************************************************************************************/
 
 input {
@@ -175,6 +163,24 @@ input {
     top: 16px;
     right: 16px;
     display: none;
+}
+
+.cancel-button {
+    height: 100%;
+}
+
+.cancel-button::after {
+    content: url(../assets/icons/close.svg);
+}
+
+.create-button {
+    height: 100%;
+    width: 200px;
+    white-space: nowrap;
+}
+
+.create-button::after {
+    content: url(../assets/icons/check.svg);
 }
 
 /*Initials*************************************************************************************/
@@ -379,12 +385,13 @@ input {
 .input-button-box {
     width: 100%;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     gap: 10px;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .button-box {
+    height: 40px;
     width: 80%;
     justify-content: start;
     gap: 25px;
