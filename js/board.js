@@ -45,6 +45,7 @@ function updateTaskTable(tasks, status, tableId) {
             tableElement.innerHTML += renderCardHTML(element, index, indexOfTask);
             // getTypeLabelBoardColor(element, indexOfTask);
             getTypeLabelBoardColor(indexOfTask, 'labelBoardCard');
+            calcTotalSubtask(indexOfTask);
             calcProgressbarSubtasks(indexOfTask);
             choosePrioSymbol(element['prio']);
         }
@@ -96,7 +97,7 @@ function renderCardHTML(element, i, indexOfTask) {
                     <div class="progressbar">
                         <div id="fillerProgressbar${indexOfTask}" class="filler"></div>
                     </div>
-                    <div id="cardSubtasks${indexOfTask}" class="card-subtasks"> 0/2 Subtask</div>
+                    <div id="cardSubtasks${indexOfTask}" class="card-subtasks"></div>
                 </div>
                 <div class="circle-prio-container">
                     <div class="circle-container">
@@ -192,20 +193,61 @@ function tableAssignedTo(indexOfTask) {
     }
 }
 
+function calcTotalSubtask(indexOfTask) {
+    let subtask = tasks[indexOfTask]['subtask'];
+    let totalSubtask = tasks[indexOfTask]['subtask'].length;
+    let cardSubtask = document.getElementById(`cardSubtasks${indexOfTask}`);
+    let amount = 0;
+
+    for (let i = 0; i < subtask.length; i++) {
+        // console.log(subtask);
+        const element = subtask[i].state;
+        // console.log('Subelement', element);
+        if (element) {
+            amount++;
+            // console.log(`Gesamt+:`, amount);
+        }
+    }
+
+    cardSubtask.innerHTML = '';
+    cardSubtask.innerHTML =/*html*/`
+        <div>
+            ${amount}/${totalSubtask} Subtask
+        </div>
+    `;
+}
+
 
 function calcProgressbarSubtasks(indexOfTask) {
-let numberOfSubtask = tasks[indexOfTask]['subtask'];
-// console.log('Number of subtask',numberOfSubtask);
+    let subtask = tasks[indexOfTask]['subtask'];
 
-if (!Array.isArray(numberOfSubtask) || !numberOfSubtask.length ) {     // hier wird geprüft, ob es den Subtask-Array gibt.
-    console.log(indexOfTask, 'true');
-    
-} else {
-    console.log(indexOfTask, 'false');
-    
+    if (subtask.length !== 0) {
+        console.log(indexOfTask, 'true');
+        // console.log(subtask);
+        for (let i = 0; i < subtask.length; i++) {
+            const element = subtask[i].state;
+            console.log(element);
+            if (element) {
+
+            } else {
+
+            }
+        }
+    } else {
+        console.log(indexOfTask, 'false');
+    }
 }
 
-}
+
+// function calcProgressbarSubtasks(indexOfTask) {
+// let numberOfSubtask = tasks[indexOfTask]['subtask'];
+
+// if (!Array.isArray(numberOfSubtask) || !numberOfSubtask.length ) {     // hier wird geprüft, ob es den Subtask-Array gibt.
+//     console.log(indexOfTask, 'true');    
+// } else {
+//     console.log(indexOfTask, 'false');
+// }
+// }
 
 
 function listSubtasks(indexOfTask) {
@@ -228,20 +270,20 @@ function listSubtasks(indexOfTask) {
     }
 }
 
-function isChecked(index) {
-    let isChecked = document.getElementById(`checkbox${index}`).checked;
-    let subtask = tasks[index]['subtask'];
+// function isChecked(index) {
+//     let isChecked = document.getElementById(`checkbox${index}`).checked;
+//     let subtask = tasks[index]['subtask'];
 
-    if (isChecked) {
-        for (let i = 0; i < subtask.length; i++) {
-            const element = subtask[i];
-            console.log(element.state);
-        }
-    } else {
-        // console.log(`Checkbox${index}: `, isChecked);
-        console.log('Kein Haken');
-    }
-}
+//     if (isChecked) {
+//         for (let i = 0; i < subtask.length; i++) {
+//             const element = subtask[i];
+//             console.log(element.state);
+//         }
+//     } else {
+//         // console.log(`Checkbox${index}: `, isChecked);
+//         console.log('Kein Haken');
+//     }
+// }
 
 
 function rendertaskOverlayHTML(indexOfTask) {
