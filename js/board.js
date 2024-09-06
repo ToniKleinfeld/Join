@@ -81,6 +81,10 @@ function closeAddTaskDialog() {
     addTaskOverlay.style.display = 'none';
 }
 
+function doNotClose(event) {
+    event.stopPropagation();       
+  }
+
 function getTypeLabelBoardColor(indexOfTask, labelBoardID) {
     let color = tasks[indexOfTask]['category'];
     let bgcolor = typeColors[color.toLowerCase()] || '#A8A878'; // Standardfarbe, falls Typ nicht gefunden
@@ -92,7 +96,7 @@ function showTaskOverlay(indexOfTask) {
     let overlay = document.getElementById('overlay');
     overlay.style.display = 'flex';
 
-    document.getElementById('overlay').innerHTML = rendertaskOverlayHTML(indexOfTask);
+    overlay.innerHTML = rendertaskOverlayHTML(indexOfTask);
     tableAssignedTo(indexOfTask);
     listSubtasks(indexOfTask);
     getTypeLabelBoardColor(indexOfTask, 'labelOverlay');
@@ -110,14 +114,12 @@ function tableAssignedTo(indexOfTask) {
     tableAssigned.innerHTML = '';
 
     for (let index = 0; index < tasks[indexOfTask]['Assigned To'].length; index++) {
-        const assignedToName = tasks[indexOfTask]['Assigned To'][index];
+        const name = tasks[indexOfTask]['Assigned To'][index];  
+        const shortname = shortNames(name);
+        console.log(shortname)
+        const color =  getColorOfContact(name);
 
-        tableAssigned.innerHTML += /*html*/`
-            <div class="assigned-row-overlay">
-                <span class="circle circle-in-progress">EM</span>
-                <span>${assignedToName}</span>
-            </div>
-            `;
+        tableAssigned.innerHTML += renderAssignedNamesAndColorsBigCard(name,color,shortname);
     }
 }
 
@@ -129,8 +131,7 @@ function calcTotalSubtask(indexOfTask,task) {
     cardSubtask.innerHTML = '';
 
     if (subtask !== '') {
-        subtask.forEach(element => {if(element.state == true) {amount++             
-        }                
+        subtask.forEach(element => {if(element.state == true) {amount++}                
         }); 
         
         cardSubtask.innerHTML = totalSubtaskHTML(amount,subtask.length);
@@ -180,101 +181,31 @@ function listSubtasks(indexOfTask) {
         for (let i = 0; i < tasks[indexOfTask]['subtask'].length; i++) {
             const element = tasks[indexOfTask]?.['subtask'][i] || '';
 
-            subtask.innerHTML += /*html*/`
-            <div class="checkbox-title-container">
-                <input onclick="isChecked(${i})" class="checkbox" type="checkbox" id="checkbox${i}" name="checkbox${i}" value="checkboxSubtask${indexOfTask}${i}" />
-                <label for="checkbox${i}">${element.title}</label>
-            </div>
-            `;
+            subtask.innerHTML +=  renderSubTasksBigCars(i,element,indexOfTask)
         }
     } else {
         return false;
     }
 }
 
-// function isChecked(index) {
-//     let isChecked = document.getElementById(`checkbox${index}`).checked;
-//     let subtask = tasks[index]['subtask'];
 
-//     if (isChecked) {
-//         for (let i = 0; i < subtask.length; i++) {
-//             const element = subtask[i];
-//             console.log(element.state);
-//         }
-//     } else {
-//         // console.log(`Checkbox${index}: `, isChecked);
-//         console.log('Kein Haken');
-//     }
-// }
-
-
-function rendertaskOverlayHTML(indexOfTask) {
-    return /*html*/`
-    <div class="task-overlay-container">
-        <div class="user-story-close-container">
-            <div id="labelOverlay${indexOfTask}" class="user-story-overlay">${tasks[indexOfTask]['category']}</div>
-            <img onclick="closeTaskOverlay()" src="./assets/icons/close.svg" alt="">
-        </div>
-        <h1>${tasks[indexOfTask]['title']}</h1>
-        <p class="content-overlay">${tasks[indexOfTask]['description']}</p>
-        <div class="date-overlay">
-            <span>Due date:</span>
-            <span>${tasks[indexOfTask]['duedate']}</span>
-        </div>
-        <div class="priority-overlay">
-            <span>Priority:</span>
-            <div>
-                <span>${tasks[indexOfTask]['prio']}</span>
-                <img src="${choosePrioSymbol(tasks[indexOfTask]['prio'])}" alt="">
-            </div>
-        </div>
-        <div>
-            <div class="assigned-grid-overlay">
-                <div>Assigned To:</div>
-                <!--liste der ausgewählten namen-->
-                <div id="tableAssignedTo"></div>
-            </div>
-        </div>
-        <div>
-            <div class="subtasks-grid-overlay">
-                <div>Subtasks:</div>
-                <form id="formSubtasks" action="">
-                    <!-- <div class="checkbox-title-container">
-                        <input class="checkbox" type="checkbox" id="checkbox1" name="toDo" value="" />
-                        <label for="checkbox1">Implement Recipe Recommendation</label>
-                    </div>
-                    <div class="checkbox-title-container">
-                        <input class="checkbox" type="checkbox" id="checkbox2" name="toDo" value="" />
-                        <label for="checkbox2">Start Page Layout</label>
-                    </div> -->
-                </form>
-            </div>
-        </div>
-        <div class="delete-edit-container">
-            <img class="trash-delete" src="./assets/icons/trash-board.svg" alt="">
-            <span>Delete</span>
-            <img class="line-vertical" src="./assets/icons/line-vertical.svg" alt="">
-            <img class="trash-delete" src="./assets/icons/edit.svg" alt="">
-            <span>Edit</span>
-        </div>
-    </div>
-`;
+function checkboxcheck(check,i) {
+    if (check == true) {
+        return 'checked' 
+    }
 }
-
 
 function startDragging(i) {
     currentDraggedElement = i;
 }
 
-
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
-
 function moveTo(progress) {
     tasks[currentDraggedElement]['progress'] = progress;
-    updateTaskTable('To do', 'tableToDo');
+    updateTaskTable('to do', 'tableToDo');
     updateTaskTable('in progress', 'tableInProgress');
     updateTaskTable('Await feedback', 'tableAwaitFeedback');
     updateTaskTable('Done', 'tableDone');

@@ -208,3 +208,74 @@ function renderCardHTML(element, indexOfTask) {
     <br>
     `;
 }
+
+function renderSubTasksBigCars(i,element,indexOfTask) {
+    return /*html*/`
+            <div class="checkbox-title-container">
+                <input onclick="isChecked(${indexOfTask},${i})" class="checkbox" type="checkbox" ${checkboxcheck(element.state,i)}  id="checkbox${i}" name="checkbox${i}"/>
+                <label for="checkbox${i}">${element.title}</label>
+            </div>
+    `
+}
+
+function renderAssignedNamesAndColorsBigCard(name,color,shortname) {
+    return /*html*/`
+            <div class="assigned-row-overlay">
+                <span class="circle circle-in-progress" style="background-color:${color}">${shortname}</span>
+                <span>${name}</span>
+            </div>
+    `
+}
+
+function rendertaskOverlayHTML(indexOfTask) {
+    return /*html*/`
+    <div class="task-overlay-container" onclick="doNotClose(event)">
+        <div class="user-story-close-container">
+            <div id="labelOverlay${indexOfTask}" class="user-story-overlay">${tasks[indexOfTask]['category']}</div>
+            <img onclick="closeTaskOverlay()" src="./assets/icons/close.svg" alt="">
+        </div>
+        <h1>${tasks[indexOfTask]['title']}</h1>
+        <p class="content-overlay">${tasks[indexOfTask]['description']}</p>
+        <div class="date-overlay">
+            <span>Due date:</span>
+            <span>${tasks[indexOfTask]['duedate']}</span>
+        </div>
+        <div class="priority-overlay">
+            <span>Priority:</span>
+            <div>
+                <span>${tasks[indexOfTask]['prio']}</span>
+                <img src="${choosePrioSymbol(tasks[indexOfTask]['prio'])}" alt="">
+            </div>
+        </div>
+        <div>
+            <div class="assigned-grid-overlay">
+                <div>Assigned To:</div>
+                <!--liste der ausgewählten namen-->
+                <div id="tableAssignedTo"></div>
+            </div>
+        </div>
+        <div>
+            <div class="subtasks-grid-overlay" id="formSubtasks">
+                <div>Subtasks:</div>
+                <form id="formSubtasks" action="">
+                    <!-- <div class="checkbox-title-container">
+                        <input class="checkbox" type="checkbox" id="checkbox1" name="toDo" value="" />
+                        <label for="checkbox1">Implement Recipe Recommendation</label>
+                    </div>
+                    <div class="checkbox-title-container">
+                        <input class="checkbox" type="checkbox" id="checkbox2" name="toDo" value="" />
+                        <label for="checkbox2">Start Page Layout</label>
+                    </div> -->
+                </form>
+            </div>
+        </div>
+        <div class="delete-edit-container">
+            <img class="trash-delete" src="./assets/icons/trash-board.svg" alt="">
+            <span>Delete</span>
+            <img class="line-vertical" src="./assets/icons/line-vertical.svg" alt="">
+            <img class="trash-delete" src="./assets/icons/edit.svg" alt="">
+            <span>Edit</span>
+        </div>
+    </div>
+`;
+}

@@ -117,12 +117,12 @@
         </div>
     </div>
     <!-- overlay -->
-    <div id="overlay" class="overlay" style="display: none;">
+    <div id="overlay" class="overlay" style="display: none;" onclick="closeTaskOverlay()">
         <!---------inhalt von overlay-->
     </div>
     <!-- add task overlay -->
-    <div id="addTaskOverlay" class="add-task-overlay" style="display: none;">
-        <div class="add-task-bg">
+    <div id="addTaskOverlay" class="add-task-overlay" style="display: none;" onclick="closeAddTaskDialog()">
+        <div class="add-task-bg" onclick="doNotClose(event)">
             <h1>Add Task</h1>
 
             <div class="taskform">
