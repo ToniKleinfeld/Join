@@ -3,19 +3,6 @@ const typeColors = {
     "user story": '#0038ff',
 };
 
-
-const initialColors = {
-    "EM": '#1fd7c1',
-    "MB": '#462f8a',
-    "AM": '#ff7a00',
-    "SM": '#00bee8',
-    "BZ": '#6e52ff',
-    "AS": '#9327ff',
-    "DE": '#fc71ff',
-    "EF": '#ffbb2b',
-    "TW": '#ff4646',
-}
-
 let currentDraggedElement;
 
 function initBoard() {
