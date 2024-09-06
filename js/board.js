@@ -17,105 +17,47 @@ const initialColors = {
 }
 
 let currentDraggedElement;
-let initialsArray = [];
-
-
 
 function initBoard() {
     // renderMainContent();
-    updateTaskTable(tasks, 'To do', 'tableToDo');
-    updateTaskTable(tasks, 'in progress', 'tableInProgress');
-    updateTaskTable(tasks, 'Await feedback', 'tableAwaitFeedback');
-    updateTaskTable(tasks, 'Done', 'tableDone');
+    updateTaskTable('to do', 'tableToDo');
+    updateTaskTable('in progress', 'tableInProgress');
+    updateTaskTable('Await feedback', 'tableAwaitFeedback');
+    updateTaskTable('Done', 'tableDone');
 }
 
 
-function updateTaskTable(tasks, status, tableId) {
+function updateTaskTable(status, tableId) {
     const filteredTasks = tasks.filter(t => t.progress === status);  // Filtert die Aufgaben nach dem gegebenen Status.
     const tableElement = document.getElementById(tableId);  // Holt das HTML-Element der Tabelle anhand der übergebenen ID.
     tableElement.innerHTML = '';
 
     if (filteredTasks.length == 0) {  // Überprüft, ob es Aufgaben im gefilterten Status gibt.
-        tableElement.innerHTML = showNoTaskContainer('status');
+        tableElement.innerHTML = showNoTaskContainerHTML('status');
     } else {
         for (let index = 0; index < filteredTasks.length; index++) {
             let indexOfTask = tasks.indexOf(filteredTasks[index]);  // Findet den Index der Aufgabe im ursprünglichen `tasks`-Array.
-            firstLastInitial(index);
             let element = filteredTasks[index];
-            tableElement.innerHTML += renderCardHTML(element, index, indexOfTask);
-            // getTypeLabelBoardColor(element, indexOfTask);
+
+            tableElement.innerHTML += renderCardHTML(element, indexOfTask);
+            renderAssignedContacs(indexOfTask,element,'assignedusers')
             getTypeLabelBoardColor(indexOfTask, 'labelBoardCard');
-            calcTotalSubtask(indexOfTask);
-            calcProgressbarSubtasks(indexOfTask);
-            choosePrioSymbol(element['prio']);
+            calcTotalSubtask(indexOfTask,element);
         }
     }
 }
 
-
-function showNoTaskContainer(text) {
-    return /*html*/`
-        <div class="no-tasks-container">No tasks ${text}</div>
-    `;
+function renderAssignedContacs(i,users,path) {
+    const assignedcontacts = document.getElementById(`${path}${i}`)
+    
+    for (let index = 0; index < users['Assigned To'].length; index++) {
+        const name = users['Assigned To'][index];  
+        const shortname = shortNames(name);
+        const color =  getColorOfContact(name);
+        
+        assignedcontacts.innerHTML +=  renderAssignedContactsSmallCard(color,shortname);
+    }    
 }
-
-
-function firstLastInitial(i) {
-    let fullNames = tasks[i]['Assigned To'];  // Array von vollständigen Namen
-    let initials = [];  // Initialen-Array für diese spezielle Gruppe von Namen
-
-    fullNames.forEach(fullName => {
-        let nameParts = fullName.split(" ");   // Trenne den vollen Namen in Vorname und Nachname
-        // Hole den ersten Buchstaben von Vorname und Nachname
-        let firstInitial = nameParts[0].charAt(0);
-        let lastInitial = nameParts[1].charAt(0);
-
-        initials.push(firstInitial + lastInitial);   // Füge Initialen in das spezielle Initialen-Array ein
-    }
-    );
-
-    initialsArray.push(initials);  // Füge das spezifische Initialen-Array in das übergeordnete Array ein
-    // console.log("Initialien-Arrays: ", initialsArray);  // Ausgabe des übergeordneten Initialen-Arrays
-}
-
-
-function renderCardHTML(element, i, indexOfTask) {
-    return /*html*/`
-    <div onclick="showTaskOverlay(${indexOfTask})" class="card-container" draggable="true" ondragstart="startDragging(${indexOfTask})">
-        <div class="card">
-            <div class="frame-119">
-                <div id="labelBoardCard${indexOfTask}" class="label-board-card">
-                    <div class="user-story">
-                        ${element['category']}
-                    </div>
-                </div>
-                <div class="title-description-container">
-                    <div class="title">${element['title']}</div>
-                    <div class="card-description">${element['description']}</div>
-                </div>
-                <div class="progress">
-                    <div class="progressbar">
-                        <div id="fillerProgressbar${indexOfTask}" class="filler"></div>
-                    </div>
-                    <div id="cardSubtasks${indexOfTask}" class="card-subtasks"></div>
-                </div>
-                <div class="circle-prio-container">
-                    <div class="circle-container">
-                        <div class="circle circle-to-do">${initialsArray[i][0]}</div>
-                        <div class="circle circle-to-do">${initialsArray[i][1]}</div>
-                        <div class="circle circle-to-do">${initialsArray[i]?.[2] || ''}</div>
-                    </div>
-                    <div class="priority-symbols">
-                        <img src="${choosePrioSymbol(element['prio'])}">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    `;
-}
-
 
 function choosePrioSymbol(priority) {
     // let chosedSymbol = document.getElementById('priorityImage').src;
@@ -138,20 +80,6 @@ function closeAddTaskDialog() {
     let addTaskOverlay = document.getElementById('addTaskOverlay');
     addTaskOverlay.style.display = 'none';
 }
-
-
-function getInitialColor(initial) {
-    return initialColors[initial] || '#A8A878'; // Standardfarbe, falls Initiale nicht gefunden
-}
-
-
-function getTypeInitialColor(task, i) {
-    let initials = initialsArray[i]; // Holt das Initialen-Array für den aktuellen Task
-    let color = initials.length > 0 ? initials[0] : ''; // Nimmt die erste Initiale (oder einen Fallback)
-    let bgcolor = getInitialColor(color);
-    document.getElementById(`initial${i}`).style.backgroundColor = bgcolor;
-}
-
 
 function getTypeLabelBoardColor(indexOfTask, labelBoardID) {
     let color = tasks[indexOfTask]['category'];
@@ -193,35 +121,29 @@ function tableAssignedTo(indexOfTask) {
     }
 }
 
-function calcTotalSubtask(indexOfTask) {
-    let subtask = tasks[indexOfTask]['subtask'];
-    let totalSubtask = tasks[indexOfTask]['subtask'].length;
+function calcTotalSubtask(indexOfTask,task) {
+    let subtask = task['subtask'];
     let cardSubtask = document.getElementById(`cardSubtasks${indexOfTask}`);
     let amount = 0;
 
-    for (let i = 0; i < subtask.length; i++) {
-        // console.log(subtask);
-        const element = subtask[i].state;
-        // console.log('Subelement', element);
-        if (element) {
-            amount++;
-            // console.log(`Gesamt+:`, amount);
-        }
-    }
-
     cardSubtask.innerHTML = '';
-    cardSubtask.innerHTML =/*html*/`
-        <div>
-            ${amount}/${totalSubtask} Subtask
-        </div>
-    `;
+
+    if (subtask !== '') {
+        subtask.forEach(element => {if(element.state == true) {amount++             
+        }                
+        }); 
+        
+        cardSubtask.innerHTML = totalSubtaskHTML(amount,subtask.length);
+        calcProgressbarSubtasks(indexOfTask,task);  
+    } else {
+        document.getElementById(`progressbar${indexOfTask}`).classList.add('d-none')
+    }
 }
 
+function calcProgressbarSubtasks(indexOfTask,task) {
+    let subtask = task['subtask'];
 
-function calcProgressbarSubtasks(indexOfTask) {
-    let subtask = tasks[indexOfTask]['subtask'];
-
-    if (subtask.length !== 0) {
+    if (subtask.length !== '') {
         console.log(indexOfTask, 'true');
         // console.log(subtask);
         for (let i = 0; i < subtask.length; i++) {
@@ -352,10 +274,10 @@ function allowDrop(ev) {
 
 function moveTo(progress) {
     tasks[currentDraggedElement]['progress'] = progress;
-    updateTaskTable(tasks, 'To do', 'tableToDo');
-    updateTaskTable(tasks, 'in progress', 'tableInProgress');
-    updateTaskTable(tasks, 'Await feedback', 'tableAwaitFeedback');
-    updateTaskTable(tasks, 'Done', 'tableDone');
+    updateTaskTable('To do', 'tableToDo');
+    updateTaskTable('in progress', 'tableInProgress');
+    updateTaskTable('Await feedback', 'tableAwaitFeedback');
+    updateTaskTable('Done', 'tableDone');
 }
 
 // function renderMainContent() {

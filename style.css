@@ -276,6 +276,7 @@ select::-ms-expand {
 /* Cusstom Scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
+    height: 10px;
   }
 
 ::-webkit-scrollbar-track {
@@ -291,22 +292,3 @@ select::-ms-expand {
 ::-webkit-scrollbar-thumb:hover{
     background-color: grey;
 }
-
-::-webkit-scrollbar-button:single-button {
-    background-color: white;
-    display: block;
-    border-style: solid;
-    height: 10px;
-    width: 10px;
-  }
-  /* Up */
-  ::-webkit-scrollbar-button:single-button:vertical:decrement {
-    border-width: 0 5px 5px 5px;
-    border-color: transparent transparent #555555 transparent;
-  }
-  
-  /* Down */
-  ::-webkit-scrollbar-button:single-button:vertical:increment {
-    border-width: 5px 5px 0 5px;
-    border-color: #555555 transparent transparent transparent;
-  }

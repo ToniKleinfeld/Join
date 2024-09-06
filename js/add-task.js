@@ -159,7 +159,12 @@
   function getColorOfContact(name){
     const filtercontacs = contacts.filter(contact => contact.name == name
     );
-    return filtercontacs[0].color
+    if (filtercontacs.length == 0) {
+      return 'lightcoral'
+    } else {
+      return filtercontacs[0]['color']
+    }
+   
   }
 
   /**

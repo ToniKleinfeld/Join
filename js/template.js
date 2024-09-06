@@ -111,45 +111,100 @@ function renderAssignedContactshtml(shortname,color) {
     `
   }  
 
-  function renderHtmlContactLi(name,shortname,color) {
-    return /*html*/`
-      <li class="contactslistassign">
-        <input type="checkbox" id="${name}" onchange="assignedToTasK('${name}')"/>
-        <span class="checkmark"></span>
-        <label for="${name}">
-          <span class="contacticon center" style="background-color:${color};">${shortname}</span> ${name} 
-        </label>
-        </li>
-    `
-  }
-
-  function renderHtmlContactLiUser(name,shortname) {
-    return /*html*/`
-      <li class="contactslistassign">
-        <input type="checkbox" id="${name}" onchange="assignedToTasK('${name}')"/>
-        <span class="checkmark"></span>
-        <label for="${name}">
-          <span class="contacticon center">${shortname}</span> ${name} (You)
-        </label>
-        </li>
-    `
-  }
-
-  function subTaskHtml(subtask,i) {
-    return /*html*/`
-      <li>
-        <span class="dot" id="dotsub${i}"></span>
-        <div class="subtaskslable">                            
-            <input class="subtasksli" type="text" disabled value="${subtask}" id="subtask${i}" onkeypress="checkPressEnter(event,'edit',${i})">                             
-            <span id="subhover${i}">
-                <i class="editbutton" onclick="editSubTask(${i})"></i>
-                <i class="deletebutton" onclick="delteSubTask(${i})"></i>
-            </span>
-            <span class="subtaskediticons d-none" id="subtaskediticons${i}">
-                <i class="deletebuton" onclick="renderSubTasks()"></i>
-                <i class="addsubtask" onclick="saveEditSubtask(${i})"></i>
-            </span>
-        </div>
+function renderHtmlContactLi(name,shortname,color) {
+  return /*html*/`
+    <li class="contactslistassign">
+      <input type="checkbox" id="${name}" onchange="assignedToTasK('${name}')"/>
+      <span class="checkmark"></span>
+      <label for="${name}">
+        <span class="contacticon center" style="background-color:${color};">${shortname}</span> ${name} 
+      </label>
       </li>
+  `
+}
+function renderHtmlContactLiUser(name,shortname) {
+  return /*html*/`
+    <li class="contactslistassign">
+      <input type="checkbox" id="${name}" onchange="assignedToTasK('${name}')"/>
+      <span class="checkmark"></span>
+      <label for="${name}">
+        <span class="contacticon center">${shortname}</span> ${name} (You)
+      </label>
+      </li>
+  `
+}
+function subTaskHtml(subtask,i) {
+  return /*html*/`
+    <li>
+      <span class="dot" id="dotsub${i}"></span>
+      <div class="subtaskslable">                            
+          <input class="subtasksli" type="text" disabled value="${subtask}" id="subtask${i}" onkeypress="checkPressEnter(event,'edit',${i})">                             
+          <span id="subhover${i}">
+              <i class="editbutton" onclick="editSubTask(${i})"></i>
+              <i class="deletebutton" onclick="delteSubTask(${i})"></i>
+          </span>
+          <span class="subtaskediticons d-none" id="subtaskediticons${i}">
+              <i class="deletebuton" onclick="renderSubTasks()"></i>
+              <i class="addsubtask" onclick="saveEditSubtask(${i})"></i>
+          </span>
+      </div>
+    </li>
+  `
+}
+
+/**   board HTML   */
+
+function showNoTaskContainerHTML(text) {
+  return /*html*/`
+      <div class="no-tasks-container">No tasks ${text}</div>
+  `;
+}
+
+function renderAssignedContactsSmallCard(color,shortname) {
+    return /*html*/`
+        <span class="circle circle-to-do" style="background-color:${color}">${shortname}</span>
     `
-  }
+}
+
+function totalSubtaskHTML(amount,totalSubtask) {
+    return /*html*/`
+        <div>
+            ${amount}/${totalSubtask} Subtask
+        </div>
+    `
+}
+
+function renderCardHTML(element, indexOfTask) {
+    return /*html*/`
+    <div onclick="showTaskOverlay(${indexOfTask})" class="card-container" draggable="true" ondragstart="startDragging(${indexOfTask})">
+        <div class="card">
+            <div class="frame-119">
+                <div id="labelBoardCard${indexOfTask}" class="label-board-card">
+                    <div class="user-story">
+                        ${element['category']}
+                    </div>
+                </div>
+                <div class="title-description-container">
+                    <div class="title">${element['title']}</div>
+                    <div class="card-description">${element['description']}</div>
+                </div>
+                <div class="progress">
+                    <div class="progressbar" id="progressbar${indexOfTask}">
+                        <div id="fillerProgressbar${indexOfTask}" class="filler"></div>
+                    </div>
+                    <div id="cardSubtasks${indexOfTask}" class="card-subtasks"></div>
+                </div>
+                <div class="circle-prio-container">
+                    <div class="circle-container" id="assignedusers${indexOfTask}">
+
+                    </div>
+                    <div class="priority-symbols">
+                        <img src="${choosePrioSymbol(element['prio'])}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    `;
+}
