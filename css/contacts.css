@@ -1,7 +1,7 @@
 .maincontent {
     display: grid;
     grid-template-columns: 30% auto;
-    overflow-y: hidden;
+    overflow: hidden;
     margin-top: 97px;
     margin-left: 232px;
     background-color: #F6F7F8;
@@ -265,7 +265,8 @@ input {
 /*Active Contact********************************************************/
 
 .open-contact-container {
-    width: auto;
+    height: 100%;
+    width: 100vw;
     font-size: 20px;
     padding-left: 3%;
     background-color: #F6F7F8;
@@ -273,6 +274,8 @@ input {
     flex-direction: column;
     justify-content: start;
     align-items: start;
+    overflow: hidden;
+    margin-bottom: 100px;
 }
 
 .contacts-motto {

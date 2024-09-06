@@ -7,7 +7,9 @@
     flex-direction: column;
     align-items: start;
     position: absolute;
+    top: 75%;
     right: 10px;
+    bottom: 80px;
     bottom: 100px;
     z-index: 5;
     padding: 16px;
@@ -49,10 +51,12 @@
 @media (max-width: 825px) {
 
     .maincontent {
+        height: 100%;
+        width: 100vw;
         position: relative;
         grid-template-columns: 1fr;
-        margin-left: 0;
-        width: 100vw;
+        margin: 0;
+    
     }
 
     .contacts-register {
@@ -81,6 +85,10 @@
         font-size: 3.5vw;
     }
 
+    .open-contact-container {
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
 
     .initials {
         height: 10vw;
@@ -90,10 +98,6 @@
     .mobile-button-container {
         display: flex;
         z-index: 5;
-    }
-
-    .open-contact-container {
-        z-index: 1;
     }
 
     .back-arrow {
@@ -127,11 +131,7 @@
         height: 16vw;
         font-size: 7vw;
     }
-
-    .open-contact-headline {
-        font-size: 7vw;
-    }
-
+  
     .icons {
         display: none;
     }

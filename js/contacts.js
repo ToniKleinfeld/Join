@@ -179,13 +179,22 @@ function showMobileEditMenu() {
     if (popUp && mobileButtonIcon && mobileButton) {
         let iconSrc = mobileButtonIcon.src.split('/').pop();
         if (iconSrc === 'burger-menu.svg') {
-            popUp.classList.remove('d-none');
+            popUp.classList.remove('d-none', 'slide-out');
+            popUp.classList.add('slide-in');
             popUp.innerHTML = mobileMenuPopUpHtml();
         } else {
             showOverlay();
         }
-        mobileButton.classList.add('hide');
     }
+}
+
+function closeMobileEditMenu() {
+    let popUp = document.getElementById('mobile-edit-menu');
+        popUp.classList.add('slide-out');
+        setTimeout(() => {
+            popUp.classList.add('d-none');
+        }, 100);
+
 }
 
 function showMessage() {
@@ -209,7 +218,6 @@ function hideMessage() {
 function goBack() {
     let register = document.getElementById('contacts-register');
     let mobileButtonIcon = document.getElementById('relative-icon');
-
     register.classList.remove('d-none');
     mobileButtonIcon.src = './assets/icons/person_add.svg';
 }
