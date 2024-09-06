@@ -168,7 +168,7 @@ function totalSubtaskHTML(amount,totalSubtask) {
         <div>
             ${amount}/${totalSubtask} Subtask
         </div>
-    `
+    `;
 }
 
 function renderCardHTML(element, indexOfTask) {
@@ -267,12 +267,87 @@ function rendertaskOverlayHTML(indexOfTask) {
             </div>
         </div>
         <div class="delete-edit-container">
-            <img class="trash-delete" src="./assets/icons/trash-board.svg" alt="">
-            <span>Delete</span>
+            <div onclick="delteTask('${indexOfTask}')"><img class="trash-delete" src="./assets/icons/trash-board.svg" alt="">
+            Delete</div>
             <img class="line-vertical" src="./assets/icons/line-vertical.svg" alt="">
-            <img class="trash-delete" src="./assets/icons/edit.svg" alt="">
-            <span>Edit</span>
+            <div onclick="editTask('${indexOfTask}')"><img class="trash-delete" src="./assets/icons/edit.svg" alt="">
+            Edit</div>
         </div>
     </div>
 `;
+}
+
+function renderEditTasksHtml(tasksindex) {
+    return /*html*/`        
+        <div class="add-task-bg" style="width:unset; padding:unset;position:relative;" onclick="doNotClose(event)">
+            <div class="taskform" style="flex-direction: column; gap:40px">
+                <div class="taskform-half" style="width:unset;">
+
+                    <div class="input-container">
+                        <h2 class="input-title">Title</h2>
+                        <input type="text" placeholder="Enter a title" id="inputtitle" onkeyup="checkRequiredfields()" autocomplete="off">
+                    </div>
+
+                    <div class="text-area-container">
+                        <h2 class="input-title">Description</h2>
+                        <textarea placeholder="Enter a Description" id="textfieldinput"></textarea>
+                    </div>
+
+                    <div class="input-container dropdown-check-list-contacts" id="contact-select">
+                        <h2 class="input-title">Assigned to</h2>
+                        <span class="anchor" id="anchorButton" onclick="showContactslistToAssign()">Select contacts to assign</span>
+                        <input type="text" class="anchorinput d-none" id="anchorinput" onkeyup="filterContacts()" autocomplete="off">
+                        <icon class="arrowupanchorinput d-none" id="anchoricon" onclick="showContactslistToAssign()"></icon>
+                        <ul class="items" id="assignlist">
+                        </ul>
+                    </div>
+                    <div class="showassignedcontacts" id="showassignedcontacts"></div>
+                </div>
+
+                <div class="taskform-half" style="width:unset;">
+
+                    <div class="input-container">
+                        <h2 class=" input-title">Due date</h2>
+                        <input type="date" class="input-date" id="inputdate" onchange="checkRequiredfields()">
+                    </div>
+
+                    <div class="input-container">
+                        <h2 class="input-title">Prio</h2>
+                        <div class="check-button-container">
+                            <button class="button-empty-small-2 urgentprio" id="urgent" onclick="changePrio('urgent')">Urgent</button>
+                            <button class="button-empty-small-2 mediumprio mediumprioaktive" id="medium" onclick="changePrio('medium')">Medium</button>
+                            <button class="button-empty-small-2 lowprio" id="low" onclick="changePrio('low')">Low</button>
+                        </div>
+                    </div>
+
+                    <div class="input-container">
+                        <h2 class="input-title">Category</h2>
+                        <select name="category" id="categoryselect" onchange="checkRequiredfields()">
+                            <option value="" selected hidden disabled>Select task category</option>
+                            <option value="Technical Task">Technical Task</option>
+                            <option value="User Story">User Story</option>
+                        </select>
+                    </div>
+
+                    <div class="subtask input-container ">
+                        <h2 class="input-title">Subtasks</h2>
+                        <input class="input-subtask input-title" type="text" autocomplete="off" placeholder="Add new subtask" id="subtaskinputfield" onkeyup="changeIconsSubtask()" onkeypress="checkPressEnter(event,'create')">
+                        <div class="iconssubtask center d-none" id="subtasksicons">
+                        <i class="clearsubtask" onclick="resetsubtasksinput()"></i>
+                        <i class="addsubtask" onclick="addsubtasktoList()"></i>
+                        </div>
+                    </div>
+                    <ul id="showsubtasks" class="showsubtasks">
+                    </ul>
+                </div>
+            </div>
+            <div class="add-task-page-footer">                
+                <div class="checkeditbutton">
+                    <button class="button-filled-large " id="edittaskdone" onclick="submitEditTask(${tasksindex})">
+                        <span>OK</span>
+                        <img class="input-and-button-icons"src="./assets/icons/check.svg">
+                    </button>
+                </div>
+            </div>        
+    `
 }

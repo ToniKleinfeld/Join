@@ -6,7 +6,6 @@ const typeColors = {
 let currentDraggedElement;
 
 function initBoard() {
-    // renderMainContent();
     updateTaskTable('to do', 'tableToDo');
     updateTaskTable('in progress', 'tableInProgress');
     updateTaskTable('Await feedback', 'tableAwaitFeedback');
@@ -27,23 +26,23 @@ function updateTaskTable(status, tableId) {
             let element = filteredTasks[index];
 
             tableElement.innerHTML += renderCardHTML(element, indexOfTask);
-            renderAssignedContacs(indexOfTask,element,'assignedusers')
+            renderAssignedContacs(indexOfTask, element, 'assignedusers')
             getTypeLabelBoardColor(indexOfTask, 'labelBoardCard');
-            calcTotalSubtask(indexOfTask,element);
+            calcTotalSubtask(indexOfTask, element);
         }
     }
 }
 
-function renderAssignedContacs(i,users,path) {
+function renderAssignedContacs(i, users, path) {
     const assignedcontacts = document.getElementById(`${path}${i}`)
-    
+
     for (let index = 0; index < users['Assigned To'].length; index++) {
-        const name = users['Assigned To'][index];  
+        const name = users['Assigned To'][index];
         const shortname = shortNames(name);
-        const color =  getColorOfContact(name);
-        
-        assignedcontacts.innerHTML +=  renderAssignedContactsSmallCard(color,shortname);
-    }    
+        const color = getColorOfContact(name);
+
+        assignedcontacts.innerHTML += renderAssignedContactsSmallCard(color, shortname);
+    }
 }
 
 function choosePrioSymbol(priority) {
@@ -69,8 +68,8 @@ function closeAddTaskDialog() {
 }
 
 function doNotClose(event) {
-    event.stopPropagation();       
-  }
+    event.stopPropagation();
+}
 
 function getTypeLabelBoardColor(indexOfTask, labelBoardID) {
     let color = tasks[indexOfTask]['category'];
@@ -101,74 +100,63 @@ function tableAssignedTo(indexOfTask) {
     tableAssigned.innerHTML = '';
 
     for (let index = 0; index < tasks[indexOfTask]['Assigned To'].length; index++) {
-        const name = tasks[indexOfTask]['Assigned To'][index];  
+        const name = tasks[indexOfTask]['Assigned To'][index];
         const shortname = shortNames(name);
         console.log(shortname)
-        const color =  getColorOfContact(name);
+        const color = getColorOfContact(name);
 
-        tableAssigned.innerHTML += renderAssignedNamesAndColorsBigCard(name,color,shortname);
+        tableAssigned.innerHTML += renderAssignedNamesAndColorsBigCard(name, color, shortname);
     }
 }
 
-function calcTotalSubtask(indexOfTask,task) {
-    let subtask = task['subtask'];
-    let cardSubtask = document.getElementById(`cardSubtasks${indexOfTask}`);
+function calcTotalSubtask(indexOfTask, task) {
+    const subtask = task['subtask'];
+    const cardSubtask = document.getElementById(`cardSubtasks${indexOfTask}`);
     let amount = 0;
 
     cardSubtask.innerHTML = '';
 
     if (subtask !== '') {
-        subtask.forEach(element => {if(element.state == true) {amount++}                
-        }); 
-        
-        cardSubtask.innerHTML = totalSubtaskHTML(amount,subtask.length);
-        calcProgressbarSubtasks(indexOfTask,task);  
+        subtask.forEach(element => {
+            if (element.state == true) { amount++ }
+        });
+
+        cardSubtask.innerHTML = totalSubtaskHTML(amount, subtask.length);
+        calcProgressbarSubtasks(indexOfTask, task);
     } else {
         document.getElementById(`progressbar${indexOfTask}`).classList.add('d-none')
     }
 }
 
-function calcProgressbarSubtasks(indexOfTask,task) {
-    let subtask = task['subtask'];
+function calcProgressbarSubtasks(indexOfTask, task) {
+    const fillerProgressbar = document.getElementById(`fillerProgressbar${indexOfTask}`);
+    const subtask = task['subtask'];
+    const length = subtask.length;
+    let amountProgressBar = 0;
 
-    if (subtask.length !== '') {
-        console.log(indexOfTask, 'true');
-        // console.log(subtask);
-        for (let i = 0; i < subtask.length; i++) {
-            const element = subtask[i].state;
-            console.log(element);
-            if (element) {
+    fillerProgressbar.innerHTML = '';
 
-            } else {
-
-            }
+    for (let i = 0; i < subtask.length; i++) {
+        const element = subtask[i].state;
+        if (element) {
+            amountProgressBar++;
         }
-    } else {
-        console.log(indexOfTask, 'false');
+        const percentBar = (amountProgressBar / length) * 100;
+        fillerProgressbar.style.width = `${percentBar}%`;
     }
+
 }
 
 
-// function calcProgressbarSubtasks(indexOfTask) {
-// let numberOfSubtask = tasks[indexOfTask]['subtask'];
-
-// if (!Array.isArray(numberOfSubtask) || !numberOfSubtask.length ) {     // hier wird geprüft, ob es den Subtask-Array gibt.
-//     console.log(indexOfTask, 'true');    
-// } else {
-//     console.log(indexOfTask, 'false');
-// }
-// }
-
-
 function listSubtasks(indexOfTask) {
-    let subtask = document.getElementById('formSubtasks');
+    const subtask = document.getElementById('formSubtasks');
     subtask.innerHTML = '';
 
     if (tasks[indexOfTask]['subtask']) {
         for (let i = 0; i < tasks[indexOfTask]['subtask'].length; i++) {
             const element = tasks[indexOfTask]?.['subtask'][i] || '';
 
-            subtask.innerHTML +=  renderSubTasksBigCars(i,element,indexOfTask)
+            subtask.innerHTML += renderSubTasksBigCars(i, element, indexOfTask)
         }
     } else {
         return false;
@@ -176,9 +164,9 @@ function listSubtasks(indexOfTask) {
 }
 
 
-function checkboxcheck(check,i) {
+function checkboxcheck(check, i) {
     if (check == true) {
-        return 'checked' 
+        return 'checked'
     }
 }
 
@@ -198,16 +186,16 @@ function moveTo(progress) {
     updateTaskTable('Done', 'tableDone');
 }
 
-// function renderMainContent() {
-//     let content = document.getElementById('tabelToDo');
-//     content.innerHTML = '';
 
-//     for (let i = 0; i < tasks.length; i++) {
-//         const element = tasks[i];
+function delteTask(tasksindex) {
+    closeTaskOverlay()
+    tasks.splice(tasksindex, 1);
+    saveAsSessionStorage();
+    initBoard();
+}
 
-//         // firstLastInitial(i);
-//         getTypeLabelBoardColor(element, i);
-//         getTypeInitialColor(element['Assigned To'], i);
-//     }
+function editTask(tasksindex) {
+    const overlay = document.getElementById('overlay');
 
-// }
+    overlay.innerHTML = renderEditTasksHtml(tasksindex);
+}
