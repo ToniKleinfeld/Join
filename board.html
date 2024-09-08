@@ -57,7 +57,7 @@
                     </div>
                     <div class="board-headline-input-button-container mb-16">
                         <div class="input-search-container">
-                            <input class="search" type="search" placeholder="Find Task">
+                            <input id="searchInput" class="search" type="search" placeholder="Find Task" oninput="filterTask()">
                             <img src="./assets/icons/search.svg">
                         </div>
                         <button onclick="openAddTaskDialog()" class="add-task-button">Add Task +</button>

@@ -33,6 +33,24 @@ function updateTaskTable(status, tableId) {
     }
 }
 
+
+function filterTask() {
+    let search = document.getElementById('searchInput').value.toLowerCase().trim();
+    console.log(search);
+
+    
+    for (let index = 0; index < tasks.length; index++) {
+        const description = tasks[index].description;
+        const title = tasks[index].title;
+
+        if (description.toLowerCase().includes(search) || title.toLowerCase().includes(search) ) {
+            console.log(description);
+            console.log(title);
+        }
+    }
+}
+
+
 function renderAssignedContacs(i, users, path) {
     const assignedcontacts = document.getElementById(`${path}${i}`)
 
@@ -102,7 +120,6 @@ function tableAssignedTo(indexOfTask) {
     for (let index = 0; index < tasks[indexOfTask]['Assigned To'].length; index++) {
         const name = tasks[indexOfTask]['Assigned To'][index];
         const shortname = shortNames(name);
-        console.log(shortname)
         const color = getColorOfContact(name);
 
         tableAssigned.innerHTML += renderAssignedNamesAndColorsBigCard(name, color, shortname);
@@ -137,8 +154,8 @@ function calcProgressbarSubtasks(indexOfTask, task) {
     fillerProgressbar.innerHTML = '';
 
     for (let i = 0; i < subtask.length; i++) {
-        const element = subtask[i].state;
-        if (element) {
+        const state = subtask[i].state;
+        if (state) {
             amountProgressBar++;
         }
         const percentBar = (amountProgressBar / length) * 100;
