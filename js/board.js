@@ -77,12 +77,15 @@ function choosePrioSymbol(priority) {
 
 function openAddTaskDialog() {
     let addTaskOverlay = document.getElementById('addTaskOverlay');
-    addTaskOverlay.style.display = 'flex';
+
+    addTaskOverlay.innerHTML = renderAddtaskformHTML();
+    addTaskOverlay.style.display = 'flex';    
 }
 
 function closeAddTaskDialog() {
     let addTaskOverlay = document.getElementById('addTaskOverlay');
     addTaskOverlay.style.display = 'none';
+    addTaskOverlay.innerHTML = '';
 }
 
 function doNotClose(event) {

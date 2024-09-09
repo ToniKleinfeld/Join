@@ -340,3 +340,89 @@ function renderEditTasksHtml(i) {
         </div>       
     `
 }
+
+function renderAddtaskformHTML() {
+    return /*html*/`
+        <div class="add-task-bg" style="width: unset;" onclick="doNotClose(event)">
+            <h1>Add Task</h1>
+
+            <div class="taskform">
+
+                <div class="taskform-half">
+
+                    <div class="input-container">
+                        <h2 class="required input-title">Title</h2>
+                        <input type="text" placeholder="Enter a title" id="inputtitle" onkeyup="checkRequiredfields()" autocomplete="off">
+                    </div>
+
+                    <div class="text-area-container">
+                        <h2 class="input-title">Description</h2>
+                        <textarea placeholder="Enter a Description" id="textfieldinput"></textarea>
+                    </div>
+
+                    <div class="input-container dropdown-check-list-contacts" id="contact-select">
+                        <h2 class="input-title">Assigned to</h2>
+                        <span class="anchor" id="anchorButton" onclick="showContactslistToAssign()">Select contacts to assign</span>
+                        <input type="text" class="anchorinput d-none" id="anchorinput" onkeyup="filterContacts()" autocomplete="off">
+                        <icon class="arrowupanchorinput d-none" id="anchoricon" onclick="showContactslistToAssign()"></icon>
+                        <ul class="items" id="assignlist">
+                        </ul>
+                    </div>
+                    <div class="showassignedcontacts" id="showassignedcontacts"></div>
+                </div>
+
+                <div class="taskform-half">
+
+                    <div class="input-container">
+                        <h2 class="required input-title">Due date</h2>
+                        <input type="date" class="input-date" id="inputdate" onchange="checkRequiredfields()">
+                    </div>
+
+                    <div class="input-container">
+                        <h2 class="input-title">Prio</h2>
+                        <div class="check-button-container">
+                            <button class="button-empty-small-2 urgentprio" id="urgent" onclick="changePrio('urgent')">Urgent</button>
+                            <button class="button-empty-small-2 mediumprio mediumprioaktive" id="medium" onclick="changePrio('medium')">Medium</button>
+                            <button class="button-empty-small-2 lowprio" id="low" onclick="changePrio('low')">Low</button>
+                        </div>
+                    </div>
+
+                    <div class="input-container">
+                        <h2 class="required input-title">Category</h2>
+                        <select name="category" id="categoryselect" onchange="checkRequiredfields()">
+                            <option value="" selected hidden disabled>Select task category</option>
+                            <option value="Technical Task">Technical Task</option>
+                            <option value="User Story">User Story</option>
+                        </select>
+                    </div>
+
+                    <div class="subtask input-container ">
+                        <h2 class="input-title">Subtasks</h2>
+                        <input class="input-subtask input-title" type="text" autocomplete="off" placeholder="Add new subtask" id="subtaskinputfield" onkeyup="changeIconsSubtask()" onkeypress="checkPressEnter(event,'create')">
+                        <div class="iconssubtask center d-none" id="subtasksicons">
+                        <i class="clearsubtask" onclick="resetsubtasksinput()"></i>
+                        <i class="addsubtask" onclick="addsubtasktoList()"></i>
+                        </div>
+                    </div>
+                    <ul id="showsubtasks" class="showsubtasks">
+                    </ul>
+                </div>
+            </div>
+            <div class="add-task-page-footer">
+                <p class="required-info">This field is required</p>
+                <div class="task-footer-button-container">
+                    <button class="button-empty-small mobileoff" onclick="clearside()">Clear
+                        <span class="input-and-button-icons closex"></span>
+                    </button>
+                    <button class="button-filled-large" id="createtask" disabled onclick="createNewTask()">
+                        <span>Create Task</span>
+                        <img class="input-and-button-icons"src="./assets/icons/check.svg">
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="createdtaskmessage d-none" id="createdtaskmessage">
+            Task added to board <span></span>
+        </div>
+    `
+}
