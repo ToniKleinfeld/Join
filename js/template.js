@@ -209,7 +209,7 @@ function renderCardHTML(element, indexOfTask) {
 function renderSubTasksBigCars(i,element,indexOfTask) {
     return /*html*/`
             <div class="checkbox-title-container">
-                <input onclick="isChecked(${indexOfTask},${i})" class="checkbox" type="checkbox" ${checkboxcheck(element.state,i)}  id="checkbox${i}" name="checkbox${i}"/>
+                <input onclick="isChecked(${indexOfTask},${i})" class="checkbox" type="checkbox" ${checkboxcheck(element.state)}  id="checkbox${i}" name="checkbox${i}"/>
                 <label for="checkbox${i}">${element.title}</label>
             </div>
     `
@@ -247,7 +247,6 @@ function rendertaskOverlayHTML(indexOfTask) {
         <div>
             <div class="assigned-grid-overlay">
                 <div>Assigned To:</div>
-                <!--liste der ausgewählten namen-->
                 <div id="tableAssignedTo"></div>
             </div>
         </div>
@@ -255,14 +254,6 @@ function rendertaskOverlayHTML(indexOfTask) {
             <div class="subtasks-grid-overlay" id="formSubtasks">
                 <div>Subtasks:</div>
                 <form id="formSubtasks" action="">
-                    <!-- <div class="checkbox-title-container">
-                        <input class="checkbox" type="checkbox" id="checkbox1" name="toDo" value="" />
-                        <label for="checkbox1">Implement Recipe Recommendation</label>
-                    </div>
-                    <div class="checkbox-title-container">
-                        <input class="checkbox" type="checkbox" id="checkbox2" name="toDo" value="" />
-                        <label for="checkbox2">Start Page Layout</label>
-                    </div> -->
                 </form>
             </div>
         </div>
@@ -277,38 +268,30 @@ function rendertaskOverlayHTML(indexOfTask) {
 `;
 }
 
-function renderEditTasksHtml(tasksindex) {
+function renderEditTasksHtml(i) {
     return /*html*/`        
-        <div class="add-task-bg" style="width:unset; padding:unset;position:relative;" onclick="doNotClose(event)">
-            <div class="taskform" style="flex-direction: column; gap:40px">
-                <div class="taskform-half" style="width:unset;">
+        <div class="add-task-bg" style="width:unset; padding:0 0 0 5px; position:relative;" onclick="doNotClose(event)">
+        <div class="edit-container-close">
+                    <div class="user-story-overlay" style="background:unset;"></div>
+                    <img onclick="closeTaskOverlay()" src="./assets/icons/close.svg" alt="">
+                </div>
+            <div class="taskform" style="flex-direction: column; gap:unset; height:auto;">
+
+                <div class="taskform-half" style="width:unset; padding:15px;">
 
                     <div class="input-container">
                         <h2 class="input-title">Title</h2>
-                        <input type="text" placeholder="Enter a title" id="inputtitle" onkeyup="checkRequiredfields()" autocomplete="off">
+                        <input type="text" placeholder="Enter a title" id="inputtitle"  value="${tasks[i].title}" onkeyup="checkRequiredfieldsEdit()" autocomplete="off">
                     </div>
 
                     <div class="text-area-container">
                         <h2 class="input-title">Description</h2>
-                        <textarea placeholder="Enter a Description" id="textfieldinput"></textarea>
+                        <textarea placeholder="Enter a Description" id="textfieldinput">${tasks[i].description}</textarea>
                     </div>
-
-                    <div class="input-container dropdown-check-list-contacts" id="contact-select">
-                        <h2 class="input-title">Assigned to</h2>
-                        <span class="anchor" id="anchorButton" onclick="showContactslistToAssign()">Select contacts to assign</span>
-                        <input type="text" class="anchorinput d-none" id="anchorinput" onkeyup="filterContacts()" autocomplete="off">
-                        <icon class="arrowupanchorinput d-none" id="anchoricon" onclick="showContactslistToAssign()"></icon>
-                        <ul class="items" id="assignlist">
-                        </ul>
-                    </div>
-                    <div class="showassignedcontacts" id="showassignedcontacts"></div>
-                </div>
-
-                <div class="taskform-half" style="width:unset;">
-
+                    
                     <div class="input-container">
                         <h2 class=" input-title">Due date</h2>
-                        <input type="date" class="input-date" id="inputdate" onchange="checkRequiredfields()">
+                        <input type="date" class="input-date" value="${tasks[i].duedate}" id="inputdate" onchange="checkRequiredfieldsEdit()">
                     </div>
 
                     <div class="input-container">
@@ -319,17 +302,22 @@ function renderEditTasksHtml(tasksindex) {
                             <button class="button-empty-small-2 lowprio" id="low" onclick="changePrio('low')">Low</button>
                         </div>
                     </div>
+    
+                </div>
 
-                    <div class="input-container">
-                        <h2 class="input-title">Category</h2>
-                        <select name="category" id="categoryselect" onchange="checkRequiredfields()">
-                            <option value="" selected hidden disabled>Select task category</option>
-                            <option value="Technical Task">Technical Task</option>
-                            <option value="User Story">User Story</option>
-                        </select>
+                <div class="taskform-half" style="width:unset; padding:15px;">
+
+                <div class="input-container dropdown-check-list-contacts" id="contact-select">
+                        <h2 class="input-title">Assigned to</h2>
+                        <span class="anchor" id="anchorButton" onclick="showContactslistToAssign()">Select contacts to assign</span>
+                        <input type="text" class="anchorinput d-none" id="anchorinput" onkeyup="filterContacts()" autocomplete="off">
+                        <icon class="arrowupanchorinput d-none" id="anchoricon" onclick="showContactslistToAssign()"></icon>
+                        <ul class="items" id="assignlist">
+                        </ul>
                     </div>
+                    <div class="showassignedcontacts" id="showassignedcontacts"></div>
 
-                    <div class="subtask input-container ">
+                    <div class="subtask input-container " style="margin-top:25px;">
                         <h2 class="input-title">Subtasks</h2>
                         <input class="input-subtask input-title" type="text" autocomplete="off" placeholder="Add new subtask" id="subtaskinputfield" onkeyup="changeIconsSubtask()" onkeypress="checkPressEnter(event,'create')">
                         <div class="iconssubtask center d-none" id="subtasksicons">
@@ -341,13 +329,14 @@ function renderEditTasksHtml(tasksindex) {
                     </ul>
                 </div>
             </div>
-            <div class="add-task-page-footer">                
-                <div class="checkeditbutton">
-                    <button class="button-filled-large " id="edittaskdone" onclick="submitEditTask(${tasksindex})">
+            <div class="edit-check-footer"> 
+           
+                    <button class="button-filled-large" style="width:auto;" id="edittaskdone" onclick="submitEditTask(${i})">
                         <span>OK</span>
-                        <img class="input-and-button-icons"src="./assets/icons/check.svg">
+                        <img class="input-and-button-icons" src="./assets/icons/check.svg">
                     </button>
-                </div>
-            </div>        
+
+            </div> 
+        </div>       
     `
 }

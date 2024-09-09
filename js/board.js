@@ -110,6 +110,8 @@ function showTaskOverlay(indexOfTask) {
 function closeTaskOverlay() {
     let overlay = document.getElementById('overlay');
     overlay.style.display = 'none';
+    overlay.innerHTML = '';
+    reseteditArray();
 }
 
 
@@ -181,7 +183,7 @@ function listSubtasks(indexOfTask) {
 }
 
 
-function checkboxcheck(check, i) {
+function checkboxcheck(check) {
     if (check == true) {
         return 'checked'
     }
@@ -213,6 +215,73 @@ function delteTask(tasksindex) {
 
 function editTask(tasksindex) {
     const overlay = document.getElementById('overlay');
+    const currenttask = tasks[tasksindex];
 
     overlay.innerHTML = renderEditTasksHtml(tasksindex);
+    currenttask['Assigned To'].forEach(element => {assignedToArray.push(element)  
+    });  
+    renderAssignedContacts()
+    changePrio(`${currenttask.prio.toLowerCase()}`); 
+
+    if (currenttask['subtask']) {
+        currenttask['subtask'].forEach(element => {subtaskArray.push(element.title)  
+        });  
+        renderSubTasks()
+    }
+}
+
+function checkRequiredfieldsEdit(){
+    const inputtitle = document.getElementById('inputtitle');
+    const date = document.getElementById('inputdate');
+
+    if (inputtitle.value && date.value !== '') {
+        document.getElementById('createtask').disabled = false;
+      }
+  
+      markMissingRequiredvalue(inputtitle);
+      markMissingRequiredvalue(date)
+}
+
+function isChecked(tasksindex, subtaskindex) {
+    const subtask = tasks[tasksindex]['subtask'][subtaskindex];
+
+    switch (subtask.state) {
+        case true: 
+        subtask.state = false;
+            break;
+
+        case false: 
+        subtask.state = true;
+            break;
+    
+        default:
+            break;
+    }    
+    saveChangedData()
+    initBoard()
+}
+
+function submitEditTask(index) {
+    const currentTask = tasks[index];
+    data["title"] = document.getElementById('inputtitle').value;
+    data["duedate"] = document.getElementById('inputdate').value;
+    data["category"] = currentTask.category;
+    data["progress"] = currentTask.progress;
+    data["description"] = document.getElementById('textfieldinput').value;    
+    data["Assigned To"] = assignedToArray;
+    subtaskArray.map((sub) => data["subtask"].push({"state":checkState(sub,currentTask), "title":sub }));
+    tasks.splice(index,1,data) 
+
+    saveChangedData() 
+    closeTaskOverlay()
+    initBoard()
+}
+
+function checkState(subtitle,task) {
+    if (task.subtask) {
+        subtaskfilterd = task.subtask.filter(subtask => subtask.title == subtitle);
+        return subtaskfilterd[0].state;
+    } else {
+        return false;
+    }
 }
