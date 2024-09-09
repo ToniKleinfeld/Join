@@ -202,10 +202,12 @@ function allowDrop(ev) {
 
 function moveTo(progress) {
     tasks[currentDraggedElement]['progress'] = progress;
+    saveAsSessionStorage();
     updateTaskTable('to do', 'tableToDo');
     updateTaskTable('in progress', 'tableInProgress');
     updateTaskTable('Await feedback', 'tableAwaitFeedback');
     updateTaskTable('Done', 'tableDone');
+    
 }
 
 
@@ -281,9 +283,15 @@ function submitEditTask(index) {
 }
 
 function checkState(subtitle,task) {
+    
     if (task.subtask) {
         subtaskfilterd = task.subtask.filter(subtask => subtask.title == subtitle);
-        return subtaskfilterd[0].state;
+
+        if (subtaskfilterd[0] !== undefined) {
+            return subtaskfilterd[0].state;
+        } else {
+            return false
+        }        
     } else {
         return false;
     }
