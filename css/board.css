@@ -60,7 +60,6 @@ h2 {
 }
 
 .no-tasks-container {
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -83,13 +82,15 @@ h2 {
     flex-wrap: wrap;
 }
 
-.category-containers {
+.plus-button:hover{
+    color: #33a8e2;
+}
 
+.category-containers {
     height: auto;
     width: 274px;
     display: flex;
     flex-direction: column;
-
     padding: 10px;
 }
 
