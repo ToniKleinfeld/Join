@@ -82,12 +82,21 @@ function choosePrioSymbol(priority) {
     }
 }
 
+/**
+ * checked if the screen witdh is above 825px , when yes is shows add task overlay in board , when no it link to add-task html
+ * 
+ * @param {string} progress - set the progress on current clicked state when creating new task
+ */
+function openAddTaskDialog(progress) {
+    let addTaskOverlay = document.getElementById('addTaskOverlay');    
 
-function openAddTaskDialog() {
-    let addTaskOverlay = document.getElementById('addTaskOverlay');
-
-    addTaskOverlay.innerHTML = renderAddtaskformHTML();
-    addTaskOverlay.style.display = 'flex';
+    if (window.innerWidth >= 825) {
+        addTaskOverlay.innerHTML = renderAddtaskformHTML();
+        addTaskOverlay.style.display = 'flex';
+        data["progress"] = progress;
+    } else {
+        window.location.href = "./add-task.html"     
+    }
 }
 
 function closeAddTaskDialog() {

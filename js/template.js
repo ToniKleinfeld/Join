@@ -210,6 +210,7 @@ function renderSubTasksBigCars(i,element,indexOfTask) {
     return /*html*/`
             <div class="checkbox-title-container">
                 <input onclick="isChecked(${indexOfTask},${i})" class="checkbox" type="checkbox" ${checkboxcheck(element.state)}  id="checkbox${i}" name="checkbox${i}"/>
+                <span class="checkmark"></span>
                 <label for="checkbox${i}">${element.title}</label>
             </div>
     `

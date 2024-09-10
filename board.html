@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./css/board.css">
     <link rel="stylesheet" href="./css/add-task.css">
     <link rel="stylesheet" href="./css/mediaaddtask.css">
+    <link rel="stylesheet" href="./css/mediaboard.css">
     <script src="./js/board.js"></script>
     <script src="./script.js"></script>
     <script src="./js/add-task.js"></script>
@@ -54,14 +55,14 @@
                 <div class="board-headline">
                     <div class="resp-h1-plus-add-task-button">
                         <h1>Board</h1>
-                        <img class="plus-add-task-button" src="./assets/icons/plus-add-task-button.svg" alt="">
+                        <a class="plus-add-task-button center" href="./add-task.html"><img src="./assets/icons/plus-add-task-button.svg" alt=""></a>
                     </div>
                     <div class="board-headline-input-button-container mb-16">
                         <div class="input-search-container">
                             <input id="searchInput" class="search" type="search" placeholder="Find Task" oninput="filterTask()">
                             <!-- <img src="./assets/icons/search.svg"> -->
                         </div>
-                        <button onclick="openAddTaskDialog()" class="add-task-button">Add Task +</button>
+                        <button onclick="openAddTaskDialog('to do')" class="add-task-button">Add Task +</button>
                     </div>
                 </div>
                 <div id="categoryMainContainer" class="category-main-container">
@@ -69,7 +70,7 @@
                     <div class="category-containers">
                         <div class="to-do-title mb-16">
                             <h2>To do</h2>
-                            <img onclick="openAddTaskDialog()" class="plus-button" src="./assets/icons/plus-button.svg" alt="">
+                            <img onclick="openAddTaskDialog('to do')" class="plus-button" src="./assets/icons/plus-button.svg" alt="">
                         </div>
                         <div id="tableToDo" class="tabelle-card" ondrop="moveTo('to do')" ondragover="allowDrop(event)">
                             <!--hier werden die karten gerendert-->
@@ -79,7 +80,7 @@
                     <div class="category-containers">
                         <div class="in-progress-title mb-16">
                             <h2>In progress</h2>
-                            <img onclick="openAddTaskDialog()" class="plus-button" src="./assets/icons/plus-button.svg"
+                            <img onclick="openAddTaskDialog('in progress')" class="plus-button" src="./assets/icons/plus-button.svg"
                                 alt="">
                         </div>
                         <div id="tableInProgress" class="tabelle-card" ondrop="moveTo('in progress')"
@@ -91,7 +92,7 @@
                     <div class="category-containers">
                         <div class="await-feedback-title mb-16">
                             <h2>Await feedback</h2>
-                            <img onclick="openAddTaskDialog()" class="plus-button" src="./assets/icons/plus-button.svg"
+                            <img onclick="openAddTaskDialog('Await feedback')" class="plus-button" src="./assets/icons/plus-button.svg"
                                 alt="">
                         </div>
                         <div id="tableAwaitFeedback" class="tabelle-card" ondrop="moveTo('Await feedback')"

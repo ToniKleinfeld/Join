@@ -1,5 +1,3 @@
-/*---------------Board--------------------------*/
-
 h2 {
     font-weight: 600;
     color: #42526e;
@@ -15,14 +13,12 @@ h2 {
     max-width: 1284px;
     display: flex;
     flex-direction: column;
-    /* justify-content: start; */
     align-items: flex-start;
     padding: 64px;
     margin: auto;
 }
 
 .board-headline {
-    /* border: 1px solid; */
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -32,7 +28,6 @@ h2 {
 }
 
 .board-headline-input-button-container {
-    /* border: 1px solid; */
     display: flex;
     align-items: center;
     gap: 32px;
@@ -82,23 +77,19 @@ h2 {
 }
 
 .category-main-container {
-    /* border: 1px solid; */
-    /* width: 100%; */
     display: flex;
-    /* justify-content: center; */
     align-items: flex-start;
     gap: 20px;
     flex-wrap: wrap;
 }
 
 .category-containers {
-    /* border: 1px solid; */
+
     height: auto;
     width: 274px;
     display: flex;
     flex-direction: column;
-    /* justify-content: start;
-    align-items: start; */
+
     padding: 10px;
 }
 
@@ -135,7 +126,6 @@ img:hover {
     padding: 16px;
     gap: 10px;
     width: 252px;
-    /* height: 244px; */
     background: #FFFFFF;
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
     border-radius: 24px;
@@ -149,7 +139,6 @@ img:hover {
     padding: 0px;
     gap: 24px;
     width: 220px;
-    /* height: 212px; */
 }
 
 
@@ -159,7 +148,6 @@ img:hover {
     align-items: flex-start;
     padding: 4px 16px;
     gap: 10px;
-    /* width: 113px; */
     height: 27px;
     background: #0038FF;
     border-radius: 8px;
@@ -181,13 +169,11 @@ img:hover {
     padding: 0px;
     gap: 8px;
     width: 220px;
-    /* height: 65px; */
     border-radius: 10px;
 }
 
 .title {
     width: 220px;
-    /* height: 19px; */
     font-weight: 700;
     font-size: 16px;
     line-height: 120%;
@@ -196,7 +182,6 @@ img:hover {
 
 .card-description {
     width: 220px;
-    /* height: 38px; */
     font-weight: 400;
     font-size: 16px;
     line-height: 120%;
@@ -220,7 +205,6 @@ img:hover {
 }
 
 .filler {
-    /* display: none; */
     width: 0px;
     height: 8px;
     background: #4589FF;
@@ -329,7 +313,6 @@ img:hover {
     border-radius: 10px;
     font-weight: 400;
     font-size: 20px;
-    /* color: #D1D1D1; */
 }
 
 button:hover {
@@ -377,9 +360,7 @@ button {
     color: #A8A8A8;
 }
 
-
 /*******************Overlay***********************/
-
 h1 {
     font-size: 61px;
 }
@@ -430,8 +411,6 @@ h1 {
     background: #0038FF;
     border-radius: 8px;
 
-    /* width: 81px; */
-    /* height: 19px; */
     font-weight: 400;
     font-size: 24px;
     line-height: 120%;
@@ -443,9 +422,6 @@ h1 {
 }
 
 .content-overlay {
-    /* width: 445px;
-    height: 24px; */
-
     font-weight: 400;
     font-size: 20px;
     line-height: 120%;
@@ -486,11 +462,28 @@ h1 {
 }
 
 .checkbox-title-container {
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 16px;
     margin: 12px;
+
+    & input {
+        opacity: 0;
+        position: absolute;
+        left: 5px;
+        z-index: 5;
+        scale: 1.2;
+    }
+
+    & input:checked ~ .checkmark {
+        content: url(../assets/icons/checkedcheckbox.svg);
+    }
+
+    & label {
+        cursor: pointer;
+    }
 }
 
 .checkbox {
@@ -515,144 +508,4 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.add-task-bg {
-    background-color: #F6F7F8;
-    padding: 60px;
-    width: 1116px;
-    height: 870px;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 30px;
-    overflow-y: auto;
-    overflow-x: hidden;
-
-    &::-webkit-scrollbar-track {
-        margin: 35px 0;
-    }
-}
-
-.edit-check-footer{
-    position: sticky;
-    display: flex;
-    bottom: 0px;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 15px;
-}
-
-.edit-container-close{
-    position: sticky;
-    display: flex;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 15px;
-    z-index: 20;
-}
-
-.delete-edit-container {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: flex-end;
-    width: 100%;
-    gap: 11px;
-
-    &>div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-        cursor: pointer;
-    }
-}
-
-/*********************Media Query*****************/
-@media (max-width:950px) {
-
-    .board-main {
-        margin-top: 80px;
-        padding-top: 8px;
-        padding-left: 12px;
-        padding-right: 12px;
-        height: auto;
-    }
-
-    h2 {
-        font-weight: bold;
-    }
-
-    .category-main-container {
-        display: flex;
-        /* justify-content: center; */
-        align-items: flex-start;
-        flex-wrap: wrap;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .category-containers {
-        width: 100%;
-        padding: 0px;
-    }
-
-    .tabelle-card {
-        display: flex;
-        flex-direction: row;
-        overflow-x: auto;
-        width: auto;
-        height: auto;
-    }
-
-    .plus-button {
-        margin-right: 10px;
-    }
-
-    .add-task-button {
-        display: none;
-    }
-
-    .add-task-button,
-    .input-search-container,
-    .board-headline-input-button-container {
-        width: 100%;
-    }
-
-    .board-headline {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
-        padding-right: 0px;
-    }
-
-    .resp-h1-plus-add-task-button {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .search {
-        width: 100%;
-    }
-}
-
-@media (min-width:825px) {
-    .plus-add-task-button {
-        display: none;
-    }
-
-    .resp-h1-plus-add-task-button {
-        width: auto;
-    }
 }
