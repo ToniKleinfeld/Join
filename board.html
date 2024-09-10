@@ -58,7 +58,7 @@
                     <div class="board-headline-input-button-container mb-16">
                         <div class="input-search-container">
                             <input id="searchInput" class="search" type="search" placeholder="Find Task" oninput="filterTask()">
-                            <img src="./assets/icons/search.svg">
+                            <!-- <img src="./assets/icons/search.svg"> -->
                         </div>
                         <button onclick="openAddTaskDialog()" class="add-task-button">Add Task +</button>
                     </div>
@@ -68,8 +68,7 @@
                     <div class="category-containers">
                         <div class="to-do-title mb-16">
                             <h2>To do</h2>
-                            <img onclick="openAddTaskDialog()" class="plus-button" src="./assets/icons/plus-button.svg"
-                                alt="">
+                            <img onclick="openAddTaskDialog()" class="plus-button" src="./assets/icons/plus-button.svg" alt="">
                         </div>
                         <div id="tableToDo" class="tabelle-card" ondrop="moveTo('to do')" ondragover="allowDrop(event)">
                             <!--hier werden die karten gerendert-->

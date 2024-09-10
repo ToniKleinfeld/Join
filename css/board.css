@@ -332,6 +332,11 @@ img:hover {
     /* color: #D1D1D1; */
 }
 
+button:hover {
+    background-color: #29abe2;
+    border: 1px solid #29abe2;
+}
+
 button {
     padding: 8px 16px;
     gap: 4px;
