@@ -119,4 +119,46 @@
     .content-overlay,.user-story-overlay {
         font-size: 16px;
     }
+
+    .edit-container-close {
+        padding-top: 30px;
+    }
+}
+
+@media (max-width:420px) {
+    .add-task-bg {
+        max-height: 90vh;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .add-task-bg,.edit-container-close {
+        max-width: 300px;   
+    }
+
+    .dropdown-check-list-contacts .anchor,.check-button-container {
+        font-size: 16px;
+    }
+
+    .urgentprio::after {
+        margin-left: 0;
+    }
+
+    .button-empty-small-2{
+        width: 33%;
+    }
+
+    .taskform-half {
+        padding: 5px !important;
+    }
+}
+
+@media (max-height:850px) {
+    .add-task-bg {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
 }
