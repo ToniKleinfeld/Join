@@ -333,6 +333,8 @@
         
     if (inputtitle.value && date.value && category.value !== '') {
       document.getElementById('createtask').disabled = false;
+    } else {
+      document.getElementById('createtask').disabled = true;
     }
 
     markMissingRequiredvalue(inputtitle);
@@ -388,11 +390,18 @@
     setTimeout(()=> {window.location.href = "./board.html"} , 2000);
   }
 
+  /**
+   * empty the arrays
+   */
   function reseteditArray() {
     assignedToArray = [];
     subtaskArray = [];
   }
 
+  /**
+   * 
+   * @returns - return the orginal empty data object , to prevent posible problems
+   */
   function dataObjectReset() {
     return data = {
       "Assigned To": [
@@ -408,6 +417,9 @@
     }
   }
 
+  /**
+   *  Save the main Arrays Contacts and taks into SessionStorage, upload to firebase and call the reset of data object
+   */
   function saveChangedData() {
     saveAsSessionStorage();
     // putData("tasks",tasks)

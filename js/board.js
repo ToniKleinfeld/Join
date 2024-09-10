@@ -53,7 +53,12 @@ function filterTask() {
     }
 }
 
-
+/**
+ * 
+ * @param {string} i - indexnumber to find wanted position in array
+ * @param {string} users - the current tasksarray path to assigned contacts
+ * @param {string} path - id where the content should display 
+ */
 function renderAssignedContacs(i, users, path) {
     const assignedcontacts = document.getElementById(`${path}${i}`)
 
@@ -91,6 +96,10 @@ function closeAddTaskDialog() {
     addTaskOverlay.innerHTML = '';
 }
 
+/**
+ * 
+ * @param {event} event -prevent child from closing  , when parent have onclickfunction to close
+ */
 function doNotClose(event) {
     event.stopPropagation();
 }
@@ -120,7 +129,11 @@ function closeTaskOverlay() {
     reseteditArray();
 }
 
-
+/**
+ * render the the small name Icon and name with user color in assigned to field in big card
+ * 
+ * @param {string} indexOfTask - id from current tasksarray
+ */
 function tableAssignedTo(indexOfTask) {
     let tableAssigned = document.getElementById('tableAssignedTo');
     tableAssigned.innerHTML = '';
@@ -172,7 +185,10 @@ function calcProgressbarSubtasks(indexOfTask, task) {
 
 }
 
-
+/**
+ * @param {sting} indexOfTask -id from current tasksarray
+ * 
+ */
 function listSubtasks(indexOfTask) {
     const subtask = document.getElementById('formSubtasks');
     subtask.innerHTML = '';
@@ -188,7 +204,11 @@ function listSubtasks(indexOfTask) {
     }
 }
 
-
+/**
+ * 
+ * @param {string} check - current path to the choosen tasks[index].subtask[index].state
+ * @returns the checked status into the checkbox
+ */
 function checkboxcheck(check) {
     if (check == true) {
         return 'checked'
@@ -213,7 +233,11 @@ function moveTo(progress) {
 
 }
 
-
+/**
+ * Delte the choosen Tasks from Taskarray permanent
+ * 
+ * @param {string} tasksindex - id from current tasksarray
+ */
 function delteTask(tasksindex) {
     closeTaskOverlay()
     tasks.splice(tasksindex, 1);
@@ -221,6 +245,11 @@ function delteTask(tasksindex) {
     initBoard();
 }
 
+/**
+ * Render the Edit window with infos from choosen taks
+ * 
+ * @param {string} tasksindex - id from current tasksarray
+ */
 function editTask(tasksindex) {
     const overlay = document.getElementById('overlay');
     const currenttask = tasks[tasksindex];
@@ -240,18 +269,29 @@ function editTask(tasksindex) {
     }
 }
 
+/**
+ * Check if the requied fields input and data are filled, if no the ok button is disable
+ */
 function checkRequiredfieldsEdit() {
     const inputtitle = document.getElementById('inputtitle');
     const date = document.getElementById('inputdate');
 
     if (inputtitle.value && date.value !== '') {
-        document.getElementById('createtask').disabled = false;
+        document.getElementById('edittaskdone').disabled = false;
+    } else {
+        document.getElementById('edittaskdone').disabled = true;
     }
 
     markMissingRequiredvalue(inputtitle);
     markMissingRequiredvalue(date)
 }
 
+/**
+ * Switch the state in subtasks between true or false and save it in TasksArray
+ * 
+ * @param {string} tasksindex - get the tasks id 
+ * @param {*} subtaskindex - get the subtasks id
+ */
 function isChecked(tasksindex, subtaskindex) {
     const subtask = tasks[tasksindex]['subtask'][subtaskindex];
 
@@ -271,6 +311,11 @@ function isChecked(tasksindex, subtaskindex) {
     initBoard()
 }
 
+/**
+ * Get all value and change the infos in old Task
+ * 
+ * @param {string} index - get the tasks id 
+ */
 function submitEditTask(index) {
     const currentTask = tasks[index];
     data["title"] = document.getElementById('inputtitle').value;
@@ -287,6 +332,13 @@ function submitEditTask(index) {
     initBoard()
 }
 
+/**
+ * this function check if the current subtitle still exist in subtitles , and if it allready have a state, when yes it returns current state
+ * 
+ * @param {string} subtitle - search for the value from subtitle 
+ * @param {string} task - current tasks informations
+ * @returns 
+ */
 function checkState(subtitle, task) {
 
     if (task.subtask) {
