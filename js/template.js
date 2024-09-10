@@ -173,8 +173,8 @@ function totalSubtaskHTML(amount,totalSubtask) {
 
 function renderCardHTML(element, indexOfTask) {
     return /*html*/`
-    <div onclick="showTaskOverlay(${indexOfTask})" class="card-container" draggable="true" ondragstart="startDragging(${indexOfTask})">
-        <div class="card">
+    <div id="cardContainer${indexOfTask}" onclick="showTaskOverlay(${indexOfTask})" class="card-container" draggable="true" ondragstart="startDragging(${indexOfTask})">
+        <div id="card${indexOfTask}" class="card">
             <div class="frame-119">
                 <div id="labelBoardCard${indexOfTask}" class="label-board-card">
                     <div class="user-story">

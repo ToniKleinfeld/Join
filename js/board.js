@@ -38,14 +38,17 @@ function filterTask() {
     let search = document.getElementById('searchInput').value.toLowerCase().trim();
     console.log(search);
 
-    
     for (let index = 0; index < tasks.length; index++) {
         const description = tasks[index].description;
         const title = tasks[index].title;
 
-        if (description.toLowerCase().includes(search) || title.toLowerCase().includes(search) ) {
-            console.log(description);
-            console.log(title);
+        let taskElement = document.getElementById(`cardContainer${index}`);
+
+        if (description.toLowerCase().includes(search) || title.toLowerCase().includes(search)) {
+            taskElement.style.display = "block";
+        } else {
+            // Task passt nicht zur Suche, also ausblenden
+            taskElement.style.display = "none";
         }
     }
 }
@@ -79,7 +82,7 @@ function openAddTaskDialog() {
     let addTaskOverlay = document.getElementById('addTaskOverlay');
 
     addTaskOverlay.innerHTML = renderAddtaskformHTML();
-    addTaskOverlay.style.display = 'flex';    
+    addTaskOverlay.style.display = 'flex';
 }
 
 function closeAddTaskDialog() {
@@ -207,7 +210,7 @@ function moveTo(progress) {
     updateTaskTable('in progress', 'tableInProgress');
     updateTaskTable('Await feedback', 'tableAwaitFeedback');
     updateTaskTable('Done', 'tableDone');
-    
+
 }
 
 
@@ -223,45 +226,47 @@ function editTask(tasksindex) {
     const currenttask = tasks[tasksindex];
 
     overlay.innerHTML = renderEditTasksHtml(tasksindex);
-    currenttask['Assigned To'].forEach(element => {assignedToArray.push(element)  
-    });  
+    currenttask['Assigned To'].forEach(element => {
+        assignedToArray.push(element)
+    });
     renderAssignedContacts()
-    changePrio(`${currenttask.prio.toLowerCase()}`); 
+    changePrio(`${currenttask.prio.toLowerCase()}`);
 
     if (currenttask['subtask']) {
-        currenttask['subtask'].forEach(element => {subtaskArray.push(element.title)  
-        });  
+        currenttask['subtask'].forEach(element => {
+            subtaskArray.push(element.title)
+        });
         renderSubTasks()
     }
 }
 
-function checkRequiredfieldsEdit(){
+function checkRequiredfieldsEdit() {
     const inputtitle = document.getElementById('inputtitle');
     const date = document.getElementById('inputdate');
 
     if (inputtitle.value && date.value !== '') {
         document.getElementById('createtask').disabled = false;
-      }
-  
-      markMissingRequiredvalue(inputtitle);
-      markMissingRequiredvalue(date)
+    }
+
+    markMissingRequiredvalue(inputtitle);
+    markMissingRequiredvalue(date)
 }
 
 function isChecked(tasksindex, subtaskindex) {
     const subtask = tasks[tasksindex]['subtask'][subtaskindex];
 
     switch (subtask.state) {
-        case true: 
-        subtask.state = false;
+        case true:
+            subtask.state = false;
             break;
 
-        case false: 
-        subtask.state = true;
+        case false:
+            subtask.state = true;
             break;
-    
+
         default:
             break;
-    }    
+    }
     saveChangedData()
     initBoard()
 }
@@ -272,18 +277,18 @@ function submitEditTask(index) {
     data["duedate"] = document.getElementById('inputdate').value;
     data["category"] = currentTask.category;
     data["progress"] = currentTask.progress;
-    data["description"] = document.getElementById('textfieldinput').value;    
+    data["description"] = document.getElementById('textfieldinput').value;
     data["Assigned To"] = assignedToArray;
-    subtaskArray.map((sub) => data["subtask"].push({"state":checkState(sub,currentTask), "title":sub }));
-    tasks.splice(index,1,data) 
+    subtaskArray.map((sub) => data["subtask"].push({ "state": checkState(sub, currentTask), "title": sub }));
+    tasks.splice(index, 1, data)
 
-    saveChangedData() 
+    saveChangedData()
     closeTaskOverlay()
     initBoard()
 }
 
-function checkState(subtitle,task) {
-    
+function checkState(subtitle, task) {
+
     if (task.subtask) {
         subtaskfilterd = task.subtask.filter(subtask => subtask.title == subtitle);
 
@@ -291,7 +296,7 @@ function checkState(subtitle,task) {
             return subtaskfilterd[0].state;
         } else {
             return false
-        }        
+        }
     } else {
         return false;
     }
