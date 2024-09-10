@@ -375,8 +375,8 @@
     data["Assigned To"] = assignedToArray;
     subtaskArray.map((sub) => data["subtask"].push({"state":false, "title":sub }));
     tasks.push(data);
-    saveAsSessionStorage();
-    // putData("tasks",tasks)
+
+    saveChangedData()
     linkToBoardOrReload()
   }   
 
@@ -387,3 +387,29 @@
     document.getElementById('createdtaskmessage').classList.remove('d-none');
     setTimeout(()=> {window.location.href = "./board.html"} , 2000);
   }
+
+  function reseteditArray() {
+    assignedToArray = [];
+    subtaskArray = [];
+  }
+
+  function dataObjectReset() {
+    return data = {
+      "Assigned To": [
+        ""
+      ],
+      "category": "",
+      "description": "",
+      "duedate": "",
+      "prio": "Medium",
+      "subtask": [],
+      "title": "",
+      "progress": "to do"      
+    }
+  }
+
+  function saveChangedData() {
+    saveAsSessionStorage();
+    // putData("tasks",tasks)
+    dataObjectReset()
+}
