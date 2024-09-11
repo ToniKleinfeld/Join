@@ -82,9 +82,12 @@ h2 {
     flex-wrap: wrap;
 }
 
-.plus-button:hover{
-    color: #33a8e2;
+
+.plus-button:hover {
+    filter: invert(57%) sepia(15%) saturate(3382%) hue-rotate(163deg) brightness(92%) contrast(92%);
+    transition: filter 0.3s ease;
 }
+
 
 .category-containers {
     height: auto;
@@ -478,7 +481,7 @@ h1 {
         scale: 1.2;
     }
 
-    & input:checked ~ .checkmark {
+    & input:checked~.checkmark {
         content: url(../assets/icons/checkedcheckbox.svg);
     }
 
