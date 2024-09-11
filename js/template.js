@@ -40,20 +40,20 @@ function overlayHtml(contact = null, index = null) {
         <input class="input input-mail" id="mail-input" type="email" placeholder="Email" value="${contact ? contact.mail : ''}">
         <input class="input input-phone" id="phone-input" type="tel" placeholder="Phone" value="${contact ? contact.phonenumber : ''}">
         <input type="hidden" id="contact-index" value="${index !== null ? index : ''}">
+        <input type="hidden" id="contact-color" value="${contact ? contact.color : ''}">
         <div class="button-box center">
-            <button class="button-empty-small cancel-button" onclick="closeOverlaySlide()">Cancel</button>
-            <button class="button-filled-large create-button" id="create-save-button" onclick="chooseCreateOrSave()">${index !== null ? 'Save Contact' : 'Create Contact'}</button>
+            <button class="button-empty-small cancel-button" onclick="closeOverlaySlide()">${index !== null ? 'Delete' : 'Cancel'}</button>
+            <button class="button-filled-large create-button" id="create-save-button" onclick="chooseCreateOrSave()">${index !== null ? 'Save' : 'Create Contact'}</button>
         </div>
         </div>
     </div>
     `;
 }
 
-function contactCardHtml(contact, index) {
-    let contactColor = contact.color;
+function contactCardHtml(contact, index) {   
     return /*Html*/`
         <div class="open-contact-headline center">
-            <div class="initials initials--open-contact center" id="initials-and-color" style="background-color:${contactColor};">
+            <div class="initials initials--open-contact center" id="initials-and-color" style="background-color:${contact.color};">
                 ${contact.name.split(' ').map(n => n[0]).join('')}
             </div>
             <div class="open-contact-name-and-icons center">
@@ -64,13 +64,13 @@ function contactCardHtml(contact, index) {
                 </div>
             </div>
             </div>
-        <p><b>Contact Information</b></p>
+        <p class="contactcardinfo" >Contact Information</p>
         <div class="phone-and-e-mail-container" id="mailedit">
-            <p><b>Email</b></p>
+            <p>Email</p>
             <a href="mailto:${contact.mail}" class="e-mail-card" id="phonedit">${contact.mail}</a>
         </div>
         <div class="phone-and-e-mail-container">
-            <p><b>Phone</b></p>
+            <p>Phone</p>
             <a href="tel:${contact.phonenumber}" style="color: black;">${contact.phonenumber}</a>
     </div>
     `;

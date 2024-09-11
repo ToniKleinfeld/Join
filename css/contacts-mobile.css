@@ -41,10 +41,46 @@
 
 /***Mobile***************************************/
 
-@media (max-width: 1060px) {
+@media (max-width: 1230px) {
 
-    input {
-        font-size: 1.5vw;
+
+    .contacts-motto  {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+
+    .seperator {
+        display: none;
+    }
+
+    .seperator-mobile {
+        display: block;
+        height: 3px;
+    }
+
+    .initials--open-contact {
+        height: 80px;
+        font-size: 27px;
+        font-weight: 400;
+    }
+
+    .open-contact-name-and-icons{
+        gap: 5px;
+
+        & p{
+            font-size: 36px;
+            font-weight: 700;            
+        }
+    }
+
+}
+
+@media (max-width: 1060px) {
+    .contacts-register {
+        width: 300px;
+        min-width: 300px;
+        padding: 0 10px 0 10px;
     }
 }
 

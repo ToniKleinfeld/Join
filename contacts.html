@@ -47,11 +47,8 @@
     </nav>
 
     <div class="desktop">
-        <div class="maincontent">
-            <div class="overlay center hide d-none" id="overlay"></div>
+        <div class="maincontent">         
             <div class="contacts-register" id="contacts-register"></div>
-            <div class="successfull-message center d-none hide" id="successfull-message">Contact successfully created!
-            </div>
             <div class="open-contact-container" onclick="closeMobileEditMenu()">
                 <img class="back-arrow" alt="backbutton" src="./assets/icons/arrowleft.svg" onclick="goBack()">
                 <div class="contacts-motto center">
@@ -62,6 +59,9 @@
                 </div>
                 <div class="open-contact" id="open-contact"></div>
             </div>
+            <div class="successfull-message center d-none hide" id="successfull-message">Contact successfully created!
+            </div>
+            <div class="overlay center hide d-none" id="overlay"></div>
         </div>
         <div class="mobile-button-container center" id="mobile-button-container" onclick="showMobileEditMenu()">
             <img class="relative-button-icon-mobile" id="relative-icon" src="./assets/icons/person_add.svg"></img>

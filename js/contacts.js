@@ -115,7 +115,7 @@ function editContact(index) {
     overlay.innerHTML = overlayHtml(contact, index);
     overlay.classList.remove('d-none', 'hide');
     setTimeout(() => {
-        document.getElementById('create-save-button').innerHTML = 'Save Contact';
+        document.getElementById('create-save-button').innerHTML = 'Save';
         document.getElementById('edit-subtext').classList.add('d-none');
         document.getElementById('name-input').value = contact.name;
         document.getElementById('mail-input').value = contact.mail;
@@ -130,16 +130,17 @@ function chooseCreateOrSave() {
     let text = button.innerHTML;
     if (text === 'Create Contact') {
         createContact();
-    } else if (text === 'Save Contact') {
+    } else if (text === 'Save') {
         saveContact();
     }
 }
 
 function saveContact() {
     let index = document.getElementById('contact-index').value;
+    const color = document.getElementById('contact-color').value
     let [nameInput, mailInput, phoneInput] = ['name-input', 'mail-input', 'phone-input'].map(id => document.getElementById(id));
     let [name, mail, phonenumber] = [nameInput.value, mailInput.value, phoneInput.value];
-    let contactData = { mail, name, phonenumber };
+    let contactData = { mail, name, phonenumber, color };
     if (index) {
         contacts[index] = contactData;
     } else {
@@ -254,15 +255,3 @@ function getInitials(name) {
     }
     return '';
 }
-
-/*
-function shortNames(name) {
-    return  name.match(/\b(\w)/g).join('');
-  }
-
-  function getColorOfContact(name){
-    const filtercontacs = contacts.filter(contact => contact.name == name
-    );
-    return filtercontacs[0].color
-  }
-*/
