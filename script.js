@@ -111,3 +111,11 @@ async function putData(path="", data={}) {
   });
   return responsetoJson = await response.json();
 }
+
+  /**
+   *  Save the main Arrays Contacts and taks into SessionStorage, upload to firebase and call the reset of data object
+   */
+  function saveChangedDataContacts() {
+    saveAsSessionStorage();
+    // putData("contacts",contacts)
+}

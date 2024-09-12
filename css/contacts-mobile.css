@@ -1,24 +1,21 @@
 /***Mobile Edit Mmenu*****************************************************/
 
 .mobile-edit-menu {
-    height: 120px;
     width: 120px;
+    height: 95px;
     background-color: white;
     flex-direction: column;
     align-items: start;
     position: absolute;
-    top: 75%;
     right: 10px;
-    bottom: 80px;
     bottom: 100px;
-    z-index: 5;
     padding: 16px;
     gap: 16px;
     filter: drop-shadow(4px 0 6px rgba(0, 0, 0, 0.3));
-    border-radius: 10px;
-    border-bottom-right-radius: 0;
+    border-radius: 10px 10px 0 10px;    
     animation: slideIn 0.5s forwards ease-in-out;
     cursor: pointer;
+    z-index: 13;
 }
 
 .mobile-edit-menu.slide-out {
@@ -82,155 +79,173 @@
         min-width: 300px;
         padding: 0 10px 0 10px;
     }
+
+    .mid-container {
+        padding: 10px;
+    }
+
+    .left-container,.right-container {
+        width: unset;
+    }
+
+    .right-container {
+        padding: 0 10px;
+    }
+
+    .button-box {
+        & .button-filled-large {
+            padding: 5px;
+        }
+        & button {
+            font-size: 16px;
+        }      
+    }
 }
 
 @media (max-width: 825px) {
 
     .maincontent {
-        height: 100%;
-        width: 100vw;
         position: relative;
-        grid-template-columns: 1fr;
-        margin: 0;
-    
     }
 
     .contacts-register {
         width: 100vw;
-        height: 100vh;
+        height: calc(100vh - 80px); 
         position: absolute;
-        top: 0;
+        top: 80px;
         left: 0;
-        z-index: 2;
+        padding-bottom: 90px;
+        min-width: unset;
     }
 
-    .register-button-container {
+    .register-button-container,.seperator,.icons {
         display: none;
     }
 
     .register-letter {
-        padding-left: 5%;
+        padding: 16px 0 16px 5%;
     }
 
     .contact {
-        font-size: 5vw;
-        margin-bottom: 5%;
-    }
-
-    .contact a {
-        font-size: 3.5vw;
+        & .initials {
+            height: 42px;
+        }
     }
 
     .open-contact-container {
         margin-top: 80px;
-        margin-bottom: 80px;
+        width: 100vw;
+        height: calc(100vh - 100px);               
     }
 
-    .initials {
-        height: 10vw;
-        font-size: 4vw;
-    }
+
 
     .mobile-button-container {
         display: flex;
-        z-index: 5;
+        cursor: pointer;
     }
 
-    .back-arrow {
-        display: flex;
+    .back-arrow, .seperator-mobile {
+        display: unset;
     }
 
     .contacts-motto {
-        flex-direction: column;
-        align-items: start;
         gap: 0;
         margin-top: 5%;
     }
 
-    .seperator {
-        display: none;
-    }
-
-    .seperator-mobile {
-        display: flex;
-    }
-
     .motto-label {
-        font-size: 10vw;
+        font-size: 47px;
     }
 
     .motto-subtext {
-        font-size: 6vw;
+        font-size: 20px;
     }
 
     .initials--open-contact {
-        height: 16vw;
-        font-size: 7vw;
-    }
-  
-    .icons {
-        display: none;
+        height: 80px;
+        font-size: 27px;
+        border: 3px solid white;
     }
 
-    .overlay {
-        width: 96%;
-        height: 80vh;
-        position: fixed;
-        top: 9vh;
-        left: 2%;
-        right: 2%;
-        bottom: 9vh;
+    .overlaycontainer {
+        background-color: rgba(0, 0, 0, 0.32);
+        z-index: 99;
+    }
+  
+    .overlay {     
         flex-direction: column;
-        padding-bottom: 10%;
-        z-index: 9999;
+        z-index: 15;
         animation: slideInMobile 0.5s forwards ease-in-out;
+        height: auto;
+        position: relative;
     }
 
     .overlay.slide-out {
         animation: slideOutMobile 0.5s forwards ease-in-out;
     }
 
-    .logo {
-        display: none;
-    }
-
     .left-container {
-        height: 50%;
-        width: 100%;
+        height: 300px;
+        width: 310px;
         flex-direction: column;
         align-items: start;
         padding-left: 20px;
         border-radius: unset;
         border-top-left-radius: 16px;
         border-top-right-radius: 16px;
+
+        & .logo {
+            display: none;
+        }
     }
 
-    .motto-subtext {
-        font-size: 4.5vw;
+    .close-icon:hover {
+        background-color: unset;
     }
 
     .mid-container {
-        width: 100%;
-        height: 10%;
         position: absolute;
+        top: 248px;
+        height: unset;
+        z-index: 15;
     }
 
     .right-container {
-        height: 50%;
-        width: 100%;
+        height: 300px;
+        padding: 65px 0 30px 0;
+
+        & .input-button-box {
+            gap: 14px;
+        }
+
+        & input {
+            width: 280px;
+            padding: 6px 8px;
+        }
+
+        & .button-box {
+            height: unset;
+            justify-content: center;
+            margin: 0 0 10px 0;
+
+            & button {
+                font-size: 21px;
+                font-weight: 700;
+            }
+
+            & #Cancel {
+                display:none;
+            }  
+        }
     }
 
     .close-icon {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        filter: invert();
         filter: brightness(11);
     }
 
     input {
         height: auto;
-        font-size: 3vw;
     }
 
     .button-box {
@@ -259,16 +274,8 @@
 
 @media (max-width: 600px) {
 
-    .icons {
-        font-size: 5vw;
-    }
-
-    .open-contact-headline {
-        font-size: 8vw;
-    }
-
     input {
-        font-size: 4.5vw;
+        font-size: 20px
     }
 }
 

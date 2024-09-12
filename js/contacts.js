@@ -8,6 +8,7 @@ function init() {
 }
 
 //RENDERN***************************************************
+let lastviewcontact = '';
 
 function renderContactStripes() {
     let contactContainer = document.getElementById('contacts-register');
@@ -26,6 +27,7 @@ function renderContactCard(index) {
     if (contacts[index]) {
         contactCard.innerHTML = contactCardHtml(contacts[index], index);
         setActiveContact(index);
+        return lastviewcontact = index;
     } else {
         console.error(`No contact found for index ${index}`);
     }
@@ -35,6 +37,8 @@ function renderContactCard(index) {
 
 function showOverlay() {
     let overlay = document.getElementById('overlay');
+    const overlaycontainer = document.getElementById('overlaycontainer');
+    overlaycontainer.classList.remove('d-none');
     overlay.classList.remove('d-none');
     overlay.classList.remove('fade-out');
     overlay.classList.remove('slide-out');
@@ -44,10 +48,12 @@ function showOverlay() {
 
 function closeOverlaySlide() {
     let overlay = document.getElementById('overlay');
+    const overlaycontainer = document.getElementById('overlaycontainer');
+    
     let mobileButton = document.getElementById('mobile-button-container');
     overlay.classList.add('slide-out');
     setTimeout(function () {
-        overlay.classList.add('hide');
+        overlaycontainer.classList.add('d-none');
         overlay.classList.add('d-none');
     }, 500);
     mobileButton.classList.remove('hide');
@@ -72,13 +78,19 @@ function closeOverlayFade() {
     let overlay = document.getElementById('overlay');
     let mobileButton = document.getElementById('mobile-button-container');
     let isMobile = window.matchMedia("(max-width: 825px)").matches;
+    const overlaycontainer = document.getElementById('overlaycontainer');
     overlay.classList.add('fade-out');
     if (isMobile) {
         handleMobileOverlay(overlay);
+        goBack()
     } else {
+        
         handleDesktopOverlay(overlay);
     }
     mobileButton.classList.remove('hide');
+    setTimeout(() => {
+        overlaycontainer.classList.add('d-none');
+    }, 1000);   
 }
 
 function handleMobileOverlay(overlay) {
@@ -104,6 +116,7 @@ function createContact() {
         initials: getInitials(name)
     });
     nameInput.value = mailInput.value = phoneInput.value = '';
+    saveChangedDataContacts()
     closeOverlayFade();
     showMessage();
     renderContactStripes();
@@ -132,6 +145,7 @@ function chooseCreateOrSave() {
         createContact();
     } else if (text === 'Save') {
         saveContact();
+        renderContactCard(lastviewcontact);
     }
 }
 
@@ -143,8 +157,10 @@ function saveContact() {
     let contactData = { mail, name, phonenumber, color };
     if (index) {
         contacts[index] = contactData;
+        saveChangedDataContacts()
     } else {
         contacts.push(contactData);
+        saveChangedDataContacts()
     }
     nameInput.value = mailInput.value = phoneInput.value = '';
     closeOverlayFade();
@@ -153,8 +169,8 @@ function saveContact() {
 
 function deleteContact(index) {
     contacts.splice(index, 1);
-    renderContactStripes();
-    clearContactCard();
+    saveChangedDataContacts()
+    setTimeout(()=> {window.location.href = "./contacts.html"} , 500);
 }
 
 //Dynamic Adjustments (Mobile)**************************************************
@@ -180,9 +196,10 @@ function showMobileEditMenu() {
     if (popUp && mobileButtonIcon && mobileButton) {
         let iconSrc = mobileButtonIcon.src.split('/').pop();
         if (iconSrc === 'burger-menu.svg') {
-            popUp.classList.remove('d-none', 'slide-out');
+            popUp.classList.remove('slide-out');
             popUp.classList.add('slide-in');
-            popUp.innerHTML = mobileMenuPopUpHtml();
+            popUp.classList.remove('d-none');
+            popUp.innerHTML = mobileMenuPopUpHtml(lastviewcontact);
         } else {
             showOverlay();
         }

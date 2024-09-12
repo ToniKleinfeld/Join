@@ -35,16 +35,16 @@ function overlayHtml(contact = null, index = null) {
         <div class="close-icon center" onclick="closeOverlaySlide()">
             <img src="./assets/icons/close.svg">
         </div>
-        <div class="input-button-box center">
-        <input class="input input-name" id="name-input" type="text" placeholder="Name" value="${contact ? contact.name : ''}">
-        <input class="input input-mail" id="mail-input" type="email" placeholder="Email" value="${contact ? contact.mail : ''}">
-        <input class="input input-phone" id="phone-input" type="tel" placeholder="Phone" value="${contact ? contact.phonenumber : ''}">
-        <input type="hidden" id="contact-index" value="${index !== null ? index : ''}">
-        <input type="hidden" id="contact-color" value="${contact ? contact.color : ''}">
+        <form class="input-button-box center" onsubmit="event.preventDefault(),chooseCreateOrSave()" id="createandeditform">
+            <input class="input input-name" id="name-input" type="text" placeholder="Name" value="${contact ? contact.name : ''}" required>
+            <input class="input input-mail" id="mail-input" type="email" placeholder="Email" value="${contact ? contact.mail : ''}" >
+            <input class="input input-phone" id="phone-input" type="tel" placeholder="Phone" value="${contact ? contact.phonenumber : ''}" >
+            <input type="hidden" id="contact-index" value="${index !== null ? index : ''}">
+            <input type="hidden" id="contact-color" value="${contact ? contact.color : ''}">
+        </form>
         <div class="button-box center">
-            <button class="button-empty-small cancel-button" onclick="closeOverlaySlide()">${index !== null ? 'Delete' : 'Cancel'}</button>
-            <button class="button-filled-large create-button" id="create-save-button" onclick="chooseCreateOrSave()">${index !== null ? 'Save' : 'Create Contact'}</button>
-        </div>
+                <button class="button-empty-small cancel-button" id="${index !== null ? 'Delete' : 'Cancel'}" onclick="${index !== null ? "deleteContact(lastviewcontact)" : "closeOverlaySlide()"}">${index !== null ? 'Delete' : 'Cancel'}</button>
+                <button type="submit"  form="createandeditform" class="button-filled-large create-button" id="create-save-button">${index !== null ? 'Save' : 'Create Contact'}</button>
         </div>
     </div>
     `;
@@ -71,7 +71,7 @@ function contactCardHtml(contact, index) {
         </div>
         <div class="phone-and-e-mail-container">
             <p>Phone</p>
-            <a href="tel:${contact.phonenumber}" style="color: black;">${contact.phonenumber}</a>
+            <a href="tel:+49${contact.phonenumber}" style="color: black;">+49 ${contact.phonenumber}</a>
     </div>
     `;
 }
@@ -93,10 +93,10 @@ function contactRegisterHtml(i, isActive = false) {
     return `${fontStripeHtml}${contactStripeHtml}`;
 }
 
-function mobileMenuPopUpHtml() {
+function mobileMenuPopUpHtml(index) {
     return /*HTML*/`
        <p class="mobile-link edit" onclick="showOverlay(); editContact(${index})">Edit</p>
-       <p class="mobile-link delete" onclick="deleteContact()">Delete</p>
+       <p class="mobile-link delete" onclick="deleteContact(${index})">Delete</p>
     `;
 }
 

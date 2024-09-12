@@ -422,6 +422,6 @@
    */
   function saveChangedData() {
     saveAsSessionStorage();
-    // putData("tasks",tasks)
+    putData("tasks",tasks)
     dataObjectReset()
 }

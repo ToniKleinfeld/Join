@@ -46,7 +46,7 @@
         </div>
     </nav>
 
-    <div class="desktop">
+    <div class="desktop" style="overflow-x: hidden;position: relative;">
         <div class="maincontent">         
             <div class="contacts-register" id="contacts-register"></div>
             <div class="open-contact-container" onclick="closeMobileEditMenu()">
@@ -59,18 +59,20 @@
                 </div>
                 <div class="open-contact" id="open-contact"></div>
             </div>
+
+        </div>
+        <div class="overlaycontainer center d-none" id="overlaycontainer">
             <div class="successfull-message center d-none hide" id="successfull-message">Contact successfully created!
             </div>
-            <div class="overlay center hide d-none" id="overlay"></div>
-        </div>
+            <div class="overlay center hide d-none" id="overlay"></div>            
+        </div>   
         <div class="mobile-button-container center" id="mobile-button-container" onclick="showMobileEditMenu()">
             <img class="relative-button-icon-mobile" id="relative-icon" src="./assets/icons/person_add.svg"></img>
         </div>
+        <div class="mobile-edit-menu center d-none" id="mobile-edit-menu"></div>
     </div>
-    <div class="mobile-edit-menu center d-none" id="mobile-edit-menu"></div>
-    </div>
+    
+</div>
 
 </body>
-
 </html>
-<form ></form>

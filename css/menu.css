@@ -16,6 +16,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 60px 0 60px 0;
+    z-index: 5;
     
 }
 
@@ -107,6 +108,7 @@ header {
     padding-left: 8%;
     padding-right: 50px;
     height: 97px;
+    z-index: 10;
 }
 
 .maincontent{
@@ -167,7 +169,7 @@ header {
 }
 
 .d-none{
-    display: none;
+    display: none !important;
 }
 
 .showmobile{

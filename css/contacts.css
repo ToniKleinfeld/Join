@@ -80,14 +80,6 @@ button {
     filter: brightness(7);
 }
 
-.close-icon {
-    height: 30px;
-    width: 30px;
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    margin-left: 90%;
-}
-
 .close-icon:hover {
     background-color: #D1D1D1;
     cursor: pointer;
@@ -98,6 +90,10 @@ button {
 input {
     width: 80%;
     cursor: pointer;
+
+    &:focus {
+        border: #29ABE2 solid 1px;
+    }
 }
 
 /*Buttons*************************************************************************************/
@@ -139,7 +135,7 @@ input {
     position: absolute;
     bottom: 100px;
     right: 16px;
-    z-index: 989;
+    z-index: 13;
     display: none;
 }
 
@@ -149,8 +145,9 @@ input {
 
 .back-arrow {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    cursor: pointer;
+    top: 106px;
+    right: 26px;
     display: none;
 }
 
@@ -203,7 +200,8 @@ input {
     flex-direction: column;
     background-color: white;
     overflow: auto;
-    padding: 0 20px 0 20px;    
+    padding: 0 20px 0 20px;  
+    z-index: 10;  
 }
 
 .register-letter {
@@ -228,7 +226,6 @@ input {
     gap: 5%;
     margin-bottom: 2%;
     transition: background-color 0.3s ease;
-    overflow:hidden;
 }
 
 .contact a {
@@ -256,6 +253,7 @@ input {
     font-weight: 400;
     padding-left: 3%;
     background-color: #F6F7F8;
+    z-index: 9;
     
     & .contactcardinfo {
         font-size: 20px;
@@ -306,15 +304,19 @@ input {
 
 /*Overlay(s)********************************************************/
 
+.overlaycontainer {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+}
+
 .overlay {
     height: 594px;
     background-color: white;
-    position: absolute;
-    top: 25%;
-    left: 20%;
     border-radius: 20px;
-    z-index: 20;
-    transform: translateX(0);
+    z-index: 15;
     animation: slideIn 0.5s forwards ease-in-out;
 }
 
@@ -335,7 +337,6 @@ input {
     flex-direction: column;
     align-items: start;
     padding: 0 3%;
-    border-radius: 20px 0 0 20px;
 
     & .logo {
         height: 67px;
@@ -345,7 +346,7 @@ input {
 
 .mid-container {
     height: 100%;
-    padding: 2%;   
+    padding: 40px;   
 }
 
 .right-container {
