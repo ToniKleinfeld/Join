@@ -274,3 +274,11 @@ function getInitials(name) {
     }
     return '';
 }
+
+function contactRegisterHtml(i, isActive = false) {
+    const currentInitial = contacts[i].name.charAt(0).toUpperCase();
+    const fontStripeHtml = createFontStripeHtml(currentInitial, lastInitial);
+    lastInitial = currentInitial;
+    const contactStripeHtml = createContactStripeHtml(i, isActive);
+    return `${fontStripeHtml}${contactStripeHtml}`;
+}

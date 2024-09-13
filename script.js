@@ -132,7 +132,7 @@ let data = {
   "description": "",
   "duedate": "",
   "prio": "Medium",
-  "subtask": [],
+  "subtask": [""],
   "title": "",
   "progress": "to do"      
 }

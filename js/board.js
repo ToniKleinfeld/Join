@@ -61,13 +61,14 @@ function filterTask() {
  */
 function renderAssignedContacs(i, users, path) {
     const assignedcontacts = document.getElementById(`${path}${i}`)
-
-    for (let index = 0; index < users['Assigned To'].length; index++) {
-        const name = users['Assigned To'][index];
-        const shortname = shortNames(name);
-        const color = getColorOfContact(name);
-
-        assignedcontacts.innerHTML += renderAssignedContactsSmallCard(color, shortname);
+    if (users['Assigned To']) {
+        for (let index = 0; index < users['Assigned To'].length; index++) {
+            const name = users['Assigned To'][index];
+            const shortname = shortNames(name);
+            const color = getColorOfContact(name);
+    
+            assignedcontacts.innerHTML += renderAssignedContactsSmallCard(color, shortname);
+        }
     }
 }
 
@@ -139,12 +140,14 @@ function tableAssignedTo(indexOfTask) {
     let tableAssigned = document.getElementById('tableAssignedTo');
     tableAssigned.innerHTML = '';
 
-    for (let index = 0; index < tasks[indexOfTask]['Assigned To'].length; index++) {
-        const name = tasks[indexOfTask]['Assigned To'][index];
-        const shortname = shortNames(name);
-        const color = getColorOfContact(name);
+    if (tasks[indexOfTask]['Assigned To'] !== '' && tasks[indexOfTask]['Assigned To']) {
+        for (let index = 0; index < tasks[indexOfTask]['Assigned To'].length; index++) {
+            const name = tasks[indexOfTask]['Assigned To'][index];
+            const shortname = shortNames(name);
+            const color = getColorOfContact(name);
 
-        tableAssigned.innerHTML += renderAssignedNamesAndColorsBigCard(name, color, shortname);
+            tableAssigned.innerHTML += renderAssignedNamesAndColorsBigCard(name, color, shortname);
+        }
     }
 }
 
@@ -155,7 +158,7 @@ function calcTotalSubtask(indexOfTask, task) {
 
     cardSubtask.innerHTML = '';
 
-    if (subtask !== '') {
+    if (subtask !== '' && subtask) {
         subtask.forEach(element => {
             if (element.state == true) { amount++ }
         });
@@ -231,7 +234,7 @@ function moveTo(progress) {
     updateTaskTable('in progress', 'tableInProgress');
     updateTaskTable('Await feedback', 'tableAwaitFeedback');
     updateTaskTable('Done', 'tableDone');
-
+    saveChangedData();
 }
 
 /**
@@ -242,7 +245,7 @@ function moveTo(progress) {
 function delteTask(tasksindex) {
     closeTaskOverlay()
     tasks.splice(tasksindex, 1);
-    saveAsSessionStorage();
+    saveChangedData()
     initBoard();
 }
 

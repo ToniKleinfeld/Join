@@ -85,14 +85,6 @@ function createFontStripeHtml(currentInitial, lastInitial) {
     return html;
 }
 
-function contactRegisterHtml(i, isActive = false) {
-    const currentInitial = contacts[i].name.charAt(0).toUpperCase();
-    const fontStripeHtml = createFontStripeHtml(currentInitial, lastInitial);
-    lastInitial = currentInitial;
-    const contactStripeHtml = createContactStripeHtml(i, isActive);
-    return `${fontStripeHtml}${contactStripeHtml}`;
-}
-
 function mobileMenuPopUpHtml(index) {
     return /*HTML*/`
        <p class="mobile-link edit" onclick="showOverlay(); editContact(${index})">Edit</p>
