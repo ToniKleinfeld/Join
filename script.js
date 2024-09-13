@@ -50,6 +50,7 @@ function checkIfUserlogin() {
   if (user == '') {
  document.getElementById('navlinks').classList.add('d-none');
  document.getElementById('showuser').classList.add('d-none');
+ window.location.href = "./index.html" 
  } else {
   setHeaderUserName()
  }
