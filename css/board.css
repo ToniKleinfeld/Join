@@ -370,6 +370,7 @@ h1 {
 }
 
 .overlay {
+    overflow-y: auto;
     position: fixed;
     top: 0px;
     bottom: 0px;

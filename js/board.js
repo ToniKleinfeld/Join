@@ -12,7 +12,15 @@ function initBoard() {
     updateTaskTable('Done', 'tableDone');
 }
 
-
+/**
+ * Updates the HTML table with tasks that match the given status.
+ *
+ * @param {string} status - The progress status of the tasks to be displayed (e.g., "open", "in progress").
+ * @param {string} tableId - The ID of the HTML table element to be updated.
+ *
+ * Filters tasks based on the provided status and renders the corresponding task cards in the table.
+ * If no tasks are available, a message container is displayed.
+ */
 function updateTaskTable(status, tableId) {
     const filteredTasks = tasks.filter(t => t.progress === status);  // Filtert die Aufgaben nach dem gegebenen Status.
     const tableElement = document.getElementById(tableId);  // Holt das HTML-Element der Tabelle anhand der übergebenen ID.
@@ -33,7 +41,12 @@ function updateTaskTable(status, tableId) {
     }
 }
 
-
+/**
+ * Filters tasks based on the search input and displays only tasks that match the search term.
+ *
+ * Retrieves the value from the search input field, and compares it to the title and description of each task.
+ * If a task matches the search term, it remains visible; otherwise, it is hidden.
+ */
 function filterTask() {
     let search = document.getElementById('searchInput').value.toLowerCase().trim();
     console.log(search);
@@ -72,6 +85,12 @@ function renderAssignedContacs(i, users, path) {
     }
 }
 
+/**
+ * Returns the file path of the appropriate priority icon based on the given priority level.
+ *
+ * @param {string} priority - The priority level of the task (e.g., "Low", "Medium", "Urgent").
+ * @returns {string} The file path of the corresponding priority icon.
+ */
 function choosePrioSymbol(priority) {
     // let chosedSymbol = document.getElementById('priorityImage').src;
     if (priority === 'Low') {
@@ -100,19 +119,40 @@ function openAddTaskDialog(progress) {
     }
 }
 
+/**
+ * Closes the "Add Task" dialog by hiding the overlay and clearing its content.
+ *
+ * Hides the overlay element and removes any HTML content inside it to reset the dialog state.
+ */
 function closeAddTaskDialog() {
     let addTaskOverlay = document.getElementById('addTaskOverlay');
     addTaskOverlay.style.display = 'none';
     addTaskOverlay.innerHTML = '';
 }
 
+/**
+ * Sets the background color of the label board based on the task's category type.
+ *
+ * @param {number} indexOfTask - The index of the task in the task list.
+ * @param {string} labelBoardID - The base ID of the label board element to update.
+ *
+ * Retrieves the task's category type and sets the background color of the corresponding label board element.
+ * Uses a default color if the category type is not found in the `typeColors` mapping.
+ */
 function getTypeLabelBoardColor(indexOfTask, labelBoardID) {
     let color = tasks[indexOfTask]['category'];
     let bgcolor = typeColors[color.toLowerCase()] || '#A8A878'; // Standardfarbe, falls Typ nicht gefunden
     document.getElementById(labelBoardID + indexOfTask).style.backgroundColor = bgcolor;
 }
 
-
+/**
+ * Displays an overlay with detailed information about a task.
+ *
+ * @param {number} indexOfTask - The index of the task in the task list.
+ *
+ * Sets the display style of the overlay to 'flex', updates its content with the task details,
+ * and calls functions to display assigned users, subtasks, and the task's category color.
+ */
 function showTaskOverlay(indexOfTask) {
     let overlay = document.getElementById('overlay');
     overlay.style.display = 'flex';
@@ -123,7 +163,11 @@ function showTaskOverlay(indexOfTask) {
     getTypeLabelBoardColor(indexOfTask, 'labelOverlay');
 }
 
-
+/**
+ * Closes the task overlay by hiding it and clearing its content.
+ *
+ * Hides the overlay element, clears its inner HTML, and resets the edit array.
+ */
 function closeTaskOverlay() {
     let overlay = document.getElementById('overlay');
     overlay.style.display = 'none';
@@ -151,6 +195,15 @@ function tableAssignedTo(indexOfTask) {
     }
 }
 
+/**
+ * Calculates and displays the total number of completed subtasks for a given task.
+ *
+ * @param {number} indexOfTask - The index of the task in the task list.
+ * @param {Object} task - The task object, which contains an array of subtasks.
+ *
+ * Iterates through the subtasks of the task, counts how many are marked as completed, and updates the HTML to display the total.
+ * If there are subtasks, the progress bar is updated accordingly. Otherwise, the progress bar is hidden.
+ */
 function calcTotalSubtask(indexOfTask, task) {
     const subtask = task['subtask'];
     const cardSubtask = document.getElementById(`cardSubtasks${indexOfTask}`);
@@ -170,6 +223,15 @@ function calcTotalSubtask(indexOfTask, task) {
     }
 }
 
+/**
+ * Calculates and updates the width of the progress bar based on the number of completed subtasks.
+ *
+ * @param {number} indexOfTask - The index of the task in the task list.
+ * @param {Object} task - The task object containing an array of subtasks.
+ *
+ * Iterates through the subtasks of the task and calculates the percentage of completed subtasks.
+ * Updates the progress bar's width to reflect the completion percentage.
+ */
 function calcProgressbarSubtasks(indexOfTask, task) {
     const fillerProgressbar = document.getElementById(`fillerProgressbar${indexOfTask}`);
     const subtask = task['subtask'];
@@ -219,14 +281,36 @@ function checkboxcheck(check) {
     }
 }
 
+/**
+ * Initializes the dragging process by setting the currently dragged element's index.
+ *
+ * @param {number} i - The index of the element being dragged.
+ *
+ * Stores the index of the element being dragged in a global variable for later use.
+ */
 function startDragging(i) {
     currentDraggedElement = i;
 }
 
+/**
+ * Allows an element to be dropped by preventing the default behavior of the drag event.
+ *
+ * @param {DragEvent} ev - The drag event.
+ *
+ * Prevents the default action to enable dropping elements into the target area.
+ */
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
+/**
+ * Moves the currently dragged task to a new progress status and updates the task tables accordingly.
+ *
+ * @param {string} progress - The new progress status for the dragged task (e.g., "to do", "in progress", "Await feedback", "Done").
+ *
+ * Updates the progress status of the currently dragged task, saves the updated tasks to session storage, 
+ * refreshes the task tables for all progress categories, and saves the changes.
+ */
 function moveTo(progress) {
     tasks[currentDraggedElement]['progress'] = progress;
     saveAsSessionStorage();
