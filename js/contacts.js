@@ -144,8 +144,10 @@ function chooseCreateOrSave() {
     if (text === 'Create Contact') {
         createContact();
     } else if (text === 'Save') {
-        saveContact();
+        saveContact();     
         renderContactCard(lastviewcontact);
+        closeMobileEditMenu()
+        goBack()
     }
 }
 

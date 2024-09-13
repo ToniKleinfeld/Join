@@ -117,5 +117,21 @@ async function putData(path="", data={}) {
    */
   function saveChangedDataContacts() {
     saveAsSessionStorage();
-    // putData("contacts",contacts)
+    putData("contacts",contacts)
+}
+
+/**
+ * need for create or edit new tasks
+ */
+let data = {
+  "Assigned To": [
+    ""
+  ],
+  "category": "",
+  "description": "",
+  "duedate": "",
+  "prio": "Medium",
+  "subtask": [],
+  "title": "",
+  "progress": "to do"      
 }

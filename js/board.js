@@ -105,14 +105,6 @@ function closeAddTaskDialog() {
     addTaskOverlay.innerHTML = '';
 }
 
-/**
- * 
- * @param {event} event -prevent child from closing  , when parent have onclickfunction to close
- */
-function doNotClose(event) {
-    event.stopPropagation();
-}
-
 function getTypeLabelBoardColor(indexOfTask, labelBoardID) {
     let color = tasks[indexOfTask]['category'];
     let bgcolor = typeColors[color.toLowerCase()] || '#A8A878'; // Standardfarbe, falls Typ nicht gefunden

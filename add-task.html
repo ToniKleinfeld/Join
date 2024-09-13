@@ -8,7 +8,7 @@
     <link rel="icon" href="./assets/icons/favicon.svg">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./css/menu.css">
-    <link rel="stylesheet" href="./css/add-task.css">
+    <link rel="stylesheet" href="./css/addtask.css">
     <link rel="stylesheet" href="./css/mediaaddtask.css">
     <script src="./script.js"></script>
     <script src="./js/add-task.js"></script>
@@ -46,7 +46,7 @@
         </div>
     </nav>
 
-    <div class="maincontent center">
+    <div class="maincontent center" id="mainwindow" onclick="checkAssignedDropDownWindowOpen()">
         <div class="contentcontainer">
             <h1>Add Task</h1>
 
@@ -62,10 +62,10 @@
                     </div>
                     <div class="input-container dropdown-check-list-contacts" id="contact-select">
                         <h2 class="input-title">Assigned to</h2>
-                        <span class="anchor" id="anchorButton" onclick="showContactslistToAssign()">Select contacts to assign</span>
-                        <input type="text" class="anchorinput d-none" id="anchorinput" onkeyup="filterContacts()" autocomplete="off">
+                        <span class="anchor" id="anchorButton" onclick="showContactslistToAssign(),doNotClose(event)">Select contacts to assign</span>
+                        <input type="text" class="anchorinput d-none" id="anchorinput" onkeyup="filterContacts()" onclick="doNotClose(event)"" autocomplete="off">
                         <icon class="arrowupanchorinput d-none" id="anchoricon" onclick="showContactslistToAssign()"></icon>
-                        <ul class="items" id="assignlist">
+                        <ul class="items" id="assignlist" onclick="doNotClose(event)">
                         </ul>
                     </div>
                     <div class="showassignedcontacts" id="showassignedcontacts"></div>

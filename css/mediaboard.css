@@ -1,3 +1,135 @@
+.task-overlay-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 48px 40px;
+    gap: 24px;
+
+    position: relative;
+    width: 525px;
+    height: auto;
+
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+    border-radius: 30px;
+}
+
+.user-story-close-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.user-story-overlay {
+    padding: 4px 24px;
+    gap: 10px;
+
+    width: auto;
+    height: 36px;
+
+    background: #0038FF;
+    border-radius: 8px;
+
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 120%;
+    color: #FFFFFF;
+}
+
+.title-overlay {
+    font-size: 61px;
+}
+
+.content-overlay {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 120%;
+}
+
+.date-overlay {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 25px;
+
+    width: 445px;
+    height: 24px;
+}
+
+.priority-overlay {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 25px;
+
+    width: 445px;
+    height: 32px;
+}
+
+.assigned-row-overlay {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-left: 16px;
+}
+
+.assigned-grid-overlay {
+    gap: 12px;
+    display: grid;
+}
+
+.checkbox-title-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    margin: 12px;
+
+    & input {
+        opacity: 0;
+        position: absolute;
+        left: 5px;
+        z-index: 5;
+        scale: 1.2;
+    }
+
+    & input:checked~.checkmark {
+        content: url(../assets/icons/checkedcheckbox.svg);
+    }
+
+    & label {
+        cursor: pointer;
+    }
+}
+
+.checkbox {
+    width: 16px;
+    height: 16px;
+    left: calc(50% - 16px/2);
+    top: calc(50% - 16px/2);
+}
+
+.line-vertical {
+    margin: 0px 12px;
+}
+
+.add-task-overlay {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media (max-width: 1219px){
     .add-task-page-footer{
         padding: 0 0 40px 0;

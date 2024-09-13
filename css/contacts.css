@@ -12,8 +12,6 @@ button {
     font-family: 'Figtree';
 }
 
-/*Seperator*************************************************************************************/
-
 .seperator {
     height: 50px;
     width: 3px;
@@ -34,8 +32,6 @@ button {
     margin-top: 10px;
     display: none;
 }
-
-/*Icons*************************************************************************************/
 
 .icons {
     gap: 16px;
@@ -85,8 +81,6 @@ button {
     cursor: pointer;
 }
 
-/*Inputs*************************************************************************************/
-
 input {
     width: 80%;
     cursor: pointer;
@@ -95,8 +89,6 @@ input {
         border: #29ABE2 solid 1px;
     }
 }
-
-/*Buttons*************************************************************************************/
 
 .register-button-container {
     height: 100px;
@@ -167,8 +159,6 @@ input {
     content: url(../assets/icons/check.svg);
 }
 
-/*Initials*************************************************************************************/
-
 .initials {
     height: 42px;
     aspect-ratio: 1/1;
@@ -187,8 +177,6 @@ input {
 .initials.active-contact {
     border: 3px solid white;
 }
-
-/*Contact Register************************************************************************************/
 
 .contacts-register {
     position: relative;
@@ -246,8 +234,6 @@ input {
     color: lightblue;
 }
 
-/*Active Contact********************************************************/
-
 .open-contact-container {
     font-size: 16px;
     font-weight: 400;
@@ -301,8 +287,6 @@ input {
     font-weight:700 ;
     padding: 10px 0 10px 0;
 }
-
-/*Overlay(s)********************************************************/
 
 .overlaycontainer {
     position: absolute;

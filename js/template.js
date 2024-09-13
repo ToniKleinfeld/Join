@@ -271,7 +271,7 @@ function rendertaskOverlayHTML(indexOfTask) {
 
 function renderEditTasksHtml(i) {
     return /*html*/`        
-        <div class="add-task-bg" style="width:unset; padding:0 0 0 5px; position:relative;" onclick="doNotClose(event)">
+        <div class="add-task-bg" style="width:unset; padding:0 0 0 5px; position:relative;" onclick="checkAssignedDropDownWindowOpen(),doNotClose(event)">
         <div class="edit-container-close">
                     <div class="user-story-overlay" style="background:unset;"></div>
                     <img onclick="closeTaskOverlay()" src="./assets/icons/close.svg" alt="">
@@ -310,10 +310,10 @@ function renderEditTasksHtml(i) {
 
                 <div class="input-container dropdown-check-list-contacts" id="contact-select">
                         <h2 class="input-title">Assigned to</h2>
-                        <span class="anchor" id="anchorButton" onclick="showContactslistToAssign()">Select contacts to assign</span>
-                        <input type="text" class="anchorinput d-none" id="anchorinput" onkeyup="filterContacts()" autocomplete="off">
+                        <span class="anchor" id="anchorButton" onclick="showContactslistToAssign(),doNotClose(event)">Select contacts to assign</span>
+                        <input type="text" class="anchorinput d-none" id="anchorinput" onkeyup="filterContacts()" onclick="doNotClose(event)"" autocomplete="off">
                         <icon class="arrowupanchorinput d-none" id="anchoricon" onclick="showContactslistToAssign()"></icon>
-                        <ul class="items" id="assignlist">
+                        <ul class="items" id="assignlist" onclick="doNotClose(event)">
                         </ul>
                     </div>
                     <div class="showassignedcontacts" id="showassignedcontacts"></div>
@@ -344,7 +344,7 @@ function renderEditTasksHtml(i) {
 
 function renderAddtaskformHTML() {
     return /*html*/`
-        <div class="add-task-bg" style="width: unset;" onclick="doNotClose(event)">
+        <div class="add-task-bg" style="width: unset;" onclick="checkAssignedDropDownWindowOpen(),doNotClose(event)">
             <h1>Add Task</h1>
 
             <div class="taskform">
@@ -363,10 +363,10 @@ function renderAddtaskformHTML() {
 
                     <div class="input-container dropdown-check-list-contacts" id="contact-select">
                         <h2 class="input-title">Assigned to</h2>
-                        <span class="anchor" id="anchorButton" onclick="showContactslistToAssign()">Select contacts to assign</span>
-                        <input type="text" class="anchorinput d-none" id="anchorinput" onkeyup="filterContacts()" autocomplete="off">
+                        <span class="anchor" id="anchorButton" onclick="showContactslistToAssign(),doNotClose(event)">Select contacts to assign</span>
+                        <input type="text" class="anchorinput d-none" id="anchorinput" onkeyup="filterContacts()" onclick="doNotClose(event)"" autocomplete="off">
                         <icon class="arrowupanchorinput d-none" id="anchoricon" onclick="showContactslistToAssign()"></icon>
-                        <ul class="items" id="assignlist">
+                        <ul class="items" id="assignlist" onclick="doNotClose(event)">
                         </ul>
                     </div>
                     <div class="showassignedcontacts" id="showassignedcontacts"></div>
