@@ -91,6 +91,7 @@
 
     .login-page-main-container {
         max-width: 1920px;
+        border-radius: 60px;
     }
 
     .log-in-headline{
