@@ -25,7 +25,7 @@ body {
 }
 
 .log-in-headline {
-    
+    position: relative;
     width: 100dvw;
     display: flex;
     justify-content: space-between;

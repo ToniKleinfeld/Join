@@ -81,3 +81,19 @@
         }
     }
   }
+
+  @media (min-width: 1920px) {
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+
+    .login-page-main-container {
+        max-width: 1920px;
+    }
+
+    .log-in-headline{
+        width: 100%;
+    }
+  }
