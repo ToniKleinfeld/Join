@@ -122,6 +122,10 @@ img:hover {
     cursor: pointer;
 }
 
+.card-container:active {
+    rotate: z 4deg;
+}
+
 .card {
     display: flex;
     flex-direction: column;
