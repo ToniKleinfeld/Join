@@ -72,7 +72,7 @@
                             <h2>To do</h2>
                             <img onclick="openAddTaskDialog('to do')" class="plus-button" src="./assets/icons/plus-button.svg" alt="">
                         </div>
-                        <div id="tableToDo" class="tabelle-card" ondrop="moveTo('to do')" ondragover="allowDrop(event)">
+                        <div id="tableToDo" class="tabelle-card" ondrop="moveTo('to do')" ondragleave="removeHighlight('tableToDo')" ondragover="allowDrop(event), highlight('tableTodo')">
                             <!--hier werden die karten gerendert-->
                         </div>
                     </div>
@@ -83,8 +83,8 @@
                             <img onclick="openAddTaskDialog('in progress')" class="plus-button" src="./assets/icons/plus-button.svg"
                                 alt="">
                         </div>
-                        <div id="tableInProgress" class="tabelle-card" ondrop="moveTo('in progress')"
-                            ondragover="allowDrop(event)">
+                        <div id="tableInProgress" class="tabelle-card" ondrop="moveTo('in progress')" ondragleave="removeHighlight('tableInProgress')"
+                            ondragover="allowDrop(event), highlight('tableInProgress')">
                             <!--hier werden die karten gerendert-->
                         </div>
                     </div>
@@ -95,8 +95,8 @@
                             <img onclick="openAddTaskDialog('Await feedback')" class="plus-button" src="./assets/icons/plus-button.svg"
                                 alt="">
                         </div>
-                        <div id="tableAwaitFeedback" class="tabelle-card" ondrop="moveTo('Await feedback')"
-                            ondragover="allowDrop(event)">
+                        <div id="tableAwaitFeedback" class="tabelle-card" ondrop="moveTo('Await feedback')" ondragleave="removeHighlight('tableAwaitFeedback')"
+                            ondragover="allowDrop(event), highlight('tableAwaitFeedback')">
                             <!--hier werden die karten gerendert-->
                         </div>
                     </div>
@@ -106,7 +106,7 @@
                             <h2>Done</h2>
                             <img src="" alt="">
                         </div>
-                        <div id="tableDone" class="tabelle-card" ondrop="moveTo('Done')" ondragover="allowDrop(event)">
+                        <div id="tableDone" class="tabelle-card" ondrop="moveTo('Done')" ondragleave="removeHighlight('tableDone')" ondragover="allowDrop(event)">
                             <div class="card-container"></div>
                             <div class="no-task-done-container">
                                 <span class="no-task-done-text">no task Done</span>

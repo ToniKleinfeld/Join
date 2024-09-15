@@ -12,6 +12,14 @@ function initBoard() {
     updateTaskTable('Done', 'tableDone');
 }
 
+function highlight(id) {
+    document.getElementById(id).classList.add('drag-area-highlight');
+}
+
+function removeHighlight(id) {
+    document.getElementById(id).classList.remove('drag-area-highlight');
+}
+
 /**
  * Updates the HTML table with tasks that match the given status.
  *
@@ -23,7 +31,7 @@ function initBoard() {
  */
 function updateTaskTable(status, tableId) {
     const filteredTasks = tasks.filter(t => t.progress === status);  // Filtert die Aufgaben nach dem gegebenen Status.
-    const tableElement = document.getElementById(tableId);  // Holt das HTML-Element der Tabelle anhand der übergebenen ID.
+    const tableElement = document.getElementById(tableId);
     tableElement.innerHTML = '';
 
     if (filteredTasks.length == 0) {  // Überprüft, ob es Aufgaben im gefilterten Status gibt.
@@ -40,6 +48,10 @@ function updateTaskTable(status, tableId) {
         }
     }
 }
+
+
+
+
 
 /**
  * Filters tasks based on the search input and displays only tasks that match the search term.
@@ -79,7 +91,7 @@ function renderAssignedContacs(i, users, path) {
             const name = users['Assigned To'][index];
             const shortname = shortNames(name);
             const color = getColorOfContact(name);
-    
+
             assignedcontacts.innerHTML += renderAssignedContactsSmallCard(color, shortname);
         }
     }
@@ -108,14 +120,14 @@ function choosePrioSymbol(priority) {
  * @param {string} progress - set the progress on current clicked state when creating new task
  */
 function openAddTaskDialog(progress) {
-    let addTaskOverlay = document.getElementById('addTaskOverlay');    
+    let addTaskOverlay = document.getElementById('addTaskOverlay');
 
     if (window.innerWidth >= 825) {
         addTaskOverlay.innerHTML = renderAddtaskformHTML();
         addTaskOverlay.style.display = 'flex';
         data["progress"] = progress;
     } else {
-        window.location.href = "./add-task.html"     
+        window.location.href = "./add-task.html"
     }
 }
 
