@@ -122,12 +122,14 @@ img:hover {
     cursor: pointer;
 }
 
-/* .card-container:active {
+.card-container:active {
     rotate: z 4deg;
-} */
+}
 
-.drag-area-highlight{
-    rotate: z 4deg;
+.drag-area-highlight {
+    border: dashed 2px;
+    border-color: #a8a8a8;
+    border-radius: 16px;
 }
 
 .card {
