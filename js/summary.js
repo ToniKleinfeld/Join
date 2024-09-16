@@ -1,4 +1,5 @@
 function init() {
+    checkUserHaveContact();
     countAllTask();
     countTaskTypes("to do",'counttodo');
     countTaskTypes("Done",'countdone');
@@ -100,4 +101,19 @@ function greetMobile() {
 
         setTimeout(()=> {document.getElementById('greeting_user').classList.toggle('mobiled-none');}, 2000);  
     }    
+  }
+
+  function checkUserHaveContact() {
+    if (user !== '') {
+      if(contacts.filter(contact => contact.name == user).length == 0){
+        const newContact = {
+            'color' : getRandomColor(),
+            'name' : user,
+            'mail' : '' ,
+            'phonenumber' : ''        
+        };
+        contacts.push(newContact);
+        saveChangedDataContacts()
+      }
+    };
   }

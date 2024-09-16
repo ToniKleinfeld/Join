@@ -257,15 +257,6 @@ function clearContactCard() {
     contactCard.innerHTML = '';
 }
 
-function getRandomColor() {
-    let letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
-
 function getInitials(name) {
     let nameParts = name.trim().split(' ');
     if (nameParts.length >= 2) {
