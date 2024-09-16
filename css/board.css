@@ -133,6 +133,12 @@ img:hover {
     rotate: z 4deg;
 }
 
+/* .drag-area-highlightend{
+    border: dashed 1px;
+    border-color: #a95050;
+    border-radius: 24px;
+} */
+
 .drag-area-highlight {
     border: dashed 1px;
     border-color: #a8a8a8;

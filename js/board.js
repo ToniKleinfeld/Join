@@ -42,11 +42,25 @@ function updateTaskTable(status, tableId) {
 }
 
 function highlight(id) {
-    document.getElementById(id).classList.add('drag-area-highlight');
+    
+    const tableCards = document.querySelectorAll(".tabelle-card");
+    // document.getElementById(id).classList.add('drag-area-highlight');
+    for (let i = 0; i < tableCards.length; i++) {
+        const tableCard = tableCards[i];
+        console.log(tableCard);
+        tableCard.classList.add('drag-area-highlight');
+    }
 }
 
 function removeHighlight(id) {
-    document.getElementById(id).classList.remove('drag-area-highlight');
+    // document.getElementById(id).classList.remove('drag-area-highlight');
+    const tableCards = document.querySelectorAll(".tabelle-card");
+    // document.getElementById(id).classList.add('drag-area-highlight');
+    for (let i = 0; i < tableCards.length; i++) {
+        const tableCard = tableCards[i];
+        console.log(tableCard);
+        tableCard.classList.remove('drag-area-highlight');
+    }
 }
 
 /**
