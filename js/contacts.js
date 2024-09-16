@@ -297,8 +297,11 @@ function ereaseContactFromArrayAssigned(index) {
 
         if (task['Assigned To'].filter(names => names == name) == name ) {
             let newassign = task['Assigned To'].filter(function(getname){return getname !== name} )
-
-            task['Assigned To'] = newassign;
+            if (newassign) {
+                task['Assigned To'] = newassign;
+            } else {
+                task['Assigned To'] = [];
+            }            
         } 
     }   
 }
