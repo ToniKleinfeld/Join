@@ -177,7 +177,7 @@ function renderCardHTML(element, indexOfTask) {
                     <div class="title">${element['title']}</div>
                     <div class="card-description">${element['description']}</div>
                 </div>
-                <div class="progress">
+                <div class="progress" id="progressContainer${indexOfTask}">
                     <div class="progressbar" id="progressbar${indexOfTask}">
                         <div id="fillerProgressbar${indexOfTask}" class="filler"></div>
                     </div>

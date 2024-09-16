@@ -12,14 +12,6 @@ function initBoard() {
     updateTaskTable('Done', 'tableDone');
 }
 
-function highlight(id) {
-    document.getElementById(id).classList.add('drag-area-highlight');
-}
-
-function removeHighlight(id) {
-    document.getElementById(id).classList.remove('drag-area-highlight');
-}
-
 /**
  * Updates the HTML table with tasks that match the given status.
  *
@@ -49,9 +41,13 @@ function updateTaskTable(status, tableId) {
     }
 }
 
+function highlight(id) {
+    document.getElementById(id).classList.add('drag-area-highlight');
+}
 
-
-
+function removeHighlight(id) {
+    document.getElementById(id).classList.remove('drag-area-highlight');
+}
 
 /**
  * Filters tasks based on the search input and displays only tasks that match the search term.
@@ -231,7 +227,7 @@ function calcTotalSubtask(indexOfTask, task) {
         cardSubtask.innerHTML = totalSubtaskHTML(amount, subtask.length);
         calcProgressbarSubtasks(indexOfTask, task);
     } else {
-        document.getElementById(`progressbar${indexOfTask}`).classList.add('d-none')
+        document.getElementById(`progressContainer${indexOfTask}`).classList.add('d-none')
     }
 }
 

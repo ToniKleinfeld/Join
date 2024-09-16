@@ -66,29 +66,28 @@
                     </div>
                 </div>
                 <div id="categoryMainContainer" class="category-main-container">
-                    <!--------------to do------------------>
+                    <!--------------TO DO------------------>
                     <div class="category-containers">
                         <div class="to-do-title mb-16">
                             <h2>To do</h2>
                             <img onclick="openAddTaskDialog('to do')" class="plus-button" src="./assets/icons/plus-button.svg" alt="">
                         </div>
-                        <div id="tableToDo" class="tabelle-card" ondrop="moveTo('to do')" ondragleave="removeHighlight('tableToDo')" ondragover="allowDrop(event), highlight('tableTodo')">
+                        <div id="tableToDo" class="tabelle-card" ondrop="moveTo('to do')" ondragover="allowDrop(event), highlight('tableTodo')" ondragleave="removeHighlight('tableToDo')" >
                             <!--hier werden die karten gerendert-->
                         </div>
                     </div>
-                    <!--------------in progress-------------->
+                    <!--------------IN PROGRESS-------------->
                     <div class="category-containers">
                         <div class="in-progress-title mb-16">
                             <h2>In progress</h2>
                             <img onclick="openAddTaskDialog('in progress')" class="plus-button" src="./assets/icons/plus-button.svg"
                                 alt="">
                         </div>
-                        <div id="tableInProgress" class="tabelle-card" ondrop="moveTo('in progress')" ondragleave="removeHighlight('tableInProgress')"
-                            ondragover="allowDrop(event), highlight('tableInProgress')">
+                        <div id="tableInProgress" class="tabelle-card" ondrop="moveTo('in progress')" ondragover="allowDrop(event), highlight('tableInProgress')" ondragleave="removeHighlight('tableInProgress')">
                             <!--hier werden die karten gerendert-->
                         </div>
                     </div>
-                    <!-------------await feedback------------>
+                    <!-------------AWAIT FEEDBACK------------>
                     <div class="category-containers">
                         <div class="await-feedback-title mb-16">
                             <h2>Await feedback</h2>
@@ -100,7 +99,7 @@
                             <!--hier werden die karten gerendert-->
                         </div>
                     </div>
-                    <!-------------------done----------------->
+                    <!-------------------DONE----------------->
                     <div class="category-containers">
                         <div class="done-title mb-16">
                             <h2>Done</h2>
