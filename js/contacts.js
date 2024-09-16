@@ -45,6 +45,21 @@ function checkIfContactisActualUser(index) {
     } 
 }
 
+/**
+ * 
+ * @param {string} inputvalue - inputvalue from edit namefield
+ * @param {string} index - indexnumber of contact
+ * @returns 
+ */
+function dontRenameUser(inputvalue,index) {
+    const contact = contacts[index].name
+    if (contact == user) {
+        return user
+    } else {
+        return inputvalue
+    }    
+}
+
 //Show-Hide Overlay/Add Conatct/Edit Contact**************************************************
 
 function showOverlay() {
@@ -167,7 +182,7 @@ function saveContact() {
     let index = document.getElementById('contact-index').value;
     const color = document.getElementById('contact-color').value
     let [nameInput, mailInput, phoneInput] = ['name-input', 'mail-input', 'phone-input'].map(id => document.getElementById(id));
-    let [name, mail, phonenumber] = [nameInput.value, mailInput.value, phoneInput.value];
+    let [name, mail, phonenumber] = [ dontRenameUser(nameInput.value,index), mailInput.value, phoneInput.value];
     let contactData = { mail, name, phonenumber, color };
     if (index) {
         contacts[index] = contactData;

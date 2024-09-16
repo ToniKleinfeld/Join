@@ -32,19 +32,6 @@
 
   /**
    * 
-   * @param {string} name - name of the current contact
-   * @returns - uername with (You) or only the name of contact
-   */
-  function checkIfContactisUser(name) {
-    if (name == user) {
-      return `${name}  (You)`
-    } else {
-      return name
-    }
-  }
-
-  /**
-   * 
    * @param {string} name - from Contacts or User
    * @returns - First letter of each Word
    */

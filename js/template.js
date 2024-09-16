@@ -9,7 +9,7 @@ function createContactStripeHtml(i, isActive) {
             ${contact.name.split(' ').map(n => n[0]).join('')}
         </div>
         <div class="bold-text">
-            <p >${contact.name}</p>
+            <p >${checkIfContactisUser(contact.name)}</p>
             <a class="${activeClass}" type="e-mail" href="mailto:${contact.mail}">${contact.mail}</a>
         </div>
     </div>`;
@@ -57,7 +57,7 @@ function contactCardHtml(contact, index) {
                 ${contact.name.split(' ').map(n => n[0]).join('')}
             </div>
             <div class="open-contact-name-and-icons center">
-                <p class="center" id="nameedit">${contact.name}</p>
+                <p class="center" id="nameedit">${checkIfContactisUser(contact.name)}</p>
                 <div class="icons center">
                     <a class="edit" onclick="showOverlay(); editContact(${index})">Edit</a>
                     <a class="delete"  ${checkIfContactisActualUser(index)} onclick="deleteContact(${index})">Delete</a>
