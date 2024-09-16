@@ -103,6 +103,9 @@ function greetMobile() {
     }    
   }
 
+  /**
+   * Check if loged user have own Contact, if not create one
+   */
   function checkUserHaveContact() {
     if (user !== '') {
       if(contacts.filter(contact => contact.name == user).length == 0){
