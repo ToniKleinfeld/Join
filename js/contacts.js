@@ -170,7 +170,8 @@ function saveContact() {
 }
 
 function deleteContact(index) {
-    contacts.splice(index, 1);
+    ereaseContactFromArrayAssigned(index)
+    contacts.splice(index, 1);    
     saveChangedDataContacts()
     setTimeout(()=> {window.location.href = "./contacts.html"} , 500);
 }
@@ -281,4 +282,23 @@ function contactRegisterHtml(i, isActive = false) {
     lastInitial = currentInitial;
     const contactStripeHtml = createContactStripeHtml(i, isActive);
     return `${fontStripeHtml}${contactStripeHtml}`;
+}
+
+/**
+ * filter the tasks for deleted Contact , and erease it from assigned array
+ * 
+ * @param {string} index - from current contact
+ */
+function ereaseContactFromArrayAssigned(index) {
+    const name = contacts[index].name;
+
+    for (let index = 0; index < tasks.length; index++) {
+        const task = tasks[index];
+
+        if (task['Assigned To'].filter(names => names == name) == name ) {
+            let newassign = task['Assigned To'].filter(function(getname){return getname !== name} )
+
+            task['Assigned To'] = newassign;
+        } 
+    }   
 }
