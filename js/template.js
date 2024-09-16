@@ -106,7 +106,7 @@ function renderHtmlContactLi(name,shortname,color) {
       <input type="checkbox" id="${name}" onchange="assignedToTasK('${name}')"/>
       <span class="checkmark"></span>
       <label for="${name}">
-        <span class="contacticon center" style="background-color:${color};">${shortname}</span> ${name} 
+        <span class="contacticon center" style="background-color:${color};">${shortname}</span> ${checkIfContactisUser(name)} 
       </label>
       </li>
   `

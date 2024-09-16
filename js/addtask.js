@@ -19,8 +19,7 @@
   function renderAndloadContactsToAssign(){
     const list = document.getElementById('assignlist');
     list.innerHTML = '';
-    renderUserAsAssign(list);
-
+  
     for (let index = 0; index < contacts.length; index++) {
       const name = contacts[index]['name'];
       let shortname = shortNames(name);
@@ -32,14 +31,16 @@
   }
 
   /**
-   * render the Username to dropdown menü assigned to
    * 
-   * @param {string} list - where to create the HTMLcode
+   * @param {string} name - name of the current contact
+   * @returns - uername with (You) or only the name of contact
    */
-  function renderUserAsAssign(list) {
-      const usershortname = shortNames(user) 
-
-      list.innerHTML += renderHtmlContactLiUser(user,usershortname);
+  function checkIfContactisUser(name) {
+    if (name == user) {
+      return `${name}  (You)`
+    } else {
+      return name
+    }
   }
 
   /**
@@ -82,12 +83,8 @@
 
     assignedToArray.forEach(name => {
       shortname = shortNames(name);
+      color = getColorOfContact(name);
       
-      if (name == user) {
-        color = 'lightcoral';
-      } else {
-        color = getColorOfContact(name);
-      }
       assignedConntacts.innerHTML += renderAssignedContactshtml(shortname,color);
     }); 
   }
