@@ -43,7 +43,7 @@ function overlayHtml(contact = null, index = null) {
             <input type="hidden" id="contact-color" value="${contact ? contact.color : ''}">
         </form>
         <div class="button-box center">
-                <button class="button-empty-small cancel-button" id="${index !== null ? 'Delete' : 'Cancel'}" onclick="${index !== null ? "deleteContact(lastviewcontact)" : "closeOverlaySlide()"}">${index !== null ? 'Delete' : 'Cancel'}</button>
+                <button class="button-empty-small cancel-button" ${index !== null ? checkIfContactisActualUser(index) : ''} id="${index !== null ? 'Delete' : 'Cancel'}" onclick="${index !== null ? "deleteContact(lastviewcontact)" : "closeOverlaySlide()"}">${index !== null ? 'Delete' : 'Cancel'}</button>
                 <button type="submit"  form="createandeditform" class="button-filled-large create-button" id="create-save-button">${index !== null ? 'Save' : 'Create Contact'}</button>
         </div>
     </div>
@@ -59,8 +59,8 @@ function contactCardHtml(contact, index) {
             <div class="open-contact-name-and-icons center">
                 <p class="center" id="nameedit">${contact.name}</p>
                 <div class="icons center">
-                    <a class="edit" onclick="showOverlay(); editContact(${index})">edit</a>
-                    <a class="delete" onclick="deleteContact(${index})">Delete</a>
+                    <a class="edit" onclick="showOverlay(); editContact(${index})">Edit</a>
+                    <a class="delete"  ${checkIfContactisActualUser(index)} onclick="deleteContact(${index})">Delete</a>
                 </div>
             </div>
             </div>
@@ -88,7 +88,7 @@ function createFontStripeHtml(currentInitial, lastInitial) {
 function mobileMenuPopUpHtml(index) {
     return /*HTML*/`
        <p class="mobile-link edit" onclick="showOverlay(); editContact(${index})">Edit</p>
-       <p class="mobile-link delete" onclick="deleteContact(${index})">Delete</p>
+       <p class="mobile-link delete" ${checkIfContactisActualUser(index)} onclick="deleteContact(${index})">Delete</p>
     `;
 }
 

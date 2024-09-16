@@ -33,6 +33,18 @@ function renderContactCard(index) {
     }
 }
 
+/**
+ * 
+ * @param {string} index -current index of contact
+ * @returns - give the container display none if contact -> user
+ */
+function checkIfContactisActualUser(index) {
+    const contact = contacts[index].name;
+    if (contact == user) {
+        return /*html*/`style="display:none"`
+    } 
+}
+
 //Show-Hide Overlay/Add Conatct/Edit Contact**************************************************
 
 function showOverlay() {
