@@ -41,7 +41,7 @@ function updateTaskTable(status, tableId) {
     }
 }
 
-function highlight(id) {
+function highlight() {
     
     const tableCards = document.querySelectorAll(".tabelle-card");
     // document.getElementById(id).classList.add('drag-area-highlight');
@@ -52,7 +52,7 @@ function highlight(id) {
     }
 }
 
-function removeHighlight(id) {
+function removeHighlight() {
     // document.getElementById(id).classList.remove('drag-area-highlight');
     const tableCards = document.querySelectorAll(".tabelle-card");
     // document.getElementById(id).classList.add('drag-area-highlight');
