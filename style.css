@@ -233,11 +233,11 @@ select::-ms-expand {
 }
 
 .input-name {
-    background-image: url(../assets/icons/person.svg);
+    background-image: url(./assets/icons/person.svg);
 }
 
 .input-date {
-    background-image: url(../assets/icons/event.svg);
+    background-image: url(./assets/icons/event.svg);
 }
 
 .input-date[type='date']::-webkit-inner-spin-button, .input-date[type="date"]::-webkit-calendar-picker-indicator {
@@ -245,7 +245,7 @@ select::-ms-expand {
 }
 
 .input-mail {
-    background-image: url(../assets/icons/mail.svg);
+    background-image: url(./assets/icons/mail.svg);
 }
 
 .input-phone {
@@ -253,11 +253,11 @@ select::-ms-expand {
 }
 
 .input-password {
-    background-image: url(../assets/icons/lock.svg);
+    background-image: url(./assets/icons/lock.svg);
 }
 
 .input-subtask {
-    background-image: url(../assets/icons/subtasks-icon.svg);
+    background-image: url(./assets/icons/subtasks-icon.svg);
 }
 
 .checkbox {
