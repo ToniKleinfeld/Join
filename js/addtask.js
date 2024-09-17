@@ -375,15 +375,13 @@
    */
   function dataObjectReset() {
     return data = {
-      "Assigned To": [
-        ""
-      ],
+      "Assigned To": [],
       "category": "",
       "description": "",
       "duedate": "",
       "prio": "Medium",
-      "subtask": [],
-      "title": "",
+      "subtask": "",
+      "title": [],
       "progress": "to do"      
     }
   }

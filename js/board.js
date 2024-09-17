@@ -211,7 +211,7 @@ function calcTotalSubtask(indexOfTask, task) {
 
     cardSubtask.innerHTML = '';
 
-    if (subtask !== '' && subtask) {
+    if (subtask && subtask.length !== 0) {
         subtask.forEach(element => {
             if (element.state == true) { amount++ }
         });

@@ -151,9 +151,7 @@ function getRandomColor() {
  * need for create or edit new tasks
  */
 let data = {
-  "Assigned To": [
-    ""
-  ],
+  "Assigned To": [],
   "category": "",
   "description": "",
   "duedate": "",
