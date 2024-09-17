@@ -56,9 +56,10 @@ function submitEditTask(index) {
     subtaskArray.map((sub) => data["subtask"].push({ "state": checkState(sub, currentTask), "title": sub }));
     tasks.splice(index, 1, data)
 
-    saveChangedData()
-    closeTaskOverlay()
-    initBoard()
+    saveChangedData();
+    closeTaskOverlay();
+    dataObjectReset();
+    initBoard();
 }
 
 /**

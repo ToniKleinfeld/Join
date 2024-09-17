@@ -49,7 +49,6 @@ function updateTaskTable(status, tableId) {
  */
 function filterTask() {
     let search = document.getElementById('searchInput').value.toLowerCase().trim();
-    console.log(search);
 
     for (let index = 0; index < tasks.length; index++) {
         const description = tasks[index].description;
@@ -60,7 +59,6 @@ function filterTask() {
         if (description.toLowerCase().includes(search) || title.toLowerCase().includes(search)) {
             taskElement.style.display = "block";
         } else {
-            // Task passt nicht zur Suche, also ausblenden
             taskElement.style.display = "none";
         }
     }
@@ -114,6 +112,7 @@ function openAddTaskDialog(progress) {
         addTaskOverlay.innerHTML = renderAddtaskformHTML();
         addTaskOverlay.style.display = 'flex';
         data["progress"] = progress;
+        returnCurrentDate()
     } else {
         window.location.href = "./add-task.html"
     }
@@ -357,4 +356,5 @@ function editTask(tasksindex) {
         });
         renderSubTasks()
     }
+    returnCurrentDate()
 }

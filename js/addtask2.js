@@ -27,3 +27,26 @@
 function doNotClose(event) {
   event.stopPropagation();
 }
+
+/**
+ * 
+ * @returns - current date for limit the date in add tasks
+ */
+function returnCurrentDate() {
+  const mindate = document.getElementById('inputdate');
+  if (mindate) {
+
+    let today = new Date();
+
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    
+    
+    mindate.setAttribute("min", `${today}`)
+  }
+}
+
+returnCurrentDate()

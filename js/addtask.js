@@ -380,8 +380,8 @@
       "description": "",
       "duedate": "",
       "prio": "Medium",
-      "subtask": "",
-      "title": [],
+      "subtask": [],
+      "title": "",
       "progress": "to do"      
     }
   }
