@@ -56,13 +56,11 @@ h2 {
 
 .tabelle-card {
     width: 100%;
-    height: 560px;
+    height: 580px;
     display: flex;
     flex-direction: column;
     padding: 12px;
     overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: thin;
 }
 
 .no-tasks-container {
@@ -101,7 +99,6 @@ h2 {
     display: flex;
     flex-direction: column;
     padding: 10px 0;
-    align-items: center;
 }
 
 .to-do-title,
@@ -130,19 +127,7 @@ img:hover {
 }
 
 .card-container:active {
-    rotate: z 4deg;
-}
-
-/* .drag-area-highlightend{
-    border: dashed 1px;
-    border-color: #a95050;
-    border-radius: 24px;
-} */
-
-.drag-area-highlight {
-    border: dashed 1px;
-    border-color: #a8a8a8;
-    border-radius: 24px;
+    rotate: z 5deg;
 }
 
 .card {

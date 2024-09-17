@@ -130,6 +130,12 @@
     justify-content: center;
 }
 
+@media (min-width: 1530px) {
+    .tabelle-card{
+        height: 75vh
+    }  
+}
+
 @media (max-width: 1219px){
     .add-task-page-footer{
         padding: 0 0 40px 0;
