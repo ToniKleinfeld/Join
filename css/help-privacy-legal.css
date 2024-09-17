@@ -30,3 +30,40 @@
 .help-privacy-legal-main img{
     cursor: pointer;
 }
+
+@media (max-width:1050px) {
+    .help-privacy-legal-main {
+        flex-direction: column-reverse;
+        & img {
+            align-self: flex-end;
+        }
+    }
+}
+
+@media (max-width:825px) {
+    .maincontent {
+        padding: 90px 64px;
+        
+    }
+
+    .help-privacy-legal-main {
+        font-size: 14px;
+        word-break:break-word;
+        
+        & h1 {
+            font-size: 36px;
+            word-break: break-all;
+        }
+    }
+}
+
+@media (max-width:380px) {
+    .help-privacy-legal-main {
+        font-size: 12px;
+        
+        & h1 {
+            font-size: 24px;
+            
+        }
+    }
+}
