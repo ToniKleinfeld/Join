@@ -1,15 +1,21 @@
 let lastInitial = '';
 let activeContactIndex = null;
 let index = 1;
+let lastviewcontact = '';
 
+/**
+ * Loading all needed functions onload from side
+ */
 function init() {
     sortContacts();
     renderContactStripes();
 }
 
-//RENDERN***************************************************
-let lastviewcontact = '';
 
+
+/**
+ * function to create the small contact fields
+ */
 function renderContactStripes() {
     let contactContainer = document.getElementById('contacts-register');
     contactContainer.innerHTML = /*Html*/`<div class="register-button-container subtext">
@@ -21,6 +27,10 @@ function renderContactStripes() {
     }
 }
 
+/**
+ * 
+ * @param {string} index - the indexnumber , to get the contactsarray number * 
+ */
 function renderContactCard(index) {
     let contactCard = document.getElementById('open-contact');
     contactCard.innerHTML = '';
@@ -60,8 +70,9 @@ function dontRenameUser(inputvalue,index) {
     }    
 }
 
-//Show-Hide Overlay/Add Conatct/Edit Contact**************************************************
-
+/**
+ * add vissible to the create / edit overlay and add the fade-in / out effects 
+ */
 function showOverlay() {
     let overlay = document.getElementById('overlay');
     const overlaycontainer = document.getElementById('overlaycontainer');
@@ -73,6 +84,9 @@ function showOverlay() {
     overlay.innerHTML = overlayHtml();
 }
 
+/**
+ * Close the overlay and make them insible again
+ */
 function closeOverlaySlide() {
     let overlay = document.getElementById('overlay');
     const overlaycontainer = document.getElementById('overlaycontainer');
@@ -86,6 +100,12 @@ function closeOverlaySlide() {
     mobileButton.classList.remove('hide');
 }
 
+/**
+ * Add fadeout effect to the overlaymenüsmall
+ * 
+ * @param {string} overlay - path to overlayid
+ * @param {string} isMobile -check if mobile is aktive
+ */
 function fadeOutOverlay(overlay, isMobile) {
     overlay.classList.add('fade-out');
     if (isMobile) {
@@ -101,6 +121,9 @@ function fadeOutOverlay(overlay, isMobile) {
     }
 }
 
+/**
+ * close the small overlaymenü and remove fade effect
+ */
 function closeOverlayFade() {
     let overlay = document.getElementById('overlay');
     let mobileButton = document.getElementById('mobile-button-container');
@@ -120,6 +143,10 @@ function closeOverlayFade() {
     }, 1000);   
 }
 
+/**
+ *  * 
+ * @param {string} overlay -dom path to overlay(id)
+ */
 function handleMobileOverlay(overlay) {
     overlay.addEventListener('animationend', function handler() {
         overlay.classList.add('d-none');
@@ -127,6 +154,10 @@ function handleMobileOverlay(overlay) {
     });
 }
 
+/**
+ * 
+ * @param {*} overlay -dom path to overlay(id)
+ */
 function handleDesktopOverlay(overlay) {
     setTimeout(() => {
         overlay.classList.add('d-none');
@@ -134,6 +165,9 @@ function handleDesktopOverlay(overlay) {
     }, 500);
 }
 
+/**
+ * Create new contact
+ */
 function createContact() {
     let [nameInput, mailInput, phoneInput] = ['name-input', 'mail-input', 'phone-input'].map(id => document.getElementById(id));
     let [name, mail, phonenumber] = [nameInput.value, mailInput.value, phoneInput.value];
@@ -149,6 +183,11 @@ function createContact() {
     renderContactStripes();
 }
 
+/**
+ * Get the Information to edit the choosen Contact
+ * 
+ * @param {string} index ciurrent position id in contactarray
+ */
 function editContact(index) {
     let contact = contacts[index];
     let overlay = document.getElementById('overlay');
@@ -163,8 +202,10 @@ function editContact(index) {
     }, 0);
 }
 
-//Add-Edit-Delete Conatct**************************************************
 
+/**
+ * Check if the opened Window is create contact or Edit contact and choose createt buttons
+ */
 function chooseCreateOrSave() {
     let button = document.getElementById('create-save-button');
     let text = button.innerHTML;
@@ -178,6 +219,9 @@ function chooseCreateOrSave() {
     }
 }
 
+/**
+ * Save the Value from edited Contact informations in contact array
+ */
 function saveContact() {
     let index = document.getElementById('contact-index').value;
     const color = document.getElementById('contact-color').value
@@ -196,6 +240,11 @@ function saveContact() {
     renderContactStripes();
 }
 
+/**
+ * Delete the choosen contact from array
+ * 
+ * @param {string} index - Choosen Contact id for contact array
+ */
 function deleteContact(index) {
     ereaseContactFromArrayAssigned(index)
     contacts.splice(index, 1);    
@@ -203,13 +252,17 @@ function deleteContact(index) {
     setTimeout(()=> {window.location.href = "./contacts.html"} , 500);
 }
 
-//Dynamic Adjustments (Mobile)**************************************************
-
+/**
+ * Give the smallMenü  the slide-out effect
+ */
 function toggleMenu() {
     const menu = document.getElementById('mobile-edit-menu');
     menu.classList.add('slide-out');
 }
 
+/**
+ * Switch the register button at with 825 to the round buttons 
+ */
 function toggleClass() {
     if (window.innerWidth <= 825) {
         let register = document.getElementById('contacts-register');
@@ -219,6 +272,9 @@ function toggleClass() {
     }
 }
 
+/**
+ * Show the Small edit menü when in mobile 
+ */
 function showMobileEditMenu() {
     let popUp = document.getElementById('mobile-edit-menu');
     let mobileButtonIcon = document.getElementById('relative-icon');
@@ -236,6 +292,9 @@ function showMobileEditMenu() {
     }
 }
 
+/**
+ * Close the mobile edit menü
+ */
 function closeMobileEditMenu() {
     let popUp = document.getElementById('mobile-edit-menu');
         popUp.classList.add('slide-out');
@@ -245,12 +304,18 @@ function closeMobileEditMenu() {
 
 }
 
+/**
+ * show the sucess massage
+ */
 function showMessage() {
     let popUp = document.getElementById('successfull-message');
     popUp.classList.remove('d-none');
     setTimeout(hideMessage, 1500);
 }
 
+/**
+ *  Hide the sucsess message again
+ */
 function hideMessage() {
     let popUp = document.getElementById('successfull-message');
     popUp.classList.remove('slide-in');
@@ -261,8 +326,9 @@ function hideMessage() {
     }, 500);
 }
 
-//************************************************************
-
+/**
+ * change the mobile button back to create contact
+ */
 function goBack() {
     let register = document.getElementById('contacts-register');
     let mobileButtonIcon = document.getElementById('relative-icon');
@@ -270,20 +336,37 @@ function goBack() {
     mobileButtonIcon.src = './assets/icons/person_add.svg';
 }
 
+/**
+ * Sort the contact array
+ */
 function sortContacts() {
     contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
+/**
+ * render the Big contact infos from aktive choosen contact
+ * 
+ * @param {string} index - id from aktive contact
+ */
 function setActiveContact(index) {
     activeContactIndex = index;
     renderContactStripes();
 }
 
+
+/**
+ * Clear the Big contact card
+ */
 function clearContactCard() {
     let contactCard = document.getElementById('open-contact');
     contactCard.innerHTML = '';
 }
 
+/**
+ * 
+ * @param {string} name - Name from Contact
+ * @returns the First letter / letters of the full name
+ */
 function getInitials(name) {
     let nameParts = name.trim().split(' ');
     if (nameParts.length >= 2) {
@@ -294,6 +377,12 @@ function getInitials(name) {
     return '';
 }
 
+/**
+ * 
+ * @param {string} i - index of choosen contact
+ * @param {string} isActive - state from isActive 
+ * @returns 
+ */
 function contactRegisterHtml(i, isActive = false) {
     const currentInitial = contacts[i].name.charAt(0).toUpperCase();
     const fontStripeHtml = createFontStripeHtml(currentInitial, lastInitial);
