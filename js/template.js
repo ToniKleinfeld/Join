@@ -37,7 +37,7 @@ function overlayHtml(contact = null, index = null) {
         </div>
         <form class="input-button-box center" onsubmit="event.preventDefault(),chooseCreateOrSave()" id="createandeditform">
             <input class="input input-name" id="name-input" type="text" placeholder="Name" value="${contact ? contact.name : ''}" required>
-            <input class="input input-mail" id="mail-input" type="email" placeholder="Email" value="${contact ? contact.mail : ''}" required>
+            <input class="input input-mail" id="mail-input" type="email" placeholder="Email" value="${contact ? contact.mail : ''}">
             <input class="input input-phone" id="phone-input" type="number" placeholder="Phone" value="${contact ? contact.phonenumber : ''}" >
             <input type="hidden" id="contact-index" value="${index !== null ? index : ''}">
             <input type="hidden" id="contact-color" value="${contact ? contact.color : ''}">

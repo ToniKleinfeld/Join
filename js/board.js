@@ -42,22 +42,33 @@ function updateTaskTable(status, tableId) {
 }
 
 
-function highlight() {
-
+/**
+ * Highlight the tabelle card when dropable
+ * 
+ * @param {string} id - current dom path id
+ */
+function highlight(id) {
     const tableCards = document.querySelectorAll(".tabelle-card");
-    // document.getElementById(id).classList.add('drag-area-highlight');
+
     for (let i = 0; i < tableCards.length; i++) {
         const tableCard = tableCards[i];
-        tableCard.classList.add('drag-area-highlight');
+        if (tableCard.id == id) {
+            tableCard.classList.add('drag-area-highlight');            
+        } else {
+            tableCard.classList.remove('drag-area-highlight');  
+        }
     }
 }
 
+/**
+ * Remove all highlightclasses from tabelle on drop card
+ */
 function removeHighlight() {
-    // document.getElementById(id).classList.remove('drag-area-highlight');
     const tableCards = document.querySelectorAll(".tabelle-card");
-    // document.getElementById(id).classList.add('drag-area-highlight');
+
     for (let i = 0; i < tableCards.length; i++) {
         const tableCard = tableCards[i];
+
         tableCard.classList.remove('drag-area-highlight');
     }
 }
