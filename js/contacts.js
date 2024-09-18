@@ -28,8 +28,11 @@ function renderContactStripes() {
 }
 
 /**
- * 
- * @param {string} index - the indexnumber , to get the contactsarray number * 
+ * Renders the contact card for the specified index.
+ * Updates the inner HTML of the contact card and sets the active contact.
+ * If the contact does not exist, an error is logged to the console.
+ *
+ * @param {number} index - The index of the contact to be rendered.
  */
 function renderContactCard(index) {
     let contactCard = document.getElementById('open-contact');
@@ -37,9 +40,24 @@ function renderContactCard(index) {
     if (contacts[index]) {
         contactCard.innerHTML = contactCardHtml(contacts[index], index);
         setActiveContact(index);
+        applyAnimation(contactCard);
         return lastviewcontact = index;
     } else {
         console.error(`No contact found for index ${index}`);
+    }
+}
+
+/**
+ * Applies the slide-in animation to the contact card if the viewport width
+ * is greater than 825 pixels.
+ *
+ * @param {HTMLElement} contactCard - The contact card element to animate.
+ */
+function applyAnimation(contactCard) {
+    if (window.innerWidth > 825) {
+        contactCard.classList.remove('slide-in');
+        void contactCard.offsetWidth; // Trigger reflow
+        contactCard.classList.add('slide-in');
     }
 }
 
