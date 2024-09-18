@@ -192,7 +192,7 @@ function closeTaskOverlay() {
     let overlay = document.getElementById('overlay');
     overlay.style.display = 'none';
     overlay.innerHTML = '';
-    reseteditArray();
+    resetEditArray();
 }
 
 /**

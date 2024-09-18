@@ -49,4 +49,48 @@ function returnCurrentDate() {
   }
 }
 
-returnCurrentDate()
+  /**
+   * 
+   * @param {string} inputtitle - dom path to current id
+   * @param {string} date - dom path to current id
+   * @param {string} category - dom path to current id
+   */
+  function ifElseHelpFunctionCheckRequiedFields(inputtitle,date,category) {
+    if (inputtitle.value !== '' && date.value !== '' && category.value !== '') {
+      document.getElementById('createtask').disabled = false;
+      removeRedBorderReqed(inputtitle,date,category);
+    } else if(inputtitle.value == '' && date.value == '' && category.value == '') {
+      document.getElementById('createtask').disabled = true;
+      removeRedBorderReqed(inputtitle,date,category);
+    } else {
+      markMissingRequiredvalue(inputtitle);
+      markMissingRequiredvalue(date);
+      markMissingRequiredvalue(category);
+      document.getElementById('createtask').disabled = true;        
+    } 
+  }
+
+  /**
+   * 
+   * @param {string} inputtitle - document path to id
+   * @param {string} date - document path to id
+   * @param {string} category - document path to id
+   */
+  function removeRedBorderReqed(inputtitle,date,category) {
+    inputtitle.classList.remove('borderred');
+    date.classList.remove('borderred');
+    category.classList.remove('borderred');
+  }
+
+  /**
+   * Check if value from Input ,date or selectbox are missing , when yes mark them red
+   * 
+   * @param {string} field -get id from inputfield to check
+   */
+  function markMissingRequiredvalue(field) {
+    if (field.value == '') {
+      field.classList.add('borderred')
+    } else {
+      field.classList.remove('borderred') 
+    }
+  }

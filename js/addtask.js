@@ -206,7 +206,7 @@
   /**
    *  reset the Value from addsubtasks Input
    */
-  function resetsubtasksinput(){
+  function resetSubTasksInput(){
     const inputfield = document.getElementById('subtaskinputfield');
 
     inputfield.value = '';
@@ -216,7 +216,7 @@
   /**
    * Add the inputvalue from Subtask to subtaskarray and call rendersubtasks if value not empty
    */
-  function addsubtasktoList() {
+  function addSubTaskToList() {
     const newsubtask = document.getElementById('subtaskinputfield');
 
     if (newsubtask.value !== '') {     
@@ -288,7 +288,7 @@
    */
   function checkPressEnter(e,check,index) {
     if (e.keyCode == 13 && check == 'create') {
-      addsubtasktoList();
+      addSubTaskToList();
     } else if (e.keyCode == 13 && check == 'edit') {
       saveEditSubtask(index);
     }
@@ -302,39 +302,31 @@
     const date = document.getElementById('inputdate');
     const category = document.getElementById('categoryselect');
         
-    if (inputtitle.value && date.value && category.value !== '') {
-      document.getElementById('createtask').disabled = false;
-    } else {
-      document.getElementById('createtask').disabled = true;
-    }
-
-    markMissingRequiredvalue(inputtitle);
-    markMissingRequiredvalue(date);
-    markMissingRequiredvalue(category);    
-  }
-
-  /**
-   * Check if value from Input ,date or selectbox are missing , when yes mark them red
-   * 
-   * @param {string} field -get id from inputfield to check
-   */
-  function markMissingRequiredvalue(field) {
-    if (field.value == '') {
-      field.classList.add('borderred')
-    } else {
-      field.classList.remove('borderred') 
-    }
+    ifElseHelpFunctionCheckRequiedFields(inputtitle,date,category);
   }
 
   /**
    * reload the side and clear it , after check which is current side
    */
-  function clearside() {
-    if (window.location.pathname == "/add-task.html") {
-      window.location.href = "./add-task.html";
-    } else {
-      window.location.href = "./board.html";
-    }   
+  function clearSide() {    
+    changePrio('medium');
+    dataObjectReset();
+    resetEditArray();
+    renderAssignedContacts();
+    resetInputfieldsToclearSide()
+    renderSubTasks()
+    checkRequiredfields()
+  }
+
+  /**
+   * reset the inputfield , wihin function clearSide()
+   */
+  function resetInputfieldsToclearSide() {
+    document.getElementById('inputtitle').value = '';
+    document.getElementById('inputdate').value = '';
+    document.getElementById('categoryselect').value = '';
+    document.getElementById('textfieldinput').value = '';
+    resetSubTasksInput()
   }
 
   /**
@@ -364,7 +356,7 @@
   /**
    * empty the arrays
    */
-  function reseteditArray() {
+  function resetEditArray() {
     assignedToArray = [];
     subtaskArray = [];
   }
