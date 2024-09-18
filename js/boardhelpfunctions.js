@@ -83,3 +83,17 @@ function checkState(subtitle, task) {
         return false;
     }
 }
+
+/**
+ * 
+ * @param {sting} i - indexnumber to find wanted position in array
+ * @param {sting} users - the current tasksarray path to assigned contacts
+ */
+function renderCurrentAssignedContactsNumber(i,users){
+    let countAssignedContacts = document.getElementById('countassigneduseres'+i);
+    countAssignedContacts.innerHTML = '';  
+
+    if (users['Assigned To'].length >= 4 ) {
+        countAssignedContacts.innerHTML = countAssignedContactsHTML(users); 
+    }
+}

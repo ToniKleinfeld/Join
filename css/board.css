@@ -247,19 +247,24 @@ img:hover {
     justify-content: space-between;
     align-items: center;
     padding: 0px;
-    gap: 83px;
-    width: 220px;
+    width: 100%;
     height: 32px;
 }
 
 .circle-container {
     display: flex;
+    max-width: 90px;
+    overflow:hidden;
+    border-radius: 20px 0 0 20px;
+    border: solid 1px white;
+    padding-left: 10px;
 }
-
 
 .circle {
     width: 32px;
     height: 32px;
+    padding: 8px;
+    margin-left: -10px;
     border-radius: 50%;
     font-size: 12px;
     display: flex;
@@ -269,43 +274,14 @@ img:hover {
     border: 1px solid white;
 }
 
-.circle-to-do:nth-child(1) {
-    background-color: #8000ff;
+.countassigneduseres {  
+    z-index: 5;  
+    padding: 10px;
+    width: 20%;
+    margin-right: 40px;  
+    font-weight: 700;
+    color: #A8A8A8;
 }
-
-.circle-to-do:nth-child(2) {
-    background-color: #ff80ff;
-    position: absolute;
-    left: 24px;
-    z-index: 1;
-}
-
-.circle-to-do:nth-child(3) {
-    background-color: #ffbf00;
-    position: absolute;
-    z-index: 2;
-    left: 48px;
-}
-
-
-.circle-in-progress:nth-child(1) {
-    background-color: #ff7e00;
-}
-
-.circle-in-progress:nth-child(2) {
-    background-color: #0dd7c1;
-    position: absolute;
-    left: 24px;
-    z-index: 1;
-}
-
-.circle-in-progress:nth-child(3) {
-    background-color: #4b2a8a;
-    position: absolute;
-    z-index: 2;
-    left: 48px;
-}
-
 
 .priority-symbols {
     display: flex;
@@ -397,5 +373,3 @@ h1 {
     align-items: center;
     justify-content: center;
 }
-
-

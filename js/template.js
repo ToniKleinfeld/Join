@@ -151,7 +151,7 @@ function showNoTaskContainerHTML(text) {
 
 function renderAssignedContactsSmallCard(color,shortname) {
     return /*html*/`
-        <span class="circle circle-to-do" style="background-color:${color}">${shortname}</span>
+        <div class="circle circle-to-do" style="background-color:${color}">${shortname}</div>
     `
 }
 
@@ -185,8 +185,9 @@ function renderCardHTML(element, indexOfTask) {
                 </div>
                 <div class="circle-prio-container">
                     <div class="circle-container" id="assignedusers${indexOfTask}">
-
+                        
                     </div>
+                    <div class="center countassigneduseres" id="countassigneduseres${indexOfTask}"></div>
                     <div class="priority-symbols">
                         <img src="${choosePrioSymbol(element['prio'])}">
                     </div>
@@ -196,6 +197,12 @@ function renderCardHTML(element, indexOfTask) {
     </div>
     <br>
     `;
+}
+
+function countAssignedContactsHTML(users) {
+    return /*html*/`
+        ${users['Assigned To'].length} <img src="../assets/icons/person.svg">
+    `
 }
 
 function renderSubTasksBigCars(i,element,indexOfTask) {
@@ -237,19 +244,16 @@ function rendertaskOverlayHTML(indexOfTask) {
                 <img src="${choosePrioSymbol(tasks[indexOfTask]['prio'])}" alt="">
             </div>
         </div>
-        <div>
-            <div class="assigned-grid-overlay">
-                <div>Assigned To:</div>
-                <div id="tableAssignedTo"></div>
-            </div>
+        <div class="assigned-grid-overlay">
+            <div>Assigned To:</div>
+            <div id="tableAssignedTo" class="assignedcontactslistboardbigcard"></div>
         </div>
-        <div>
-            <div class="subtasks-grid-overlay" id="formSubtasks">
-                <div>Subtasks:</div>
-                <form id="formSubtasks" action="">
-                </form>
-            </div>
+        
+        <div class="subtasks-grid-overlay" id="formSubtasks">
+            <div>Subtasks:</div>
+
         </div>
+        
         <div class="delete-edit-container">
             <div onclick="delteTask('${indexOfTask}')"><img class="trash-delete" src="./assets/icons/trash-board.svg" alt="">
             Delete</div>

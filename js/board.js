@@ -110,7 +110,9 @@ function renderAssignedContacs(i, users, path) {
             const shortname = shortNames(name);
             const color = getColorOfContact(name);
 
-            assignedcontacts.innerHTML += renderAssignedContactsSmallCard(color, shortname);
+            assignedcontacts.innerHTML += renderAssignedContactsSmallCard(color, shortname);  
+            
+            renderCurrentAssignedContactsNumber(i,users);
         }
     }
 }
