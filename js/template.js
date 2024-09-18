@@ -37,8 +37,8 @@ function overlayHtml(contact = null, index = null) {
         </div>
         <form class="input-button-box center" onsubmit="event.preventDefault(),chooseCreateOrSave()" id="createandeditform">
             <input class="input input-name" id="name-input" type="text" placeholder="Name" value="${contact ? contact.name : ''}" required>
-            <input class="input input-mail" id="mail-input" type="email" placeholder="Email" value="${contact ? contact.mail : ''}" >
-            <input class="input input-phone" id="phone-input" type="tel" placeholder="Phone" value="${contact ? contact.phonenumber : ''}" >
+            <input class="input input-mail" id="mail-input" type="email" placeholder="Email" value="${contact ? contact.mail : ''}" required>
+            <input class="input input-phone" id="phone-input" type="number" placeholder="Phone" value="${contact ? contact.phonenumber : ''}" >
             <input type="hidden" id="contact-index" value="${index !== null ? index : ''}">
             <input type="hidden" id="contact-color" value="${contact ? contact.color : ''}">
         </form>
@@ -393,8 +393,8 @@ function renderAddtaskformHTML() {
                         <h2 class="input-title">Subtasks</h2>
                         <input class="input-subtask input-title" type="text" autocomplete="off" placeholder="Add new subtask" id="subtaskinputfield" onkeyup="changeIconsSubtask()" onkeypress="checkPressEnter(event,'create')">
                         <div class="iconssubtask center d-none" id="subtasksicons">
-                        <i class="clearsubtask" onclick="resetsubtasksinput()"></i>
-                        <i class="addsubtask" onclick="addsubtasktoList()"></i>
+                        <i class="clearsubtask" onclick="resetSubTasksInput()"></i>
+                        <i class="addsubtask" onclick="addSubTaskToList()"></i>
                         </div>
                     </div>
                     <ul id="showsubtasks" class="showsubtasks">
@@ -404,7 +404,7 @@ function renderAddtaskformHTML() {
             <div class="add-task-page-footer">
                 <p class="required-info">This field is required</p>
                 <div class="task-footer-button-container">
-                    <button class="button-empty-small mobileoff" onclick="clearside()">Clear
+                    <button class="button-empty-small mobileoff" onclick="clearSide()">Clear
                         <span class="input-and-button-icons closex"></span>
                     </button>
                     <button class="button-filled-large" id="createtask" disabled onclick="createNewTask()">
