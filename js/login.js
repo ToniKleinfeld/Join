@@ -6,7 +6,7 @@ async function checkValidLogIn(){
     let check = checkLoginData(users);     
   
     if ( check == !true) {    
-      wronguserorpassword()
+      wrongUserOrPassword()
     } else {
       await loadTasksandContactsinfos(); 
       window.location.href = "./summary.html";
@@ -16,7 +16,7 @@ async function checkValidLogIn(){
   /**
  * This function is used to switch between Login screen and Signup Screen.
  */
-function switchloginSignupWindow() {
+function switchLoginSignupWindow() {
     document.getElementById('loginscreen').classList.toggle('d-none');
     document.getElementById('signupbutton').classList.toggle('d-none');
     document.getElementById('signup').classList.toggle('d-none');
@@ -54,7 +54,7 @@ function userAndPasswordMatch(element, email){
 /**
  * show red boarder and text , when wrong user / password
  */
-function wronguserorpassword(){
+function wrongUserOrPassword(){
     document.getElementById('loginform').classList.add('wronglogin');
     document.getElementById('wronglogintext').classList.remove('d-none')
 
@@ -62,7 +62,7 @@ function wronguserorpassword(){
       document.getElementById('loginform').classList.remove('wronglogin');
       document.getElementById('wronglogintext').classList.add('d-none')
       document.getElementById('password').value = '';
-    } , 4500);
+    } , 3000);
 }
 
 /**
@@ -107,7 +107,7 @@ function checkPasswordMatch() {
     document.getElementById('confirmpassword').classList.remove('wronglogin');
     document.getElementById('passwordnomatch').classList.add('d-none')
     submitButton.disabled = false
-  } else if ( firstPass.length  === confirmPass.length ){
+  } else if ( firstPass !== confirmPass ){
     submitButton.disabled = true
     document.getElementById('confirmpassword').classList.add('wronglogin');
     document.getElementById('passwordnomatch').classList.remove('d-none')
@@ -165,7 +165,7 @@ async function signUp() {
   let emailadress = document.getElementById('signupmail').value;
   let password = document.getElementById('setpassword').value;
   let index = await getData("user");
-  path = "user/"+index.length;
+  let path = "user/"+index.length;
 
   let data = {
     "account": username,

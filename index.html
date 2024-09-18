@@ -28,7 +28,7 @@
 
             <div class="log-in-head-links center mobileposition" id="signupbutton">
                 <p>Not a Join User?</p>
-                <button class="button-filled-small" onclick="switchloginSignupWindow()">Sign up</button>
+                <button class="button-filled-small" onclick="switchLoginSignupWindow()">Sign up</button>
             </div>
         </div>
 
@@ -76,7 +76,7 @@
                 <input type="text" class="input-name" placeholder="Name" required id="signupname">
                 <input type="email" class="input-mail" placeholder="Email" required id="signupmail">
                 <div class="passwortcontainer">
-                    <input type="password" class="input-password" placeholder="Password" required  id="setpassword" onkeyup="addEyeIcons('setpassword'), checkPasswordMatch()">
+                    <input type="password" class="input-password" placeholder="Password" required  id="setpassword" onkeyup="addEyeIcons('setpassword')">
                     <icon class="eye-container" onclick="hideShowPassword('setpassword')" id="setpasswordicon"></icon>
                     
                 </div>                

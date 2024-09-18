@@ -47,13 +47,16 @@ function saveAsSessionStorage(){
  * disbale navmenu and Userfield, when no user or Guest logged in.
  */
 function checkIfUserlogin() {
-  if (user == '') {
- document.getElementById('navlinks').classList.add('d-none');
- document.getElementById('showuser').classList.add('d-none');
- window.location.href = "./index.html" 
- } else {
-  setHeaderUserName();
- }
+  if (user == '' && window.location.pathname == "/legal.html" | window.location.pathname =="/privacy.html") {
+    document.getElementById('navlinks').classList.add('d-none');
+    document.getElementById('showuser').classList.add('d-none');
+  } else if (user == '') {
+    document.getElementById('navlinks').classList.add('d-none');
+    document.getElementById('showuser').classList.add('d-none');
+    window.location.href = "./index.html" 
+  } else {
+    setHeaderUserName();
+  }
 }
 
 /**
