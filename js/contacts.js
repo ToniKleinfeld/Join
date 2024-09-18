@@ -28,8 +28,12 @@ function renderContactStripes() {
 }
 
 /**
- * 
- * @param {string} index - the indexnumber , to get the contactsarray number * 
+ * Rendert die Kontaktdatenkarte für den angegebenen Index.
+ *
+ * @param {string} index - Der Index des Kontakts im 'contacts'-Array, der gerendert werden soll.
+ * @throws {Error} Wenn kein Kontakt für den angegebenen Index gefunden wird.
+ *
+ * @returns {number} Der zuletzt angezeigte Kontaktindex.
  */
 function renderContactCard(index) {
     let contactCard = document.getElementById('open-contact');
@@ -37,6 +41,9 @@ function renderContactCard(index) {
     if (contacts[index]) {
         contactCard.innerHTML = contactCardHtml(contacts[index], index);
         setActiveContact(index);
+        contactCard.classList.remove('slide-in');
+        void contactCard.offsetWidth;
+        contactCard.classList.add('slide-in');
         return lastviewcontact = index;
     } else {
         console.error(`No contact found for index ${index}`);
