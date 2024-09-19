@@ -274,10 +274,6 @@
     padding: 15px;
 }
 
-.d-none {
-    display: none !important;
-}
-
 .showassignedcontacts {
     padding: 5px 0 0 15px;
     width: 100%;

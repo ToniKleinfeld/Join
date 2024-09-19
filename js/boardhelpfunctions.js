@@ -97,3 +97,55 @@ function renderCurrentAssignedContactsNumber(i,users){
         countAssignedContacts.innerHTML = countAssignedContactsHTML(users); 
     }
 }
+
+/**
+ * togge display from progresscontainer
+ * 
+ * @param {string} index - indexnumber to find wanted position in array
+ */
+function showProgressMenue(index) {
+    const cardmenue = document.getElementById('changeprogressmenü'+index);
+    const progresslist = document.getElementById('chooseprogress'+index);
+
+    cardmenue.classList.toggle('rotate');
+    progresslist.classList.toggle('d-none');
+
+    progresslist.innerHTML = ''
+    renderProgressListMenue(index,progresslist)    
+}
+
+/**
+ * render the Progress.html and function posibilities into the wanted div container
+ * 
+ * @param {string} index -indexnumber to find wanted position in array
+ * @param {*} path - dom.path to current id
+ */
+function renderProgressListMenue(index,path) {
+    const progressArray = ['to do','in progress','Await feedback','Done']
+    const task = tasks[index]['progress']
+
+    path.innerHTML += /*html*/`
+        <h4>Change progress to:</h4>
+    `
+    progressArray.forEach(element => { if (task !== element) {
+        const text = element.charAt(0).toUpperCase() + element.slice(1)
+        path.innerHTML += /*html*/`
+            <div onclick="changeProgressTo('${index}','${element}')">${text}</div>
+        `
+    }        
+    });
+}
+
+/**
+ * Change the progress in tasks to choosen progress
+ * 
+ * @param {string} index - indexnumber to find wanted position in array
+ * @param {string} progress - get the choosen progress value
+ */
+function changeProgressTo(index, progress) {
+    tasks[index]['progress'] = progress;
+    
+    saveChangedData()    
+    initBoard();
+    showProgressMenue(index)
+}

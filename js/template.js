@@ -165,12 +165,19 @@ function totalSubtaskHTML(amount,totalSubtask) {
 
 function renderCardHTML(element, indexOfTask) {
     return /*html*/`
-    <div id="cardContainer${indexOfTask}" onclick="showTaskOverlay(${indexOfTask})" class="card-container" draggable="true" ondragstart="startDragging(${indexOfTask})">
+    <div id="cardContainer${indexOfTask}"  class="card-container center" draggable="true" ondragstart="startDragging(${indexOfTask})">
+        <div class="changeprogressmenü" id="changeprogressmenü${indexOfTask}" onclick="showProgressMenue(${indexOfTask})">
+            <img src="../assets/icons/arrow_drop_downaa.svg" alt="">
+            <div class="progressmenue d-none" id="chooseprogress${indexOfTask}">
+            </div>
+        </div>
         <div id="card${indexOfTask}" class="card">
-            <div class="frame-119">
-                <div id="labelBoardCard${indexOfTask}" class="label-board-card">
-                    <div class="user-story">
-                        ${element['category']}
+            <div class="frame-119" onclick="showTaskOverlay(${indexOfTask})">
+                <div class="headsmallboardcard center"> 
+                    <div id="labelBoardCard${indexOfTask}" class="label-board-card">
+                        <div class="user-story">
+                            ${element['category']}
+                        </div>
                     </div>
                 </div>
                 <div class="title-description-container">

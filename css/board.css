@@ -129,11 +129,7 @@ img:hover {
     padding-right: 15px;
 }
 
-.card-container {
-    cursor: pointer;
-}
-
-.card-container:active {
+.card:active{
     rotate: z 5deg;
 }
 
@@ -149,6 +145,7 @@ img:hover {
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
     border-radius: 24px;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .frame-119 {
