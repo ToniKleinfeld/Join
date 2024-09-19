@@ -347,7 +347,11 @@ function renderEditTasksHtml(i) {
 
 function renderAddtaskformHTML() {
     return /*html*/`
-        <div class="add-task-bg" style="width: unset;" onclick="checkAssignedDropDownWindowOpen(),doNotClose(event)">
+        <div class="add-task-bg" style="width: unset;position:relative;" onclick="checkAssignedDropDownWindowOpen(),doNotClose(event)" >
+            <div class="close-add-task-board">
+                <div style="background:unset;"></div>
+                <img onclick="closeAddTaskDialog()" src="./assets/icons/close.svg" alt="">
+            </div>
             <h1>Add Task</h1>
 
             <div class="taskform">
