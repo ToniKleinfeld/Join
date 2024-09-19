@@ -53,9 +53,9 @@ function highlight(id) {
     for (let i = 0; i < tableCards.length; i++) {
         const tableCard = tableCards[i];
         if (tableCard.id == id) {
-            tableCard.classList.add('drag-area-highlight');            
+            tableCard.classList.add('drag-area-highlight');
         } else {
-            tableCard.classList.remove('drag-area-highlight');  
+            tableCard.classList.remove('drag-area-highlight');
         }
     }
 }
@@ -72,6 +72,20 @@ function removeHighlight() {
         tableCard.classList.remove('drag-area-highlight');
     }
 }
+
+document.addEventListener("touchstart", e => {
+    console.log("start");
+})
+
+document.addEventListener("touchmove", e => {
+    console.log("move");
+})
+
+document.addEventListener("touchend", e => {
+    console.log("end");
+})
+
+
 
 /**
  * Filters tasks based on the search input and displays only tasks that match the search term.
@@ -110,9 +124,9 @@ function renderAssignedContacs(i, users, path) {
             const shortname = shortNames(name);
             const color = getColorOfContact(name);
 
-            assignedcontacts.innerHTML += renderAssignedContactsSmallCard(color, shortname);  
-            
-            renderCurrentAssignedContactsNumber(i,users);
+            assignedcontacts.innerHTML += renderAssignedContactsSmallCard(color, shortname);
+
+            renderCurrentAssignedContactsNumber(i, users);
         }
     }
 }
