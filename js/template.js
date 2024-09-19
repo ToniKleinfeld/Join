@@ -167,7 +167,7 @@ function renderCardHTML(element, indexOfTask) {
     return /*html*/`
     <div id="cardContainer${indexOfTask}"  class="card-container center" draggable="true" ondragstart="startDragging(${indexOfTask})">
         <div class="changeprogressmenü" id="changeprogressmenü${indexOfTask}" onclick="showProgressMenue(${indexOfTask})">
-            <img src="../assets/icons/arrow_drop_downaa.svg" alt="">
+            <img src="./assets/icons/arrow_drop_downaa.svg" alt="">
             <div class="progressmenue d-none" id="chooseprogress${indexOfTask}">
             </div>
         </div>
@@ -208,7 +208,7 @@ function renderCardHTML(element, indexOfTask) {
 
 function countAssignedContactsHTML(users) {
     return /*html*/`
-        ${users['Assigned To'].length} <img src="../assets/icons/person.svg">
+        ${users['Assigned To'].length} <img src="./assets/icons/person.svg">
     `
 }
 
