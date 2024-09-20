@@ -326,7 +326,7 @@ function renderEditTasksHtml(i) {
                         <input class="input-subtask input-title" type="text" autocomplete="off" placeholder="Add new subtask" id="subtaskinputfield" onkeyup="changeIconsSubtask()" onkeypress="checkPressEnter(event,'create')">
                         <div class="iconssubtask center d-none" id="subtasksicons">
                         <i class="clearsubtask" onclick="resetsubtasksinput()"></i>
-                        <i class="addsubtask" onclick="addsubtasktoList()"></i>
+                        <i class="addsubtask" onclick="addSubTaskToList()"></i>
                         </div>
                     </div>
                     <ul id="showsubtasks" class="showsubtasks">
