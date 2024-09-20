@@ -56,18 +56,38 @@ function returnCurrentDate() {
    * @param {string} category - dom path to current id
    */
   function ifElseHelpFunctionCheckRequiedFields(inputtitle,date,category) {
-    if (inputtitle.value !== '' && date.value !== '' && category.value !== '') {
-      document.getElementById('createtask').disabled = false;
-      removeRedBorderReqed(inputtitle,date,category);
+    if (inputtitle.value !== '' && date.value !== '' && category.value !== '' && checkDate(date) == true) {
+        document.getElementById('createtask').disabled = false;
+        removeRedBorderReqed(inputtitle,date,category);
     } else if(inputtitle.value == '' && date.value == '' && category.value == '') {
       document.getElementById('createtask').disabled = true;
       removeRedBorderReqed(inputtitle,date,category);
     } else {
       markMissingRequiredvalue(inputtitle);
-      markMissingRequiredvalue(date);
+      if (!checkDate(date)) {
+        date.classList.add('borderred')
+      }      
       markMissingRequiredvalue(category);
       document.getElementById('createtask').disabled = true;        
     } 
+
+  }
+
+  /**
+   * check if the input date is higher or current date
+   * 
+   * @param {string} date - path to dom id from inputdate
+   * @returns true or false
+   */
+  function checkDate(date) {
+    let date1 = new Date(date.value)
+    let date2 = new Date(date.min)
+
+    if (date1 >= date2) {
+      return true
+    } else {
+      return false
+    }
   }
 
   /**
