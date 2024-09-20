@@ -101,18 +101,17 @@ function addEyeIcons(id){
 function checkPasswordMatch() {
   const firstPass = document.getElementById('setpassword').value;
   const confirmPass = document.getElementById('confirmpassword').value;
-  const submitButton = document.getElementById('submitsignup');
 
   if (firstPass === confirmPass ) {
     document.getElementById('confirmpassword').classList.remove('wronglogin');
     document.getElementById('passwordnomatch').classList.add('d-none')
-    submitButton.disabled = false
-  } else if ( firstPass !== confirmPass ){
-    submitButton.disabled = true
+    return true    
+  } else if ( firstPass !== confirmPass ){    
     document.getElementById('confirmpassword').classList.add('wronglogin');
     document.getElementById('passwordnomatch').classList.remove('d-none')
+    return false
   } else {
-    submitButton.disabled = true
+    return false
   }
 }
 
@@ -184,4 +183,20 @@ function signUpSuccses() {
   signUpDone = document.getElementById('signupdone').classList.toggle('d-none');
 
   setTimeout(()=> {signUpDone ; window.location.href = "./index.html"} , 2000);     
+}
+
+/**
+ * Check SignupValidation and disable or enable submitbutton
+ */
+function checkSignUp() {
+  const submitButton = document.getElementById('submitsignup');
+  if (!document.getElementById('signupform').checkValidity()) {
+    document.getElementById('signupform').reportValidity()
+    submitButton.disabled = true
+  } else if (!checkPasswordMatch()) {
+    submitButton.disabled = true
+    checkPasswordMatch()
+  }else {
+  submitButton.disabled = false
+  }
 }

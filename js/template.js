@@ -37,8 +37,8 @@ function overlayHtml(contact = null, index = null) {
         </div>
         <form class="input-button-box center" onsubmit="event.preventDefault(),chooseCreateOrSave()" id="createandeditform">
             <input class="input input-name" id="name-input" type="text" placeholder="Name" value="${contact ? contact.name : ''}" required>
-            <input class="input input-mail" id="mail-input" type="email" placeholder="Email" value="${contact ? contact.mail : ''}">
-            <input class="input input-phone" id="phone-input" type="number" placeholder="Phone" value="${contact ? contact.phonenumber : ''}" >
+            <input type="email" class="input input-mail" id="mail-input"  placeholder="Email" pattern="[a-z0-9._%+\\-]+@[a-z0-9.\\-]+\\.[a-z]{2,}$" value="${contact ? contact.mail : ''}">
+            <input class="input input-phone" id="phone-input" type="tel"  placeholder="Phone" value="${contact ? contact.phonenumber : ''}" pattern="[0-9]+">
             <input type="hidden" id="contact-index" value="${index !== null ? index : ''}">
             <input type="hidden" id="contact-color" value="${contact ? contact.color : ''}">
         </form>

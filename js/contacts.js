@@ -189,12 +189,15 @@ function handleDesktopOverlay(overlay) {
 function createContact() {
     let [nameInput, mailInput, phoneInput] = ['name-input', 'mail-input', 'phone-input'].map(id => document.getElementById(id));
     let [name, mail, phonenumber] = [nameInput.value, mailInput.value, phoneInput.value];
+    phonenumber = checkPhoneNumber(phonenumber);
+
     contacts.push({
         mail, name, phonenumber,
         color: getRandomColor(),
         initials: getInitials(name)
     });
     nameInput.value = mailInput.value = phoneInput.value = '';
+    
     saveChangedDataContacts()
     closeOverlayFade();
     showMessage();
@@ -245,7 +248,8 @@ function saveContact() {
     const color = document.getElementById('contact-color').value
     let [nameInput, mailInput, phoneInput] = ['name-input', 'mail-input', 'phone-input'].map(id => document.getElementById(id));
     let [name, mail, phonenumber] = [ dontRenameUser(nameInput.value,index), mailInput.value, phoneInput.value];
-    let contactData = { mail, name, phonenumber, color };
+    phonenumber = checkPhoneNumber(phonenumber);
+    let contactData = { mail, name, phonenumber, color };    
     if (index) {
         contacts[index] = contactData;
         saveChangedDataContacts()

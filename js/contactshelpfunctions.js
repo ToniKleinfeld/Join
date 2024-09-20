@@ -106,3 +106,19 @@ function ereaseContactFromArrayAssigned(index) {
         } 
     }   
 }
+
+/**
+ * 
+ * @param {string} number - phonenumber from inputfield
+ * @returns - number withoiut 0 oder 4X in the beginning
+ */
+function checkPhoneNumber(number) {
+    
+    if (number.charAt(0) == 0 ) {        
+         return number.substring(1)
+    } else if (number.charAt(0) == 4 ) {
+        return number.substring(2)
+    } else {
+        return number
+    }
+} 

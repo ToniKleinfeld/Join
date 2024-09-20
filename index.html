@@ -71,12 +71,12 @@
 
             <div class="seperator"></div>
 
-            <form class="login-form center" id="signupform" onsubmit="event.preventDefault(), signUp()">
+            <form class="login-form center" id="signupform" onsubmit="event.preventDefault(), signUp()" onchange="checkSignUp()">
 
                 <input type="text" class="input-name" placeholder="Name" required id="signupname">
-                <input type="email" class="input-mail" placeholder="Email" required id="signupmail">
+                <input type="email" class="input-mail" placeholder="Email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required id="signupmail" >
                 <div class="passwortcontainer">
-                    <input type="password" class="input-password" placeholder="Password" required  id="setpassword" onkeyup="addEyeIcons('setpassword')">
+                    <input type="password" class="input-password" placeholder="Password" required id="setpassword" onkeyup="addEyeIcons('setpassword')">
                     <icon class="eye-container" onclick="hideShowPassword('setpassword')" id="setpasswordicon"></icon>
                     
                 </div>                

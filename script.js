@@ -94,8 +94,8 @@ function showUserMenue(){
 /**
  * Clear the seassionStorage
  */
-function logOut() {
-  sessionStorage.clear()
+async function logOut() {
+ await sessionStorage.clear()
 }
 
 /**
