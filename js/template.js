@@ -233,7 +233,7 @@ function renderAssignedNamesAndColorsBigCard(name,color,shortname) {
 
 function rendertaskOverlayHTML(indexOfTask) {
     return /*html*/`
-    <div class="task-overlay-container" onclick="doNotClose(event)">
+    <div class="task-overlay-container" onclick="doNotClose(event)" id="overlaycontainer">
         <div class="user-story-close-container">
             <div id="labelOverlay${indexOfTask}" class="user-story-overlay">${tasks[indexOfTask]['category']}</div>
             <img onclick="closeTaskOverlay()" src="./assets/icons/close.svg" alt="">
@@ -347,7 +347,7 @@ function renderEditTasksHtml(i) {
 
 function renderAddtaskformHTML() {
     return /*html*/`
-        <div class="add-task-bg" style="width: unset;position:relative;" onclick="checkAssignedDropDownWindowOpen(),doNotClose(event)" >
+        <div class="add-task-bg" style="width: unset;position:relative;" onclick="checkAssignedDropDownWindowOpen(),doNotClose(event)" id="overlaycontainer">
             <div class="close-add-task-board">
                 <div style="background:unset;"></div>
                 <img onclick="closeAddTaskDialog()" src="./assets/icons/close.svg" alt="">

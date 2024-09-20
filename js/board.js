@@ -159,8 +159,12 @@ function openAddTaskDialog(progress) {
  */
 function closeAddTaskDialog() {
     let addTaskOverlay = document.getElementById('addTaskOverlay');
-    addTaskOverlay.style.display = 'none';
-    addTaskOverlay.innerHTML = '';
+    addCloseAnimation()
+
+    setTimeout(() => {
+        addTaskOverlay.style.display = 'none';
+        addTaskOverlay.innerHTML = '';
+    }, 500);
 }
 
 /**
@@ -203,9 +207,12 @@ function showTaskOverlay(indexOfTask) {
  */
 function closeTaskOverlay() {
     let overlay = document.getElementById('overlay');
-    overlay.style.display = 'none';
-    overlay.innerHTML = '';
-    resetEditArray();
+    addCloseAnimation()
+    setTimeout(() => {
+        overlay.style.display = 'none';
+        overlay.innerHTML = '';
+        resetEditArray();
+    }, 600);
 }
 
 /**

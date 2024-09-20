@@ -8,6 +8,16 @@
     }
 }
 
+@keyframes slideout {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100vw);
+    }
+}
+
 
 .task-overlay-container {
     display: flex;
@@ -23,6 +33,10 @@
     border-radius: 30px;
     margin: auto;
     animation: slidein 0.5s forwards ease-in-out;
+}
+
+.slideoutclass {
+    animation: slideout 0.5s forwards ease-in-out;
 }
 
 .user-story-close-container {

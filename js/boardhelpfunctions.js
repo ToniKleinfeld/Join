@@ -149,3 +149,16 @@ function changeProgressTo(index, progress) {
     initBoard();
     showProgressMenue(index)
 }
+
+/**
+ * Add the slideout animation to the overlaycontainer when closing
+ */
+function addCloseAnimation() {
+    const overlaycontainer = document.getElementById('overlaycontainer');
+
+    overlaycontainer.classList.add('slideoutclass')
+
+    setTimeout(() => {
+        overlaycontainer.classList.remove('slideoutclass')
+    }, 700);
+}

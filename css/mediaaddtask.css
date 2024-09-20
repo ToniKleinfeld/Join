@@ -88,6 +88,7 @@
     border-radius: 30px;
     overflow-y: auto;
     overflow-x: hidden;
+    animation: slidein 0.5s forwards ease-in-out;
 
     &::-webkit-scrollbar-track {
         margin: 35px 0;
