@@ -190,13 +190,72 @@ function signUpSuccses() {
  */
 function checkSignUp() {
   const submitButton = document.getElementById('submitsignup');
+  const checkarray = getSignUpIds();
+
   if (!document.getElementById('signupform').checkValidity()) {
-    document.getElementById('signupform').reportValidity()
+      checkIfNotValid(checkarray);
+      checkPasswordMatch()
+      checkIfSignUpEmpty(checkarray)
     submitButton.disabled = true
   } else if (!checkPasswordMatch()) {
     submitButton.disabled = true
-    checkPasswordMatch()
-  }else {
+    checkPasswordMatch()    
+  } else {
+  checkIfNotValid(checkarray);
   submitButton.disabled = false
   }
 }
+
+/**
+ * Validatiocheck of signupfields , show label if not true , or hide them
+ * 
+ * @param {array} array - get an array with dom path id's
+ */
+function checkIfNotValid(array) {
+  array.forEach(element => { if (!document.getElementById(element).checkValidity()) {
+
+    if (document.getElementById(element+'label') !== undefined) {
+      document.getElementById(element+'label').classList.remove('d-none')      
+    } 
+    document.getElementById(element).classList.add('wronglogin');
+    
+  } else {    
+    if (document.getElementById(element+'label') !== undefined) {
+      document.getElementById(element+'label').classList.add('d-none');      
+    }
+    document.getElementById(element).classList.remove('wronglogin');
+    
+  }    
+  });
+}
+
+/**
+ * check if the signupfield are empty
+ * 
+ * @param {array} arrayids - get an array with dom path id's
+ */
+function checkIfSignUpEmpty(arrayids) {
+
+  if (document.getElementById(arrayids[0]).value == '' &&
+      document.getElementById(arrayids[1]).value == '' &&
+      document.getElementById(arrayids[2]).value == '') {
+    arrayids.forEach(element => {
+      if (document.getElementById(element+'label') !== undefined) {
+        document.getElementById(element+'label').classList.add('d-none');      
+      }
+      document.getElementById(element).classList.remove('wronglogin');      
+    });
+  }
+}
+
+/** * 
+ * @returns Array with id's from signupfields
+ */
+function getSignUpIds() {  
+  const name = 'signupname';
+  const email = 'signupmail';
+  const password = 'setpassword';
+  const checkbox = 'confirmread'  
+
+  return [name,email,password, checkbox]
+} 

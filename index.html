@@ -73,25 +73,35 @@
 
             <form class="login-form center" id="signupform" onsubmit="event.preventDefault(), signUp()" onchange="checkSignUp()">
 
-                <input type="text" class="input-name" placeholder="Name" required id="signupname">
-                <input type="email" class="input-mail" placeholder="Email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required id="signupmail" >
+                <div class="passwortcontainer">
+                    <input type="text" class="input-name" placeholder="Name" required id="signupname">
+                    <br>
+                    <label for="signupname" class="redtext d-none" id="signupnamelabel">Please insert a Name.</label>
+                </div>
+                <div class="passwortcontainer">
+                    <input type="email" class="input-mail" placeholder="Email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required id="signupmail" >
+                    <br>
+                    <label for="signupmail" class="redtext d-none" id="signupmaillabel" >Please insert a Email, example: my@mail.com.</label>
+                </div>
                 <div class="passwortcontainer">
                     <input type="password" class="input-password" placeholder="Password" required id="setpassword" onkeyup="addEyeIcons('setpassword')">
                     <icon class="eye-container" onclick="hideShowPassword('setpassword')" id="setpasswordicon"></icon>
-                    
+                    <br>
+                    <label for="setpassword" class="redtext d-none" id="setpasswordlabel">Please fill this field.</label>
                 </div>                
                 <div class="passwortcontainer">
                     <input type="password" class="input-password" placeholder="Confirm Password" required id="confirmpassword" onkeyup="addEyeIcons('confirmpassword'), checkPasswordMatch()">
                     <icon class="eye-container" onclick="hideShowPassword('confirmpassword')" id="confirmpasswordicon"></icon><br>
-                    <label for="password" class="redtext d-none" id="passwordnomatch">Your password don't match. Please try again.</label>
+                    <label for="confirmpassword" class="redtext d-none" id="passwordnomatch">Your password don't match. Please try again.</label>
                 </div>                
 
                 <div class="confirmbox">
                     <input class="checkbox" type="checkbox" name="confirmread" required id="confirmread">
                     <span class="checkmark"></span>
                     <label for="confirmread">I confirm the <a href="./privacy.html" class="privacy-link">Privacy policy</a></label>
+                    
                 </div>
-
+                <label for="confirmread" class="redtext d-none" id="confirmreadlabel">Please confirm.</label>
             </form>
 
             <div class="button-container">
