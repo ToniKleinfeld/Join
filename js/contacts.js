@@ -221,6 +221,7 @@ function editContact(index) {
         document.getElementById('mail-input').value = contact.mail;
         document.getElementById('phone-input').value = contact.phonenumber;
     }, 0);
+    checkForm('createandeditform')
 }
 
 

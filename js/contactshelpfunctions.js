@@ -122,3 +122,65 @@ function checkPhoneNumber(number) {
         return number
     }
 } 
+
+/**
+ * Check Create/Edit contact and disable or enable submitbutton
+ */
+function checkForm(id) {
+    const submitbutton = document.getElementById('create-save-button');
+    const checkidarray = getFormIds()
+
+    if (document.getElementById(id).checkValidity()) {
+        checkIfNotValidCreateOrEditContact(checkidarray);
+        submitbutton.disabled = false
+    } else {
+        
+        checkIfNotValidCreateOrEditContact(checkidarray);
+        checkifCreateIsEmpty(checkidarray);
+        submitbutton.disabled = true
+    }
+}
+
+/** * 
+ * @returns Array with id's from create/edit contactsinputs
+ */
+function getFormIds() {
+    const name = 'name-input';
+    const email = 'mail-input';
+    const phonenumber = 'phone-input'
+
+    return [name,email,phonenumber]
+}
+
+/**
+ * Validatiocheck of create/EditContact , show label if not true , or hide them
+ * 
+ * @param {array} array - get an array with dom path id's
+ */
+function checkIfNotValidCreateOrEditContact(array) {
+    array.forEach(element => { if (!document.getElementById(element).checkValidity()) {
+        document.getElementById(element+'label').classList.remove('d-none')      
+        document.getElementById(element).classList.add('wrong');        
+      } else {  
+        document.getElementById(element+'label').classList.add('d-none');
+        document.getElementById(element).classList.remove('wrong');
+      }    
+      });
+}
+
+/**
+ * check if the signupfield are empty
+ * 
+ * @param {array} arrayids - get an array with dom path id's
+ */
+function checkifCreateIsEmpty(arrayids) {
+    if (document.getElementById(arrayids[0]).value == '' &&
+        document.getElementById(arrayids[1]).value == '' &&
+        document.getElementById(arrayids[2]).value == '') { 
+
+        arrayids.forEach(element => {    
+        document.getElementById(element+'label').classList.add('d-none');      
+        document.getElementById(element).classList.remove('wronglogin');      
+        });
+    }
+}

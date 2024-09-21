@@ -20,6 +20,15 @@
     animation: slideOut 0.5s backwards ease-in-out;
 }
 
+.redtext {
+    color: red;
+    font-size: 12px;
+}
+
+.wrong {
+    border: red;
+}
+
 /***Mobile Edit Mmenu*****************************************************/
 
 .mobile-edit-menu {

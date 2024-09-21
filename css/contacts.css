@@ -379,6 +379,11 @@ input {
         font-weight: 400;
     }
 
+    & button:disabled:hover {
+        cursor: unset;
+        background-color: #2A3647;;
+    }
+
     & .button-filled-large {
         padding: 5px 20px;
         width: auto;

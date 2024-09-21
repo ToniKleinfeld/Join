@@ -19,7 +19,7 @@ function overlayHtml(contact = null, index = null) {
     let headerText = index !== null ? 'Edit contact' : 'Add contact';
     let contactInitials = contact ? contact.name.split(' ').map(n => n[0]).join('') : '';
     let contactColor = contact ? contact.color : '#ccc';
-    return /*Html*/`
+    return /*html*/`
     <div class="left-container center">
         <img class="logo" src="./assets/icons/capa 1.svg">
         <p class="motto-label">${headerText}</h1>
@@ -35,16 +35,28 @@ function overlayHtml(contact = null, index = null) {
         <div class="close-icon center" onclick="closeOverlaySlide()">
             <img src="./assets/icons/close.svg">
         </div>
-        <form class="input-button-box center" onsubmit="event.preventDefault(),chooseCreateOrSave()" id="createandeditform">
-            <input class="input input-name" id="name-input" type="text" placeholder="Name" value="${contact ? contact.name : ''}" required>
-            <input type="email" class="input input-mail" id="mail-input"  placeholder="Email" pattern="[a-z0-9._%+\\-]+@[a-z0-9.\\-]+\\.[a-z]{2,}$" value="${contact ? contact.mail : ''}">
-            <input class="input input-phone" id="phone-input" type="tel"  placeholder="Phone" value="${contact ? contact.phonenumber : ''}" pattern="[0-9]+">
+        <form class="input-button-box center" onsubmit="event.preventDefault(),chooseCreateOrSave()" id="createandeditform" onchange="checkForm('createandeditform')">
+            <div>            
+                <input class="input input-name" id="name-input" type="text" placeholder="Name" value="${contact ? contact.name : ''}" required>
+                <br>
+                <label for="name-input" class="redtext d-none" id="name-inputlabel">Please insert Name.</label>
+            </div>
+            <div>
+                <input type="email" class="input input-mail" id="mail-input"  placeholder="Email" pattern="[a-z0-9._%+\\-]+@[a-z0-9.\\-]+\\.[a-z]{2,}$" value="${contact ? contact.mail : ''}">
+                <br>
+                <label for="mail-input" class="redtext d-none" id="mail-inputlabel">Example: my@mail.com.</label>
+            </div>
+            <div>
+                <input class="input input-phone" id="phone-input" type="tel"  placeholder="Phone" value="${contact ? contact.phonenumber : ''}" pattern="[0-9]+">
+                <br>
+                <label for="phone-input" class="redtext d-none" id="phone-inputlabel">Please only numbers.</label>
+            </div>
             <input type="hidden" id="contact-index" value="${index !== null ? index : ''}">
             <input type="hidden" id="contact-color" value="${contact ? contact.color : ''}">
         </form>
         <div class="button-box center">
                 <button class="button-empty-small cancel-button" ${index !== null ? checkIfContactisActualUser(index) : ''} id="${index !== null ? 'Delete' : 'Cancel'}" onclick="${index !== null ? "deleteContact(lastviewcontact)" : "closeOverlaySlide()"}">${index !== null ? 'Delete' : 'Cancel'}</button>
-                <button type="submit"  form="createandeditform" class="button-filled-large create-button" id="create-save-button">${index !== null ? 'Save' : 'Create Contact'}</button>
+                <button type="submit"  form="createandeditform" class="button-filled-large create-button" id="create-save-button" disabled="${index !== null ? 'false' : 'true'}">${index !== null ? 'Save' : 'Create Contact'}</button>
         </div>
     </div>
     `;
