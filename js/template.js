@@ -274,7 +274,7 @@ function rendertaskOverlayHTML(indexOfTask) {
 
 function renderEditTasksHtml(i) {
     return /*html*/`        
-        <div class="add-task-bg" style="width:unset; padding:0 0 0 5px; position:relative;" onclick="checkAssignedDropDownWindowOpen(),doNotClose(event)">
+        <div class="add-task-bg" style="width:unset; padding:0 0 0 5px; position:relative;" onclick="checkAssignedDropDownWindowOpen(),doNotClose(event)"  id="overlaycontainer">
         <div class="edit-container-close">
                     <div class="user-story-overlay" style="background:unset;"></div>
                     <img onclick="closeTaskOverlay()" src="./assets/icons/close.svg" alt="">
