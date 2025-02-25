@@ -47,7 +47,7 @@ function saveAsSessionStorage(){
  * disbale navmenu and Userfield, when no user or Guest logged in.
  */
 function checkIfUserlogin() {
-  if (user == '' && window.location.pathname == "/Join/legal.html" | window.location.pathname =="/Join/privacy.html") {
+  if (user == '' && window.location.pathname == "/join/legal.html" | window.location.pathname =="/join/privacy.html") {
     document.getElementById('navlinks').classList.add('d-none');
     document.getElementById('showuser').classList.add('d-none');
   } else if (user == '') {
