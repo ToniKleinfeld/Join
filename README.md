@@ -1,4 +1,4 @@
-<p align="center"><img src="https://capsule-render.vercel.app/api?type=waving&height=200&color=gradient&text=Join Project&section=header&reversal=false&textBg=false&fontSize=70&fontAlign=50&animation=fadeIn&fontAlignY=38&descSize=0"></p>
+<p align="center"><img src="https://capsule-render.vercel.app/api?type=waving&height=200&color=gradient&text=Join%20Project&section=header&reversal=false&textBg=false&fontSize=70&fontAlign=50&animation=fadeIn&fontAlignY=38&descSize=0"></p>
 
 <p>
   <img alt="Version" src="https://img.shields.io/badge/Coded_in-JavaScript-yellow?logo=javascript" />
